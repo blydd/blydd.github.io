@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>nginx配置文件 | 我的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="nginx,nginx配置文件" />
+    
+    <meta name="description" content="nginx配置文件详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx配置文件">
+<meta property="og:url" content="http://www.lifeab.com/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="nginx配置文件详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T08:10:17.000Z">
+<meta property="article:modified_time" content="2024-03-20T09:53:35.442Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="nginx配置文件">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blog/">blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nginx/">nginx</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ps/">ps</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/nginx/">nginx</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Nginx配置文件详解" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        nginx配置文件
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="article-date">
+       <time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="article-date">
+     <time datetime="2024-03-20T09:53:35.442Z" itemprop="dateModified">2024-03-20</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/nginx/" rel="tag">nginx</a>, <a class="tag-link-link" href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">nginx配置文件</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <blockquote>
+<p>Nginx的配置⽂件是 nginx.conf ，⼀般位于 &#x2F;etc&#x2F;nginx&#x2F;nginx.conf 。 可以使⽤ nginx -t 来查看配置⽂件的位置和检查配置⽂件是否正确。</p>
+</blockquote>
+<h1 id="全局块"><a href="#全局块" class="headerlink" title="全局块"></a>全局块</h1><blockquote>
+<p>主要⽤来设置⼀些影响Nginx服务器整体运⾏的配置指令，主要包括配置运⾏Nginx服务器的⽤户（组）、允许⽣成的worker process数、进程PID存放路径、⽇志存放路径和类型以及配置⽂件引⼊等。</p>
+</blockquote>
+<h2 id="user"><a href="#user" class="headerlink" title="user"></a>user</h2><blockquote>
+<p>指定运⾏Nginx服务器的⽤户，只能在全局块配置</p>
+<p>将user指令注释掉，或者配置成nobody的话所有⽤户都可以运⾏</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">user [user] [group]</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">user nginx;</span></span><br><span class="line">user nobody nobody;</span><br></pre></td></tr></table></figure>
+
+<h2 id="worker-processes"><a href="#worker-processes" class="headerlink" title="worker_processes"></a>worker_processes</h2><blockquote>
+<p>指定⽣成的worker进程的数量，也可使⽤⾃动模式，只能在全局块配置</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1; #auto或其他数字</span><br></pre></td></tr></table></figure>
+
+<h2 id="error-log"><a href="#error-log" class="headerlink" title="error_log"></a>error_log</h2><blockquote>
+<p>错误⽇志存放路径和类型</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">error_log  /var/log/nginx/error.log;</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">error_log  /var/log/nginx/error.log  notice;</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">error_log  /var/log/nginx/error.log  info;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="pid"><a href="#pid" class="headerlink" title="pid"></a>pid</h2><blockquote>
+<p>进程PID存放路径</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pid /var/run/nginx.pid;</span><br></pre></td></tr></table></figure>
+
+<h1 id="events块"><a href="#events块" class="headerlink" title="events块"></a>events块</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">events &#123;</span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">指定使⽤哪种⽹络IO模型，只能在events块中进⾏配置</span></span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">use epoll</span></span><br><span class="line"><span class="meta prompt_">	</span></span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">每个worker process允许的最⼤连接数</span></span><br><span class="line">  worker_connections  1024;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="http块"><a href="#http块" class="headerlink" title="http块"></a>http块</h1><blockquote>
+<p>http块是配置⽂件的主要部分，包括http全局块和server块。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">		****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><blockquote>
+<p>nginx 可以使⽤include指令引⼊其他配置⽂件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include       mime.types;</span><br></pre></td></tr></table></figure>
+
+<h2 id="default-type"><a href="#default-type" class="headerlink" title="default_type"></a>default_type</h2><blockquote>
+<p>默认类型，如果请求的URL没有包含⽂件类型，会使⽤默认类型</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default_type  application/octet-stream;</span><br></pre></td></tr></table></figure>
+
+<h2 id="log-format"><a href="#log-format" class="headerlink" title="log_format"></a>log_format</h2><blockquote>
+<p>定义⽇志格式</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">log_format  main  <span class="string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">                 <span class="string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">                 <span class="string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="access-log"><a href="#access-log" class="headerlink" title="access_log"></a>access_log</h2><blockquote>
+<p>⽇志存放路径和类型</p>
+<p>格式为：access_log <path> [format [buffer&#x3D;size] [gzip[&#x3D;level]] [flush&#x3D;time] [if&#x3D;condition]];</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">access_log /var/log/nginx/access.log main;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sendfile"><a href="#sendfile" class="headerlink" title="sendfile"></a>sendfile</h2><blockquote>
+<p>开启⾼效⽂件传输模式</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sendfile        on;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">tcp_nopush     on;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="sendfile-max-chunk"><a href="#sendfile-max-chunk" class="headerlink" title="sendfile_max_chunk"></a>sendfile_max_chunk</h2><blockquote>
+<p>设置sendfile最⼤传输⽚段⼤⼩，默认为0，表示不限制</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendfile_max_chunk 1m;</span><br></pre></td></tr></table></figure>
+
+<h2 id="keepalive-requests"><a href="#keepalive-requests" class="headerlink" title="keepalive_requests"></a>keepalive_requests</h2><blockquote>
+<p>每个连接的请求次数</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keepalive_requests 100;</span><br></pre></td></tr></table></figure>
+
+<h2 id="keepalive-timeout"><a href="#keepalive-timeout" class="headerlink" title="keepalive_timeout"></a>keepalive_timeout</h2><blockquote>
+<p>连接超时时间</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keepalive_timeout  65;</span><br></pre></td></tr></table></figure>
+
+<h2 id="gzip压缩相关"><a href="#gzip压缩相关" class="headerlink" title="gzip压缩相关"></a>gzip压缩相关</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">开启gzip压缩</span></span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">gzip  on;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启gzip压缩的最⼩⽂件⼤⼩</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gzip_min_length 1k;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gzip压缩级别，1-9，级别越⾼压缩率越⾼，但是消耗CPU资源也越多</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gzip_comp_level 2;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gzip压缩⽂件类型</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gzip_types text/plain application/javascript application/xjavascript text/css application/xml text/javascript application/x-httpdphp image/jpeg image/gif image/png;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="upstream"><a href="#upstream" class="headerlink" title="upstream"></a>upstream</h2><blockquote>
+<p>upstream指令⽤于定义⼀组服务器，⼀般⽤来配置反向代理和负载均衡</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">upstream www.example.com &#123;</span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">ip_hash指令⽤于设置负载均衡的⽅式，ip_hash表示使⽤客户端的IP进⾏<span class="built_in">hash</span>，</span></span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">这样可以保证同⼀个客户端的请求每次都会分配到同⼀个服务器，解决了session共享的问题</span></span><br><span class="line">	ip_hash;</span><br><span class="line"><span class="meta prompt_">	# </span><span class="language-bash">weight ⽤于设置权重，权重越⾼被分配到的⼏率越⼤</span></span><br><span class="line">	server 192.168.50.11:80 weight=3;</span><br><span class="line">	server 192.168.50.12:80;</span><br><span class="line">	server 192.168.50.13:80;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><blockquote>
+<p>server块是配置虚拟主机的，⼀个http块可以包含多个server块，每个server块就是⼀个虚拟主机。</p>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">				# 监听IP和端⼝</span><br><span class="line">				# listen的格式为：</span><br><span class="line">				# listen [ip]:port [default_server] [ssl] [http2] [spdy] [proxy_protocol] [setfib=number] [fastopen=number] [backlog=number];</span><br><span class="line">				# listen指令⾮常灵活，可以指定多个IP和端⼝，也可以使⽤通配符</span><br><span class="line">				# 下⾯是⼏个实际的例⼦：</span><br><span class="line">				# listen 127.0.0.1:80; # 监听来⾃127.0.0.1的80端⼝的请求</span><br><span class="line">				# listen 80; # 监听来⾃所有IP的80端⼝的请求</span><br><span class="line">				# listen *:80; # 监听来⾃所有IP的80端⼝的请求，同上</span><br><span class="line">				# listen 127.0.0.1; # 监听来⾃来⾃127.0.0.1的80端⼝，默认端⼝为80</span><br><span class="line">        listen       80;</span><br><span class="line">				# server_name ⽤来指定虚拟主机的域名，可以使⽤精确匹配、通配符匹配和正则匹配等⽅式</span><br><span class="line">				# server_name example.org www.example.org; # 精确匹配</span><br><span class="line">				# server_name *.example.org; # 通配符匹配</span><br><span class="line">				# server_name ~^www\d+\.example\.net$; # 正则匹配</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line">				</span><br><span class="line">				# location块⽤来配置请求的路由，⼀个server块可以包含多个location块，每个location块就是⼀个请求路由</span><br><span class="line">        # location块的格式是：</span><br><span class="line">				# location [=|~|~*|^~] /uri/ &#123; ... &#125;</span><br><span class="line">				# = 表示精确匹配，只有完全匹配上才能⽣效</span><br><span class="line">				# ~ 表示区分⼤⼩写的正则匹配</span><br><span class="line">				# ~* 表示不区分⼤⼩写的正则匹配</span><br><span class="line">				# ^~ 表示普通字符匹配，如果匹配成功，则不再匹配其他location</span><br><span class="line">				# /uri/ 表示请求的URI，可以是字符串，也可以是正则表达式</span><br><span class="line">				# &#123; ... &#125; 表示location块的配置内容</span><br><span class="line">				location / &#123;</span><br><span class="line">						# root指令指定请求的根⽬录，可是绝对路径，也可是相对路径</span><br><span class="line">            root   html;</span><br><span class="line">						# index指令指定默认⽂件，如请求的是⽬录，则会在⽬录下查找默认⽂件</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">				# 下⾯是⼀些location的示例：</span><br><span class="line">				 location = / &#123; # 精确匹配请求</span><br><span class="line">						 root /usr/share/nginx/html;</span><br><span class="line">						 index index.html index.htm;</span><br><span class="line">				 &#125;</span><br><span class="line">				 location ^~ /images/ &#123; # 匹配以/images/开头的请求</span><br><span class="line">						 root /usr/share/nginx/html;</span><br><span class="line">				 &#125;</span><br><span class="line">				 location ~* \.(gif|jpg|jpeg)$ &#123; # 匹配以gif、jpg或者jpeg结尾的请求</span><br><span class="line">						 root /usr/share/nginx/html;</span><br><span class="line">				 &#125;</span><br><span class="line">				 location !~ \.(gif|jpg|jpeg)$ &#123; # 不匹配以gif、jpg或者jpeg结尾的请求</span><br><span class="line">						 root /usr/share/nginx/html;</span><br><span class="line">				 &#125;</span><br><span class="line">				 location !~* \.(gif|jpg|jpeg)$ &#123; # 不匹配以gif、jpg或者jpeg结尾的请求</span><br><span class="line">						 root /usr/share/nginx/html;</span><br><span class="line">				 &#125;</span><br><span class="line"></span><br><span class="line">				# error_page ⽤于指定错误⻚⾯，可以指定多个，按照优先级从⾼到低依次查找</span><br><span class="line">        #error_page  404              /404.html;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    proxy_pass   http://127.0.0.1;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    root           html;</span><br><span class="line">        #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        #    fastcgi_index  index.php;</span><br><span class="line">        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">        #    include        fastcgi_params;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # deny access to .htaccess files, if Apache&#x27;s document root</span><br><span class="line">        # concurs with nginx&#x27;s one</span><br><span class="line">        #</span><br><span class="line">        #location ~ /\.ht &#123;</span><br><span class="line">        #    deny  all;</span><br><span class="line">        #&#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他的server块例子"><a href="#其他的server块例子" class="headerlink" title="其他的server块例子"></a>其他的server块例子</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash">   <span class="comment">#server &#123;</span></span></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">   listen       8000;</span></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">   listen       somename:8080;</span></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">   server_name  somename  <span class="built_in">alias</span>  another.alias;</span></span><br><span class="line"></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">   location / &#123;</span></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">       root   html;</span></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">       index  index.html index.htm;</span></span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">   &#125;</span></span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置https"><a href="#配置https" class="headerlink" title="配置https"></a>配置https</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 443 ssl;</span><br><span class="line">	server_name www.lifeab.asia;</span><br><span class="line"><span class="meta prompt_">	#</span><span class="language-bash">相对路径下的证书目录</span></span><br><span class="line">	ssl_certificate   cert/a.pem;</span><br><span class="line">	ssl_certificate_key  cert/a.key;</span><br><span class="line">	ssl_session_timeout 5m;</span><br><span class="line">	ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">	ssl_prefer_server_ciphers on;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">把https请求重定向</span></span><br><span class="line">	location / &#123;</span><br><span class="line">					#实际服务开放地址</span><br><span class="line">	        proxy_pass http://182.92.10.251:8888;</span><br><span class="line">        	proxy_set_header Host $host;</span><br><span class="line">	        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">	        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    	&#125;	</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.lifeab.com/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" data-id="clu0xeiwn00079m6ofeeh7swc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Wick"
+        },
+        "headline": "nginx配置文件",
+        "image": "http://www.lifeab.com",
+        "keywords": "nginx nginx配置文件",
+        "genre": "nginx",
+        "datePublished": "2024-03-07",
+        "dateCreated": "2024-03-07",
+        "dateModified": "2024-03-20",
+        "url": "http://www.lifeab.com/2024/03/07/Nginx配置文件详解/",
+        "description": "
+Nginx的配置⽂件是 nginx.conf ，⼀般位于 &#x2F;etc&#x2F;nginx&#x2F;nginx.conf 。 可以使⽤ nginx -t 来查看配置⽂件的位置和检查配置⽂件是否正确。
+
+全局块
+主要⽤来设置⼀些影响Nginx服务器整体运⾏的配置指令，主要包括配置运⾏Nginx服务器的⽤户（组）、允许⽣成的worker process数、进程PID存放路径、⽇志存放路径和类型以及配置⽂件引⼊等。
+
+user
+指定运⾏Nginx服务器的⽤户，只能在全局块配置
+将user指令注释掉，或者配置成nobody的话所有⽤户都可以运⾏
+
+123#user [user] [group]#user nginx;user nobody nobody;
+
+worker_processes
+指定⽣成的worker进程的数量，也可使⽤⾃动模式，只能在全局块配置
+
+1worker_processes  1; #auto或其他数字
+
+error_log",
+        "wordCount": 1496
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            nginx如何处理请求
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2024/03/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Hello World</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">全局块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#user"><span class="toc-number">1.1.</span> <span class="toc-text">user</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#worker-processes"><span class="toc-number">1.2.</span> <span class="toc-text">worker_processes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#error-log"><span class="toc-number">1.3.</span> <span class="toc-text">error_log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pid"><span class="toc-number">1.4.</span> <span class="toc-text">pid</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#events%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">events块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">http块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#include"><span class="toc-number">3.1.</span> <span class="toc-text">include</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default-type"><span class="toc-number">3.2.</span> <span class="toc-text">default_type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#log-format"><span class="toc-number">3.3.</span> <span class="toc-text">log_format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#access-log"><span class="toc-number">3.4.</span> <span class="toc-text">access_log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sendfile"><span class="toc-number">3.5.</span> <span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sendfile-max-chunk"><span class="toc-number">3.6.</span> <span class="toc-text">sendfile_max_chunk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keepalive-requests"><span class="toc-number">3.7.</span> <span class="toc-text">keepalive_requests</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keepalive-timeout"><span class="toc-number">3.8.</span> <span class="toc-text">keepalive_timeout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gzip%E5%8E%8B%E7%BC%A9%E7%9B%B8%E5%85%B3"><span class="toc-number">3.9.</span> <span class="toc-text">gzip压缩相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upstream"><span class="toc-number">3.10.</span> <span class="toc-text">upstream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#server"><span class="toc-number">3.11.</span> <span class="toc-text">server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.11.1.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84server%E5%9D%97%E4%BE%8B%E5%AD%90"><span class="toc-number">3.11.2.</span> <span class="toc-text">其他的server块例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEhttps"><span class="toc-number">3.11.3.</span> <span class="toc-text">配置https</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></p>
+                            <p class="item-title"><a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="title">集合分页工具类</a></p>
+                            <p class="item-date"><time datetime="2024-03-14T09:10:17.000Z" itemprop="datePublished">2024-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/java/">java</a></p>
+                            <p class="item-title"><a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="title">枚举</a></p>
+                            <p class="item-date"><time datetime="2024-03-14T09:07:17.000Z" itemprop="datePublished">2024-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/13/PS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://gitee.com/blydd/imgs_bed/raw/master/pic/image-20240313172730896.png)" alt="ps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ps/">ps</a></p>
+                            <p class="item-title"><a href="/2024/03/13/PS/" class="title">ps</a></p>
+                            <p class="item-date"><time datetime="2024-03-13T08:10:17.000Z" itemprop="datePublished">2024-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nginx/">nginx</a></p>
+                            <p class="item-title"><a href="/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" class="title">nginx安装方式</a></p>
+                            <p class="item-date"><time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/07/Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nginx/">nginx</a></p>
+                            <p class="item-title"><a href="/2024/03/07/Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="title">nginx常用命令</a></p>
+                            <p class="item-date"><time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ps/">ps</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/executors/" rel="tag">executors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/httpServerletRequest/" rel="tag">httpServerletRequest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-server%E5%9D%97/" rel="tag">nginx-server块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%AE%89%E8%A3%85/" rel="tag">nginx安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="tag">nginx常用命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">nginx配置文件</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/" rel="tag">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threadPollExecutor/" rel="tag">threadPollExecutor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/executors/" style="font-size: 10px;">executors</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/httpServerletRequest/" style="font-size: 10px;">httpServerletRequest</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/tags/nginx-server%E5%9D%97/" style="font-size: 10px;">nginx-server块</a> <a href="/tags/nginx%E5%AE%89%E8%A3%85/" style="font-size: 10px;">nginx安装</a> <a href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">nginx常用命令</a> <a href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" style="font-size: 13.33px;">nginx配置文件</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/threadPollExecutor/" style="font-size: 10px;">threadPollExecutor</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 13.33px;">工具类</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">枚举</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" style="font-size: 13.33px;">线程池</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 John Wick</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://www.lifeab.com/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

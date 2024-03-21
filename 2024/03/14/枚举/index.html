@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>枚举 | 我的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="java,枚举" />
+    
+    <meta name="description" content="枚举类的使用,枚举接口的使用.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="枚举">
+<meta property="og:url" content="http://www.lifeab.com/2024/03/14/%E6%9E%9A%E4%B8%BE/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="枚举类的使用,枚举接口的使用.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-14T09:07:17.000Z">
+<meta property="article:modified_time" content="2024-03-14T09:27:20.199Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="枚举">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blog/">blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nginx/">nginx</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ps/">ps</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/java/">java</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-枚举" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        枚举
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="article-date">
+       <time datetime="2024-03-14T09:07:17.000Z" itemprop="datePublished">2024-03-14</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="article-date">
+     <time datetime="2024-03-14T09:27:20.199Z" itemprop="dateModified">2024-03-14</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="单值enum"><a href="#单值enum" class="headerlink" title="单值enum"></a>单值enum</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">UserRole</span> &#123;</span><br><span class="line">        ROLE_ROOT_ADMIN,  <span class="comment">// 系统管理员</span></span><br><span class="line">        ROLE_ORDER_ADMIN, <span class="comment">// 订单管理员</span></span><br><span class="line">        ROLE_NORMAL       <span class="comment">// 普通用户</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="type">UserRole</span> <span class="variable">role1</span> <span class="operator">=</span> UserRole.ROLE_ROOT_ADMIN;</span><br><span class="line"><span class="type">UserRole</span> <span class="variable">role2</span> <span class="operator">=</span> UserRole.ROLE_ORDER_ADMIN;</span><br><span class="line"><span class="type">UserRole</span> <span class="variable">role3</span> <span class="operator">=</span> UserRole.ROLE_NORMAL;</span><br></pre></td></tr></table></figure>
+
+<h2 id="values-方法：返回所有枚举常量的数组集合"><a href="#values-方法：返回所有枚举常量的数组集合" class="headerlink" title="values()方法：返回所有枚举常量的数组集合"></a>values()方法：返回所有枚举常量的数组集合</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( UserRole role : UserRole.values() ) &#123;</span><br><span class="line">     System.out.println(role);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 打印：</span></span><br><span class="line"><span class="comment">// ROLE_ROOT_ADMIN</span></span><br><span class="line"><span class="comment">// ROLE_ORDER_ADMIN</span></span><br><span class="line"><span class="comment">// ROLE_NORMAL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ordinal-方法：返回枚举常量的序数，注意从0开始"><a href="#ordinal-方法：返回枚举常量的序数，注意从0开始" class="headerlink" title="ordinal()方法：返回枚举常量的序数，注意从0开始"></a>ordinal()方法：返回枚举常量的序数，注意从0开始</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println( role1.ordinal() ); <span class="comment">// 打印0</span></span><br><span class="line">System.out.println( role2.ordinal() ); <span class="comment">// 打印1</span></span><br><span class="line">System.out.println( role3.ordinal() ); <span class="comment">// 打印2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="compareTo-方法：枚举常量间的比较"><a href="#compareTo-方法：枚举常量间的比较" class="headerlink" title="compareTo()方法：枚举常量间的比较"></a>compareTo()方法：枚举常量间的比较</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println( role1.compareTo(role2) ); <span class="comment">//打印-1</span></span><br><span class="line">System.out.println( role2.compareTo(role3) ); <span class="comment">//打印-1</span></span><br><span class="line">System.out.println( role1.compareTo(role3) ); <span class="comment">//打印-2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="name-方法：获得枚举常量的名称"><a href="#name-方法：获得枚举常量的名称" class="headerlink" title="name()方法：获得枚举常量的名称"></a>name()方法：获得枚举常量的名称</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println( role1.name() ); <span class="comment">// 打印ROLE_ROOT_ADMIN</span></span><br><span class="line">System.out.println( role2.name() ); <span class="comment">// 打印ROLE_ORDER_ADMIN</span></span><br><span class="line">System.out.println( role3.name() ); <span class="comment">// 打印ROLE_NORMAL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="valueOf-方法：返回指定名称的枚举常量"><a href="#valueOf-方法：返回指定名称的枚举常量" class="headerlink" title="valueOf()方法：返回指定名称的枚举常量"></a>valueOf()方法：返回指定名称的枚举常量</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UserRole</span> <span class="variable">roleRootAdmin</span> <span class="operator">=</span> UserRole.valueOf(<span class="string">&quot;ROLE_ROOT_ADMIN&quot;</span>);</span><br><span class="line"><span class="type">UserRole</span> <span class="variable">roleOrderAdmin</span> <span class="operator">=</span> UserRole.valueOf(<span class="string">&quot;ROLE_ORDER_ADMIN&quot;</span>);</span><br><span class="line"><span class="type">UserRole</span> <span class="variable">roleNormal</span> <span class="operator">=</span> UserRole.valueOf(<span class="string">&quot;ROLE_NORMAL&quot;</span>);</span><br><span class="line">System.out.println(roleRootAdmin);<span class="comment">//ROLE_ROOT_ADMIN</span></span><br><span class="line">System.out.println(roleOrderAdmin);<span class="comment">//ROLE_ORDER_ADMIN</span></span><br><span class="line">System.out.println(roleNormal);<span class="comment">//ROLE_NORMAL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="用于switch语句中，而且意义更加明确"><a href="#用于switch语句中，而且意义更加明确" class="headerlink" title="用于switch语句中，而且意义更加明确"></a>用于switch语句中，而且意义更加明确</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UserRole</span> <span class="variable">userRole</span> <span class="operator">=</span> UserRole.ROLE_ORDER_ADMIN;</span><br><span class="line"><span class="keyword">switch</span> (userRole) &#123;</span><br><span class="line">    <span class="keyword">case</span> ROLE_ROOT_ADMIN:  <span class="comment">// 比如此处的意义就非常清晰了，比1，2，3这种数字好！</span></span><br><span class="line">        System.out.println(<span class="string">&quot;这是系统管理员角色&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> ROLE_ORDER_ADMIN:</span><br><span class="line">        System.out.println(<span class="string">&quot;这是订单管理员角色&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> ROLE_NORMAL:</span><br><span class="line">        System.out.println(<span class="string">&quot;这是普通用户角色&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="多值enum"><a href="#多值enum" class="headerlink" title="多值enum"></a>多值enum</h1><blockquote>
+<p>在enum枚举类中完全可以像在普通Class里一样声明属性、构造函数以及成员方法。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">publicenum UserRole &#123;</span><br><span class="line"></span><br><span class="line">    ROLE_ROOT_ADMIN( <span class="string">&quot;系统管理员&quot;</span>, <span class="number">000000</span> ),</span><br><span class="line">    ROLE_ORDER_ADMIN( <span class="string">&quot;订单管理员&quot;</span>, <span class="number">100000</span> ),</span><br><span class="line">    ROLE_NORMAL( <span class="string">&quot;普通用户&quot;</span>, <span class="number">200000</span> ),</span><br><span class="line">    ;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 以下为自定义属性</span></span><br><span class="line">    privatefinal String roleName;  <span class="comment">//角色名称</span></span><br><span class="line">    privatefinal Integer roleCode; <span class="comment">//角色编码</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 以下为自定义构造函数</span></span><br><span class="line">    UserRole( String roleName, Integer roleCode ) &#123;</span><br><span class="line">        <span class="built_in">this</span>.roleName = roleName;</span><br><span class="line">        <span class="built_in">this</span>.roleCode = roleCode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 以下为自定义方法</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getRoleName</span><span class="params">()</span> &#123;</span><br><span class="line">        returnthis.roleName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">getRoleCode</span><span class="params">()</span> &#123;</span><br><span class="line">        returnthis.roleCode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">getRoleCodeByRoleName</span><span class="params">( String roleName )</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>( UserRole enums : UserRole.values() ) &#123;</span><br><span class="line">            <span class="keyword">if</span>( enums.getRoleName().equals( roleName ) ) &#123;</span><br><span class="line">                <span class="keyword">return</span> enums.getRoleCode();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="枚举-接口"><a href="#枚举-接口" class="headerlink" title="枚举 + 接口"></a>枚举 + 接口</h1><p>先定义一个公用的接口RoleOperation，表示不同角色所能做的操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RoleOperation</span> &#123;</span><br><span class="line">    String <span class="title function_">op</span><span class="params">()</span>;  <span class="comment">// 表示某个角色可以做哪些op操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将不同角色的情况全部交由枚举类来做，定义一个枚举类RoleEnum，并让它去实现RoleOperation接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">RoleEnum</span> <span class="keyword">implements</span> <span class="title class_">RoleOperation</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 系统管理员(有A操作权限)</span></span><br><span class="line">    ROLE_ROOT_ADMIN &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">op</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span><span class="string">&quot;ROLE_ROOT_ADMIN:&quot;</span> + <span class="string">&quot; has AAA permission&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 订单管理员(有B操作权限)</span></span><br><span class="line">    ROLE_ORDER_ADMIN &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">op</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span><span class="string">&quot;ROLE_ORDER_ADMIN:&quot;</span> + <span class="string">&quot; has BBB permission&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 普通用户(有C操作权限)</span></span><br><span class="line">    ROLE_NORMAL &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">op</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span><span class="string">&quot;ROLE_NORMAL:&quot;</span> + <span class="string">&quot; has CCC permission&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这样，在调用处就变得异常简单了，一行代码就行了，根本不需要什么<code>if/else</code>：</p>
+<p>而且这样一来，以后假如我想扩充条件，只需要去枚举类中<strong>加代码</strong>即可，而不用改任何老代码，非常符合<strong>开闭原则</strong>！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JudgeRole</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">judge</span><span class="params">( String roleName )</span> &#123;</span><br><span class="line">        <span class="comment">// 一行代码搞定！之前的if/else灰飞烟灭</span></span><br><span class="line">        <span class="keyword">return</span> RoleEnum.valueOf(roleName).op();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="枚举与设计模式"><a href="#枚举与设计模式" class="headerlink" title="枚举与设计模式"></a>枚举与设计模式</h1><blockquote>
+<p>枚举还能实现设计模式？是的！不仅能而且还能实现好几种！</p>
+</blockquote>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数私有化，避免外部创建实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义一个内部枚举</span></span><br><span class="line">    publicenum SingletonEnum&#123;</span><br><span class="line"></span><br><span class="line">        SEED;  <span class="comment">// 唯一一个枚举对象，我们称它为“种子选手”！</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Singleton singleton;</span><br><span class="line"></span><br><span class="line">        SingletonEnum()&#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>(); <span class="comment">//真正的对象创建隐蔽在此！</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> Singleton <span class="title function_">getInstnce</span><span class="params">()</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> singleton;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 故意外露的对象获取方法，也是外面获取实例的唯一入口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonEnum.SEED.getInstnce(); <span class="comment">// 通过枚举的种子选手来完成</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>比如用枚举就可以写出一个基于策略模式的加减乘除计算器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Calculator</span> &#123;</span><br><span class="line"></span><br><span class="line">        ADDITION &#123;</span><br><span class="line">            <span class="keyword">public</span> Double <span class="title function_">execute</span><span class="params">( Double x, Double y )</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> x + y; <span class="comment">// 加法</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        SUBTRACTION &#123;</span><br><span class="line">            <span class="keyword">public</span> Double <span class="title function_">execute</span><span class="params">( Double x, Double y )</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> x - y; <span class="comment">// 减法</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        MULTIPLICATION &#123;</span><br><span class="line">            <span class="keyword">public</span> Double <span class="title function_">execute</span><span class="params">( Double x, Double y )</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> x * y; <span class="comment">// 乘法</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">      </span><br><span class="line">        DIVISION &#123;</span><br><span class="line">            <span class="keyword">public</span> Double <span class="title function_">execute</span><span class="params">( Double x, Double y )</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> x/y;  <span class="comment">// 除法</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">abstract</span> Double <span class="title function_">execute</span><span class="params">(Double x, Double y)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println( Calculator.ADDITION.execute( <span class="number">4.0</span>, <span class="number">2.0</span> ) );</span><br><span class="line">        <span class="comment">// 打印 6.0</span></span><br><span class="line">        System.out.println( Calculator.SUBTRACTION.execute( <span class="number">4.0</span>, <span class="number">2.0</span> ) );</span><br><span class="line">        <span class="comment">// 打印 2.0</span></span><br><span class="line">        System.out.println( Calculator.MULTIPLICATION.execute( <span class="number">4.0</span>, <span class="number">2.0</span> ) );</span><br><span class="line">        <span class="comment">// 打印 8.0</span></span><br><span class="line">        System.out.println( Calculator.DIVISION.execute( <span class="number">4.0</span>, <span class="number">2.0</span> ) );</span><br><span class="line">        <span class="comment">// 打印 2.0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="专门用于枚举的集合类"><a href="#专门用于枚举的集合类" class="headerlink" title="专门用于枚举的集合类"></a>专门用于枚举的集合类</h1><blockquote>
+<p>对于枚举，有它专门的集合类：EnumSet和EnumMap</p>
+</blockquote>
+<h2 id="EnumSet-是专门为盛放枚举类型所设计的-Set-类型。"><a href="#EnumSet-是专门为盛放枚举类型所设计的-Set-类型。" class="headerlink" title="EnumSet 是专门为盛放枚举类型所设计的 Set 类型。"></a>EnumSet 是专门为盛放枚举类型所设计的 Set 类型。</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">UserRole</span> &#123;</span><br><span class="line"></span><br><span class="line">    ROLE_ROOT_ADMIN,  <span class="comment">// 系统管理员</span></span><br><span class="line"></span><br><span class="line">    ROLE_ORDER_ADMIN, <span class="comment">// 订单管理员</span></span><br><span class="line"></span><br><span class="line">    ROLE_NORMAL       <span class="comment">// 普通用户</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如系统里来了一批人，我们需要查看他是不是某个角色中的一个：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个管理员角色的专属集合</span></span><br><span class="line">EnumSet&lt;UserRole&gt; userRolesForAdmin = EnumSet.of(</span><br><span class="line">        UserRole.ROLE_ROOT_ADMIN,</span><br><span class="line">        UserRole.ROLE_ORDER_ADMIN</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断某个进来的用户是不是管理员</span></span><br><span class="line">Boolean <span class="title function_">isAdmin</span><span class="params">( User user )</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>( userRolesForAdmin.contains( user.getUserRole()))&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="EnumMap-是用来专门盛放枚举类型为key的-Map-类型。"><a href="#EnumMap-是用来专门盛放枚举类型为key的-Map-类型。" class="headerlink" title="EnumMap 是用来专门盛放枚举类型为key的 Map 类型。"></a>EnumMap 是用来专门盛放枚举类型为key的 Map 类型。</h2><p>比如，系统里来了一批人，我们需要统计不同的角色到底有多少人</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;UserRole,Integer&gt; userStatisticMap = <span class="keyword">new</span> <span class="title class_">EnumMap</span>&lt;&gt;(UserRole.class);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ( User user : userList ) &#123;</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">num</span> <span class="operator">=</span> userStatisticMap.get( user.getUserRole() );</span><br><span class="line">    <span class="keyword">if</span>( <span class="literal">null</span> != num ) &#123;</span><br><span class="line">        userStatisticMap.put( user.getUserRole(), num+<span class="number">1</span> );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        userStatisticMap.put( user.getUserRole(), <span class="number">1</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.lifeab.com/2024/03/14/%E6%9E%9A%E4%B8%BE/" data-id="clu0xeiwo000g9m6o9azx87f1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Wick"
+        },
+        "headline": "枚举",
+        "image": "http://www.lifeab.com",
+        "keywords": "java 枚举",
+        "genre": "java",
+        "datePublished": "2024-03-14",
+        "dateCreated": "2024-03-14",
+        "dateModified": "2024-03-14",
+        "url": "http://www.lifeab.com/2024/03/14/枚举/",
+        "description": "单值enum12345678public enum UserRole &#123;        ROLE_ROOT_ADMIN,  // 系统管理员        ROLE_ORDER_ADMIN, // 订单管理员        ROLE_NORMAL       // 普通用户    &#125;UserRole role1 = UserRole.ROLE_ROOT_ADMIN;UserRole role2 = UserRole.ROLE_ORDER_ADMIN;UserRole role3 = UserRole.ROLE_NORMAL;
+
+values()方法：返回所有枚举常量的数组集合1234567for ( UserRole role : UserRole.values() ) &#123;     System.out.println(role);&#125;// 打印：// ROLE_ROOT_ADMIN// ROLE_ORDER_ADMIN// ROLE_NORMAL
+
+ordinal()方法：返回枚举常量的序数，注意从0开始123System.out.println( role1.ordinal() ); // 打印0System.out.println( role2.ordinal() ); // 打印1System.out.println( role3.ordinal() ); // 打印2
+
+compareTo()方法：枚举常量间的比较123System.out.println( role1.compareTo(role2) ); //打印-1System.out.println( role2.compareTo(role3) ); //打印-1System.out.println( role1.compareTo(role3) ); //打印-2
+
+name()方法：获得枚举常量的名称123System.out.println( role1.name() ); // 打印ROLE_ROOT_ADMINSystem.out.println( role2.name() ); // 打印ROLE_ORDER_ADMINSystem.out.println( role3.name() ); // 打印ROLE_NORMAL",
+        "wordCount": 2153
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            集合分页工具类
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2024/03/13/PS/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">ps</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%80%BCenum"><span class="toc-number">1.</span> <span class="toc-text">单值enum</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#values-%E6%96%B9%E6%B3%95%EF%BC%9A%E8%BF%94%E5%9B%9E%E6%89%80%E6%9C%89%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F%E7%9A%84%E6%95%B0%E7%BB%84%E9%9B%86%E5%90%88"><span class="toc-number">1.1.</span> <span class="toc-text">values()方法：返回所有枚举常量的数组集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ordinal-%E6%96%B9%E6%B3%95%EF%BC%9A%E8%BF%94%E5%9B%9E%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F%E7%9A%84%E5%BA%8F%E6%95%B0%EF%BC%8C%E6%B3%A8%E6%84%8F%E4%BB%8E0%E5%BC%80%E5%A7%8B"><span class="toc-number">1.2.</span> <span class="toc-text">ordinal()方法：返回枚举常量的序数，注意从0开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compareTo-%E6%96%B9%E6%B3%95%EF%BC%9A%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F%E9%97%B4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.3.</span> <span class="toc-text">compareTo()方法：枚举常量间的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#name-%E6%96%B9%E6%B3%95%EF%BC%9A%E8%8E%B7%E5%BE%97%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="toc-number">1.4.</span> <span class="toc-text">name()方法：获得枚举常量的名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#valueOf-%E6%96%B9%E6%B3%95%EF%BC%9A%E8%BF%94%E5%9B%9E%E6%8C%87%E5%AE%9A%E5%90%8D%E7%A7%B0%E7%9A%84%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F"><span class="toc-number">1.5.</span> <span class="toc-text">valueOf()方法：返回指定名称的枚举常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%BA%8Eswitch%E8%AF%AD%E5%8F%A5%E4%B8%AD%EF%BC%8C%E8%80%8C%E4%B8%94%E6%84%8F%E4%B9%89%E6%9B%B4%E5%8A%A0%E6%98%8E%E7%A1%AE"><span class="toc-number">1.6.</span> <span class="toc-text">用于switch语句中，而且意义更加明确</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%80%BCenum"><span class="toc-number">2.</span> <span class="toc-text">多值enum</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE-%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.</span> <span class="toc-text">枚举 + 接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">枚举与设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">策略模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E%E6%9E%9A%E4%B8%BE%E7%9A%84%E9%9B%86%E5%90%88%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">专门用于枚举的集合类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EnumSet-%E6%98%AF%E4%B8%93%E9%97%A8%E4%B8%BA%E7%9B%9B%E6%94%BE%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E6%89%80%E8%AE%BE%E8%AE%A1%E7%9A%84-Set-%E7%B1%BB%E5%9E%8B%E3%80%82"><span class="toc-number">5.1.</span> <span class="toc-text">EnumSet 是专门为盛放枚举类型所设计的 Set 类型。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EnumMap-%E6%98%AF%E7%94%A8%E6%9D%A5%E4%B8%93%E9%97%A8%E7%9B%9B%E6%94%BE%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E4%B8%BAkey%E7%9A%84-Map-%E7%B1%BB%E5%9E%8B%E3%80%82"><span class="toc-number">5.2.</span> <span class="toc-text">EnumMap 是用来专门盛放枚举类型为key的 Map 类型。</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></p>
+                            <p class="item-title"><a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="title">集合分页工具类</a></p>
+                            <p class="item-date"><time datetime="2024-03-14T09:10:17.000Z" itemprop="datePublished">2024-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/java/">java</a></p>
+                            <p class="item-title"><a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="title">枚举</a></p>
+                            <p class="item-date"><time datetime="2024-03-14T09:07:17.000Z" itemprop="datePublished">2024-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/13/PS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://gitee.com/blydd/imgs_bed/raw/master/pic/image-20240313172730896.png)" alt="ps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ps/">ps</a></p>
+                            <p class="item-title"><a href="/2024/03/13/PS/" class="title">ps</a></p>
+                            <p class="item-date"><time datetime="2024-03-13T08:10:17.000Z" itemprop="datePublished">2024-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nginx/">nginx</a></p>
+                            <p class="item-title"><a href="/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" class="title">nginx安装方式</a></p>
+                            <p class="item-date"><time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/07/Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nginx/">nginx</a></p>
+                            <p class="item-title"><a href="/2024/03/07/Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="title">nginx常用命令</a></p>
+                            <p class="item-date"><time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ps/">ps</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/executors/" rel="tag">executors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/httpServerletRequest/" rel="tag">httpServerletRequest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-server%E5%9D%97/" rel="tag">nginx-server块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%AE%89%E8%A3%85/" rel="tag">nginx安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="tag">nginx常用命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">nginx配置文件</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/" rel="tag">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threadPollExecutor/" rel="tag">threadPollExecutor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/executors/" style="font-size: 10px;">executors</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/httpServerletRequest/" style="font-size: 10px;">httpServerletRequest</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/tags/nginx-server%E5%9D%97/" style="font-size: 10px;">nginx-server块</a> <a href="/tags/nginx%E5%AE%89%E8%A3%85/" style="font-size: 10px;">nginx安装</a> <a href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">nginx常用命令</a> <a href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" style="font-size: 13.33px;">nginx配置文件</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/threadPollExecutor/" style="font-size: 10px;">threadPollExecutor</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 13.33px;">工具类</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">枚举</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" style="font-size: 13.33px;">线程池</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 John Wick</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://www.lifeab.com/2024/03/14/%E6%9E%9A%E4%B8%BE/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
