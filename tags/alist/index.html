@@ -6,14 +6,14 @@
     
 
     
-    <title>标签: nginx-server块 | 我的博客</title>
+    <title>标签: alist | 我的博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="description" content="日常笔记整理,记录点点滴滴.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我的博客">
-<meta property="og:url" content="http://www.lifeab.com/tags/nginx-server%E5%9D%97/index.html">
+<meta property="og:url" content="http://www.lifeab.com/tags/alist/index.html">
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="日常笔记整理,记录点点滴滴.">
 <meta property="og:locale" content="zh_CN">
@@ -143,7 +143,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>nginx-server块</em>
+    <i class="icon fa fa-tag"></i>标签: <em>alist</em>
     </h1>
 </div>
 
@@ -167,17 +167,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/" class="thumbnail">
+        <a href="/2024/03/22/%E5%B0%8F%E9%9B%85Alist/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png)" alt="利用Alist搭建本地影音系统挂载阿里云盘为本地" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://www.lifeab.com/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://www.lifeab.com/2024/03/22/%E5%B0%8F%E9%9B%85Alist/">0</span>
     
 </span>
 
@@ -188,32 +188,27 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/nginx/">nginx</a>
+            <a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
             </div>
-            <div class="date"><time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time></div>
+            <div class="date"><time datetime="2024-03-22T02:10:17.000Z" itemprop="datePublished">2024-03-22</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/">nginx如何处理请求</a>
+        <a href="/2024/03/22/%E5%B0%8F%E9%9B%85Alist/">利用Alist搭建本地影音系统挂载阿里云盘为本地</a>
         </h1>
     
 
         <p class="article-excerpt">
-            
-翻自官网 server_name官网文档
+            官方文档
+一键脚本安装默认安装在 /opt/alist 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 /root：
+123456# Installcurl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s install /root# updatecurl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s update /root# Uninstallcurl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s uninstall /root
 
-1.基于名称的虚拟服务器nginx首先决定哪个服务器应该处理请求。让我们从一个简单的配置开始，其中所有三个虚拟服务器都在端口*上侦听：80:
-1234567891011121314151617server &#123;    listen      80;    server_name example.org www.example.org;    ...&#125;server &#123;    listen      80;    server_name example.net www.example.net;    ...&#125;server &#123;    listen      80;    server_name example.com www.example.com;    ...&#125;
+安装完毕提示用户名默认admin
+123456789101112131415161718192021Alist 安装成功！访问地址：http://YOUR_IP:5244/配置文件路径：/root/alist/data/config.json---------如何获取密码？--------先cd到alist所在目录:cd /root/alist随机设置新密码:./alist admin random或者手动设置新密码:./alist admin set NEW_PASSWORD----------------------------启动服务中查看状态：systemctl status alist启动服务：systemctl start alist重启服务：systemctl restart alist停止服务：systemctl stop alist温馨提示：如果端口无法正常访问，请检查 服务器安全组、本机防火墙、Alist状态
 
-在这个配置中，nginx只验证请求头字Host以确定请求应该路由到哪个服务器。如果它的值与任何服务器名称都不匹配，或者请求根本不包含这个头字段，那么nginx会将请求路由到这个端口的默认服务器。在上面的配置中，默认服务器是第一个服务器，这是nginx的标准默认行为。还可以使用listen指令中的default_server参数显式设置哪个服务器应为默认服务器：
-12345server &#123;    listen      80 default_server;    server_name example.net www.example.net;    ...&#125;
+配置阿里云盘首次进入网站会有如下提示,需要点下面的manage进入配置:
 
-
-default_server参数自0.8.21版本以来一直可用。在早期版本中，应使用默认参数。
-
-请注意，default_server是侦听端口的属性，而不是服务器名称的属性。稍后将对此进行详细介绍。
-2.如何拦截未携带Host请求头参数的请求如果不允许没有“Host”请求头字段的请求，则可以定义一个丢弃请求的服务器：
         </p>
     </div>
 </article>

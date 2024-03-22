@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>利用Alist搭建本地影音系统挂载阿里云盘为本地 | 我的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="alist" />
+    
+    <meta name="description" content="官方文档 一键脚本安装默认安装在 &#x2F;opt&#x2F;alist 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 &#x2F;root： 123456# Installcurl -fsSL &quot;https:&#x2F;&#x2F;alist.nn.ci&#x2F;v3.sh&quot; | bash -s ins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Alist搭建本地影音系统挂载阿里云盘为本地">
+<meta property="og:url" content="http://www.lifeab.com/2024/03/22/%E5%B0%8F%E9%9B%85Alist/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="官方文档 一键脚本安装默认安装在 &#x2F;opt&#x2F;alist 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 &#x2F;root： 123456# Installcurl -fsSL &quot;https:&#x2F;&#x2F;alist.nn.ci&#x2F;v3.sh&quot; | bash -s ins">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png">
+<meta property="article:published_time" content="2024-03-22T02:10:17.000Z">
+<meta property="article:modified_time" content="2024-03-22T07:10:34.070Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="alist">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nginx/">nginx</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ps/">ps</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-小雅Alist" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        利用Alist搭建本地影音系统挂载阿里云盘为本地
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2024/03/22/%E5%B0%8F%E9%9B%85Alist/" class="article-date">
+       <time datetime="2024-03-22T02:10:17.000Z" itemprop="datePublished">2024-03-22</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2024/03/22/%E5%B0%8F%E9%9B%85Alist/" class="article-date">
+     <time datetime="2024-03-22T07:10:34.070Z" itemprop="dateModified">2024-03-22</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/alist/" rel="tag">alist</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/install/script.html">官方文档</a></p>
+<h1 id="一键脚本安装"><a href="#一键脚本安装" class="headerlink" title="一键脚本安装"></a>一键脚本安装</h1><p>默认安装在 <code>/opt/alist</code> 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 <code>/root</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Install</span></span><br><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s install /root</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">update</span></span><br><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s update /root</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Uninstall</span></span><br><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s uninstall /root</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装完毕提示"><a href="#安装完毕提示" class="headerlink" title="安装完毕提示"></a>安装完毕提示</h1><p>用户名默认<code>admin</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Alist 安装成功！</span><br><span class="line"></span><br><span class="line">访问地址：http://YOUR_IP:5244/</span><br><span class="line"></span><br><span class="line">配置文件路径：/root/alist/data/config.json</span><br><span class="line">---------如何获取密码？--------</span><br><span class="line">先cd到alist所在目录:</span><br><span class="line">cd /root/alist</span><br><span class="line">随机设置新密码:</span><br><span class="line">./alist admin random</span><br><span class="line">或者手动设置新密码:</span><br><span class="line">./alist admin set NEW_PASSWORD</span><br><span class="line">----------------------------</span><br><span class="line">启动服务中</span><br><span class="line"></span><br><span class="line">查看状态：systemctl status alist</span><br><span class="line">启动服务：systemctl start alist</span><br><span class="line">重启服务：systemctl restart alist</span><br><span class="line">停止服务：systemctl stop alist</span><br><span class="line"></span><br><span class="line">温馨提示：如果端口无法正常访问，请检查 服务器安全组、本机防火墙、Alist状态</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置阿里云盘"><a href="#配置阿里云盘" class="headerlink" title="配置阿里云盘"></a>配置阿里云盘</h1><p>首次进入<a target="_blank" rel="noopener" href="http://your_ip:5244/">网站</a>会有如下提示,需要点下面的manage进入配置:</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png" alt="image-20240322101908638"></p>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/567047941">知乎</a></p>
+<p>点击左侧的存储，点击添加。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-66c2f637b8e505be57eab2e6c4ac19aa_1440w.png" alt="img"></p>
+<p><strong>驱动一定要选择阿里云盘Open</strong>，不要选“阿里云盘”，千万别搞错了。<strong>挂载路径可以自己填写喜欢的名称，前面的斜杠要加上</strong>。我这里就写阿里云盘备份盘。</p>
+<p><strong>序号是给我们挂载的云盘排序用的，这是第一个，就从0开始</strong>。<strong>Web代理关闭，WebDAV策略选择<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=302%E9%87%8D%E5%AE%9A%E5%90%91&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">302重定向</a>。</strong></p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-74ec08721c218bc490de72b396dc65da_1440w.png" alt="img"></p>
+<p>往下滚动，其他选项均保持默认不变，<strong>将云盘类型设置为资源库</strong>，然后<strong>填入自己阿里云盘的刷新令牌(重点！)，如何获得刷新令牌呢？需要从电脑浏览器访问下面这个网站：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://alist.nn.ci/tool/aliyundrive/request</span><br></pre></td></tr></table></figure>
+
+<p>打开后，先点击Scan QrCode，然后用手机版阿里云盘app扫码，授权成功后，再点击页面最下方的I have scan。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-15420860a19c65ccb06f5abe6fcead71_1440w.webp" alt="img"></p>
+<p>接下来就会获得阿里云盘的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=refresh_token&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">refresh_token</a>，全选并复制。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-eac0db32e33889e69eb5ae2cfef672d1_1440w.webp" alt="img"></p>
+<p>填入alist的“刷新令牌”框中即可。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322145721358.png" alt="image-20240322145721358"></p>
+<p>页面继续往下滚动，确认Oauth令牌链接为</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://api.xhofe.top/alist/ali_open/token</span><br><span class="line">或者</span><br><span class="line">https://api.nn.ci/alist/ali_open/token</span><br></pre></td></tr></table></figure>
+
+<p>移除方式可以选择删除或者回收站，看自己需求。其他选项保持默认，设置完毕后点击添加。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-5e82757bfe67087779345815531a0c0d_1440w.webp" alt="img"></p>
+<p>我们可以按照以上方式，同样将阿里云盘资源库也挂载一次，除了将挂载路径和云盘类型更换为资源库及设置一个新的序号外，其他内容全部保持不变，包括刷新令牌也不变。两个盘都挂载成功后，会在alist的存储页面显示出来，并且状态为WORK：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-28ac4b6d80720ef96f1f49aa81beef06_1440w.png" alt="img"></p>
+<p>点击alist左下角的“主页”，回到主页后，可以看到我们的阿里云盘已经能正常显示了：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-35899a6058e9c9efe4cf8f426972f536_1440w.webp" alt="img"></p>
+<p>作者：袋鼠叔叔<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/567047941/answer/3206878540">https://www.zhihu.com/question/567047941/answer/3206878540</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h1 id="配置夸克网盘"><a href="#配置夸克网盘" class="headerlink" title="配置夸克网盘"></a>配置夸克网盘</h1><p>夸克网盘也是阿里旗下的产品，主要优势在于88VIP免费赠送会员，所以这两年也非常火爆，用户数量已经不逊于阿里云盘，甚至有赶超百度网盘的势头。夸克网盘的alist挂载方法和前面的阿里云盘有一些区别，主要是获取Cookie的方式不一样，下面我们开始。</p>
+<p><strong>仍然进入Alist管理页面，添加一个新的驱动，驱动选择“夸克”。挂载路径和序号根据自己需求填写，缓存过期时间仍然填0。Webdav策略选择“<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">本地代理</a>”。</strong></p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-630b18f25dada42db400cecb9ffa16cb_1440w.webp" alt="img"></p>
+<p><strong>继续往下滚动，我们需要获取Cookie。</strong>打开电脑浏览器并登录夸克网盘账号(用网页版登录)，然后按键盘上的F12，进入开发者模式。</p>
+<p>点击上方的Network(网络)选项卡，在左侧的Name(名称)中找到“sort?<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=pr=u&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">pr&#x3D;u</a>”开头的条目并选中(如果该条目没刷新出来，需要稍等几秒钟)，然后在右侧的Request Headers中，找到<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=Cookie%E5%80%BC&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">Cookie值</a>并复制：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-19dbf01b385ef70908ab3cab7facfd2f_1440w.png" alt="img"></p>
+<p>将复制的Cookie值填入alist设置页面，其他选项全部保持默认，然后点击添加即可。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-5527d6db8f3ae448658c0c4f807e9397_1440w.webp" alt="img"></p>
+<p>夸克网盘挂载成功。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-8faecfea8c376e69d4a9297197a89aa3_1440w.webp" alt="img"></p>
+<h1 id="配置百度网盘"><a href="#配置百度网盘" class="headerlink" title="配置百度网盘"></a><strong>配置百度网盘</strong></h1><p><strong>目前使用人数最多，市场最大的网盘。VIP会员价格不便宜，速度快，资源多，但是对非会员限速很厉害。使用Alist挂载的情况下，如果是VIP会员，请优先选择官方API接口。非会员可以尝试使用第三方接口，但有时候会不太稳定。</strong></p>
+<p>仍然打开Alist管理页面—存储—添加。驱动选择百度网盘，挂载路径和序号按需填写。特别注意，一定要打开<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=web%E4%BB%A3%E7%90%86&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">web代理</a>，并且将WebDAV策略设置为302重定向，才能正常在线播放视频。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-901d6bda7ccf4a9da5d18a4e6c67f27d_1440w.webp" alt="img"></p>
+<p>继续往下滚动，这里只有一个地方需要我们自己填写，就是刷新令牌。那么如何获取呢？首先用电脑浏览器登录<a target="_blank" rel="noopener" href="https://pan.baidu.com/login?redirecturl=https://pan.baidu.com/disk/main%23/index">网页版百度网盘</a>，然后访问以下地址：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://alist.nn.ci/zh/guide/drivers/baidu.html</span><br></pre></td></tr></table></figure>
+
+<p>在页面中找到刷新令牌链接，并点击：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-b0cda62dffed703c1ad7b5d712e30938_1440w.png" alt="img"></p>
+<p>点击后就可以看到refresh_token，这个就是刷新令牌。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-03f17f9504a2ac219d81d9f8fd663d38_1440w.webp" alt="img"></p>
+<p>将其复制粘贴到alist的页面中即可：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-c3bda8bbb79f8e8a8e30e1b5c7a2d050_1440w.webp" alt="img"></p>
+<p>下面的自定义UA，上传线程及上传api全部保持默认，点击添加完成，百度云盘成功挂载至Alist。</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-ebb12034a958e4a93cc121fe4791a784_1440w.webp" alt="img"></p>
+<p><strong>我以上仅展示了最常用的百度，夸克和阿里云盘作为实操案例。但实际上Alist作为目前市面上最强大的网盘挂载工具，支持几乎所有的网盘类型及厂商，如果有其他网盘需求，可以自己搜索一下方法，基本大同小异。Alist官网也为大家贴心的准备了每一种网盘的说明文档供参考。</strong></p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-0e56b6405dd69ad09a774dca4bb70384_1440w.webp" alt="img"></p>
+<h1 id="大招-使用RaiDrive将Alist中的云盘挂载到电脑"><a href="#大招-使用RaiDrive将Alist中的云盘挂载到电脑" class="headerlink" title="大招:使用RaiDrive将Alist中的云盘挂载到电脑"></a>大招:使用RaiDrive将Alist中的云盘挂载到电脑</h1><p>现在，我们已经可以通过浏览器的alist管理页面，从而访问所有已挂载的云盘，但这还不是结束。<strong>我们的最终目的是将这些网盘全部挂载到电脑，像使用本地硬盘那样使用网盘</strong>。接下来要用到的就是RaiDrive这款强大的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%AC%E5%9C%B0%E7%A3%81%E7%9B%98&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">本地磁盘</a>映射软件。</p>
+<blockquote>
+<p><strong>RaiDrive目前只支持Windows平台，但在苹果macOS平台上，你可以考虑使用Folx开发商出品的Cloud Mounter作为替代。Cloud Mounter是一款类似于RaiDrive的工具，可以帮助你将网盘挂载映射成电脑本地硬盘。</strong></p>
+</blockquote>
+<p>百度搜索RaiDrive官网，点击download并选择合适的版本，32位系统选择X86，64位系统选择X64，下载后安装在电脑中：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-552220a75d9592c72fea25b6578a8d65_1440w.webp" alt="img"></p>
+<p>接下来点击设置页面最上方的添加，新建一个<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%99%9A%E6%8B%9F%E6%9C%8D%E5%8A%A1%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">虚拟服务器</a>，服务类型为NAS—WebDAV。<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%99%9A%E6%8B%9F%E9%A9%B1%E5%8A%A8%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">虚拟驱动器</a>选择一个自己喜欢且尚未被占用的，盘符随意填写。</p>
+<p>最重要的是把地址后面的√去掉，使用http方式连接，然后在http:&#x2F;&#x2F;后输入NAS的ip地址+Alist端口号。最后输入自己的Alist登录账户和密码，确认连接即可。我把所有要点击或填写的位置都明确标注在下图，方便大家跟着设置：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-f501520896c8588272276be189065127_1440w.webp" alt="img"></p>
+<p>连接成功后，在“我的电脑”中就可以看到由RaiDrive虚拟的本地硬盘盘符了，打开以后和我们日常使用本地硬盘并无二致：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-7ae64622a9479a1a7af1e8a6e6ffba27_1440w.webp" alt="img"></p>
+<p>经过测试，只要跟着这个教程一步一步走，我们既可以使用浏览器正常下载，上传及播放云盘中的文件(视频)，也可以通过RaiDrive像操作本地硬盘那样使用云盘，在几个云盘之间来回复制粘贴也没有问题，完全能够跑满宽带的上传和下载速度：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-9519bd92bbb78320f5d1ca653ce673c4_1440w.webp" alt="img"></p>
+<p>夸克网盘复制到阿里云盘稳定在3M&#x2F;S，跑满上行</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-8a33347680d52aa5572f71c280e2ca8d_1440w.png" alt="img"></p>
+<p>百度网盘复制到电脑桌面稳定在20M&#x2F;S以上，跑满200M宽带下行</p>
+<p>当然，如果想要在手机上挂载alist中的网盘到本地，也没有任何问题，使用支持WebDAV协议的App即可，如ES<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%96%87%E4%BB%B6%E6%B5%8F%E8%A7%88%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">文件浏览器</a>，SolidExplorer等，设置方法和RaiDrive是完全一样的。比如我这里以Solid Explorer为例：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-87f2e168e6765f5e7ab816d0bb88d5ff_1440w.webp" alt="img"></p>
+<p>如果想要在手机或TV端集中观看网盘中的视频，只要使用支持WebDAV的播放器即可，如Kodi，Emby，Jellyfin等，实测无论是播放还是拖拽，都非常丝滑:</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-0bc8f0abbcd5f7d7aaa53abec12f55fc_1440w.webp" alt="img"></p>
+<p>作者：袋鼠叔叔<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/567047941/answer/3206878540">https://www.zhihu.com/question/567047941/answer/3206878540</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.lifeab.com/2024/03/22/%E5%B0%8F%E9%9B%85Alist/" data-id="clu2bo1v0000goq6o0lsda426" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Wick"
+        },
+        "headline": "利用Alist搭建本地影音系统挂载阿里云盘为本地",
+        "image": "http://www.lifeab.comhttps://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png",
+        "keywords": "alist",
+        "genre": "折腾",
+        "datePublished": "2024-03-22",
+        "dateCreated": "2024-03-22",
+        "dateModified": "2024-03-22",
+        "url": "http://www.lifeab.com/2024/03/22/小雅Alist/",
+        "description": "官方文档
+一键脚本安装默认安装在 /opt/alist 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 /root：
+123456# Installcurl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s install /root# updatecurl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s update /root# Uninstallcurl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s uninstall /root
+
+安装完毕提示用户名默认admin
+123456789101112131415161718192021Alist 安装成功！访问地址：http://YOUR_IP:5244/配置文件路径：/root/alist/data/config.json---------如何获取密码？--------先cd到alist所在目录:cd /root/alist随机设置新密码:./alist admin random或者手动设置新密码:./alist admin set NEW_PASSWORD----------------------------启动服务中查看状态：systemctl status alist启动服务：systemctl start alist重启服务：systemctl restart alist停止服务：systemctl stop alist温馨提示：如果端口无法正常访问，请检查 服务器安全组、本机防火墙、Alist状态
+
+配置阿里云盘首次进入网站会有如下提示,需要点下面的manage进入配置:
+",
+        "wordCount": 243
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">集合分页工具类</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">目录</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">一键脚本安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AE%8C%E6%AF%95%E6%8F%90%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">安装完毕提示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98"><span class="toc-number">3.</span> <span class="toc-text">配置阿里云盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%A4%B8%E5%85%8B%E7%BD%91%E7%9B%98"><span class="toc-number">4.</span> <span class="toc-text">配置夸克网盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98"><span class="toc-number">5.</span> <span class="toc-text">配置百度网盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%8B%9B-%E4%BD%BF%E7%94%A8RaiDrive%E5%B0%86Alist%E4%B8%AD%E7%9A%84%E4%BA%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%88%B0%E7%94%B5%E8%84%91"><span class="toc-number">6.</span> <span class="toc-text">大招:使用RaiDrive将Alist中的云盘挂载到电脑</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/22/%E5%B0%8F%E9%9B%85Alist/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png)" alt="利用Alist搭建本地影音系统挂载阿里云盘为本地" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
+                            <p class="item-title"><a href="/2024/03/22/%E5%B0%8F%E9%9B%85Alist/" class="title">利用Alist搭建本地影音系统挂载阿里云盘为本地</a></p>
+                            <p class="item-date"><time datetime="2024-03-22T02:10:17.000Z" itemprop="datePublished">2024-03-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></p>
+                            <p class="item-title"><a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="title">集合分页工具类</a></p>
+                            <p class="item-date"><time datetime="2024-03-14T09:10:17.000Z" itemprop="datePublished">2024-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/java/">java</a></p>
+                            <p class="item-title"><a href="/2024/03/14/%E6%9E%9A%E4%B8%BE/" class="title">枚举</a></p>
+                            <p class="item-date"><time datetime="2024-03-14T09:07:17.000Z" itemprop="datePublished">2024-03-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/13/PS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://gitee.com/blydd/imgs_bed/raw/master/pic/image-20240313172730896.png)" alt="ps" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ps/">ps</a></p>
+                            <p class="item-title"><a href="/2024/03/13/PS/" class="title">ps</a></p>
+                            <p class="item-date"><time datetime="2024-03-13T08:10:17.000Z" itemprop="datePublished">2024-03-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/nginx/">nginx</a></p>
+                            <p class="item-title"><a href="/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/" class="title">nginx如何处理请求</a></p>
+                            <p class="item-date"><time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ps/">ps</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alist/" rel="tag">alist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/executors/" rel="tag">executors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/httpServerletRequest/" rel="tag">httpServerletRequest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-server%E5%9D%97/" rel="tag">nginx-server块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%AE%89%E8%A3%85/" rel="tag">nginx安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="tag">nginx常用命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">nginx配置文件</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/" rel="tag">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threadPollExecutor/" rel="tag">threadPollExecutor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/alist/" style="font-size: 10px;">alist</a> <a href="/tags/executors/" style="font-size: 10px;">executors</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/httpServerletRequest/" style="font-size: 10px;">httpServerletRequest</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/tags/nginx-server%E5%9D%97/" style="font-size: 10px;">nginx-server块</a> <a href="/tags/nginx%E5%AE%89%E8%A3%85/" style="font-size: 10px;">nginx安装</a> <a href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">nginx常用命令</a> <a href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" style="font-size: 13.33px;">nginx配置文件</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/threadPollExecutor/" style="font-size: 10px;">threadPollExecutor</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 13.33px;">工具类</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">枚举</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" style="font-size: 13.33px;">线程池</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 John Wick</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://www.lifeab.com/2024/03/22/%E5%B0%8F%E9%9B%85Alist/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
