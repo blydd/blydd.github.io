@@ -6,14 +6,14 @@
     
 
     
-    <title>标签: rclone | 我的博客</title>
+    <title>标签: smb | 我的博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="description" content="日常笔记整理,记录点点滴滴.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我的博客">
-<meta property="og:url" content="http://www.lifeab.com/tags/rclone/index.html">
+<meta property="og:url" content="http://www.lifeab.com/tags/smb/index.html">
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="日常笔记整理,记录点点滴滴.">
 <meta property="og:locale" content="zh_CN">
@@ -143,7 +143,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>rclone</em>
+    <i class="icon fa fa-tag"></i>标签: <em>smb</em>
     </h1>
 </div>
 
@@ -167,17 +167,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2024/03/27/Rclone/" class="thumbnail">
+        <a href="/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240327215007658.png)" alt="安全使用 SMB实现局域网共享" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://www.lifeab.com/2024/03/27/Rclone/">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://www.lifeab.com/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/">0</span>
     
 </span>
 
@@ -190,25 +190,26 @@
             <div class="category">
             <a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a>
             </div>
-            <div class="date"><time datetime="2024-03-27T07:56:17.000Z" itemprop="datePublished">2024-03-27</time></div>
+            <div class="date"><time datetime="2024-03-27T14:56:17.000Z" itemprop="datePublished">2024-03-27</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2024/03/27/Rclone/">Rclone</a>
+        <a href="/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/">安全使用 SMB实现局域网共享</a>
         </h1>
     
 
         <p class="article-excerpt">
-            简介官网
-中文站
-GitHub项目地址
-下载地址
-rclone是一个命令行程序，用于同步文件和目录，管理各种云存储服务。
-rclone 支持多种文件传输方式，包括复制，同步，移动，删除文件。它还支持文件加密和压缩，支持分块上传和分块下载，可以暂停和恢复传输，支持文件的校验和合并。
-rclone 的主要优势在于它的灵活性和可扩展性。它可以用来做很多事情，包括备份，文件同步，数据迁移等。它可以在各种平台上运行，包括 Windows，macOS，Linux，FreeBSD，NetBSD 等。
-rclone 的配置简单，可以使用命令行或者配置文件来配置。使用 rclone 可以非常方便的操作云存储，支持的命令也非常丰富，使用起来非常方便。
-简单来讲，主要的功能如下：
+            一、不要使用 SMB1在查找 SMB 协议相关资料的时候，发现很多解决 SMB 问题的资料中还会教用户开启 SMB1 协议，UP 是非常不推荐的。
+
+SMB1 可以追溯到20世纪80年代 IBM 和 微软DOS 时代，距离今天已经有三十多年的时间，当时计算机安全还不存在，它在拦截攻击方面有重大的架构问题 。具体的内容就不放在本文中了，如果你感兴趣的话可以查看 《Stop using SMB1》文章。
+
+如今版本的 windows 10&#x2F;11 都默认禁用了 SMB1，因此如果你还在使用这一协议的话，UP 强烈建议你去关闭，方法如下：
+
+
+
+二、安全使用 SMB 共享的步骤SMB 安全是一个可以聊三天三夜的话题，但多数人不需要涉及到深层面的安全运维设置，但如果你感兴趣，可以从下面的参考资料开始了解：
+How to Defend Users from Interception Attacks via SMB Client Defense
         </p>
     </div>
 </article>
