@@ -1,17 +1,21 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-
-    
-
-    
-    <title>正则表达式 | 我的博客</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content="java,正则" />
-    
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="正则表达式用于文本内容的查找和替换。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
@@ -25,205 +29,280 @@
 <meta property="article:author" content="John Wick">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="正则">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240314180056035.png">
-    
+  
+  
+  
+  <title>正则表达式 - 我的博客</title>
 
-    
-
-    
-
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-    
-<link rel="stylesheet" href="/css/style.css">
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-    
-<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-
-    
-    
-    
-    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-    <div id="wrap">
-        <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div class="container-inner">
-                <div id="header-title">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                </div>
-                <div id="header-inner" class="nav-container">
-                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
-                    <div class="nav-container-inner">
-                        <ul id="main-nav">
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                            
-                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nginx/">nginx</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ps/">ps</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></li></ul>
-                                
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
-                                </li>
-                            
-                        </ul>
-                        <nav id="sub-nav">
-                            <div id="search-form-wrap">
+  
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-</div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-        <div class="container">
-            <div class="main-body container-inner">
-                <div class="main-body-inner">
-                    <section id="main">
-                        <div class="main-body-header">
-    <h1 class="header">
-    
-    <a class="page-title-link" href="/categories/java/">java</a>
-    </h1>
-</div>
-
-                        <div class="main-body-content">
-                            <article id="post-正则表达式" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-        正则表达式
-        </h1>
+  <header>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2020/12/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
-       <time datetime="2020-12-04T02:10:17.000Z" itemprop="datePublished">2020-12-04</time>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
     </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="正则表达式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-12-04 10:10" pubdate>
+          2020年12月4日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
   </div>
 
 
-<div class="article-date">
-  <i class="fa fa-calendar-plus-o"></i>
-  <a href="/2020/12/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
-     <time datetime="2024-03-15T08:11:38.526Z" itemprop="dateModified">2024-03-15</time>
-  </a>
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
 
-                
 
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a>
+  </aside>
+
+
     </div>
 
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">正则表达式</h1>
+            
+            
+              <div class="markdown-body">
                 
-
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-
-            
-
-            
-
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>正则表达式用于文本内容的查找和替换。</p>
+                <h1><span id="概述">概述</span></h1><p>正则表达式用于文本内容的查找和替换。</p>
 <p><a target="_blank" rel="noopener" href="https://regexr.com/">正则表达式在线工具</a></p>
-<h1 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符 ."></a>匹配单个字符 <code>.</code></h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>.</code> 可以用来匹配任何的<strong>单个字符</strong>，但是在绝大多数实现里面，<strong>不能匹配换行符</strong>；</p>
+<h1><span id="匹配单个字符">匹配单个字符 <code>.</code></span></h1><h2><span id="简介">简介</span></h2><p><code>.</code> 可以用来匹配任何的<strong>单个字符</strong>，但是在绝大多数实现里面，<strong>不能匹配换行符</strong>；</p>
 <p><code>.</code> 是元字符，表示它有特殊的含义，而不是字符本身的含义。如果需要匹配 <code>.</code> ，那么要用 <code>\</code> 进行转义，即在 <code>.</code> 前面加上 <code>\</code> 。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h2><p>正则表达式一般是区分大小写的，但也有些实现不区分。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//正则表达式</span><br><span class="line">C.C2018</span><br><span class="line">//匹配结果</span><br><span class="line">My name is CyC2018</span><br></pre></td></tr></table></figure>
+<h2><span id="示例">示例:</span></h2><p>正则表达式一般是区分大小写的，但也有些实现不区分。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs delphi"><span class="hljs-comment">//正则表达式</span><br>C.C2018<br><span class="hljs-comment">//匹配结果</span><br>My <span class="hljs-keyword">name</span> <span class="hljs-keyword">is</span> CyC2018<br></code></pre></td></tr></table></figure>
 
 
 
-<h1 id="匹配一组字符"><a href="#匹配一组字符" class="headerlink" title="匹配一组字符 [ ]"></a>匹配一组字符 <code>[ ]</code></h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p><code>[ ]</code>定义一个字符集合；</p>
+<h1><span id="匹配一组字符">匹配一组字符 <code>[ ]</code></span></h1><h2><span id="简介">简介</span></h2><p><code>[ ]</code>定义一个字符集合；</p>
 <p>0-9、a-z 定义了一个字符区间，区间使用 ASCII 码来确定，字符区间在<code>[ ]</code>中使用。</p>
 <p><code>-</code> <strong>只有在 <code>[ ]</code>之间才是元字符，在 [ ] 之外就是一个普通字符；</strong></p>
 <p><code>^</code> <strong>在 <code>[ ]</code>中是取非操作</strong>。</p>
-<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p><strong>匹配以 abc 为开头且最后一个字母不为数字的字符串：</strong></p>
+<h2><span id="示例">示例</span></h2><p><strong>匹配以 abc 为开头且最后一个字母不为数字的字符串：</strong></p>
 <ul>
 <li><p>**正则表达式 <code>abc[^0-9]</code> **</p>
 </li>
@@ -238,7 +317,7 @@
 </ol>
 </li>
 </ul>
-<h1 id="使用元字符"><a href="#使用元字符" class="headerlink" title="使用元字符"></a>使用元字符</h1><h2 id="匹配空白字符"><a href="#匹配空白字符" class="headerlink" title="匹配空白字符"></a>匹配空白字符</h2><table>
+<h1><span id="使用元字符">使用元字符</span></h1><h2><span id="匹配空白字符">匹配空白字符</span></h2><table>
 <thead>
 <tr>
 <th>元字符</th>
@@ -272,7 +351,7 @@
 </tbody></table>
 <p><strong><code>\r\n</code>是 Windows 中的文本行结束标签，在 Unix&#x2F;Linux 则是<code>\n</code></strong></p>
 <p><strong><code>\r\n\r\n</code> 可以匹配 Windows 下的空白行，因为它匹配两个连续的行尾标签，而这正是两条记录之间的空白行；</strong></p>
-<h2 id="匹配特定的字符"><a href="#匹配特定的字符" class="headerlink" title="匹配特定的字符"></a>匹配特定的字符</h2><h3 id="数字元字符-d"><a href="#数字元字符-d" class="headerlink" title="数字元字符 \d"></a>数字元字符 <code>\d</code></h3><table>
+<h2><span id="匹配特定的字符">匹配特定的字符</span></h2><h3><span id="数字元字符-d">数字元字符 <code>\d</code></span></h3><table>
 <thead>
 <tr>
 <th>元字符</th>
@@ -288,7 +367,7 @@
 <td>非数字字符，等价于 <code>[^0-9]</code></td>
 </tr>
 </tbody></table>
-<h3 id="字母数字元字符-w"><a href="#字母数字元字符-w" class="headerlink" title="字母数字元字符 \w"></a>字母数字元字符 <code>\w</code></h3><table>
+<h3><span id="字母数字元字符-w">字母数字元字符 <code>\w</code></span></h3><table>
 <thead>
 <tr>
 <th>元字符</th>
@@ -304,7 +383,7 @@
 <td>对 \w 取非</td>
 </tr>
 </tbody></table>
-<h3 id="空白字符元字符-s"><a href="#空白字符元字符-s" class="headerlink" title="空白字符元字符 \s"></a>空白字符元字符 <code>\s</code></h3><table>
+<h3><span id="空白字符元字符-s">空白字符元字符 <code>\s</code></span></h3><table>
 <thead>
 <tr>
 <th>元字符</th>
@@ -321,31 +400,31 @@
 </tr>
 </tbody></table>
 <p><code>\x</code> 匹配十六进制字符，<code>\0</code> 匹配八进制，例如 <code>\xA</code> 对应值为 <code>10</code> 的 ASCII 字符 ，即 <code>\n</code>。</p>
-<h1 id="重复匹配"><a href="#重复匹配" class="headerlink" title="重复匹配"></a>重复匹配</h1><h2 id=""><a href="#" class="headerlink" title="+ * ?"></a><code>+</code> <code>*</code> <code>?</code></h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><ul>
+<h1><span id="重复匹配">重复匹配</span></h1><h2><span id><code>+</code> <code>*</code> <code>?</code></span></h2><h3><span id="简介">简介</span></h3><ul>
 <li><strong><code>+</code></strong> 匹配 1 个或者多个字符</li>
 <li><code>*</code> 匹配 0 个或者多个字符</li>
 <li><strong><code>?</code></strong> 匹配 0 个或者 1 个字符</li>
 </ul>
-<h3 id="示例-匹配邮箱地址"><a href="#示例-匹配邮箱地址" class="headerlink" title="示例:匹配邮箱地址"></a>示例:匹配邮箱地址</h3><p><strong>正则表达式 <code>[\w.]+@\w+\.\w+</code></strong></p>
+<h3><span id="示例匹配邮箱地址">示例:匹配邮箱地址</span></h3><p><strong>正则表达式 <code>[\w.]+@\w+\.\w+</code></strong></p>
 <p><code>[\w.]</code> 匹配的是<strong>字母数字或者 <code>.</code></strong> ，在其后面加上 <code>+</code> ，表示<strong>匹配多次</strong>。在字符集合 <code>[ ]</code> 里，<code>.</code> 不是元字符；</p>
 <p><strong>匹配结果</strong>   <code>abc.def@qq.com</code></p>
 <p>​	</p>
-<h2 id="n-m"><a href="#n-m" class="headerlink" title="n m"></a><code>n m</code></h2><h3 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h3><ul>
+<h2><span id="n-m"><code>n m</code></span></h2><h3><span id="简介">简介</span></h3><ul>
 <li><strong>{n}</strong> 匹配 n 个字符</li>
 <li><strong>{m,n}</strong> 匹配 m~n 个字符</li>
 <li><strong>{m,}</strong> 至少匹配 m 个字符</li>
 </ul>
 <p><code>*</code> 和 <code>+</code> 都是贪婪型元字符，会匹配尽可能多的内容。在后面加 ? 可以转换为懒惰型元字符，例如 *?、+? 和 {m,n}? 。</p>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例:"></a>示例:</h3><p><strong>正则表达式</strong>   <code>a.+c</code></p>
+<h3><span id="示例">示例:</span></h3><p><strong>正则表达式</strong>   <code>a.+c</code></p>
 <p><strong>匹配结果</strong>  abcabcabc</p>
 <p>由于 <code>+</code> 是贪婪型的，因此 <code>.+</code> 会匹配更可能多的内容，所以会把整个 <code>abcabcabc</code> 文本都匹配，而不是只匹配前面的 <code>abc</code> 文本。用懒惰型可以实现匹配前面的:<code>a.+?c</code>  匹配出 <code>abc</code>。</p>
-<h1 id="位置匹配"><a href="#位置匹配" class="headerlink" title="位置匹配"></a>位置匹配</h1><h2 id="单词边界"><a href="#单词边界" class="headerlink" title="单词边界"></a>单词边界</h2><p><strong><code>\b</code></strong> 可以匹配一个单词的边界，边界是指位于 <code>\w</code> 和 <code>\W</code> 之间的位置；**<code>\B</code>** 匹配一个不是单词边界的位置。</p>
+<h1><span id="位置匹配">位置匹配</span></h1><h2><span id="单词边界">单词边界</span></h2><p><strong><code>\b</code></strong> 可以匹配一个单词的边界，边界是指位于 <code>\w</code> 和 <code>\W</code> 之间的位置；**<code>\B</code>** 匹配一个不是单词边界的位置。</p>
 <p><code>\b</code> 只匹配位置，不匹配字符，因此 <code>\babc\b</code> 匹配出来的结果为 <code>3</code> 个字符。</p>
-<h2 id="字符串边界"><a href="#字符串边界" class="headerlink" title="字符串边界 ^  $"></a>字符串边界 <code>^  $</code></h2><p><strong><code>^</code></strong> 匹配整个字符串的开头，**<code>$</code>** 匹配结尾。</p>
+<h2><span id="字符串边界">字符串边界 <code>^  $</code></span></h2><p><strong><code>^</code></strong> 匹配整个字符串的开头，**<code>$</code>** 匹配结尾。</p>
 <p><strong><code>^</code> 元字符在字符集合中用作求非，在字符集合外用作匹配字符串的开头。</strong></p>
 <p>分行匹配模式（multiline）下，换行被当做字符串的边界。</p>
-<h3 id="示例-匹配代码中以-开始的注释行"><a href="#示例-匹配代码中以-开始的注释行" class="headerlink" title="示例:匹配代码中以 // 开始的注释行"></a>示例:匹配代码中以 <code>//</code> 开始的注释行</h3><p><strong>正则表达式</strong> <code>^\s*\/\/.*$</code></p>
-<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240314180056035.png" alt="image-20240314180056035"></p>
+<h3><span id="示例匹配代码中以-开始的注释行">示例:匹配代码中以 <code>//</code> 开始的注释行</span></h3><p><strong>正则表达式</strong> <code>^\s*\/\/.*$</code></p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240314180056035.png" srcset="/img/loading.gif" lazyload alt="image-20240314180056035"></p>
 <p><strong>匹配结果</strong></p>
 <ol>
 <li>public void fun() {</li>
@@ -356,11 +435,11 @@
 <li>int c &#x3D; a + b;</li>
 <li>}</li>
 </ol>
-<h1 id="使用子表达式"><a href="#使用子表达式" class="headerlink" title="使用子表达式 ( )"></a>使用子表达式 <code>( )</code></h1><p>使用 <strong><code>( )</code></strong> 定义一个子表达式。子表达式的内容可以当成一个独立元素，即可以将它看成一个字符，并且使用 <code>*</code> 等元字符。</p>
+<h1><span id="使用子表达式">使用子表达式 <code>( )</code></span></h1><p>使用 <strong><code>( )</code></strong> 定义一个子表达式。子表达式的内容可以当成一个独立元素，即可以将它看成一个字符，并且使用 <code>*</code> 等元字符。</p>
 <p>子表达式可以嵌套，但是嵌套层次过深会变得很难理解。</p>
-<h2 id="示例-ab-2"><a href="#示例-ab-2" class="headerlink" title="示例: (ab){2,}"></a>示例: <code>(ab)&#123;2,&#125;</code></h2><p><strong>说明</strong>:最少2个<code>ab</code>  </p>
+<h2><span id="示例-ab1232125">示例: <code>(ab)&#123;2,&#125;</code></span></h2><p><strong>说明</strong>:最少2个<code>ab</code>  </p>
 <p><strong>匹配结果</strong> <code>ababab</code></p>
-<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例: |"></a>示例: <code>|</code></h2><p><strong><code>|</code></strong> 是或元字符，它把左边和右边所有的部分都看成单独的两个部分，两个部分只要有一个匹配就行。</p>
+<h2><span id="示例">示例: <code>|</code></span></h2><p><strong><code>|</code></strong> 是或元字符，它把左边和右边所有的部分都看成单独的两个部分，两个部分只要有一个匹配就行。</p>
 <p><strong>正则表达式</strong> <code>(19|20)\d&#123;2&#125;</code></p>
 <p><strong>说明</strong>:<code>19</code>或<code>20</code>后面跟<code>2</code>个数字</p>
 <p><strong>匹配结果</strong></p>
@@ -369,7 +448,7 @@
 <li><strong>2010</strong></li>
 <li>1020</li>
 </ol>
-<h2 id="示例-匹配-IP-地址。"><a href="#示例-匹配-IP-地址。" class="headerlink" title="**示例:**匹配 IP 地址。"></a>**示例:**匹配 IP 地址。</h2><p>IP 地址中每部分都是 0-255 的数字，用正则表达式匹配时以下情况是合法的：</p>
+<h2><span id="示例匹配-ip-地址">**示例:**匹配 IP 地址。</span></h2><p>IP 地址中每部分都是 0-255 的数字，用正则表达式匹配时以下情况是合法的：</p>
 <ul>
 <li>一位数字</li>
 <li>不以 0 开头的两位数字</li>
@@ -388,8 +467,8 @@
 <li>00.00.00.00</li>
 <li>555.555.555.555</li>
 </ol>
-<h1 id="回溯引用-n"><a href="#回溯引用-n" class="headerlink" title="回溯引用 \n"></a>回溯引用 <code>\n</code></h1><p>回溯引用使用 <strong><code>\n</code></strong> 来引用某个子表达式，其中 <code>n</code> 代表的是<strong>子表达式的序号</strong>，从 <code>1</code> 开始。它和子表达式匹配的内容一致，比如子表达式匹配到 <code>abc</code>，那么回溯引用部分也需要匹配 <code>abc</code> 。</p>
-<h2 id="示例-匹配-HTML-中合法的标题元素。"><a href="#示例-匹配-HTML-中合法的标题元素。" class="headerlink" title="示例:匹配 HTML 中合法的标题元素。"></a>示例:匹配 HTML 中合法的标题元素。</h2><p><strong>正则表达式</strong> <code>&lt;(h[1-6])&gt;\w*?&lt;\/\1&gt;</code></p>
+<h1><span id="回溯引用-n">回溯引用 <code>\n</code></span></h1><p>回溯引用使用 <strong><code>\n</code></strong> 来引用某个子表达式，其中 <code>n</code> 代表的是<strong>子表达式的序号</strong>，从 <code>1</code> 开始。它和子表达式匹配的内容一致，比如子表达式匹配到 <code>abc</code>，那么回溯引用部分也需要匹配 <code>abc</code> 。</p>
+<h2><span id="示例匹配-html-中合法的标题元素">示例:匹配 HTML 中合法的标题元素。</span></h2><p><strong>正则表达式</strong> <code>&lt;(h[1-6])&gt;\w*?&lt;\/\1&gt;</code></p>
 <p><code>\1</code> 将回溯引用子表达式 <code>(h[1-6])</code> 匹配的内容，也就是说必须和子表达式匹配的内容一致。</p>
 <p><strong>匹配结果</strong>(加粗表示匹配到)</p>
 <ol>
@@ -397,13 +476,13 @@
 <li><strong><code>&lt;h2&gt;x&lt;/h2&gt;</code></strong></li>
 <li><code>&lt;h1&gt;x&lt;/h3&gt;</code></li>
 </ol>
-<h2 id="示例-替换-修改电话号码格式"><a href="#示例-替换-修改电话号码格式" class="headerlink" title="示例:替换-修改电话号码格式"></a>示例:替换-修改电话号码格式</h2><p><strong>需要用到两个正则表达式。</strong></p>
+<h2><span id="示例替换-修改电话号码格式">示例:替换-修改电话号码格式</span></h2><p><strong>需要用到两个正则表达式。</strong></p>
 <p>把<code>313-555-1234</code>  替换格式为 <code>(313) 555-1234</code></p>
 <p><strong>查找正则表达式</strong>  <code>(\d&#123;3&#125;)(-)(\d&#123;3&#125;)(-)(\d&#123;4&#125;)</code></p>
 <p>**替换正则表达式 **  <code>($1) $3-$5</code></p>
 <p>在第一个子表达式查找的结果加上 () ，然后加一个空格，在第三个和第五个字表达式查找的结果中间加上 - 进行分隔。</p>
 <p><strong>结果</strong>  <code>(313) 555-1234</code></p>
-<h2 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h2><table>
+<h2><span id="大小写转换">大小写转换</span></h2><table>
 <thead>
 <tr>
 <th>元字符</th>
@@ -436,13 +515,13 @@
 <p>**查找 ** <code>(\w)(\w&#123;2&#125;)(\w)</code></p>
 <p>**替换 ** <code>$1\U$2\E$3</code></p>
 <p><strong>结果</strong>  <code>aBCd</code></p>
-<h1 id="前后查找"><a href="#前后查找" class="headerlink" title="前后查找"></a>前后查找</h1><p>前后查找规定了匹配的内容首尾应该匹配的内容，但是又不包含首尾匹配的内容。</p>
+<h1><span id="前后查找">前后查找</span></h1><p>前后查找规定了匹配的内容首尾应该匹配的内容，但是又不包含首尾匹配的内容。</p>
 <p>向前查找使用 <strong><code>?=</code></strong> 定义，它规定了尾部匹配的内容，这个匹配的内容在 <code>?=</code> 之后定义。所谓向前查找，就是规定了一个匹配的内容，然后以这个内容为尾部向前面查找需要匹配的内容。向后匹配用 <code>?&lt;=</code> 定义（注: JavaScript 不支持向后匹配，Java 对其支持也不完善）。</p>
-<h2 id="示例-查找出邮件地址-字符前面的部分。"><a href="#示例-查找出邮件地址-字符前面的部分。" class="headerlink" title="示例:查找出邮件地址 @ 字符前面的部分。"></a>示例:查找出邮件地址 @ 字符前面的部分。</h2><p>**正则表达式 ** <code>\w+(?=@)</code></p>
+<h2><span id="示例查找出邮件地址-字符前面的部分">示例:查找出邮件地址 @ 字符前面的部分。</span></h2><p>**正则表达式 ** <code>\w+(?=@)</code></p>
 <p><strong>结果</strong></p>
 <p><strong>abc</strong> @qq.com</p>
 <p>对向前和向后查找取非，只要把 &#x3D; 替换成 ! 即可，比如 (?&#x3D;) 替换成 (?!) 。取非操作使得匹配那些首尾不符合要求的内容。</p>
-<h1 id="嵌入条件"><a href="#嵌入条件" class="headerlink" title="嵌入条件"></a>嵌入条件</h1><h2 id="回溯引用条件"><a href="#回溯引用条件" class="headerlink" title="回溯引用条件"></a>回溯引用条件</h2><p>条件为某个子表达式是否匹配，如果匹配则需要继续匹配条件表达式后面的内容。</p>
+<h1><span id="嵌入条件">嵌入条件</span></h1><h2><span id="回溯引用条件">回溯引用条件</span></h2><p>条件为某个子表达式是否匹配，如果匹配则需要继续匹配条件表达式后面的内容。</p>
 <p><strong>正则表达式</strong>  <code>(\()?abc(?(1)\))</code></p>
 <p>子表达式 <code>(\()</code> 匹配一个左括号，其后的 <code>?</code> 表示匹配 <code>0</code> 个或者 <code>1</code> 个。 <code>?(1)</code> 为条件，当子表达式 <code>1</code> 匹配时条件成立，需要执行 <code>)</code> 匹配，也就是匹配右括号。</p>
 <p><strong>结果</strong></p>
@@ -451,7 +530,7 @@
 <li><strong>abc</strong></li>
 <li>(abc</li>
 </ol>
-<h2 id="前后查找条件"><a href="#前后查找条件" class="headerlink" title="前后查找条件"></a>前后查找条件</h2><p>条件为定义的首尾是否匹配，如果匹配，则继续执行后面的匹配。注意，首尾不包含在匹配的内容中。</p>
+<h2><span id="前后查找条件">前后查找条件</span></h2><p>条件为定义的首尾是否匹配，如果匹配，则继续执行后面的匹配。注意，首尾不包含在匹配的内容中。</p>
 <p>**正则表达式 ** <code>\d&#123;5&#125;(?(?=-)-\d&#123;4&#125;)</code></p>
 <p><code>?(?=-)</code> 为前向查找条件，只有在以 <code>-</code> 为前向查找的结尾能匹配 <code>\d&#123;5&#125;</code> ，才继续匹配 <code>-\d&#123;4&#125;</code> 。</p>
 <p><strong>结果</strong></p>
@@ -462,437 +541,365 @@
 </ol>
 <p><a target="_blank" rel="noopener" href="https://www.cyc2018.xyz/%E5%85%B6%E5%AE%83/%E7%BC%96%E7%A0%81%E5%AE%9E%E8%B7%B5/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0">文章来源</a></p>
 
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://www.lifeab.com/2020/12/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="cluajc77r000vo30tfxd6fhl5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "John Wick"
-        },
-        "headline": "正则表达式",
-        "image": "http://www.lifeab.comhttps://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240314180056035.png",
-        "keywords": "java 正则",
-        "genre": "java",
-        "datePublished": "2020-12-04",
-        "dateCreated": "2020-12-04",
-        "dateModified": "2024-03-15",
-        "url": "http://www.lifeab.com/2020/12/04/正则表达式/",
-        "description": "概述正则表达式用于文本内容的查找和替换。
-正则表达式在线工具
-匹配单个字符 .简介. 可以用来匹配任何的单个字符，但是在绝大多数实现里面，不能匹配换行符；
-. 是元字符，表示它有特殊的含义，而不是字符本身的含义。如果需要匹配 . ，那么要用 \ 进行转义，即在 . 前面加上 \ 。
-示例:正则表达式一般是区分大小写的，但也有些实现不区分。
-1234//正则表达式C.C2018//匹配结果My name is CyC2018",
-        "wordCount": 476
-    }
-</script>
-
-</article>
-
-    <section id="comments">
-    
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-
-    
-    </section>
-
-
-
-                        </div>
-                    </section>
-                    <aside id="sidebar">
-    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-    <div class="sidebar-top">
-        <p>关注我 :</p>
-        <ul class="social-links">
-            
                 
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
+              </div>
             
-        </ul>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2020/12/04/%E7%BA%BF%E7%A8%8B%E6%B1%A0Executors/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            线程池Executors
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2020/12/04/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%B9%8B%20ThreadPoolExecutor/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">线程池ThreadPollExecutor</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
 
+<span class="category-chains">
+  
+  
     
-    <div class="widgets-container">
+      <span class="category-chain">
         
-            
-                
-<div class="widget-wrap widget-list">
-    <h3 class="widget-title">目录</h3>
-    <div class="widget">
-        <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">匹配单个字符 .</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">示例:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E4%B8%80%E7%BB%84%E5%AD%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">匹配一组字符 [ ]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">3.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">3.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-number">4.</span> <span class="toc-text">使用元字符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6"><span class="toc-number">4.1.</span> <span class="toc-text">匹配空白字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%89%B9%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-number">4.2.</span> <span class="toc-text">匹配特定的字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%85%83%E5%AD%97%E7%AC%A6-d"><span class="toc-number">4.2.1.</span> <span class="toc-text">数字元字符 \d</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E5%85%83%E5%AD%97%E7%AC%A6-w"><span class="toc-number">4.2.2.</span> <span class="toc-text">字母数字元字符 \w</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E5%85%83%E5%AD%97%E7%AC%A6-s"><span class="toc-number">4.2.3.</span> <span class="toc-text">空白字符元字符 \s</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">5.</span> <span class="toc-text">重复匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.1.</span> <span class="toc-text">+ * ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="toc-number">5.1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E5%8C%B9%E9%85%8D%E9%82%AE%E7%AE%B1%E5%9C%B0%E5%9D%80"><span class="toc-number">5.1.2.</span> <span class="toc-text">示例:匹配邮箱地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n-m"><span class="toc-number">5.2.</span> <span class="toc-text">n m</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-3"><span class="toc-number">5.2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">5.2.2.</span> <span class="toc-text">示例:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E5%8C%B9%E9%85%8D"><span class="toc-number">6.</span> <span class="toc-text">位置匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E8%BE%B9%E7%95%8C"><span class="toc-number">6.1.</span> <span class="toc-text">单词边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%B9%E7%95%8C"><span class="toc-number">6.2.</span> <span class="toc-text">字符串边界 ^  $</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E5%8C%B9%E9%85%8D%E4%BB%A3%E7%A0%81%E4%B8%AD%E4%BB%A5-%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B3%A8%E9%87%8A%E8%A1%8C"><span class="toc-number">6.2.1.</span> <span class="toc-text">示例:匹配代码中以 &#x2F;&#x2F; 开始的注释行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%90%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">使用子表达式 ( )</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-ab-2"><span class="toc-number">7.1.</span> <span class="toc-text">示例: (ab){2,}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="toc-number">7.2.</span> <span class="toc-text">示例: |</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E5%8C%B9%E9%85%8D-IP-%E5%9C%B0%E5%9D%80%E3%80%82"><span class="toc-number">7.3.</span> <span class="toc-text">**示例:**匹配 IP 地址。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E5%BC%95%E7%94%A8-n"><span class="toc-number">8.</span> <span class="toc-text">回溯引用 \n</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E5%8C%B9%E9%85%8D-HTML-%E4%B8%AD%E5%90%88%E6%B3%95%E7%9A%84%E6%A0%87%E9%A2%98%E5%85%83%E7%B4%A0%E3%80%82"><span class="toc-number">8.1.</span> <span class="toc-text">示例:匹配 HTML 中合法的标题元素。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E6%9B%BF%E6%8D%A2-%E4%BF%AE%E6%94%B9%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-number">8.2.</span> <span class="toc-text">示例:替换-修改电话号码格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="toc-number">8.3.</span> <span class="toc-text">大小写转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E6%9F%A5%E6%89%BE"><span class="toc-number">9.</span> <span class="toc-text">前后查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-%E6%9F%A5%E6%89%BE%E5%87%BA%E9%82%AE%E4%BB%B6%E5%9C%B0%E5%9D%80-%E5%AD%97%E7%AC%A6%E5%89%8D%E9%9D%A2%E7%9A%84%E9%83%A8%E5%88%86%E3%80%82"><span class="toc-number">9.1.</span> <span class="toc-text">示例:查找出邮件地址 @ 字符前面的部分。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E6%9D%A1%E4%BB%B6"><span class="toc-number">10.</span> <span class="toc-text">嵌入条件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E5%BC%95%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">10.1.</span> <span class="toc-text">回溯引用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E6%9F%A5%E6%89%BE%E6%9D%A1%E4%BB%B6"><span class="toc-number">10.2.</span> <span class="toc-text">前后查找条件</span></a></li></ol></li></ol>
-        </div>
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/" class="print-no-link">#java</a>
+      
+        <a href="/tags/%E6%AD%A3%E5%88%99/" class="print-no-link">#正则</a>
+      
+    </div>
+  
 </div>
 
 
-            
-                
-    <div class="widget-wrap">
-        <h3 class="widget-title">最新文章</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240327215007658.png)" alt="安全使用 SMB实现局域网共享" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" class="title">安全使用 SMB实现局域网共享</a></p>
-                            <p class="item-date"><time datetime="2024-03-27T14:56:17.000Z" itemprop="datePublished">2024-03-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/27/Rclone/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/27/Rclone/" class="title">Rclone</a></p>
-                            <p class="item-date"><time datetime="2024-03-27T07:56:17.000Z" itemprop="datePublished">2024-03-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/24/Ventoy%E6%89%93%E9%80%A0%E6%9C%80%E5%BC%BAU%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240324215206822.png)" alt="Ventoy打造最强U盘启动盘,安装istoreOS系统" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/24/Ventoy%E6%89%93%E9%80%A0%E6%9C%80%E5%BC%BAU%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/" class="title">Ventoy打造最强U盘启动盘,安装istoreOS系统</a></p>
-                            <p class="item-date"><time datetime="2024-03-24T13:10:17.000Z" itemprop="datePublished">2024-03-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/22/Alist/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png)" alt="利用Alist搭建本地影音系统挂载阿里云盘为本地" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/22/Alist/" class="title">利用Alist搭建本地影音系统挂载阿里云盘为本地</a></p>
-                            <p class="item-date"><time datetime="2024-03-22T02:10:17.000Z" itemprop="datePublished">2024-03-22</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></p>
-                            <p class="item-title"><a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="title">集合分页工具类</a></p>
-                            <p class="item-date"><time datetime="2024-03-14T09:10:17.000Z" itemprop="datePublished">2024-03-14</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">分类</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ps/">ps</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><span class="category-list-count">5</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">归档</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">标签</h3>
-        <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alist/" rel="tag">alist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/executors/" rel="tag">executors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/httpServerletRequest/" rel="tag">httpServerletRequest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/istoreOS/" rel="tag">istoreOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-server%E5%9D%97/" rel="tag">nginx-server块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%AE%89%E8%A3%85/" rel="tag">nginx安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="tag">nginx常用命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">nginx配置文件</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/" rel="tag">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rclone/" rel="tag">rclone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smb/" rel="tag">smb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threadPollExecutor/" rel="tag">threadPollExecutor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/u%E7%9B%98/" rel="tag">u盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ventoy/" rel="tag">ventoy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" rel="tag">局域网共享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a><span class="tag-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-float">
-        <h3 class="widget-title">标签云</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/alist/" style="font-size: 10px;">alist</a> <a href="/tags/executors/" style="font-size: 10px;">executors</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/httpServerletRequest/" style="font-size: 10px;">httpServerletRequest</a> <a href="/tags/istoreOS/" style="font-size: 10px;">istoreOS</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/tags/nginx-server%E5%9D%97/" style="font-size: 10px;">nginx-server块</a> <a href="/tags/nginx%E5%AE%89%E8%A3%85/" style="font-size: 10px;">nginx安装</a> <a href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">nginx常用命令</a> <a href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" style="font-size: 13.33px;">nginx配置文件</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/rclone/" style="font-size: 10px;">rclone</a> <a href="/tags/smb/" style="font-size: 10px;">smb</a> <a href="/tags/threadPollExecutor/" style="font-size: 10px;">threadPollExecutor</a> <a href="/tags/u%E7%9B%98/" style="font-size: 10px;">u盘</a> <a href="/tags/ventoy/" style="font-size: 10px;">ventoy</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" style="font-size: 10px;">局域网共享</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 13.33px;">工具类</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">枚举</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" style="font-size: 13.33px;">线程池</a>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">链接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-            
-        
-    </div>
-</aside>
-
-                </div>
-            </div>
-        </div>
-        <footer id="footer">
-    <div class="container">
-        <div class="container-inner">
-            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
-            <div class="credit">
-                <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
-                </h1>
-                <p>&copy; 2024 John Wick</p>
-                
-                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
-                
-            </div>
-            <div class="footer-plugins">
               
-    
+  
 
-
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>正则表达式</div>
+      <div>http://www.lifeab.com/2020/12/04/正则表达式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
         </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年12月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
     </div>
-</footer>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/04/Hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" title="hexo搭建静态博客">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">hexo搭建静态博客</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/04/%E7%BA%BF%E7%A8%8B%E6%B1%A0Executors/" title="线程池Executors">
+                        <span class="hidden-mobile">线程池Executors</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
 
     </div>
-    
-    
-    <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://www.lifeab.com/2020/12/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    </script>
+  </div>
+</div>
 
 
 
 
 
-    
-        
-<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+  
 
-        
-<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+  
 
-        
-<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+  
 
-        
-<script src="/libs/lightgallery/js/lg-share.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-video.min.js"></script>
 
-    
-    
-        
-<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+  
 
-    
+
+
+  
+
+
+
+
+
+
+
     
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
     
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
     
 
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-<!-- Custom Scripts -->
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<script src="/js/main.js"></script>
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/toc.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

@@ -1,17 +1,21 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <meta charset="utf-8" />
-
-    
-
-    
-    <title>nginx安装方式 | 我的博客</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="keywords" content="nginx,nginx安装" />
-    
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="1.CentOS1.1yum安装12345678# 1. 安装EPEL仓库sudo yum install epel-release# 2. 更新reposudo yum update# 3. 安装nginxsudo yum install nginx# 4. 验证安装sudo nginx -V  1.2通过Nginx的官⽅仓库来安装 这样可以保证安装的是最新的版本  12345678910111">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx安装方式">
@@ -24,234 +28,309 @@
 <meta property="article:author" content="John Wick">
 <meta property="article:tag" content="nginx">
 <meta property="article:tag" content="nginx安装">
-<meta name="twitter:card" content="summary">
-    
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>nginx安装方式 - 我的博客</title>
 
-    
-
-    
-
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-    
-<link rel="stylesheet" href="/css/style.css">
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-    
-<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-    
-    
-        
-<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-
-    
-    
-    
-    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-    <div id="wrap">
-        <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div class="container-inner">
-                <div id="header-title">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                </div>
-                <div id="header-inner" class="nav-container">
-                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
-                    <div class="nav-container-inner">
-                        <ul id="main-nav">
-                            
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                            
-                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/nginx/">nginx</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ps/">ps</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></li></ul>
-                                
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
-                                </li>
-                            
-                        </ul>
-                        <nav id="sub-nav">
-                            <div id="search-form-wrap">
+  
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-</div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-        <div class="container">
-            <div class="main-body container-inner">
-                <div class="main-body-inner">
-                    <section id="main">
-                        <div class="main-body-header">
-    <h1 class="header">
-    
-    <a class="page-title-link" href="/categories/nginx/">nginx</a>
-    </h1>
-</div>
-
-                        <div class="main-body-content">
-                            <article id="post-Nginx安装方式" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-        nginx安装方式
-        </h1>
+  <header>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" class="article-date">
-       <time datetime="2024-03-07T08:10:17.000Z" itemprop="datePublished">2024-03-07</time>
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
     </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="nginx安装方式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-07 16:10" pubdate>
+          2024年3月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          891 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
   </div>
 
 
-<div class="article-date">
-  <i class="fa fa-calendar-plus-o"></i>
-  <a href="/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" class="article-date">
-     <time datetime="2024-03-07T08:50:15.354Z" itemprop="dateModified">2024-03-07</time>
-  </a>
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
 
-                
 
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/nginx/" rel="tag">nginx</a>, <a class="tag-link-link" href="/tags/nginx%E5%AE%89%E8%A3%85/" rel="tag">nginx安装</a>
+  </aside>
+
+
     </div>
 
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">nginx安装方式</h1>
+            
+            
+              <div class="markdown-body">
                 
+                <h1><span id="1centos">1.CentOS</span></h1><h2><span id="11yum安装">1.1yum安装</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 安装EPEL仓库</span><br>sudo yum install epel-release<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 更新repo</span><br>sudo yum update<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 安装nginx</span><br>sudo yum install nginx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">4. 验证安装</span><br>sudo nginx -V<br></code></pre></td></tr></table></figure>
 
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-
-            
-
-            
-
-            <h1 id="1-CentOS"><a href="#1-CentOS" class="headerlink" title="1.CentOS"></a>1.CentOS</h1><h2 id="1-1yum安装"><a href="#1-1yum安装" class="headerlink" title="1.1yum安装"></a>1.1yum安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 安装EPEL仓库</span></span><br><span class="line">sudo yum install epel-release</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 更新repo</span></span><br><span class="line">sudo yum update</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 安装nginx</span></span><br><span class="line">sudo yum install nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 验证安装</span></span><br><span class="line">sudo nginx -V</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-2通过Nginx的官⽅仓库来安装"><a href="#1-2通过Nginx的官⽅仓库来安装" class="headerlink" title="1.2通过Nginx的官⽅仓库来安装"></a>1.2通过Nginx的官⽅仓库来安装</h2><blockquote>
+<h2><span id="12通过nginx的官方仓库来安装">1.2通过Nginx的官⽅仓库来安装</span></h2><blockquote>
 <p>这样可以保证安装的是最新的版本</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">1. 安装前置依赖</span><br><span class="line">sudo yum install yum-utils</span><br><span class="line"></span><br><span class="line">2. 添加nginx仓库</span><br><span class="line">sudo vim /etc/yum.repos.d/nginx.repo</span><br><span class="line"></span><br><span class="line">3. 添加以下内容</span><br><span class="line">[nginx-stable] [nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=true</span><br><span class="line">或者</span><br><span class="line">[nginx-mainline] [nginx-mainline]</span><br><span class="line">name=nginx mainline repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=true</span><br><span class="line">上⾯的 stable 和 mainline 就分别表示稳定版和主线版，可以根据⾃⼰的需要来选择。</span><br><span class="line"></span><br><span class="line">4. 更新repo</span><br><span class="line">sudo yum update</span><br><span class="line"></span><br><span class="line">5. 安装nginx</span><br><span class="line">sudo yum install nginx</span><br><span class="line"></span><br><span class="line">6. 验证安装</span><br><span class="line">除了使⽤ sudo nginx -V 之外，还可以使⽤下⾯的⽅式来验证：</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Nginx</span></span><br><span class="line">sudo nginx</span><br><span class="line">curl -I 127.0.0.1</span><br><span class="line">如果能够看到类似下⾯的输出，就表示安装成功了：</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.25.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs shell">1. 安装前置依赖<br>sudo yum install yum-utils<br><br>2. 添加nginx仓库<br>sudo vim /etc/yum.repos.d/nginx.repo<br><br>3. 添加以下内容<br>[nginx-stable] [nginx-stable]<br>name=nginx stable repo<br>baseurl=http://nginx.org/packages/centos/$releasever/$basearch/<br>gpgcheck=1<br>enabled=1<br>gpgkey=https://nginx.org/keys/nginx_signing.key<br>module_hotfixes=true<br>或者<br>[nginx-mainline] [nginx-mainline]<br>name=nginx mainline repo<br>baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/<br>gpgcheck=1<br>enabled=0<br>gpgkey=https://nginx.org/keys/nginx_signing.key<br>module_hotfixes=true<br>上⾯的 stable 和 mainline 就分别表示稳定版和主线版，可以根据⾃⼰的需要来选择。<br><br>4. 更新repo<br>sudo yum update<br><br>5. 安装nginx<br>sudo yum install nginx<br><br>6. 验证安装<br>除了使⽤ sudo nginx -V 之外，还可以使⽤下⾯的⽅式来验证：<br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动Nginx</span><br>sudo nginx<br>curl -I 127.0.0.1<br>如果能够看到类似下⾯的输出，就表示安装成功了：<br>HTTP/1.1 200 OK<br>Server: nginx/1.25.1<br></code></pre></td></tr></table></figure>
 
-<h1 id="2-Debian、Ubuntu"><a href="#2-Debian、Ubuntu" class="headerlink" title="2.Debian、Ubuntu"></a>2.Debian、Ubuntu</h1><h2 id="2-1apt安装"><a href="#2-1apt安装" class="headerlink" title="2.1apt安装"></a>2.1apt安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 更新仓库信息</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 安装nginx</span></span><br><span class="line">sudo apt-get install nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 验证安装</span></span><br><span class="line">sudo nginx -V</span><br></pre></td></tr></table></figure>
+<h1><span id="2debian-ubuntu">2.Debian、Ubuntu</span></h1><h2><span id="21apt安装">2.1apt安装</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 更新仓库信息</span><br>sudo apt-get update<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 安装nginx</span><br>sudo apt-get install nginx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 验证安装</span><br>sudo nginx -V<br></code></pre></td></tr></table></figure>
 
-<h2 id="2-2通过Nginx的官⽅仓库来安装"><a href="#2-2通过Nginx的官⽅仓库来安装" class="headerlink" title="2.2通过Nginx的官⽅仓库来安装"></a>2.2通过Nginx的官⽅仓库来安装</h2><blockquote>
+<h2><span id="22通过nginx的官方仓库来安装">2.2通过Nginx的官⽅仓库来安装</span></h2><blockquote>
 <p>这样可以保证安装的是最新的版本</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 安装前置依赖</span></span><br><span class="line">sudo apt install curl gnupg2 ca-certificates lsb-release debian-archivekeyring</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 导⼊官⽅Nginx签名密钥</span></span><br><span class="line">curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \</span><br><span class="line"> | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 验证下载的⽂件中包含了正确的密钥</span></span><br><span class="line">gpg --dry-run --quiet --no-keyring --import --import-options import-show</span><br><span class="line">/usr/share/keyrings/nginx-archive-keyring.gpg</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 设置稳定版或者主线版的Nginx包</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">稳定版</span></span><br><span class="line">echo &quot;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \</span><br><span class="line">http://nginx.org/packages/debian `lsb_release -cs` nginx&quot; \</span><br><span class="line"> | sudo tee /etc/apt/sources.list.d/nginx.list</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">主线版</span></span><br><span class="line">echo &quot;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \</span><br><span class="line">http://nginx.org/packages/mainline/debian `lsb_release -cs` nginx&quot; \</span><br><span class="line"> | sudo tee /etc/apt/sources.list.d/nginx.list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5. 设置仓库优先级，优先使⽤Nginx官⽅仓库</span></span><br><span class="line">echo -e &quot;Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPinPriority: 900\n&quot; \</span><br><span class="line"> | sudo tee /etc/apt/preferences.d/99nginx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6. 安装nginx</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7. 验证安装</span></span><br><span class="line">sudo nginx</span><br><span class="line">curl -I 127.0.0.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 安装前置依赖</span><br>sudo apt install curl gnupg2 ca-certificates lsb-release debian-archivekeyring<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 导⼊官⽅Nginx签名密钥</span><br>curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \<br> | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 验证下载的⽂件中包含了正确的密钥</span><br>gpg --dry-run --quiet --no-keyring --import --import-options import-show<br>/usr/share/keyrings/nginx-archive-keyring.gpg<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">4. 设置稳定版或者主线版的Nginx包</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">稳定版</span><br>echo &quot;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \<br>http://nginx.org/packages/debian `lsb_release -cs` nginx&quot; \<br> | sudo tee /etc/apt/sources.list.d/nginx.list<br><span class="hljs-meta prompt_"># </span><span class="language-bash">主线版</span><br>echo &quot;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \<br>http://nginx.org/packages/mainline/debian `lsb_release -cs` nginx&quot; \<br> | sudo tee /etc/apt/sources.list.d/nginx.list<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">5. 设置仓库优先级，优先使⽤Nginx官⽅仓库</span><br>echo -e &quot;Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPinPriority: 900\n&quot; \<br> | sudo tee /etc/apt/preferences.d/99nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">6. 安装nginx</span><br>sudo apt update<br>sudo apt install nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">7. 验证安装</span><br>sudo nginx<br>curl -I 127.0.0.1<br></code></pre></td></tr></table></figure>
 
-<h1 id="3-MAC安装"><a href="#3-MAC安装" class="headerlink" title="3.MAC安装"></a>3.MAC安装</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
+<h1><span id="3mac安装">3.MAC安装</span></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">brew install nginx<br></code></pre></td></tr></table></figure>
 
-<h1 id="4-从源码编译安装"><a href="#4-从源码编译安装" class="headerlink" title="4.从源码编译安装"></a>4.从源码编译安装</h1><blockquote>
+<h1><span id="4从源码编译安装">4.从源码编译安装</span></h1><blockquote>
 <p>从源码编译安装的⽅式可以让我们⾃定义Nginx的安装⽬录、模块等，但是安装过程⽐较繁琐，需要安装⼀些依赖库</p>
 </blockquote>
-<h2 id="4-1安装PCRE库"><a href="#4-1安装PCRE库" class="headerlink" title="4.1安装PCRE库"></a>4.1安装PCRE库</h2><blockquote>
+<h2><span id="41安装pcre库">4.1安装PCRE库</span></h2><blockquote>
 <p>PCRE是Perl Compatible Regular Expressions的缩写，是⼀个Perl库，包括perl兼容的正则表达式库。</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz</span><br><span class="line">tar -zxf pcre2-10.42.tar.gz</span><br><span class="line">cd pcre2-10.42</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz<br>tar -zxf pcre2-10.42.tar.gz<br>cd pcre2-10.42<br>./configure<br>make<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h2 id="4-2-安装zlib库"><a href="#4-2-安装zlib库" class="headerlink" title="4.2 安装zlib库"></a>4.2 安装zlib库</h2><blockquote>
+<h2><span id="42-安装zlib库">4.2 安装zlib库</span></h2><blockquote>
 <p>zlib是⼀个数据压缩库，⽤于Nginx的gzip模块。</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://zlib.net/zlib-1.2.13.tar.gz</span><br><span class="line">tar -zxf zlib-1.2.13.tar.gz</span><br><span class="line">cd zlib-1.2.13</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget http://zlib.net/zlib-1.2.13.tar.gz<br>tar -zxf zlib-1.2.13.tar.gz<br>cd zlib-1.2.13<br>./configure<br>make<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h2 id="4-3-安装OpenSSL库"><a href="#4-3-安装OpenSSL库" class="headerlink" title="4.3 安装OpenSSL库"></a>4.3 安装OpenSSL库</h2><blockquote>
+<h2><span id="43-安装openssl库">4.3 安装OpenSSL库</span></h2><blockquote>
 <p>OpenSSL是⼀个强⼤的安全套接字层密码库，⽤于Nginx的SSL模块</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.openssl.org/source/openssl-1.1.1t.tar.gz</span><br><span class="line">tar -zxf openssl-1.1.1t.tar.gz</span><br><span class="line">cd openssl-1.1.1t</span><br><span class="line">./Configure darwin64-x86_64-cc --prefix=/usr</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget http://www.openssl.org/source/openssl-1.1.1t.tar.gz<br>tar -zxf openssl-1.1.1t.tar.gz<br>cd openssl-1.1.1t<br>./Configure darwin64-x86_64-cc --prefix=/usr<br>make<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h2 id="4-4-下载Nginx源码"><a href="#4-4-下载Nginx源码" class="headerlink" title="4.4 下载Nginx源码"></a>4.4 下载Nginx源码</h2><h3 id="4-4-1下载主线版的Nginx源码："><a href="#4-4-1下载主线版的Nginx源码：" class="headerlink" title="4.4.1下载主线版的Nginx源码："></a>4.4.1下载主线版的Nginx源码：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/download/nginx-1.23.4.tar.gz</span><br><span class="line">tar zxf nginx-1.23.4.tar.gz</span><br><span class="line">cd nginx-1.23.4</span><br></pre></td></tr></table></figure>
+<h2><span id="44-下载nginx源码">4.4 下载Nginx源码</span></h2><h3><span id="441下载主线版的nginx源码">4.4.1下载主线版的Nginx源码：</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nginx.org/download/nginx-1.23.4.tar.gz<br>tar zxf nginx-1.23.4.tar.gz<br>cd nginx-1.23.4<br></code></pre></td></tr></table></figure>
 
 
 
-<h3 id="4-4-2下载稳定版的Nginx源码："><a href="#4-4-2下载稳定版的Nginx源码：" class="headerlink" title="4.4.2下载稳定版的Nginx源码："></a>4.4.2下载稳定版的Nginx源码：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/download/nginx-1.24.0.tar.gz</span><br><span class="line">tar zxf nginx-1.24.0.tar.gz</span><br><span class="line">cd nginx-1.24.0</span><br></pre></td></tr></table></figure>
+<h3><span id="442下载稳定版的nginx源码">4.4.2下载稳定版的Nginx源码：</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nginx.org/download/nginx-1.24.0.tar.gz<br>tar zxf nginx-1.24.0.tar.gz<br>cd nginx-1.24.0<br></code></pre></td></tr></table></figure>
 
-<h2 id="4-5-配置编译选项"><a href="#4-5-配置编译选项" class="headerlink" title="4.5 配置编译选项"></a>4.5 配置编译选项</h2><blockquote>
+<h2><span id="45-配置编译选项">4.5 配置编译选项</span></h2><blockquote>
 <p>编译选项可以通过 .&#x2F;configure –help 来查看。 下⾯是⼀个官⽹的例⼦：</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">--sbin-path=/usr/local/nginx/nginx</span><br><span class="line">--conf-path=/usr/local/nginx/nginx.conf</span><br><span class="line">--pid-path=/usr/local/nginx/nginx.pid</span><br><span class="line">--with-pcre=../pcre2-10.42</span><br><span class="line">--with-zlib=../zlib-1.2.13</span><br><span class="line">--with-http_ssl_module</span><br><span class="line">--with-stream</span><br><span class="line">--with-mail=dynamic</span><br><span class="line">--add-module=/usr/build/nginx-rtmp-module</span><br><span class="line">--add-dynamic-module=/usr/build/3party_module</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">./configure<br>--sbin-path=/usr/local/nginx/nginx<br>--conf-path=/usr/local/nginx/nginx.conf<br>--pid-path=/usr/local/nginx/nginx.pid<br>--with-pcre=../pcre2-10.42<br>--with-zlib=../zlib-1.2.13<br>--with-http_ssl_module<br>--with-stream<br>--with-mail=dynamic<br>--add-module=/usr/build/nginx-rtmp-module<br>--add-dynamic-module=/usr/build/3party_module<br></code></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -306,432 +385,365 @@
 </tr>
 </tbody></table>
 
-        </div>
-        <footer class="article-footer">
+                
+              </div>
             
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
 
-
-
-    <a data-url="http://www.lifeab.com/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/" data-id="cluajc77o000bo30tbrv7gxqt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "John Wick"
-        },
-        "headline": "nginx安装方式",
-        "image": "http://www.lifeab.com",
-        "keywords": "nginx nginx安装",
-        "genre": "nginx",
-        "datePublished": "2024-03-07",
-        "dateCreated": "2024-03-07",
-        "dateModified": "2024-03-07",
-        "url": "http://www.lifeab.com/2024/03/07/Nginx安装方式/",
-        "description": "1.CentOS1.1yum安装12345678# 1. 安装EPEL仓库sudo yum install epel-release# 2. 更新reposudo yum update# 3. 安装nginxsudo yum install nginx# 4. 验证安装sudo nginx -V
-
-1.2通过Nginx的官⽅仓库来安装
-这样可以保证安装的是最新的版本
-
-12345678910111213141516171819202122232425262728293031323334353637381. 安装前置依赖sudo yum install yum-utils2. 添加nginx仓库sudo vim /etc/yum.repos.d/nginx.repo3. 添加以下内容[nginx-stable] [nginx-stable]name=nginx stable repobaseurl=http://nginx.org/packages/centos/$releasever/$basearch/gpgcheck=1enabled=1gpgkey=https://nginx.org/keys/nginx_signing.keymodule_hotfixes=true或者[nginx-mainline] [nginx-mainline]name=nginx mainline repobaseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/gpgcheck=1enabled=0gpgkey=https://nginx.org/keys/nginx_signing.keymodule_hotfixes=true上⾯的 stable 和 mainline 就分别表示稳定版和主线版，可以根据⾃⼰的需要来选择。4. 更新reposudo yum update5. 安装nginxsudo yum install nginx6. 验证安装除了使⽤ sudo nginx -V 之外，还可以使⽤下⾯的⽅式来验证：# 启动Nginxsudo nginxcurl -I 127.0.0.1如果能够看到类似下⾯的输出，就表示安装成功了：HTTP/1.1 200 OKServer: nginx/1.25.1
-
-2.Debian、Ubuntu2.1apt安装123456# 1. 更新仓库信息sudo apt-get update# 2. 安装nginxsudo apt-get install nginx# 3. 验证安装sudo nginx -V
-
-2.2通过Nginx的官⽅仓库来安装",
-        "wordCount": 604
-    }
-</script>
-
-</article>
-
-    <section id="comments">
+<span class="category-chains">
+  
+  
     
+      <span class="category-chain">
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="/categories/nginx/" class="category-chain-item">nginx</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
-
-
-    
-    </section>
-
-
-
-                        </div>
-                    </section>
-                    <aside id="sidebar">
-    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-    <div class="sidebar-top">
-        <p>关注我 :</p>
-        <ul class="social-links">
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-        </ul>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/nginx/" class="print-no-link">#nginx</a>
+      
+        <a href="/tags/nginx%E5%AE%89%E8%A3%85/" class="print-no-link">#nginx安装</a>
+      
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2024/03/07/Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            nginx常用命令
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2024/03/07/Nginx%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82-%E5%AE%98%E7%BF%BB%E6%96%87%E6%A1%A3/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">nginx如何处理请求</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
-    
-    <div class="widgets-container">
-        
-            
-                
-
-            
-                
-    <div class="widget-wrap">
-        <h3 class="widget-title">最新文章</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240327215007658.png)" alt="安全使用 SMB实现局域网共享" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/27/%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8SMB%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" class="title">安全使用 SMB实现局域网共享</a></p>
-                            <p class="item-date"><time datetime="2024-03-27T14:56:17.000Z" itemprop="datePublished">2024-03-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/27/Rclone/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/27/Rclone/" class="title">Rclone</a></p>
-                            <p class="item-date"><time datetime="2024-03-27T07:56:17.000Z" itemprop="datePublished">2024-03-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/24/Ventoy%E6%89%93%E9%80%A0%E6%9C%80%E5%BC%BAU%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240324215206822.png)" alt="Ventoy打造最强U盘启动盘,安装istoreOS系统" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/24/Ventoy%E6%89%93%E9%80%A0%E6%9C%80%E5%BC%BAU%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/" class="title">Ventoy打造最强U盘启动盘,安装istoreOS系统</a></p>
-                            <p class="item-date"><time datetime="2024-03-24T13:10:17.000Z" itemprop="datePublished">2024-03-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/22/Alist/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png)" alt="利用Alist搭建本地影音系统挂载阿里云盘为本地" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a></p>
-                            <p class="item-title"><a href="/2024/03/22/Alist/" class="title">利用Alist搭建本地影音系统挂载阿里云盘为本地</a></p>
-                            <p class="item-date"><time datetime="2024-03-22T02:10:17.000Z" itemprop="datePublished">2024-03-22</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a></p>
-                            <p class="item-title"><a href="/2024/03/14/%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="title">集合分页工具类</a></p>
-                            <p class="item-date"><time datetime="2024-03-14T09:10:17.000Z" itemprop="datePublished">2024-03-14</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">分类</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nginx/">nginx</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ps/">ps</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E7%B1%BB/">工具类</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><span class="category-list-count">5</span></li></ul>
-        </div>
-    </div>
+  
+</div>
 
 
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">归档</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">标签</h3>
-        <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/alist/" rel="tag">alist</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/executors/" rel="tag">executors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/httpServerletRequest/" rel="tag">httpServerletRequest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/istoreOS/" rel="tag">istoreOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx-server%E5%9D%97/" rel="tag">nginx-server块</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%AE%89%E8%A3%85/" rel="tag">nginx安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="tag">nginx常用命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" rel="tag">nginx配置文件</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/" rel="tag">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rclone/" rel="tag">rclone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smb/" rel="tag">smb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threadPollExecutor/" rel="tag">threadPollExecutor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/u%E7%9B%98/" rel="tag">u盘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ventoy/" rel="tag">ventoy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" rel="tag">局域网共享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99/" rel="tag">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="tag">线程池</a><span class="tag-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-float">
-        <h3 class="widget-title">标签云</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/alist/" style="font-size: 10px;">alist</a> <a href="/tags/executors/" style="font-size: 10px;">executors</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/httpServerletRequest/" style="font-size: 10px;">httpServerletRequest</a> <a href="/tags/istoreOS/" style="font-size: 10px;">istoreOS</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/nginx/" style="font-size: 16.67px;">nginx</a> <a href="/tags/nginx-server%E5%9D%97/" style="font-size: 10px;">nginx-server块</a> <a href="/tags/nginx%E5%AE%89%E8%A3%85/" style="font-size: 10px;">nginx安装</a> <a href="/tags/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">nginx常用命令</a> <a href="/tags/nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" style="font-size: 13.33px;">nginx配置文件</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/rclone/" style="font-size: 10px;">rclone</a> <a href="/tags/smb/" style="font-size: 10px;">smb</a> <a href="/tags/threadPollExecutor/" style="font-size: 10px;">threadPollExecutor</a> <a href="/tags/u%E7%9B%98/" style="font-size: 10px;">u盘</a> <a href="/tags/ventoy/" style="font-size: 10px;">ventoy</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/" style="font-size: 10px;">局域网共享</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 13.33px;">工具类</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">枚举</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" style="font-size: 13.33px;">线程池</a>
-        </div>
-    </div>
-
-
-            
-                
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">链接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-            
-        
-    </div>
-</aside>
-
-                </div>
-            </div>
-        </div>
-        <footer id="footer">
-    <div class="container">
-        <div class="container-inner">
-            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
-            <div class="credit">
-                <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
-                </h1>
-                <p>&copy; 2024 John Wick</p>
-                
-                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
-                
-            </div>
-            <div class="footer-plugins">
               
-    
+  
 
-
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>nginx安装方式</div>
+      <div>http://www.lifeab.com/2024/03/07/Nginx安装方式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
         </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
     </div>
-</footer>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/13/PS/" title="ps">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ps</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/07/Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="nginx常用命令">
+                        <span class="hidden-mobile">nginx常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
 
     </div>
-    
-    
-    <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://www.lifeab.com/2024/03/07/Nginx%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F/';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    </script>
+  </div>
+</div>
 
 
 
 
 
-    
-        
-<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+  
 
-        
-<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+  
 
-        
-<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+  
 
-        
-<script src="/libs/lightgallery/js/lg-share.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-video.min.js"></script>
 
-    
-    
-        
-<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+  
 
-    
+
+
+  
+
+
+
+
+
+
+
     
 
     
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
     
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
     
 
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-<!-- Custom Scripts -->
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<script src="/js/main.js"></script>
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/toc.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
