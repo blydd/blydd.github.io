@@ -123,7 +123,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Freedom is as important as breathing</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -315,13 +315,13 @@
               <div class="markdown-body">
                 
                 <p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/install/script.html">官方文档</a></p>
-<h1><span id="一键脚本安装">一键脚本安装</span></h1><p>默认安装在 <code>/opt/alist</code> 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 <code>/root</code>：</p>
+<h1 id="一键脚本安装"><a href="#一键脚本安装" class="headerlink" title="一键脚本安装"></a>一键脚本安装</h1><p>默认安装在 <code>/opt/alist</code> 中。 自定义安装路径，将安装路径作为第二个参数添加，必须是绝对路径（如果路径以 alist 结尾，则直接安装到给定路径，否则会安装在给定路径 alist 目录下），如 安装到 <code>/root</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">Install</span><br>curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s install /root<br><span class="hljs-meta prompt_"># </span><span class="language-bash">update</span><br>curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s update /root<br><span class="hljs-meta prompt_"># </span><span class="language-bash">Uninstall</span><br>curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s uninstall /root<br></code></pre></td></tr></table></figure>
 
-<h1><span id="安装完毕提示">安装完毕提示</span></h1><p>用户名默认<code>admin</code></p>
+<h1 id="安装完毕提示"><a href="#安装完毕提示" class="headerlink" title="安装完毕提示"></a>安装完毕提示</h1><p>用户名默认<code>admin</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">Alist 安装成功！<br><br>访问地址：http://YOUR_IP:5244/<br><br>配置文件路径：/root/alist/data/config.json<br>---------如何获取密码？--------<br>先cd到alist所在目录:<br>cd /root/alist<br>随机设置新密码:<br>./alist admin random<br>或者手动设置新密码:<br>./alist admin set NEW_PASSWORD<br>----------------------------<br>启动服务中<br><br>查看状态：systemctl status alist<br>启动服务：systemctl start alist<br>重启服务：systemctl restart alist<br>停止服务：systemctl stop alist<br><br>温馨提示：如果端口无法正常访问，请检查 服务器安全组、本机防火墙、Alist状态<br></code></pre></td></tr></table></figure>
 
-<h1><span id="配置阿里云盘">配置阿里云盘</span></h1><p>首次进入<a target="_blank" rel="noopener" href="http://your_ip:5244/">网站</a>会有如下提示,需要点下面的manage进入配置:</p>
+<h1 id="配置阿里云盘"><a href="#配置阿里云盘" class="headerlink" title="配置阿里云盘"></a>配置阿里云盘</h1><p>首次进入<a target="_blank" rel="noopener" href="http://your_ip:5244/">网站</a>会有如下提示,需要点下面的manage进入配置:</p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240322101908638.png" srcset="/img/loading.gif" lazyload alt="image-20240322101908638"></p>
 <p>参考:</p>
 <p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive">官方文档</a></p>
@@ -350,7 +350,7 @@
 <p>点击alist左下角的“主页”，回到主页后，可以看到我们的阿里云盘已经能正常显示了：</p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-35899a6058e9c9efe4cf8f426972f536_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>作者：袋鼠叔叔<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/567047941/answer/3206878540">https://www.zhihu.com/question/567047941/answer/3206878540</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<h1><span id="配置夸克网盘">配置夸克网盘</span></h1><p>夸克网盘也是阿里旗下的产品，主要优势在于88VIP免费赠送会员，所以这两年也非常火爆，用户数量已经不逊于阿里云盘，甚至有赶超百度网盘的势头。夸克网盘的alist挂载方法和前面的阿里云盘有一些区别，主要是获取Cookie的方式不一样，下面我们开始。</p>
+<h1 id="配置夸克网盘"><a href="#配置夸克网盘" class="headerlink" title="配置夸克网盘"></a>配置夸克网盘</h1><p>夸克网盘也是阿里旗下的产品，主要优势在于88VIP免费赠送会员，所以这两年也非常火爆，用户数量已经不逊于阿里云盘，甚至有赶超百度网盘的势头。夸克网盘的alist挂载方法和前面的阿里云盘有一些区别，主要是获取Cookie的方式不一样，下面我们开始。</p>
 <p><strong>仍然进入Alist管理页面，添加一个新的驱动，驱动选择“夸克”。挂载路径和序号根据自己需求填写，缓存过期时间仍然填0。Webdav策略选择“<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">本地代理</a>”。</strong></p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-630b18f25dada42db400cecb9ffa16cb_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>继续往下滚动，我们需要获取Cookie。</strong>打开电脑浏览器并登录夸克网盘账号(用网页版登录)，然后按键盘上的F12，进入开发者模式。</p>
@@ -360,7 +360,7 @@
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-5527d6db8f3ae448658c0c4f807e9397_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>夸克网盘挂载成功。</p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-8faecfea8c376e69d4a9297197a89aa3_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h1><span id="配置百度网盘"><strong>配置百度网盘</strong></span></h1><p><strong>目前使用人数最多，市场最大的网盘。VIP会员价格不便宜，速度快，资源多，但是对非会员限速很厉害。使用Alist挂载的情况下，如果是VIP会员，请优先选择官方API接口。非会员可以尝试使用第三方接口，但有时候会不太稳定。</strong></p>
+<h1 id="配置百度网盘"><a href="#配置百度网盘" class="headerlink" title="配置百度网盘"></a><strong>配置百度网盘</strong></h1><p><strong>目前使用人数最多，市场最大的网盘。VIP会员价格不便宜，速度快，资源多，但是对非会员限速很厉害。使用Alist挂载的情况下，如果是VIP会员，请优先选择官方API接口。非会员可以尝试使用第三方接口，但有时候会不太稳定。</strong></p>
 <p>仍然打开Alist管理页面—存储—添加。驱动选择百度网盘，挂载路径和序号按需填写。特别注意，一定要打开<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=web%E4%BB%A3%E7%90%86&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">web代理</a>，并且将WebDAV策略设置为302重定向，才能正常在线播放视频。</p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-901d6bda7ccf4a9da5d18a4e6c67f27d_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>继续往下滚动，这里只有一个地方需要我们自己填写，就是刷新令牌。那么如何获取呢？首先用电脑浏览器登录<a target="_blank" rel="noopener" href="https://pan.baidu.com/login?redirecturl=https://pan.baidu.com/disk/main%23/index">网页版百度网盘</a>，然后访问以下地址：</p>
@@ -376,7 +376,7 @@
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-ebb12034a958e4a93cc121fe4791a784_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>我以上仅展示了最常用的百度，夸克和阿里云盘作为实操案例。但实际上Alist作为目前市面上最强大的网盘挂载工具，支持几乎所有的网盘类型及厂商，如果有其他网盘需求，可以自己搜索一下方法，基本大同小异。Alist官网也为大家贴心的准备了每一种网盘的说明文档供参考。</strong></p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/v2-0e56b6405dd69ad09a774dca4bb70384_1440w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h1><span id="大招使用raidrive将alist中的云盘挂载到电脑">大招:使用RaiDrive将Alist中的云盘挂载到电脑</span></h1><p>现在，我们已经可以通过浏览器的alist管理页面，从而访问所有已挂载的云盘，但这还不是结束。<strong>我们的最终目的是将这些网盘全部挂载到电脑，像使用本地硬盘那样使用网盘</strong>。接下来要用到的就是RaiDrive这款强大的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%AC%E5%9C%B0%E7%A3%81%E7%9B%98&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">本地磁盘</a>映射软件。</p>
+<h1 id="大招-使用RaiDrive将Alist中的云盘挂载到电脑"><a href="#大招-使用RaiDrive将Alist中的云盘挂载到电脑" class="headerlink" title="大招:使用RaiDrive将Alist中的云盘挂载到电脑"></a>大招:使用RaiDrive将Alist中的云盘挂载到电脑</h1><p>现在，我们已经可以通过浏览器的alist管理页面，从而访问所有已挂载的云盘，但这还不是结束。<strong>我们的最终目的是将这些网盘全部挂载到电脑，像使用本地硬盘那样使用网盘</strong>。接下来要用到的就是RaiDrive这款强大的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%AC%E5%9C%B0%E7%A3%81%E7%9B%98&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:3206878540%7D">本地磁盘</a>映射软件。</p>
 <blockquote>
 <p><strong>RaiDrive目前只支持Windows平台，但在苹果macOS平台上，你可以考虑使用Folx开发商出品的Cloud Mounter作为替代。Cloud Mounter是一款类似于RaiDrive的工具，可以帮助你将网盘挂载映射成电脑本地硬盘。</strong></p>
 <p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/image-20240325120020339.png" srcset="/img/loading.gif" lazyload alt="image-20240325120020339"></p>
@@ -740,10 +740,6 @@
   <script  src="/js/local-search.js" ></script>
 
 
-
-
-  
-<script src="/js/toc.js"></script>
 
 
 

@@ -96,7 +96,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Freedom is as important as breathing</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -287,47 +287,47 @@
             
               <div class="markdown-body">
                 
-                <h1><span id="1centos">1.CentOS</span></h1><h2><span id="11yum安装">1.1yum安装</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 安装EPEL仓库</span><br>sudo yum install epel-release<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 更新repo</span><br>sudo yum update<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 安装nginx</span><br>sudo yum install nginx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">4. 验证安装</span><br>sudo nginx -V<br></code></pre></td></tr></table></figure>
+                <h1 id="1-CentOS"><a href="#1-CentOS" class="headerlink" title="1.CentOS"></a>1.CentOS</h1><h2 id="1-1yum安装"><a href="#1-1yum安装" class="headerlink" title="1.1yum安装"></a>1.1yum安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 安装EPEL仓库</span><br>sudo yum install epel-release<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 更新repo</span><br>sudo yum update<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 安装nginx</span><br>sudo yum install nginx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">4. 验证安装</span><br>sudo nginx -V<br></code></pre></td></tr></table></figure>
 
-<h2><span id="12通过nginx的官方仓库来安装">1.2通过Nginx的官⽅仓库来安装</span></h2><blockquote>
+<h2 id="1-2通过Nginx的官⽅仓库来安装"><a href="#1-2通过Nginx的官⽅仓库来安装" class="headerlink" title="1.2通过Nginx的官⽅仓库来安装"></a>1.2通过Nginx的官⽅仓库来安装</h2><blockquote>
 <p>这样可以保证安装的是最新的版本</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs shell">1. 安装前置依赖<br>sudo yum install yum-utils<br><br>2. 添加nginx仓库<br>sudo vim /etc/yum.repos.d/nginx.repo<br><br>3. 添加以下内容<br>[nginx-stable] [nginx-stable]<br>name=nginx stable repo<br>baseurl=http://nginx.org/packages/centos/$releasever/$basearch/<br>gpgcheck=1<br>enabled=1<br>gpgkey=https://nginx.org/keys/nginx_signing.key<br>module_hotfixes=true<br>或者<br>[nginx-mainline] [nginx-mainline]<br>name=nginx mainline repo<br>baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/<br>gpgcheck=1<br>enabled=0<br>gpgkey=https://nginx.org/keys/nginx_signing.key<br>module_hotfixes=true<br>上⾯的 stable 和 mainline 就分别表示稳定版和主线版，可以根据⾃⼰的需要来选择。<br><br>4. 更新repo<br>sudo yum update<br><br>5. 安装nginx<br>sudo yum install nginx<br><br>6. 验证安装<br>除了使⽤ sudo nginx -V 之外，还可以使⽤下⾯的⽅式来验证：<br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动Nginx</span><br>sudo nginx<br>curl -I 127.0.0.1<br>如果能够看到类似下⾯的输出，就表示安装成功了：<br>HTTP/1.1 200 OK<br>Server: nginx/1.25.1<br></code></pre></td></tr></table></figure>
 
-<h1><span id="2debian-ubuntu">2.Debian、Ubuntu</span></h1><h2><span id="21apt安装">2.1apt安装</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 更新仓库信息</span><br>sudo apt-get update<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 安装nginx</span><br>sudo apt-get install nginx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 验证安装</span><br>sudo nginx -V<br></code></pre></td></tr></table></figure>
+<h1 id="2-Debian、Ubuntu"><a href="#2-Debian、Ubuntu" class="headerlink" title="2.Debian、Ubuntu"></a>2.Debian、Ubuntu</h1><h2 id="2-1apt安装"><a href="#2-1apt安装" class="headerlink" title="2.1apt安装"></a>2.1apt安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 更新仓库信息</span><br>sudo apt-get update<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 安装nginx</span><br>sudo apt-get install nginx<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 验证安装</span><br>sudo nginx -V<br></code></pre></td></tr></table></figure>
 
-<h2><span id="22通过nginx的官方仓库来安装">2.2通过Nginx的官⽅仓库来安装</span></h2><blockquote>
+<h2 id="2-2通过Nginx的官⽅仓库来安装"><a href="#2-2通过Nginx的官⽅仓库来安装" class="headerlink" title="2.2通过Nginx的官⽅仓库来安装"></a>2.2通过Nginx的官⽅仓库来安装</h2><blockquote>
 <p>这样可以保证安装的是最新的版本</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 安装前置依赖</span><br>sudo apt install curl gnupg2 ca-certificates lsb-release debian-archivekeyring<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 导⼊官⽅Nginx签名密钥</span><br>curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \<br> | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">3. 验证下载的⽂件中包含了正确的密钥</span><br>gpg --dry-run --quiet --no-keyring --import --import-options import-show<br>/usr/share/keyrings/nginx-archive-keyring.gpg<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">4. 设置稳定版或者主线版的Nginx包</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">稳定版</span><br>echo &quot;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \<br>http://nginx.org/packages/debian `lsb_release -cs` nginx&quot; \<br> | sudo tee /etc/apt/sources.list.d/nginx.list<br><span class="hljs-meta prompt_"># </span><span class="language-bash">主线版</span><br>echo &quot;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \<br>http://nginx.org/packages/mainline/debian `lsb_release -cs` nginx&quot; \<br> | sudo tee /etc/apt/sources.list.d/nginx.list<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">5. 设置仓库优先级，优先使⽤Nginx官⽅仓库</span><br>echo -e &quot;Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPinPriority: 900\n&quot; \<br> | sudo tee /etc/apt/preferences.d/99nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">6. 安装nginx</span><br>sudo apt update<br>sudo apt install nginx<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">7. 验证安装</span><br>sudo nginx<br>curl -I 127.0.0.1<br></code></pre></td></tr></table></figure>
 
-<h1><span id="3mac安装">3.MAC安装</span></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">brew install nginx<br></code></pre></td></tr></table></figure>
+<h1 id="3-MAC安装"><a href="#3-MAC安装" class="headerlink" title="3.MAC安装"></a>3.MAC安装</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">brew install nginx<br></code></pre></td></tr></table></figure>
 
-<h1><span id="4从源码编译安装">4.从源码编译安装</span></h1><blockquote>
+<h1 id="4-从源码编译安装"><a href="#4-从源码编译安装" class="headerlink" title="4.从源码编译安装"></a>4.从源码编译安装</h1><blockquote>
 <p>从源码编译安装的⽅式可以让我们⾃定义Nginx的安装⽬录、模块等，但是安装过程⽐较繁琐，需要安装⼀些依赖库</p>
 </blockquote>
-<h2><span id="41安装pcre库">4.1安装PCRE库</span></h2><blockquote>
+<h2 id="4-1安装PCRE库"><a href="#4-1安装PCRE库" class="headerlink" title="4.1安装PCRE库"></a>4.1安装PCRE库</h2><blockquote>
 <p>PCRE是Perl Compatible Regular Expressions的缩写，是⼀个Perl库，包括perl兼容的正则表达式库。</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz<br>tar -zxf pcre2-10.42.tar.gz<br>cd pcre2-10.42<br>./configure<br>make<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h2><span id="42-安装zlib库">4.2 安装zlib库</span></h2><blockquote>
+<h2 id="4-2-安装zlib库"><a href="#4-2-安装zlib库" class="headerlink" title="4.2 安装zlib库"></a>4.2 安装zlib库</h2><blockquote>
 <p>zlib是⼀个数据压缩库，⽤于Nginx的gzip模块。</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget http://zlib.net/zlib-1.2.13.tar.gz<br>tar -zxf zlib-1.2.13.tar.gz<br>cd zlib-1.2.13<br>./configure<br>make<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h2><span id="43-安装openssl库">4.3 安装OpenSSL库</span></h2><blockquote>
+<h2 id="4-3-安装OpenSSL库"><a href="#4-3-安装OpenSSL库" class="headerlink" title="4.3 安装OpenSSL库"></a>4.3 安装OpenSSL库</h2><blockquote>
 <p>OpenSSL是⼀个强⼤的安全套接字层密码库，⽤于Nginx的SSL模块</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget http://www.openssl.org/source/openssl-1.1.1t.tar.gz<br>tar -zxf openssl-1.1.1t.tar.gz<br>cd openssl-1.1.1t<br>./Configure darwin64-x86_64-cc --prefix=/usr<br>make<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h2><span id="44-下载nginx源码">4.4 下载Nginx源码</span></h2><h3><span id="441下载主线版的nginx源码">4.4.1下载主线版的Nginx源码：</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nginx.org/download/nginx-1.23.4.tar.gz<br>tar zxf nginx-1.23.4.tar.gz<br>cd nginx-1.23.4<br></code></pre></td></tr></table></figure>
+<h2 id="4-4-下载Nginx源码"><a href="#4-4-下载Nginx源码" class="headerlink" title="4.4 下载Nginx源码"></a>4.4 下载Nginx源码</h2><h3 id="4-4-1下载主线版的Nginx源码："><a href="#4-4-1下载主线版的Nginx源码：" class="headerlink" title="4.4.1下载主线版的Nginx源码："></a>4.4.1下载主线版的Nginx源码：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nginx.org/download/nginx-1.23.4.tar.gz<br>tar zxf nginx-1.23.4.tar.gz<br>cd nginx-1.23.4<br></code></pre></td></tr></table></figure>
 
 
 
-<h3><span id="442下载稳定版的nginx源码">4.4.2下载稳定版的Nginx源码：</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nginx.org/download/nginx-1.24.0.tar.gz<br>tar zxf nginx-1.24.0.tar.gz<br>cd nginx-1.24.0<br></code></pre></td></tr></table></figure>
+<h3 id="4-4-2下载稳定版的Nginx源码："><a href="#4-4-2下载稳定版的Nginx源码：" class="headerlink" title="4.4.2下载稳定版的Nginx源码："></a>4.4.2下载稳定版的Nginx源码：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nginx.org/download/nginx-1.24.0.tar.gz<br>tar zxf nginx-1.24.0.tar.gz<br>cd nginx-1.24.0<br></code></pre></td></tr></table></figure>
 
-<h2><span id="45-配置编译选项">4.5 配置编译选项</span></h2><blockquote>
+<h2 id="4-5-配置编译选项"><a href="#4-5-配置编译选项" class="headerlink" title="4.5 配置编译选项"></a>4.5 配置编译选项</h2><blockquote>
 <p>编译选项可以通过 .&#x2F;configure –help 来查看。 下⾯是⼀个官⽹的例⼦：</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">./configure<br>--sbin-path=/usr/local/nginx/nginx<br>--conf-path=/usr/local/nginx/nginx.conf<br>--pid-path=/usr/local/nginx/nginx.pid<br>--with-pcre=../pcre2-10.42<br>--with-zlib=../zlib-1.2.13<br>--with-http_ssl_module<br>--with-stream<br>--with-mail=dynamic<br>--add-module=/usr/build/nginx-rtmp-module<br>--add-dynamic-module=/usr/build/3party_module<br></code></pre></td></tr></table></figure>
@@ -476,9 +476,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/13/PS/" title="ps">
+                      <a href="/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" title="nginx配置文件">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ps</span>
+                        <span class="hidden-mobile">nginx配置文件</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -728,10 +728,6 @@
   <script  src="/js/local-search.js" ></script>
 
 
-
-
-  
-<script src="/js/toc.js"></script>
 
 
 

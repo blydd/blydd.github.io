@@ -97,7 +97,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Freedom is as important as breathing</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -289,7 +289,7 @@
               <div class="markdown-body">
                 
                 <p>线程池的创建分为两种方式：ThreadPoolExecutor 和 Executors</p>
-<h1><span id="executors可以创建6种线程池">Executors可以创建6种线程池:</span></h1><ol>
+<h1 id="Executors可以创建6种线程池"><a href="#Executors可以创建6种线程池" class="headerlink" title="Executors可以创建6种线程池:"></a>Executors可以创建6种线程池:</h1><ol>
 <li>FixedThreadPool(n)：创建一个数量固定的线程池，超出的任务会在队列中等待空闲的线程，可用于控制程序的最大并发数。</li>
 <li>CachedThreadPool()：短时间内处理大量工作的线程池，会根据任务数量产生对应的线程，并试图缓存线程以便重复使用，如果限制 60 秒没被使用，则会被移除缓存。</li>
 <li>SingleThreadExecutor()：创建一个单线程线程池。</li>
@@ -297,39 +297,39 @@
 <li>SingleThreadScheduledExecutor()：此线程池就是单线程的 newScheduledThreadPool。</li>
 <li>WorkStealingPool(n)：Java 8 新增创建线程池的方法，创建时如果不设置任何参数，则以当前机器处理器个数作为线程个数，此线程池会并行处理任务，不能保证执行顺序。</li>
 </ol>
-<h2><span id="fixedthreadpool-oom">FixedThreadPool (OOM)</span></h2><p>创建固定个数的线程池，具体示例如下：</p>
+<h2 id="FixedThreadPool-OOM"><a href="#FixedThreadPool-OOM" class="headerlink" title="FixedThreadPool (OOM)"></a>FixedThreadPool (OOM)</h2><p>创建固定个数的线程池，具体示例如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">fixedThreadPool</span> <span class="hljs-operator">=</span> Executors.newFixedThreadPool(<span class="hljs-number">2</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>    fixedThreadPool.execute(() -&gt; &#123;<br>        System.out.println(<span class="hljs-string">&quot;CurrentTime - &quot;</span> + LocalDateTime.now().format(DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>)));<br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">1000</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;);<br>&#125;<br><br><span class="hljs-comment">//以上程序执行结果如下：</span><br><br>   <span class="hljs-comment">// CurrentTime - 2019-06-27 20:58:58</span><br><br>    <span class="hljs-comment">//CurrentTime - 2019-06-27 20:58:58</span><br><br>   <span class="hljs-comment">// CurrentTime - 2019-06-27 20:58:59</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>根据执行结果可以看出，newFixedThreadPool(2) 确实是创建了两个线程，在执行了一轮（2 次）之后，停了一秒，有了空闲线程，才执行第三次。</p>
 </blockquote>
-<h2><span id="cachedthreadpool-oom">CachedThreadPool (OOM)</span></h2><p>根据实际需要自动创建带缓存功能的线程池，具体代码如下：</p>
+<h2 id="CachedThreadPool-OOM"><a href="#CachedThreadPool-OOM" class="headerlink" title="CachedThreadPool (OOM)"></a>CachedThreadPool (OOM)</h2><p>根据实际需要自动创建带缓存功能的线程池，具体代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">cachedThreadPool</span> <span class="hljs-operator">=</span> Executors.newCachedThreadPool();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>    cachedThreadPool.execute(() -&gt; &#123;<br>        System.out.println(<span class="hljs-string">&quot;CurrentTime - &quot;</span> +<br>                           LocalDateTime.now().format(DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>)));<br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">1000</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;);<br>&#125;<br>以上程序执行结果如下：<br><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">24</span>:<span class="hljs-number">46</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>根据执行结果可以看出，newCachedThreadPool 在短时间内会创建多个线程来处理对应的任务，并试图把它们进行缓存以便重复使用。</p>
 </blockquote>
-<h2><span id="singlethreadexecutor-oom">SingleThreadExecutor  (OOM)</span></h2><p>创建单个线程的线程池，具体代码如下：</p>
+<h2 id="SingleThreadExecutor-OOM"><a href="#SingleThreadExecutor-OOM" class="headerlink" title="SingleThreadExecutor  (OOM)"></a>SingleThreadExecutor  (OOM)</h2><p>创建单个线程的线程池，具体代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">singleThreadExecutor</span> <span class="hljs-operator">=</span> Executors.newSingleThreadExecutor();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>    singleThreadExecutor.execute(() -&gt; &#123;<br>        System.out.println(<span class="hljs-string">&quot;CurrentTime - &quot;</span> +<br>                           LocalDateTime.now().format(DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>)));<br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">1000</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;);<br>&#125;<br>				<span class="hljs-comment">//以上程序执行结果如下：</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">43</span>:<span class="hljs-number">34</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">43</span>:<span class="hljs-number">35</span><br>        CurrentTime - <span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-<span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">43</span>:<span class="hljs-number">36</span><br></code></pre></td></tr></table></figure>
 
-<h2><span id="scheduledthreadpool-oom">ScheduledThreadPool (OOM)</span></h2><p>创建一个可以执行周期性任务的线程池，具体代码如下：</p>
+<h2 id="ScheduledThreadPool-OOM"><a href="#ScheduledThreadPool-OOM" class="headerlink" title="ScheduledThreadPool (OOM)"></a>ScheduledThreadPool (OOM)</h2><p>创建一个可以执行周期性任务的线程池，具体代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ScheduledExecutorService</span> <span class="hljs-variable">scheduledThreadPool</span> <span class="hljs-operator">=</span> Executors.newScheduledThreadPool(<span class="hljs-number">2</span>);<br>scheduledThreadPool.schedule(() -&gt; &#123;<br>    System.out.println(<span class="hljs-string">&quot;ThreadPool：&quot;</span> + LocalDateTime.now());<br>&#125;, <span class="hljs-number">1L</span>, TimeUnit.SECONDS);<br>System.out.println(<span class="hljs-string">&quot;CurrentTime：&quot;</span> + LocalDateTime.now());<br><br><span class="hljs-comment">//以上程序执行结果如下：</span><br>CurrentTime：<span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-27T21:<span class="hljs-number">54</span>:<span class="hljs-number">21.881</span><br>ThreadPool：<span class="hljs-number">2019</span>-<span class="hljs-number">06</span>-27T21:<span class="hljs-number">54</span>:<span class="hljs-number">22.845</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>根据执行结果可以看出，我们设置的 1 秒后执行的任务生效了。</p>
 </blockquote>
-<h2><span id="singlethreadscheduledexecutor">SingleThreadScheduledExecutor</span></h2><p>创建一个可以执行周期性任务的单线程池，具体代码如下：</p>
+<h2 id="SingleThreadScheduledExecutor"><a href="#SingleThreadScheduledExecutor" class="headerlink" title="SingleThreadScheduledExecutor"></a>SingleThreadScheduledExecutor</h2><p>创建一个可以执行周期性任务的单线程池，具体代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ScheduledExecutorService</span> <span class="hljs-variable">singleThreadScheduledExecutor</span> <span class="hljs-operator">=</span> Executors.newSingleThreadScheduledExecutor();<br>singleThreadScheduledExecutor.schedule(() -&gt; &#123;<br>    System.out.println(<span class="hljs-string">&quot;ThreadPool：&quot;</span> + LocalDateTime.now());<br>&#125;, <span class="hljs-number">1L</span>, TimeUnit.SECONDS);<br>System.out.println(<span class="hljs-string">&quot;CurrentTime：&quot;</span> + LocalDateTime.now());<br></code></pre></td></tr></table></figure>
 
 
 
-<h2><span id="workstealingpool">WorkStealingPool</span></h2><p><strong>Java 8 新增的创建线程池的方式，可根据当前电脑 CPU 处理器数量生成相应个数的线程池，使用代码如下：</strong></p>
+<h2 id="WorkStealingPool"><a href="#WorkStealingPool" class="headerlink" title="WorkStealingPool"></a>WorkStealingPool</h2><p><strong>Java 8 新增的创建线程池的方式，可根据当前电脑 CPU 处理器数量生成相应个数的线程池，使用代码如下：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">workStealingPool</span> <span class="hljs-operator">=</span>  Executors.newWorkStealingPool();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">finalNumber</span> <span class="hljs-operator">=</span> i;<br>    workStealingPool.execute(() -&gt; &#123;<br>        System.out.println(<span class="hljs-string">&quot;I：&quot;</span> + finalNumber);<br>    &#125;);<br>&#125;<br>Thread.sleep(<span class="hljs-number">5000</span>);<br><br><span class="hljs-comment">//以上程序执行结果如下：</span><br>        I：<span class="hljs-number">0</span><br>        I：<span class="hljs-number">3</span><br>        I：<span class="hljs-number">2</span><br>        I：<span class="hljs-number">1</span><br>        I：<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>根据执行结果可以看出，newWorkStealingPool 是并行处理任务的，并不能保证执行顺序。</p>
 </blockquote>
-<h1><span id="threadpoolexecutor-vs-executors">ThreadPoolExecutor VS Executors</span></h1><ul>
+<h1 id="ThreadPoolExecutor-VS-Executors"><a href="#ThreadPoolExecutor-VS-Executors" class="headerlink" title="ThreadPoolExecutor VS Executors"></a>ThreadPoolExecutor VS Executors</h1><ul>
 <li>ThreadPoolExecutor 创建线程池的方式相对传统，而 Executors 提供了更多的线程池类型（6 种），但很不幸的消息是在实际开发中并不推荐使用 Executors 的方式来创建线程池。</li>
 </ul>
 <blockquote>
@@ -338,7 +338,7 @@
 <blockquote>
 <p>线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的读者更加明确线程池的运行规则，规避资源耗尽的风险。</p>
 </blockquote>
-<h2><span id="executors-创建线程池对象的弊端">Executors 创建线程池对象的弊端:</span></h2><p>FixedThreadPool 和 SingleThreadPool</p>
+<h2 id="Executors-创建线程池对象的弊端"><a href="#Executors-创建线程池对象的弊端" class="headerlink" title="Executors 创建线程池对象的弊端:"></a>Executors 创建线程池对象的弊端:</h2><p>FixedThreadPool 和 SingleThreadPool</p>
 <blockquote>
 <p>允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM(OutOfMemoryError 的缩写，指内存溢出的意思)。</p>
 </blockquote>
@@ -358,17 +358,17 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">LinkedBlockingQueue</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">this</span>(Integer.MAX_VALUE);<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><strong>当使用 LinkedBlockingQueue 并没有给它指定长度的时候，默认长度为 Integer.MAX_VALUE，这样就会导致程序会给线程池队列添加超多个任务，因为任务量太大就有造成 OOM 的风险。</strong></p>
 <hr>
-<h1><span id="相关面试题">相关面试题</span></h1><h2><span id="executors-能创建单线程的线程池吗怎么创建">Executors 能创建单线程的线程池吗？怎么创建？</span></h2><p>答：Executors 可以创建单线程线程池，创建分为两种方式：</p>
+<h1 id="相关面试题"><a href="#相关面试题" class="headerlink" title="相关面试题"></a>相关面试题</h1><h2 id="Executors-能创建单线程的线程池吗？怎么创建？"><a href="#Executors-能创建单线程的线程池吗？怎么创建？" class="headerlink" title="Executors 能创建单线程的线程池吗？怎么创建？"></a>Executors 能创建单线程的线程池吗？怎么创建？</h2><p>答：Executors 可以创建单线程线程池，创建分为两种方式：</p>
 <ol>
 <li>Executors.newSingleThreadExecutor()：创建一个单线程线程池。</li>
 <li>Executors.newSingleThreadScheduledExecutor()：创建一个可以执行周期性任务的单线程池。</li>
 </ol>
-<h2><span id="executors-中哪个线程适合执行短时间内大量任务">Executors 中哪个线程适合执行短时间内大量任务？</span></h2><p>答：newCachedThreadPool() 适合处理大量短时间工作任务。它会试图缓存线程并重用，如果没有缓存任务就会新创建任务，如果线程的限制时间超过六十秒，则会被移除线程池，因此它比较适合短时间内处理大量任务。</p>
-<h2><span id="可以执行周期性任务的线程池都有哪些">可以执行周期性任务的线程池都有哪些？</span></h2><p>答：可执行周期性任务的线程池有两个，分别是：newScheduledThreadPool() 和 newSingleThreadScheduledExecutor()，其中 newSingleThreadScheduledExecutor() 是 newScheduledThreadPool() 的单线程版本。</p>
-<h2><span id="jdk-8-新增了什么线程池有什么特点">JDK 8 新增了什么线程池？有什么特点？</span></h2><p>答：JDK 8 新增的线程池是 newWorkStealingPool(n)，如果不指定并发数（也就是不指定 n），newWorkStealingPool() 会根据当前 CPU 处理器数量生成相应个数的线程池。<strong>它的特点是并行处理任务的，不能保证任务的执行顺序。</strong></p>
-<h2><span id="newfixedthreadpool-和-threadpoolexecutor-有什么关系">newFixedThreadPool 和 ThreadPoolExecutor 有什么关系？</span></h2><p>答：newFixedThreadPool 是 ThreadPoolExecutor 包装，newFixedThreadPool 底层也是通过 ThreadPoolExecutor 实现的。</p>
-<h2><span id="单线程的线程池存在的意义是什么">单线程的线程池存在的意义是什么？</span></h2><p>答：单线程线程池提供了队列功能，如果有多个任务会排队执行，<strong>可以保证任务执行的顺序性</strong>。单线程线程池也可以重复利用已有线程，减低系统创建和销毁线程的性能开销。</p>
-<h2><span id="线程池为什么建议使用-threadpoolexecutor-创建而非-executors">线程池为什么建议使用 ThreadPoolExecutor 创建，而非 Executors？</span></h2><p>答：使用 ThreadPoolExecutor 能让开发者更加明确线程池的运行规则，避免资源耗尽的风险。</p>
+<h2 id="Executors-中哪个线程适合执行短时间内大量任务？"><a href="#Executors-中哪个线程适合执行短时间内大量任务？" class="headerlink" title="Executors 中哪个线程适合执行短时间内大量任务？"></a>Executors 中哪个线程适合执行短时间内大量任务？</h2><p>答：newCachedThreadPool() 适合处理大量短时间工作任务。它会试图缓存线程并重用，如果没有缓存任务就会新创建任务，如果线程的限制时间超过六十秒，则会被移除线程池，因此它比较适合短时间内处理大量任务。</p>
+<h2 id="可以执行周期性任务的线程池都有哪些？"><a href="#可以执行周期性任务的线程池都有哪些？" class="headerlink" title="可以执行周期性任务的线程池都有哪些？"></a>可以执行周期性任务的线程池都有哪些？</h2><p>答：可执行周期性任务的线程池有两个，分别是：newScheduledThreadPool() 和 newSingleThreadScheduledExecutor()，其中 newSingleThreadScheduledExecutor() 是 newScheduledThreadPool() 的单线程版本。</p>
+<h2 id="JDK-8-新增了什么线程池？有什么特点？"><a href="#JDK-8-新增了什么线程池？有什么特点？" class="headerlink" title="JDK 8 新增了什么线程池？有什么特点？"></a>JDK 8 新增了什么线程池？有什么特点？</h2><p>答：JDK 8 新增的线程池是 newWorkStealingPool(n)，如果不指定并发数（也就是不指定 n），newWorkStealingPool() 会根据当前 CPU 处理器数量生成相应个数的线程池。<strong>它的特点是并行处理任务的，不能保证任务的执行顺序。</strong></p>
+<h2 id="newFixedThreadPool-和-ThreadPoolExecutor-有什么关系？"><a href="#newFixedThreadPool-和-ThreadPoolExecutor-有什么关系？" class="headerlink" title="newFixedThreadPool 和 ThreadPoolExecutor 有什么关系？"></a>newFixedThreadPool 和 ThreadPoolExecutor 有什么关系？</h2><p>答：newFixedThreadPool 是 ThreadPoolExecutor 包装，newFixedThreadPool 底层也是通过 ThreadPoolExecutor 实现的。</p>
+<h2 id="单线程的线程池存在的意义是什么？"><a href="#单线程的线程池存在的意义是什么？" class="headerlink" title="单线程的线程池存在的意义是什么？"></a>单线程的线程池存在的意义是什么？</h2><p>答：单线程线程池提供了队列功能，如果有多个任务会排队执行，<strong>可以保证任务执行的顺序性</strong>。单线程线程池也可以重复利用已有线程，减低系统创建和销毁线程的性能开销。</p>
+<h2 id="线程池为什么建议使用-ThreadPoolExecutor-创建，而非-Executors？"><a href="#线程池为什么建议使用-ThreadPoolExecutor-创建，而非-Executors？" class="headerlink" title="线程池为什么建议使用 ThreadPoolExecutor 创建，而非 Executors？"></a>线程池为什么建议使用 ThreadPoolExecutor 创建，而非 Executors？</h2><p>答：使用 ThreadPoolExecutor 能让开发者更加明确线程池的运行规则，避免资源耗尽的风险。</p>
 <p>Executors 返回线程池的缺点如下：</p>
 <p>FixedThreadPool 和 SingleThreadPool 允许请求队列长度为 Integer.MAX_VALUE，可能会堆积大量请求，可能会导致内存溢出；</p>
 <p>CachedThreadPool 和 ScheduledThreadPool 允许创建线程数量为 Integer.MAX_VALUE，创建大量线程，可能会导致内存溢出。</p>
@@ -466,9 +466,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">
+                      <a href="/2020/12/04/%E4%BD%BF%E7%94%A8Spring%20Boot%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" title="使用springboot发送邮件">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">正则表达式</span>
+                        <span class="hidden-mobile">使用springboot发送邮件</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -718,10 +718,6 @@
   <script  src="/js/local-search.js" ></script>
 
 
-
-
-  
-<script src="/js/toc.js"></script>
 
 
 

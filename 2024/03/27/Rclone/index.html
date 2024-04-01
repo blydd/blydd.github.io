@@ -95,7 +95,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Freedom is as important as breathing</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -286,7 +286,7 @@
             
               <div class="markdown-body">
                 
-                <h1><span id="简介">简介</span></h1><p><a target="_blank" rel="noopener" href="https://rclone.org/">官网</a></p>
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a target="_blank" rel="noopener" href="https://rclone.org/">官网</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.rclone.cn/">中文站</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/rclone/rclone">GitHub项目地址</a></p>
 <p><a target="_blank" rel="noopener" href="https://rclone.org/downloads/">下载地址</a></p>
@@ -304,14 +304,14 @@
 <li>使用 lsf、ljson、size、ncdu 分析和核算云存储上保存的数据</li>
 <li>将文件系统合并在一起，将多个本地和&#x2F;或云文件系统呈现为一个</li>
 </ul>
-<h1><span id="安装">安装</span></h1><p>这个工具就是一个二进制文件，可以直接<a target="_blank" rel="noopener" href="https://rclone.org/downloads/">下载</a>使用.</p>
-<h2><span id="windows">windows</span></h2><h2><span id="mac">mac</span></h2><p><code>brew install rclone</code></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>这个工具就是一个二进制文件，可以直接<a target="_blank" rel="noopener" href="https://rclone.org/downloads/">下载</a>使用.</p>
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><h2 id="mac"><a href="#mac" class="headerlink" title="mac"></a>mac</h2><p><code>brew install rclone</code></p>
 <p>验证安装成功</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">❯ rclone -V<br>rclone v1.66.0<br>- os/version: darwin 13.3.1 (64 bit)<br>- os/kernel: 22.4.0 (arm64)<br>- os/type: darwin<br>- os/arch: arm64 (ARMv8 compatible)<br>- go/version: go1.22.1<br>- go/linking: dynamic<br>- go/tags: none<br></code></pre></td></tr></table></figure>
 
 
 
-<h1><span id="可同步网盘">可同步网盘</span></h1><ul>
+<h1 id="可同步网盘"><a href="#可同步网盘" class="headerlink" title="可同步网盘"></a>可同步网盘</h1><ul>
 <li>Amazon Drive</li>
 <li>Amazon S3</li>
 <li>Backblaze B2</li>
@@ -348,7 +348,7 @@
 <li>Yandex Disk</li>
 <li>The local filesystem</li>
 </ul>
-<h1><span id="常用的rclone命令">常用的rclone命令</span></h1><ul>
+<h1 id="常用的rclone命令"><a href="#常用的rclone命令" class="headerlink" title="常用的rclone命令"></a>常用的rclone命令</h1><ul>
 <li>rclone config : 配置会话；</li>
 <li>rclone config file : 显示配置文件的路径，一般配置文件默认为 ~&#x2F;.config&#x2F;rclone&#x2F;rclone.conf</li>
 <li>rclone config show : 显示配置文件信息</li>
@@ -382,9 +382,9 @@
 <li>rclone cryptcheck : 检验远程认证；</li>
 <li>rclone about : 获取配额信息；</li>
 </ul>
-<h1><span id="选项">选项</span></h1><h2><span id="backup-dirx3ddir">–backup-dir&#x3D;DIR</span></h2><p>当使用<code>sync、copy or move</code>时，所有涉及到覆盖或删除的文件变动，原始文件会被移动到<code>--backup-dir=DIR</code>选项所设置的目录中，如果设置了后缀选项<code>--suffix</code>，则在文件后缀附加指定字符串，例如原文件’abc.txt’，如果指定<code>--suffix 20181101</code>，则<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E5%A4%87%E4%BB%BD.html&source=article&objectId=1764095">备份</a>后的文件名全称为”abc.txt20181101”      # 同步本地目录至远程目录current的文件，并且备份已经覆盖或删除文件至远程old文件夹中     $ rclone sync &#x2F;path&#x2F;to&#x2F;local remote:current –backup-dir remote:old     # 同步本地目录“.&#x2F;“至远程”test“目录，覆盖或删除的文件移动至远程old文件夹中，并将后缀名后附加”20181108“     $ sudo rclone sync .&#x2F; One:test –backup-dir One:old –suffix 20181108  </p>
-<h2><span id="bind-string">–bind string</span></h2><p>要绑定到输出连接的本地地址。这可以是IPv4地址、IPv6地址或主机名。如果主机名没有解析或解析为多个IP地址，则会出错。</p>
-<h2><span id="bwlimitx3dbandwidth_spec">–bwlimit&#x3D;BANDWIDTH_SC</span></h2><p>此选项控制带宽限制。限制可以通过两种方式指定：单个限制或依据时间表限制。指定带宽限制单位为kBytes&#x2F;s，或使用后缀b、k、M、G，默认值为0，表示不限制带宽。例如，要将带宽限制为10MB&#x2F;s，则使用–bwlimit 10M。</p>
+<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><h2 id="–backup-dir-DIR"><a href="#–backup-dir-DIR" class="headerlink" title="–backup-dir&#x3D;DIR"></a>–backup-dir&#x3D;DIR</h2><p>当使用<code>sync、copy or move</code>时，所有涉及到覆盖或删除的文件变动，原始文件会被移动到<code>--backup-dir=DIR</code>选项所设置的目录中，如果设置了后缀选项<code>--suffix</code>，则在文件后缀附加指定字符串，例如原文件’abc.txt’，如果指定<code>--suffix 20181101</code>，则<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E5%A4%87%E4%BB%BD.html&source=article&objectId=1764095">备份</a>后的文件名全称为”abc.txt20181101”      # 同步本地目录至远程目录current的文件，并且备份已经覆盖或删除文件至远程old文件夹中     $ rclone sync &#x2F;path&#x2F;to&#x2F;local remote:current –backup-dir remote:old     # 同步本地目录“.&#x2F;“至远程”test“目录，覆盖或删除的文件移动至远程old文件夹中，并将后缀名后附加”20181108“     $ sudo rclone sync .&#x2F; One:test –backup-dir One:old –suffix 20181108  </p>
+<h2 id="–bind-string"><a href="#–bind-string" class="headerlink" title="–bind string"></a>–bind string</h2><p>要绑定到输出连接的本地地址。这可以是IPv4地址、IPv6地址或主机名。如果主机名没有解析或解析为多个IP地址，则会出错。</p>
+<h2 id="–bwlimit-BANDWIDTH-SPEC"><a href="#–bwlimit-BANDWIDTH-SPEC" class="headerlink" title="–bwlimit&#x3D;BANDWIDTH_SPEC"></a>–bwlimit&#x3D;BANDWIDTH_S<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-PE.html&source=article&objectId=1764095">PE</a>C</h2><p>此选项控制带宽限制。限制可以通过两种方式指定：单个限制或依据时间表限制。指定带宽限制单位为kBytes&#x2F;s，或使用后缀b、k、M、G，默认值为0，表示不限制带宽。例如，要将带宽限制为10MB&#x2F;s，则使用–bwlimit 10M。</p>
 <p>还可以指定限制的”时间表“，这将导致在某些时间应用某些限制。要指定时间表，请将条目格式设置为”WEEKDAY-HH:MM, BANDWIDTH WEEKDAY-HH:MM, BANDWIDTH…“，其中：WEEKDAY是可选元素。它可以写成整个世界或仅使用3个第一个字符。HH:MM从00：00到23：59是一小时。</p>
 <p>例1：如下时间表避免白天工作时间，早8:00限制带宽512kBytes&#x2F;sec，12:00限制提升至10M，下午13:00降至512kBytes&#x2F;sec，18:00提升至30M，在23:00开始完全禁用，网络全速运行。      –bwlimit “08:00,512 12:00,10M 13:00,512 18:00,30M 23:00,off”  </p>
 <p>例2：周一带宽限制为512kBytes&#x2F;sec，周五结束前提升至10Mbytes&#x2F;s。周日10:00，它将设置为1Mbyte&#x2F;s。从周日的20：00起将是无限的。      –bwlimit “Mon-00:00,512 Fri-23:59,10M Sat-10:00,1M Sun-20:00,off”  </p>
@@ -393,73 +393,73 @@
 <p>带宽限制仅适用于数据传输。它们不适用于目录列表的带宽。注意，这些单位是字节&#x2F;秒,而不是比特&#x2F;秒。通常连接是以比特&#x2F;秒来测量的，转换时需要除以8。例如10Mbit&#x2F;s连接，那么在指定参数时需要计算10&#x2F;8&#x3D;1.25Mbyte&#x2F;s，即”–bwlimit 1.25M“</p>
 <p>在Unix系统（<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-Linux.html&source=article&objectId=1764095">Linux</a>, MacOS, …）上，可以通过向rclone发送SIGUSR2信号来切换带宽限制器。它允许消除长时间运行的rclone传输的限制，并在需要时将其恢复为使用<code>--bwlimit</code>指定的值。假设只有一个rclone实例在运行，你可以像这样切换限制器：      kill -SIGUSR2 $(pidof rclone)  </p>
 <p>通过如下配置可以动态更改bwlimit      rclone rc core&#x2F;bwlimit rate&#x3D;1M  </p>
-<h2><span id="buffer-sizex3dsize">–buffer-size&#x3D;SIZE</span></h2><p>设置缓冲区大小来加速文件传输。每个-transfer都会使用这么多内存来缓冲。当使用mount或cmount时，每个打开的文件描述符将使用设置的缓冲区大小的内存进行缓冲。设置为0可禁用最小内存使用的缓冲。</p>
-<h2><span id="checkersx3dn">–checkers&#x3D;N</span></h2><p>并行运行的检查器数量。检查程序在同步期间对文件进行等同性检查。对于某些存储系统（例如S3, Swift, Dropbox），这可能需要很长时间才能并行运行。默认是并行运行8个检查程序。</p>
-<h2><span id="-c-checksum">-c, –checksum</span></h2><p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。如果设置此标志，则rclone将检查文件哈希和大小以确定文件是否相等。当远程不支持设置修改时间并且需要比仅检查文件大小更准确的同步时，这非常有用。</p>
+<h2 id="–buffer-size-SIZE"><a href="#–buffer-size-SIZE" class="headerlink" title="–buffer-size&#x3D;SIZE"></a>–buffer-size&#x3D;SIZE</h2><p>设置缓冲区大小来加速文件传输。每个-transfer都会使用这么多内存来缓冲。当使用mount或cmount时，每个打开的文件描述符将使用设置的缓冲区大小的内存进行缓冲。设置为0可禁用最小内存使用的缓冲。</p>
+<h2 id="–checkers-N"><a href="#–checkers-N" class="headerlink" title="–checkers&#x3D;N"></a>–checkers&#x3D;N</h2><p>并行运行的检查器数量。检查程序在同步期间对文件进行等同性检查。对于某些存储系统（例如S3, Swift, Dropbox），这可能需要很长时间才能并行运行。默认是并行运行8个检查程序。</p>
+<h2 id="c-–checksum"><a href="#c-–checksum" class="headerlink" title="-c, –checksum"></a>-c, –checksum</h2><p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。如果设置此标志，则rclone将检查文件哈希和大小以确定文件是否相等。当远程不支持设置修改时间并且需要比仅检查文件大小更准确的同步时，这非常有用。</p>
 <p>当在对象上存储相同散列类型的远程之间进行传输时，这非常有用，例如Drive和Swift。有关哪些远程控制支持哪种散列类型的详细信息，<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/overview/&source=article&objectId=1764095">请参阅概述部分中的表</a>。</p>
 <p>例如<code>rclone --checksum sync s3:/bucket swift:/bucket</code>比没有–checksum标志的运行得快的多。使用些标志时，如果远程文件不正常，rclone将不会更新远程文件的mtimes。</p>
-<h2><span id="configx3dconfig_file">–config&#x3D;CONFIG_FILE</span></h2><p>指定rclone配置文件的位置。通常配置文件位于主目录中.config&#x2F;rclone&#x2F;rclone.conf，如果设置了XDGCONFIGHOME，它将位于XDG_CONFIG_HOME&#x2F;rclone&#x2F;rclone.conf</p>
+<h2 id="–config-CONFIG-FILE"><a href="#–config-CONFIG-FILE" class="headerlink" title="–config&#x3D;CONFIG_FILE"></a>–config&#x3D;CONFIG_FILE</h2><p>指定rclone配置文件的位置。通常配置文件位于主目录中.config&#x2F;rclone&#x2F;rclone.conf，如果设置了XDGCONFIGHOME，它将位于XDG_CONFIG_HOME&#x2F;rclone&#x2F;rclone.conf</p>
 <p>如果您运行rclone -h并查看–config选项帮助，您将看到默认位置的位置。使用此标志可覆盖配置位置，例如<code>rclone --config=&#39;.myconfig&quot;</code></p>
-<h2><span id="contimeoutx3dtime">–contimeout&#x3D;TIME</span></h2><p>设置连接超时时间。TIME为时间格式，5秒参数为5s，10分钟为10m或3h30m。连接超时是rclone等待连接进入远程<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065">对象存储</a>系统的时间。默认为1m（1分钟）</p>
-<h2><span id="dedupe-mode-mode">–dedupe-mode MODE</span></h2><p>运行重复数据删除命令模式。模式分为interactive, skip, first, newest, oldest, rename。缺省为interactive（交互式）</p>
-<h2><span id="disable-feature-feature">–disable FEATURE, FEATURE, …</span></h2><p>禁用以逗号分隔的可选功能列表。例如：禁用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E6%9C%8D%E5%8A%A1%E5%99%A8.html&source=article&objectId=1764095">服务器</a>端move和<a target="_blank" rel="noopener" href="https://cloud.tencent.com/act/pro/promotion-cvm?from_column=20065&from=20065">服务器</a>copy的使用：      –disable move, copy  </p>
+<h2 id="–contimeout-TIME"><a href="#–contimeout-TIME" class="headerlink" title="–contimeout&#x3D;TIME"></a>–contimeout&#x3D;TIME</h2><p>设置连接超时时间。TIME为时间格式，5秒参数为5s，10分钟为10m或3h30m。连接超时是rclone等待连接进入远程<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065">对象存储</a>系统的时间。默认为1m（1分钟）</p>
+<h2 id="–dedupe-mode-MODE"><a href="#–dedupe-mode-MODE" class="headerlink" title="–dedupe-mode MODE"></a>–dedupe-mode MODE</h2><p>运行重复数据删除命令模式。模式分为interactive, skip, first, newest, oldest, rename。缺省为interactive（交互式）</p>
+<h2 id="–disable-FEATURE-FEATURE-…"><a href="#–disable-FEATURE-FEATURE-…" class="headerlink" title="–disable FEATURE, FEATURE, …"></a>–disable FEATURE, FEATURE, …</h2><p>禁用以逗号分隔的可选功能列表。例如：禁用<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E6%9C%8D%E5%8A%A1%E5%99%A8.html&source=article&objectId=1764095">服务器</a>端move和<a target="_blank" rel="noopener" href="https://cloud.tencent.com/act/pro/promotion-cvm?from_column=20065&from=20065">服务器</a>copy的使用：      –disable move, copy  </p>
 <p>查看可以禁用哪些功能的列表：      –disable help  </p>
 <p>请<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/overview/%23features&source=article&objectId=1764095">参阅概览功能</a>和<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/overview/%23optional-features&source=article&objectId=1764095">可选功能</a>，了解哪个功能能做到什么。 此标志可用于调试和特殊情况（例如Google Drive将服务器端copy总量限制为100GB&#x2F;天）</p>
-<h2><span id="-n-dry-run">-n, –dry-run</span></h2><p>进行试运行而不进行永久性更改。使用它来查看rclone在没有实际操作的情况下会做什么。设置同步命令以删除目标中的文件时很有用。</p>
-<h2><span id="ignore-checksum">–ignore-checksum</span></h2><p>通常，rclone会检查传输文件的校验和是否匹配，如果没有，则会在传输时出现”损坏“错误。您可以使用些选项跳过该检查。您应该只在遇到”传输损坏“错误消息时才使用它，并且您确定可能要传输可能已损坏的数据。</p>
-<h2><span id="ignore-existing">–ignore-existing</span></h2><p>使用此选项将使rclone无条件地跳过目标上存在的所有文件，无论这些文件的内容如何。虽然这不是一般推荐的选项，但在文件因加密而发生变化的情况下，它可能很有用。但是，如果传输中断，则无法纠正部分传输。</p>
-<h2><span id="ignore-size">–ignore-size</span></h2><p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。如果设置此标志，则rclone将仅检查修改时间。如果设置–checksum，那么它只检查checksum。它还会导致rclone跳过验证传输后大小相同。</p>
+<h2 id="n-–dry-run"><a href="#n-–dry-run" class="headerlink" title="-n, –dry-run"></a>-n, –dry-run</h2><p>进行试运行而不进行永久性更改。使用它来查看rclone在没有实际操作的情况下会做什么。设置同步命令以删除目标中的文件时很有用。</p>
+<h2 id="–ignore-checksum"><a href="#–ignore-checksum" class="headerlink" title="–ignore-checksum"></a>–ignore-checksum</h2><p>通常，rclone会检查传输文件的校验和是否匹配，如果没有，则会在传输时出现”损坏“错误。您可以使用些选项跳过该检查。您应该只在遇到”传输损坏“错误消息时才使用它，并且您确定可能要传输可能已损坏的数据。</p>
+<h2 id="–ignore-existing"><a href="#–ignore-existing" class="headerlink" title="–ignore-existing"></a>–ignore-existing</h2><p>使用此选项将使rclone无条件地跳过目标上存在的所有文件，无论这些文件的内容如何。虽然这不是一般推荐的选项，但在文件因加密而发生变化的情况下，它可能很有用。但是，如果传输中断，则无法纠正部分传输。</p>
+<h2 id="–ignore-size"><a href="#–ignore-size" class="headerlink" title="–ignore-size"></a>–ignore-size</h2><p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。如果设置此标志，则rclone将仅检查修改时间。如果设置–checksum，那么它只检查checksum。它还会导致rclone跳过验证传输后大小相同。</p>
 <p>这对于向<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://onedrive.live.com/&source=article&objectId=1764095">OneDrive</a>传输文件和从OneDrive传输文件非常有用，OneDrive偶尔会误报图像文件的大小([有关详细信息，请参阅#399])[<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/ncw/rclone/issues/399%5D&source=article&objectId=1764095">https://github.com/ncw/rclone/issues/399]</a></p>
-<h2><span id="-i-ignore-times">-i, –ignore-times</span></h2><p>使用此选项将导致rclone无条件地上载所有文件，而不管目标上的文件状态如何。通常，rclone会跳过任何具有相同修改时间且大小相同的文件（如果使用–checksum，则具有相同的checksum）。</p>
-<h2><span id="immutable">–immutable</span></h2><p>将源文件和目标文件视为不可变并禁止修改。设置此选项后，将根据请求创建和删除文件，但永远不会更新现有文件。如果源和目标之间的现有文件不匹配，则rclone将给出错误源和目标存在但不匹配：修改了不可变文件。</p>
+<h2 id="i-–ignore-times"><a href="#i-–ignore-times" class="headerlink" title="-i, –ignore-times"></a>-i, –ignore-times</h2><p>使用此选项将导致rclone无条件地上载所有文件，而不管目标上的文件状态如何。通常，rclone会跳过任何具有相同修改时间且大小相同的文件（如果使用–checksum，则具有相同的checksum）。</p>
+<h2 id="–immutable"><a href="#–immutable" class="headerlink" title="–immutable"></a>–immutable</h2><p>将源文件和目标文件视为不可变并禁止修改。设置此选项后，将根据请求创建和删除文件，但永远不会更新现有文件。如果源和目标之间的现有文件不匹配，则rclone将给出错误源和目标存在但不匹配：修改了不可变文件。</p>
 <p>请注意，只有传输文件的命令（例如sync、copy、move）才会受到此行为影响，并且只允许修改。文件仍然可以被明确删除（例如delete、purge）或隐式删除（例如sync、move）。如果需要避免删除和修改，请使用copy -immutable。</p>
 <p>这用作不可变或仅附加数据集（特别是备份存档）的附加保护层，其中修改意味着损坏并且不应传播。</p>
-<h2><span id="leave-root">–leave-root</span></h2><p>在rmdirs中，即使它是空的，它也不会删除根目录。</p>
-<h2><span id="log-filex3dfile">–log-file&#x3D;FILE</span></h2><p>将输出记录输出至FILE。默认情况下，此选项无效。这对于跟踪同步和-v标志的问题非常有用。有关详细信息，请参阅<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/docs/%23logging&source=article&objectId=1764095">“日志记录部分”</a>。</p>
+<h2 id="–leave-root"><a href="#–leave-root" class="headerlink" title="–leave-root"></a>–leave-root</h2><p>在rmdirs中，即使它是空的，它也不会删除根目录。</p>
+<h2 id="–log-file-FILE"><a href="#–log-file-FILE" class="headerlink" title="–log-file&#x3D;FILE"></a>–log-file&#x3D;FILE</h2><p>将输出记录输出至FILE。默认情况下，此选项无效。这对于跟踪同步和-v标志的问题非常有用。有关详细信息，请参阅<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/docs/%23logging&source=article&objectId=1764095">“日志记录部分”</a>。</p>
 <p>请注意，如果您使用logrotate程序来<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E7%AE%A1%E7%90%86.html&source=article&objectId=1764095">管理</a>rclone的<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E6%97%A5%E5%BF%97.html&source=article&objectId=1764095">日志</a>，那么您应该使用copytruncate选项，因为rclone没有旋转日志的信号。</p>
-<h2><span id="log-format-list">–log-format LIST</span></h2><p>日志格式选项是以逗号来分隔的列表。date, time, microseconds, longfile, shortfile, UTC。默认为“date,time”</p>
-<h2><span id="log-level-level">–log-level LEVEL</span></h2><p>设置rclone的日志级别：默认的日志级别为NOTICE（警告）</p>
+<h2 id="–log-format-LIST"><a href="#–log-format-LIST" class="headerlink" title="–log-format LIST"></a>–log-format LIST</h2><p>日志格式选项是以逗号来分隔的列表。date, time, microseconds, longfile, shortfile, UTC。默认为“date,time”</p>
+<h2 id="–log-level-LEVEL"><a href="#–log-level-LEVEL" class="headerlink" title="–log-level LEVEL"></a>–log-level LEVEL</h2><p>设置rclone的日志级别：默认的日志级别为NOTICE（警告）</p>
 <ol>
 <li>DEBUG（调试）：等效于-vv。它输出大量的调试信息及有用的<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-bug.html&source=article&objectId=1764095">bug</a>报告，并真正打出rclone正在做什么。</li>
 <li>INFO（信息）：等效于-v。它全出差于每个传输的信息，默认情况下每分钟打印一次STATS。</li>
 <li>NOTICE（警告）：如果没有提供日志标志，则为默认日志级别。当工作时它输出的信息有限，只输出警告及重要的信息。</li>
 <li>ERROR（错误）：等效于-q。它只输出错误消息。</li>
 </ol>
-<h2><span id="low-level-retries-numbner">–low-level-retries NUMBNER</span></h2><p>这个选项可以控制rclone的低级重试次数，它用于重试失败的操作，通常是一个HTTP请求。例如，这可能是上传大文件的一部分。你将在日志中看到带有-v标志的低级重试。 这不应该从正常操作中的默认值更改。但是，如果您进行了大量的低级重试，则可能希望减小该值，以便rclone更快的进行高级重试，请参阅–retries标志。</p>
+<h2 id="–low-level-retries-NUMBNER"><a href="#–low-level-retries-NUMBNER" class="headerlink" title="–low-level-retries NUMBNER"></a>–low-level-retries NUMBNER</h2><p>这个选项可以控制rclone的低级重试次数，它用于重试失败的操作，通常是一个HTTP请求。例如，这可能是上传大文件的一部分。你将在日志中看到带有-v标志的低级重试。 这不应该从正常操作中的默认值更改。但是，如果您进行了大量的低级重试，则可能希望减小该值，以便rclone更快的进行高级重试，请参阅–retries标志。</p>
 <p>禁用低次重试，使用命令<code>--low-level-retries 1</code></p>
-<h2><span id="max-backlogx3dn">–max-backlog&#x3D;N</span></h2><p>设定检测或传输用于sync、copy或move的最大的的排队等候的文件积压。你可以任意设定它，它只会在队列使用的时候占用内存。需要注意的是，当使用积压时，它将以数字N单位kb的内存顺序完成。</p>
+<h2 id="–max-backlog-N"><a href="#–max-backlog-N" class="headerlink" title="–max-backlog&#x3D;N"></a>–max-backlog&#x3D;N</h2><p>设定检测或传输用于sync、copy或move的最大的的排队等候的文件积压。你可以任意设定它，它只会在队列使用的时候占用内存。需要注意的是，当使用积压时，它将以数字N单位kb的内存顺序完成。</p>
 <p>设置N的值越大则rclone可以能够更准确地计算待处理文件的数量，并能够更精准地预估完成时间。N值越小则rclone同步至远程列表的越快。</p>
-<h2><span id="max-deletex3dn">–max-delete&#x3D;N</span></h2><p>设置rclone不要删除超过N个文件。如果超出限制，那么返回错误信息并且rclone将停止正在进行的操作。</p>
-<h2><span id="max-depthx3dn">–max-depth&#x3D;N</span></h2><p>设置除了purge（清空）命令之外所有命令的递归深度。例如：<code>rclone --max-depth 1 ls remote:path</code>命令，它只能看到远程设定目录中的顶级目录文件，使用<code>--max-depth 2</code>则意味着您将看到两层目录级别中的所有文件，依次类推。</p>
+<h2 id="–max-delete-N"><a href="#–max-delete-N" class="headerlink" title="–max-delete&#x3D;N"></a>–max-delete&#x3D;N</h2><p>设置rclone不要删除超过N个文件。如果超出限制，那么返回错误信息并且rclone将停止正在进行的操作。</p>
+<h2 id="–max-depth-N"><a href="#–max-depth-N" class="headerlink" title="–max-depth&#x3D;N"></a>–max-depth&#x3D;N</h2><p>设置除了purge（清空）命令之外所有命令的递归深度。例如：<code>rclone --max-depth 1 ls remote:path</code>命令，它只能看到远程设定目录中的顶级目录文件，使用<code>--max-depth 2</code>则意味着您将看到两层目录级别中的所有文件，依次类推。</p>
 <p>由于历史的原因，lsd命令默认使用<code>--max-depth</code>为1，您可以使用命令行标志覆盖它。也可以使用<code>--max-depth 1</code>命令来禁用递归操作。需要注意的是，如果与sync并使用–delete-excluded一起使用，则会将未递归的文件视为已经排除，并将在目标上删除。如果你不确定会发生什么，请先使用–dry-run进行测试。</p>
-<h2><span id="max-transferx3dsize">–max-transfer&#x3D;SIZE</span></h2><p>设定传输的最大值，rclone当达到指定的大小时，它将停止传输，并将退出代码标记为8。默认为关闭。</p>
-<h2><span id="modify-windowx3dtime">–modify-window&#x3D;TIME</span></h2><p>检查文件是否已被修改时，这是文件可以具有的最大允许时间差，仍然被视为等效。默认值为1ns，除非被远程控制覆盖。 例如，OS X仅将修改时间存储到最近的秒，因此如果您正在读取和写入OSX文件系统，则默认情况下这将是1秒。此命令行标志允许您覆盖该计算的默认值。</p>
-<h2><span id="no-gzip-encoding">–no-gzip-en</span></h2><p>不要设置Accept-Encoding：gzip。 这意味着rclone不会自动向服务器请求压缩文件。如果您已将服务器设置为使用Content-Encoding返回文件：gzip但您上传了压缩文件，则非常有用。没有必要在正常操作中设置它，这样做会降低rclone的网络传输效率。</p>
-<h2><span id="no-update-modtime">–no-update-modtime</span></h2><p>使用此标志时，如果远程文件不正常，rclone将不会更新远程文件的修改时间。如果远程与其他<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E5%B7%A5%E5%85%B7.html&source=article&objectId=1764095">工具</a>同步（例如Google Drive客户端），则可以使用此功能。</p>
-<h2><span id="-p-progress">-P, –progress</span></h2><p>此标志使rclone更新终端中静态块中的统计信息，提供传输的实时概述。任何日志消息都将在静态块上方滚动。 日志消息会将静态块向下推到终端的底部。通常每500mS更新一次，但可以使用–stats标志覆盖此期间。这可以与–stats-one-line标志一起使用，以实现更简单的显示。注意：在Windows上，在修复此错误之前，所有非ASCII字符都将替换为。 当–progress正在使用时。</p>
-<h2><span id="-q-quiet">-q, –quiet</span></h2><p>通常，rclone输出统计信息和完成消息。 如果设置此标志，它将尽可能少地输出。</p>
-<h2><span id="retries-int">–retries int</span></h2><p>如果失败多次失败，则重试整个同步（默认值为3）。一些遥控器可能不可靠，一些重试有助于获取由于错误而未被转移的文件。使用–retries 1禁用重试。</p>
-<h2><span id="retries-sleepx3dtime">–retries-sleep&#x3D;time</span></h2><p>这将设置–retries指定的每次重试之间的间隔默认值为0.使用0禁用。</p>
-<h2><span id="size-only">–size-only</span></h2><p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。 如果设置此标志，则rclone将仅检查大小。这可以用于从Dropbox传输文件，这些文件已经被桌面同步客户端修改，该客户端没有像rclone那样设置修改时间的校验和。</p>
-<h2><span id="statsx3dtime">–stats&#x3D;TIME</span></h2><p>传输数据（sync, copy, copyto, move, moveto）的命令将定期打印数据传输统计信息以显示其进度。默认值为1m，使用0禁用。如果设置统计间隔，则所有命令都可以显示统计信息。这在运行其他命令，检查或安装时非常有用。</p>
+<h2 id="–max-transfer-SIZE"><a href="#–max-transfer-SIZE" class="headerlink" title="–max-transfer&#x3D;SIZE"></a>–max-transfer&#x3D;SIZE</h2><p>设定传输的最大值，rclone当达到指定的大小时，它将停止传输，并将退出代码标记为8。默认为关闭。</p>
+<h2 id="–modify-window-TIME"><a href="#–modify-window-TIME" class="headerlink" title="–modify-window&#x3D;TIME"></a>–modify-window&#x3D;TIME</h2><p>检查文件是否已被修改时，这是文件可以具有的最大允许时间差，仍然被视为等效。默认值为1ns，除非被远程控制覆盖。 例如，OS X仅将修改时间存储到最近的秒，因此如果您正在读取和写入OSX文件系统，则默认情况下这将是1秒。此命令行标志允许您覆盖该计算的默认值。</p>
+<h2 id="–no-gzip-encoding"><a href="#–no-gzip-encoding" class="headerlink" title="–no-gzip-encoding"></a>–no-gzip-en<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-coding.html&source=article&objectId=1764095">coding</a></h2><p>不要设置Accept-Encoding：gzip。 这意味着rclone不会自动向服务器请求压缩文件。如果您已将服务器设置为使用Content-Encoding返回文件：gzip但您上传了压缩文件，则非常有用。没有必要在正常操作中设置它，这样做会降低rclone的网络传输效率。</p>
+<h2 id="–no-update-modtime"><a href="#–no-update-modtime" class="headerlink" title="–no-update-modtime"></a>–no-update-modtime</h2><p>使用此标志时，如果远程文件不正常，rclone将不会更新远程文件的修改时间。如果远程与其他<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://xtboke.cn/tag-%E5%B7%A5%E5%85%B7.html&source=article&objectId=1764095">工具</a>同步（例如Google Drive客户端），则可以使用此功能。</p>
+<h2 id="P-–progress"><a href="#P-–progress" class="headerlink" title="-P, –progress"></a>-P, –progress</h2><p>此标志使rclone更新终端中静态块中的统计信息，提供传输的实时概述。任何日志消息都将在静态块上方滚动。 日志消息会将静态块向下推到终端的底部。通常每500mS更新一次，但可以使用–stats标志覆盖此期间。这可以与–stats-one-line标志一起使用，以实现更简单的显示。注意：在Windows上，在修复此错误之前，所有非ASCII字符都将替换为。 当–progress正在使用时。</p>
+<h2 id="q-–quiet"><a href="#q-–quiet" class="headerlink" title="-q, –quiet"></a>-q, –quiet</h2><p>通常，rclone输出统计信息和完成消息。 如果设置此标志，它将尽可能少地输出。</p>
+<h2 id="–retries-int"><a href="#–retries-int" class="headerlink" title="–retries int"></a>–retries int</h2><p>如果失败多次失败，则重试整个同步（默认值为3）。一些遥控器可能不可靠，一些重试有助于获取由于错误而未被转移的文件。使用–retries 1禁用重试。</p>
+<h2 id="–retries-sleep-time"><a href="#–retries-sleep-time" class="headerlink" title="–retries-sleep&#x3D;time"></a>–retries-sleep&#x3D;time</h2><p>这将设置–retries指定的每次重试之间的间隔默认值为0.使用0禁用。</p>
+<h2 id="–size-only"><a href="#–size-only" class="headerlink" title="–size-only"></a>–size-only</h2><p>通常，rclone会查看文件的修改时间和大小，以查看它们是否相等。 如果设置此标志，则rclone将仅检查大小。这可以用于从Dropbox传输文件，这些文件已经被桌面同步客户端修改，该客户端没有像rclone那样设置修改时间的校验和。</p>
+<h2 id="–stats-TIME"><a href="#–stats-TIME" class="headerlink" title="–stats&#x3D;TIME"></a>–stats&#x3D;TIME</h2><p>传输数据（sync, copy, copyto, move, moveto）的命令将定期打印数据传输统计信息以显示其进度。默认值为1m，使用0禁用。如果设置统计间隔，则所有命令都可以显示统计信息。这在运行其他命令，检查或安装时非常有用。</p>
 <p>默认情况下，统计信息记录在INFO级别，这意味着它们不会以默认日志级别显示NOTICE。使用–stats-log-level NOTICE或-v使它们显示。有关日志级别的详细信息，请参阅<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/docs/%23logging&source=article&objectId=1764095">“日志记录”</a>部分。</p>
 <p>请注意，在macOS上，你可以发送SIGINFO(通常是终端中的ctrl-T)以立即打印统计信息。</p>
-<h2><span id="stats-file-name-length-integer">–stats-file-name-length integer</span></h2><p>默认情况下，-stats输出将截断超过40个字符的文件名和路径。 这相当于提供–stats-file-name-length 40.使用–stats-file-name-length 0禁用由stats打印的文件名截断。</p>
-<h2><span id="stats-log-level-string">–stats-log-level string</span></h2><p>日志级别显示–stats输出。 这可以是DEBUG，INFO，NOTICE或ERROR。 默认值为INFO。 这意味着在默认的日志记录级别，即注意，统计信息将不会显示 - 如果您希望它们使用–stats-log-level NOTICE。 有关日志级别的详细信息，请参阅<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/docs/%23logging&source=article&objectId=1764095">“日志记录”</a>部分。</p>
-<h2><span id="stats-one-line">–stats-one-line</span></h2><p>指定此值后，rclone会将统计信息压缩为一行，仅显示最重要的统计信息。</p>
-<h2><span id="stats-unitx3dbitsbytes">–stats-unit&#x3D;bits|bytes</span></h2><p>默认情况下，数据传输速率将以bytes&#x2F;s打印。此选项允许以bit&#x2F;s打印数据速率</p>
-<h2><span id="suffixx3dsuffix">–suffix&#x3D;SUFFIX</span></h2><p>这仅适用于–backup-dir。 如果未设置，则–backup-dir将使用其原始名称移动文件。 如果已设置，则文件将添加SUFFIX。有关详细信息，请参阅–backup-dir。</p>
-<h2><span id="syslog">–syslog</span></h2><p>在功能强大的操作系统（不是Windows或Plan9）上，将所有日志输出发送到syslog。这对于在脚本或rclone挂载中运行rclone非常有用。</p>
-<h2><span id="syslog-facility-string">–syslog-facility string</span></h2><p>如果使用–syslog，则设置syslog工具（例如KERN，USER）。 请参阅man syslog以获取可能的设施列表。 默认设施是DAEMON。</p>
-<h2><span id="tpslimit-float">–tpslimit float</span></h2><p>每秒限制HTTP事务。 默认值为0，用于表示每秒无限制的事务数。例如，要将rclone限制为每秒10个HTTP事务使用–tpslimit 10，或者每2秒限制1个事务使用–tpslimit 0.5。当rclone每秒的事务数导致<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065">云存储</a>提供程序出现问题时（例如，禁止您或限制速率），请使用此选项。这对于rclone mount来控制使用它的应用程序的行为非常有用。另见–tpslimit-burst。</p>
-<h2><span id="tpslimit-burst-int">–tpslimit-burst int</span></h2><p>–tpslimit的最大交易次数。 （默认1） 通常–tpslimit将完成指定的每秒事务数。 但是，如果你提供–tps-burst，那么rclone可以在空闲时保存一些事务，从而提供一个高达所提供参数的突发。例如，如果你提供–tpslimit-burst 10那么如果rclone已经空闲超过10 *  -tpslimit那么它可以在它们再次受限之前非常快地完成10个事务。 这可用于提高–tpslimit的性能，而不会更改每秒的长期平均事务数。</p>
-<h2><span id="track-renames">–track-renames</span></h2><p>默认情况下，rclone不会跟踪重命名的文件，因此如果您在本地重命名文件然后将其同步到远程文件，rclone将删除远程文件上的旧文件并上传新副本。</p>
+<h2 id="–stats-file-name-length-integer"><a href="#–stats-file-name-length-integer" class="headerlink" title="–stats-file-name-length integer"></a>–stats-file-name-length integer</h2><p>默认情况下，-stats输出将截断超过40个字符的文件名和路径。 这相当于提供–stats-file-name-length 40.使用–stats-file-name-length 0禁用由stats打印的文件名截断。</p>
+<h2 id="–stats-log-level-string"><a href="#–stats-log-level-string" class="headerlink" title="–stats-log-level string"></a>–stats-log-level string</h2><p>日志级别显示–stats输出。 这可以是DEBUG，INFO，NOTICE或ERROR。 默认值为INFO。 这意味着在默认的日志记录级别，即注意，统计信息将不会显示 - 如果您希望它们使用–stats-log-level NOTICE。 有关日志级别的详细信息，请参阅<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://rclone.org/docs/%23logging&source=article&objectId=1764095">“日志记录”</a>部分。</p>
+<h2 id="–stats-one-line"><a href="#–stats-one-line" class="headerlink" title="–stats-one-line"></a>–stats-one-line</h2><p>指定此值后，rclone会将统计信息压缩为一行，仅显示最重要的统计信息。</p>
+<h2 id="–stats-unit-bits-bytes"><a href="#–stats-unit-bits-bytes" class="headerlink" title="–stats-unit&#x3D;bits|bytes"></a>–stats-unit&#x3D;bits|bytes</h2><p>默认情况下，数据传输速率将以bytes&#x2F;s打印。此选项允许以bit&#x2F;s打印数据速率</p>
+<h2 id="–suffix-SUFFIX"><a href="#–suffix-SUFFIX" class="headerlink" title="–suffix&#x3D;SUFFIX"></a>–suffix&#x3D;SUFFIX</h2><p>这仅适用于–backup-dir。 如果未设置，则–backup-dir将使用其原始名称移动文件。 如果已设置，则文件将添加SUFFIX。有关详细信息，请参阅–backup-dir。</p>
+<h2 id="–syslog"><a href="#–syslog" class="headerlink" title="–syslog"></a>–syslog</h2><p>在功能强大的操作系统（不是Windows或Plan9）上，将所有日志输出发送到syslog。这对于在脚本或rclone挂载中运行rclone非常有用。</p>
+<h2 id="–syslog-facility-string"><a href="#–syslog-facility-string" class="headerlink" title="–syslog-facility string"></a>–syslog-facility string</h2><p>如果使用–syslog，则设置syslog工具（例如KERN，USER）。 请参阅man syslog以获取可能的设施列表。 默认设施是DAEMON。</p>
+<h2 id="–tpslimit-float"><a href="#–tpslimit-float" class="headerlink" title="–tpslimit float"></a>–tpslimit float</h2><p>每秒限制HTTP事务。 默认值为0，用于表示每秒无限制的事务数。例如，要将rclone限制为每秒10个HTTP事务使用–tpslimit 10，或者每2秒限制1个事务使用–tpslimit 0.5。当rclone每秒的事务数导致<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065">云存储</a>提供程序出现问题时（例如，禁止您或限制速率），请使用此选项。这对于rclone mount来控制使用它的应用程序的行为非常有用。另见–tpslimit-burst。</p>
+<h2 id="–tpslimit-burst-int"><a href="#–tpslimit-burst-int" class="headerlink" title="–tpslimit-burst int"></a>–tpslimit-burst int</h2><p>–tpslimit的最大交易次数。 （默认1） 通常–tpslimit将完成指定的每秒事务数。 但是，如果你提供–tps-burst，那么rclone可以在空闲时保存一些事务，从而提供一个高达所提供参数的突发。例如，如果你提供–tpslimit-burst 10那么如果rclone已经空闲超过10 *  -tpslimit那么它可以在它们再次受限之前非常快地完成10个事务。 这可用于提高–tpslimit的性能，而不会更改每秒的长期平均事务数。</p>
+<h2 id="–track-renames"><a href="#–track-renames" class="headerlink" title="–track-renames"></a>–track-renames</h2><p>默认情况下，rclone不会跟踪重命名的文件，因此如果您在本地重命名文件然后将其同步到远程文件，rclone将删除远程文件上的旧文件并上传新副本。</p>
 <p>如果您使用些标志，并且远程支持服务器端副本或服务器端移动，并且源和目标具有兼容的哈希，则这将在同步操作期间跟踪重命名并执行服务器端重命名。文件将按大小和哈希匹配，如果两者都不匹配，则将考虑重命名。</p>
 <p>如果目标不支持服务器端复制或移动，则rclone将回退到默认行为并将错误级别消息记录到控制台。注意：–track-renames不支持加密。</p>
-<h2><span id="delete-before-during-after">–delete-(before, during, after)</span></h2><p>此选项允许您指定在同步文件夹时删除目标上的文件时间。在开始传输任何新文件或更新文件之前，指定值–delete-before将删除目标上存在的所有文件，但不删除源文件。这使用两次通过文件系统，一次用于删除，一次用于复制。</p>
+<h2 id="–delete-before-during-after"><a href="#–delete-before-during-after" class="headerlink" title="–delete-(before, during, after)"></a>–delete-(before, during, after)</h2><p>此选项允许您指定在同步文件夹时删除目标上的文件时间。在开始传输任何新文件或更新文件之前，指定值–delete-before将删除目标上存在的所有文件，但不删除源文件。这使用两次通过文件系统，一次用于删除，一次用于复制。</p>
 <p>指定–delete-during将在检查和上载文件时删除文件。这是最快的选项，使用的内存最少。</p>
 <p>指定–delete-after（默认值）将延迟删除文件，直到成功传输所有新的&#x2F;更新的文件。要删除的文件将在复制传递中收集，然后在复制传递成功完成后删除。要删除的文件保存在内存中，因此此模式可能会占用更多内存。这是最安全的模式，因为如果之后没有错误，它只会删除文件。如果在删除开始之前出现错误，那么由于存在IO错误，您将收不到删除文件的消息。</p>
-<h2><span id="fast-list">–fast-list</span></h2><p>任何涉及目录列表的事件（例如sync, copy, ls ）时，rclone通常会列出一个目录并在使用更多目录列表处理任何子目录之前对其进行处理。这可以并行化，前且使用最少的内存可以非常快速地工作。</p>
+<h2 id="–fast-list"><a href="#–fast-list" class="headerlink" title="–fast-list"></a>–fast-list</h2><p>任何涉及目录列表的事件（例如sync, copy, ls ）时，rclone通常会列出一个目录并在使用更多目录列表处理任何子目录之前对其进行处理。这可以并行化，前且使用最少的内存可以非常快速地工作。</p>
 <p>但是，某些云存储可以在一个（或少量）事务中列出目录下的所有文件。它些往往是基于bucket的云存储（例如S3, B2, GCS, Swift, Hubic）。</p>
 <p>如果使用–fast-list标志，则rclone将使用些方法列出目录。这将对列表产生以下影响：</p>
 <ul>
@@ -470,20 +470,20 @@
 <li>rclone应始终使用和不使用–fast-list提供相同的结果</li>
 </ul>
 <p>如果您为交易付费并且可以将整个同步列表放入内存中，则建议使用–fast-list。如果你有一个非常大的同步，那么不要使用–fast-list否则你将耗尽内存。如果你在不支持的的云存储上使用–fast-list，那么rclone将忽略它。</p>
-<h2><span id="timeoutx3dtime">–timeout&#x3D;TIME</span></h2><p>此参数将设置IO空闲超过。如果传输已经开始但是在这么长时间内变为空闲，则认为它已断开并断开连接。默认为5分钟，设置0为禁用。</p>
-<h2><span id="transfersx3dn">–transfers&#x3D;N</span></h2><p>并行运行的文件传输数。如果云存储提供大量超时，或者如果你有足够的带宽和快速的云存储，那么将它设置为较小的数字有时会很有用。默认设置是并行运行4个文件传输。</p>
-<h2><span id="-u-update">-u, –update</span></h2><p>该参数会强制rclone跳过目标上存在的任何文件，并且修改时间比源文件更新。如果现有目标文件的修改时间与源文件的修改时间相等，则在大小不同时将更新。不支持MOD时间的云存储上，检查的时间将是上传的时间。这意味着如果上传到其中一个云存储，rclone将跳过目标上存在的任何文件，并且上传的时间比源文件的修改时间更新。当转移到不直接支持MOD时间的云存储时，这很有用，因为它比–size-only检查更准确，比使用–checksum更快。</p>
-<h2><span id="use-server-modtime">–use-server-modtime</span></h2><p>一些云存储是不保留文件修改时间的（例如：Swift, S3）。在此类的云存储上，rclone将原始的modtime存储为对象的附加元数据。默认情况下，当操作modtime时，它将进行API调用以检索元数据。 使用此参数，可以禁用额外的API调有用，而是依赖服务器的修改时间。通常情况下，本地同步远程数据，只要知道本地文件比服务器文件的时间更新就足够了，因此它可以加快进程并减少所需的API调用次数。</p>
-<h2><span id="-v-w-verbose">-v, -w, –verbose</span></h2><p>使用参数-v，则rclone会返回每个传输文件的少量重要事件；</p>
+<h2 id="–timeout-TIME"><a href="#–timeout-TIME" class="headerlink" title="–timeout&#x3D;TIME"></a>–timeout&#x3D;TIME</h2><p>此参数将设置IO空闲超过。如果传输已经开始但是在这么长时间内变为空闲，则认为它已断开并断开连接。默认为5分钟，设置0为禁用。</p>
+<h2 id="–transfers-N"><a href="#–transfers-N" class="headerlink" title="–transfers&#x3D;N"></a>–transfers&#x3D;N</h2><p>并行运行的文件传输数。如果云存储提供大量超时，或者如果你有足够的带宽和快速的云存储，那么将它设置为较小的数字有时会很有用。默认设置是并行运行4个文件传输。</p>
+<h2 id="u-–update"><a href="#u-–update" class="headerlink" title="-u, –update"></a>-u, –update</h2><p>该参数会强制rclone跳过目标上存在的任何文件，并且修改时间比源文件更新。如果现有目标文件的修改时间与源文件的修改时间相等，则在大小不同时将更新。不支持MOD时间的云存储上，检查的时间将是上传的时间。这意味着如果上传到其中一个云存储，rclone将跳过目标上存在的任何文件，并且上传的时间比源文件的修改时间更新。当转移到不直接支持MOD时间的云存储时，这很有用，因为它比–size-only检查更准确，比使用–checksum更快。</p>
+<h2 id="–use-server-modtime"><a href="#–use-server-modtime" class="headerlink" title="–use-server-modtime"></a>–use-server-modtime</h2><p>一些云存储是不保留文件修改时间的（例如：Swift, S3）。在此类的云存储上，rclone将原始的modtime存储为对象的附加元数据。默认情况下，当操作modtime时，它将进行API调用以检索元数据。 使用此参数，可以禁用额外的API调有用，而是依赖服务器的修改时间。通常情况下，本地同步远程数据，只要知道本地文件比服务器文件的时间更新就足够了，因此它可以加快进程并减少所需的API调用次数。</p>
+<h2 id="v-w-–verbose"><a href="#v-w-–verbose" class="headerlink" title="-v, -w, –verbose"></a>-v, -w, –verbose</h2><p>使用参数-v，则rclone会返回每个传输文件的少量重要事件；</p>
 <p>使用参数-vv，则rclone会返回每个传输文件执行每一步的详细的信息。</p>
-<h2><span id="-v-version">-V, –VERSION</span></h2><p>显示rclone版本信息</p>
-<h1><span id="语法及示例">语法及示例</span></h1><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"><span class="hljs-comment"># 本地到网盘</span><br>rclone [功能选项] <span class="hljs-variable">&lt;本地路径&gt;</span> <span class="hljs-variable">&lt;配置名称:路径&gt;</span> [参数] [参数]<br><span class="hljs-comment"># 网盘到本地</span><br>rclone [功能选项] <span class="hljs-variable">&lt;配置名称:路径&gt;</span> <span class="hljs-variable">&lt;本地路径&gt;</span> [参数] [参数]<br><span class="hljs-comment"># 网盘到网盘</span><br>rclone [功能选项] <span class="hljs-variable">&lt;配置名称:路径&gt;</span> <span class="hljs-variable">&lt;配置名称:路径&gt;</span> [参数] [参数]<br> <br><span class="hljs-comment"># [参数]为可选项</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="V-–VERSION"><a href="#V-–VERSION" class="headerlink" title="-V, –VERSION"></a>-V, –VERSION</h2><p>显示rclone版本信息</p>
+<h1 id="语法及示例"><a href="#语法及示例" class="headerlink" title="语法及示例"></a>语法及示例</h1><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"><span class="hljs-comment"># 本地到网盘</span><br>rclone [功能选项] <span class="hljs-variable">&lt;本地路径&gt;</span> <span class="hljs-variable">&lt;配置名称:路径&gt;</span> [参数] [参数]<br><span class="hljs-comment"># 网盘到本地</span><br>rclone [功能选项] <span class="hljs-variable">&lt;配置名称:路径&gt;</span> <span class="hljs-variable">&lt;本地路径&gt;</span> [参数] [参数]<br><span class="hljs-comment"># 网盘到网盘</span><br>rclone [功能选项] <span class="hljs-variable">&lt;配置名称:路径&gt;</span> <span class="hljs-variable">&lt;配置名称:路径&gt;</span> [参数] [参数]<br> <br><span class="hljs-comment"># [参数]为可选项</span><br><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">同步本地/data/file的文件夹内容到tencent-cos存储下的/beifen文件夹中,并且排除/root/excludes.txt中指定的文件内容</span><br>rclone sync /data/file tencent-cos:/beifen --exclude-from &#x27;/root/excludes.txt&#x27;<br><span class="hljs-meta prompt_"> </span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">两个网盘文件同步</span><br>rclone copy 配置网盘名称1:网盘路径 配置网盘名称2:网盘路径<br></code></pre></td></tr></table></figure>
 
 
 
-<h1><span id="文章来源">文章来源</span></h1><ul>
+<h1 id="文章来源"><a href="#文章来源" class="headerlink" title="文章来源"></a>文章来源</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1764095">https://cloud.tencent.com/developer/article/1764095</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_22903531/article/details/131434705">https://blog.csdn.net/qq_22903531/article/details/131434705</a></li>
 </ul>
@@ -829,10 +829,6 @@
   <script  src="/js/local-search.js" ></script>
 
 
-
-
-  
-<script src="/js/toc.js"></script>
 
 
 
