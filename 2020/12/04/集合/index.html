@@ -1,0 +1,851 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="集合框架,用于存储数据的容器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java集合">
+<meta property="og:url" content="http://www.lifeab.com/2020/12/04/%E9%9B%86%E5%90%88/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="集合框架,用于存储数据的容器。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404120948461.png">
+<meta property="article:published_time" content="2020-12-04T02:10:17.000Z">
+<meta property="article:modified_time" content="2024-04-12T02:22:33.158Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="集合">
+<meta property="article:tag" content="list">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404120948461.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>java集合 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="java集合"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-12-04 10:10" pubdate>
+          2020年12月4日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">java集合</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一-集合和数组的区别"><a href="#一-集合和数组的区别" class="headerlink" title="一. 集合和数组的区别"></a>一. 集合和数组的区别</h1><p>1.<strong>数组是固定长度的；集合可变长度的。</strong></p>
+<p>2.数组可以存储基本数据类型，也可以存储引用数据类型；集合只能存储引用数据类型。</p>
+<p>3.数组存储的元素必须是同一个数据类型；集合存储的对象可以是不同数据类型。</p>
+<h1 id="二-常用的集合类有哪些？"><a href="#二-常用的集合类有哪些？" class="headerlink" title="二. 常用的集合类有哪些？"></a>二. 常用的集合类有哪些？</h1><p><strong>Map接口和Collection接口是所有集合框架的父接口：</strong></p>
+<p>1.Collection接口的子接口包括：Set接口和List接口</p>
+<p>2.Map接口的实现类主要有：HashMap、TreeMap、Hashtable、ConcurrentHashMap以及Properties等</p>
+<p>3.Set接口的实现类主要有：HashSet、TreeSet、LinkedHashSet等</p>
+<p>4.List接口的实现类主要有：ArrayList、LinkedList、Stack以及Vector等</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404120948461.png" srcset="/img/loading.gif" lazyload alt="image-20240412094848348"></p>
+<h1 id="三-List-Set-Map用法"><a href="#三-List-Set-Map用法" class="headerlink" title="三. List Set Map用法:"></a>三. List Set Map用法:</h1><p>Collection集合主要有List和Set两大接口</p>
+<p>1.List：一个有序（元素存入集合的顺序和取出的顺序一致）容器，元素可以重复，可以插入多个null元素，元素都有索引。常用的实现类有 ArrayList、LinkedList 和 Vector。</p>
+<p>2.Set：一个无序（存入和取出顺序有可能不一致）容器，不可以存储重复元素，只允许存入一个null元素，必须保证元素唯一性。Set 接口常用实现类是 HashSet、LinkedHashSet 以及 TreeSet。</p>
+<p>Map是一个键值对集合，存储键、值和之间的映射。Key无序，唯一；value 不要求有序，允许重复。Map没有继承于Collection接口，从Map集合中检索元素时，只要给出键对象，就会返回对应的值对象。</p>
+<p>Map 的常用实现类：HashMap、TreeMap、HashTable、LinkedHashMap、ConcurrentHashMap</p>
+<h1 id="四-集合框架底层数据结构"><a href="#四-集合框架底层数据结构" class="headerlink" title="四. 集合框架底层数据结构"></a>四. 集合框架底层数据结构</h1><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a><strong>Collection</strong></h2><h3 id="1-List"><a href="#1-List" class="headerlink" title="1.List"></a><strong>1.List</strong></h3><ul>
+<li><p><u><strong>Arraylist：Object数组</strong></u></p>
+</li>
+<li><p>Vector：Object数组</p>
+</li>
+<li><p>LinkedList：双向循环链表</p>
+</li>
+</ul>
+<h3 id="2-Set"><a href="#2-Set" class="headerlink" title="2.Set"></a><strong>2.Set</strong></h3><ul>
+<li><p><strong>HashSet（无序，唯一）：基于 HashMap 实现的，底层采用 HashMap 来保存元素</strong></p>
+</li>
+<li><p>LinkedHashSet：LinkedHashSet 继承与 HashSet，并且其内部是通过 LinkedHashMap 来实现的。有点类似于我们之前说的LinkedHashMap 其内部是基于 Hashmap 实现一样，不过还是有一点点区别的。</p>
+</li>
+<li><p>TreeSet（有序，唯一）：红黑树(自平衡的排序二叉树。)</p>
+</li>
+</ul>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a><strong>Map</strong></h2><ul>
+<li><p><strong>HashMap</strong>：JDK1.8之前HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）.JDK1.8以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为8）时，将链表转化为红黑树，以减少搜索时间</p>
+</li>
+<li><p><strong>LinkedHashMap</strong>：LinkedHashMap 继承自 HashMap，所以它的底层仍然是基于拉链式散列结构即由数组和链表或红黑树组成。另外，LinkedHashMap 在上面结构的基础上，增加了一条双向链表，使得上面的结构可以保持键值对的插入顺序。同时通过对链表进行相应的操作，实现了访问顺序相关逻辑。</p>
+</li>
+<li><p><strong>HashTable</strong>：数组+链表组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的</p>
+</li>
+<li><p><strong>TreeMap</strong>：红黑树（自平衡的排序二叉树）</p>
+</li>
+</ul>
+<h1 id="五-哪些集合类是线程安全的？"><a href="#五-哪些集合类是线程安全的？" class="headerlink" title="五. 哪些集合类是线程安全的？"></a>五. 哪些集合类是线程安全的？</h1><ul>
+<li><p><strong>vector</strong>：就比arraylist多了个同步化机制（线程安全），因为效率较低，现在已经不太建议使用。</p>
+</li>
+<li><p><strong>statck</strong>：堆栈类，先进后出。</p>
+</li>
+<li><p><strong>hashtable</strong>：就比hashmap多了个线程安全。</p>
+</li>
+<li><p><strong>enumeration</strong>：枚举，相当于迭代器。</p>
+</li>
+</ul>
+<h1 id="六-怎么确保一个集合不能被修改？"><a href="#六-怎么确保一个集合不能被修改？" class="headerlink" title="六. 怎么确保一个集合不能被修改？"></a>六. 怎么确保一个集合不能被修改？</h1><p>可以使用 <code>Collections. unmodifiableCollection(Collection c)</code> 方法来创建一个只读集合，这样改变集合的任何操作都会抛出 <code>Java. lang. UnsupportedOperationException</code> 异常。</p>
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;String&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;();<br>list.add(<span class="hljs-string">&quot;x&quot;</span>);<br>Collection&lt;String&gt; clist = Collections.unmodifiableCollection(list);<br>clist.add(<span class="hljs-string">&quot;y&quot;</span>);<span class="hljs-comment">//运行时此行报错</span><br>System.out.println(list.size());<br></code></pre></td></tr></table></figure>
+
+<h1 id="七-迭代器-Iterator"><a href="#七-迭代器-Iterator" class="headerlink" title="七. 迭代器 Iterator"></a>七. 迭代器 Iterator</h1><blockquote>
+<p><strong>terator 接口提供遍历任何 Collection 的接口</strong>。我们可以从一个 Collection 中使用迭代器方法来获取迭代器实例。迭代器取代了 Java 集合框架中的 Enumeration，<strong>迭代器允许调用者在迭代过程中移除元素。</strong></p>
+</blockquote>
+<h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用?"></a>怎么用?</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;String&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;();<br>Iterator&lt;string&gt; it =list.iterator();<br><span class="hljs-keyword">while</span>(it. hasNext())&#123;<br>	<span class="hljs-type">String</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> it. next();<br>	System.out.println(obj);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点?"></a>特点?</h2><blockquote>
+<p>Iterator 的特点是<strong>只能单向遍历</strong>，但是更加<strong>安全</strong>，因为它可以确保，在当前遍历的集合元素被更改的时候，就会抛出 <code>ConcurrentModificationException</code> 异常。</p>
+</blockquote>
+<h2 id="边遍历边修改Collection的唯一正确方式"><a href="#边遍历边修改Collection的唯一正确方式" class="headerlink" title="边遍历边修改Collection的唯一正确方式?"></a>边遍历边修改<code>Collection</code>的唯一正确方式?</h2><blockquote>
+<p><strong>使用 Iterator.remove() 方法</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//正确</span><br>Iterator&lt;Integer&gt; it = list.iterator();<br><span class="hljs-keyword">while</span>(it.hasNext())&#123;<br>  <span class="hljs-comment">// do something</span><br>	it.remove();<br>&#125;<br><span class="hljs-comment">//错误</span><br><span class="hljs-comment">//运行以下错误代码会报 ConcurrentModificationException 异常。这是因为当使用 foreach(for(Integer i : list)) 语句时，会自动生成一个iterator 来遍历该 list，但同时该 list 正在被 Iterator.remove() 修改。Java 一般不允许一个线程在遍历 Collection 时另一个线程修改它。</span><br><span class="hljs-keyword">for</span>(Integer i : list)&#123; <br>  list.remove(i)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="八-遍历-List"><a href="#八-遍历-List" class="headerlink" title="八. 遍历 List"></a>八. 遍历 List</h1><h2 id="遍历方式有以下几种："><a href="#遍历方式有以下几种：" class="headerlink" title="遍历方式有以下几种："></a>遍历方式有以下几种：</h2><ol>
+<li><strong>for 循环遍历</strong>，基于计数器。在集合外部维护一个计数器，然后依次读取每一个位置的元素，当读取到最后一个元素后停止。</li>
+<li><strong>迭代器遍历，Iterator</strong>。Iterator 是面向对象的一个设计模式，目的是屏蔽不同数据集合的特点，统一遍历集合的接口。Java 在 Collections 中支持了 Iterator 模式。</li>
+<li><strong>foreach 循环遍历</strong>。foreach 内部也是采用了 Iterator 的方式实现，使用时不需要显式声明 Iterator 或计数器。优点是代码简洁，不易出错；缺点是只能做简单的遍历，不能在遍历过程中操作数据集合，例如删除、替换。</li>
+</ol>
+<h2 id="最佳实践："><a href="#最佳实践：" class="headerlink" title="最佳实践："></a><strong>最佳实践</strong>：</h2><p>​		<code>Java Collections</code> 框架中提供了一个 <strong><code>RandomAccess</code></strong> 接口，用来标记 <code>List</code> 实现是否支持 <code>Random Access</code>。</p>
+<p>​		如果一个集合实现了该接口，就意味着它支持 <code>Random Access</code>，按位置读取元素的平均时间复杂度为 <code>O(1)</code>，如<code>ArrayList</code>。</p>
+<p>​		如果没有实现该接口，表示不支持 <code>Random Access</code>，如<code>LinkedList</code>。</p>
+<p>​	 <strong>推荐的做法就是</strong>，<strong>支持 Random Access 的列表可用 for 循环遍历，否则建议用 Iterator 或 foreach 遍历。</strong></p>
+<h1 id="九-数组和-List-转换"><a href="#九-数组和-List-转换" class="headerlink" title="九. 数组和 List 转换"></a>九. 数组和 <code>List</code> 转换</h1><ul>
+<li>**数组转 <code>List</code>**：使用 <code>Arrays. asList(array)</code> 进行转换。</li>
+<li><strong><code>List</code> 转数组</strong>：使用 <code>List</code> 自带的 <code>toArray()</code> 方法。</li>
+</ul>
+<h1 id="十-ArrayList-和-LinkedList-的区别是什么？"><a href="#十-ArrayList-和-LinkedList-的区别是什么？" class="headerlink" title="十. ArrayList 和 LinkedList 的区别是什么？"></a>十. ArrayList 和 LinkedList 的区别是什么？</h1><ul>
+<li><p><strong>数据结构实现</strong>：<code>ArrayList</code> 是<strong>动态数组</strong>的数据结构实现，而 <code>LinkedList</code> 是<strong>双向链表</strong>的数据结构实现。</p>
+</li>
+<li><p><strong>随机访问效率</strong>：<code>ArrayList</code> 比 <code>LinkedList</code> 在随机访问的时候效率要高，因为 <code>LinkedList</code> 是线性的数据存储方式，所以需要移动指针从前往后依次查找。</p>
+</li>
+<li><p><strong>增加和删除效率</strong>：在非首尾的增加和删除操作，<code>LinkedList</code> 要比 <code>ArrayList</code> 效率要高，因为 <code>ArrayList</code> 增删操作要影响数组内的其他数据的下标。</p>
+</li>
+<li><p><strong>内存空间占用</strong>：<code>LinkedList</code> 比 <code>ArrayList</code> 更占内存，因为 <code>LinkedList</code> 的节点除了存储数据，还存储了两个引用，一个指向前一个元素，一个指向后一个元素。</p>
+</li>
+<li><p><strong>线程安全</strong>：<code>ArrayList</code> 和 <code>LinkedList</code> 都是不同步的，也就是不保证线程安全；</p>
+</li>
+</ul>
+<blockquote>
+<p><u>**综合来说，在需要频繁读取集合中的元素时，更推荐使用 <code>ArrayList</code>，而在插入和删除操作较多时，更推荐使用 <code>LinkedList</code>**。</u></p>
+</blockquote>
+<p><strong>补充：数据结构基础之双向链表</strong></p>
+<blockquote>
+<p>双向链表也叫双链表，是链表的一种，它的每个数据结点中都有两个指针，分别指向直接后继和直接前驱。所以，从双向链表中的任意一个结点开始，都可以很方便地访问它的前驱结点和后继结点。</p>
+</blockquote>
+<h1 id="十一-ArrayList-和-Vector-的区别是什么？"><a href="#十一-ArrayList-和-Vector-的区别是什么？" class="headerlink" title="十一. ArrayList 和 Vector 的区别是什么？"></a>十一. ArrayList 和 Vector 的区别是什么？</h1><ul>
+<li><p>这两个类都实现了 <code>List</code> 接口（<code>List</code> 接口继承了 <code>Collection</code> 接口），他们<strong>都是有序集合</strong></p>
+</li>
+<li><p><strong>线程安全</strong>：<code>Vector</code> 使用了 <code>Synchronized</code> 来实现线程同步，是线程安全的，而 <code>ArrayList</code> 是非线程安全的。</p>
+</li>
+<li><p><strong>性能</strong>：<code>ArrayList</code> 在性能方面要优于 <code>Vector</code>。</p>
+</li>
+<li><p><strong>扩容</strong>：<code>ArrayList</code> 和 <code>Vector</code> 都会根据实际的需要动态的调整容量，只不过在 <code>Vector</code> 扩容每次会增加 <code>1 倍</code>，而 <code>ArrayList</code> 只会增加 <code>50%</code>。</p>
+</li>
+</ul>
+<p><code>Vector</code>类的所有方法都是同步的。可以由两个线程安全地访问一个Vector对象、但是一个线程访问<code>Vector</code>的话代码要在同步操作上耗费大量的时间。</p>
+<p><code>Arraylist</code>不是同步的，所以在不需要保证线程安全时时建议使用<code>Arraylist</code>。</p>
+<h1 id="十二-多线程场景下如何使用-ArrayList？"><a href="#十二-多线程场景下如何使用-ArrayList？" class="headerlink" title="十二. 多线程场景下如何使用 ArrayList？"></a>十二. 多线程场景下如何使用 ArrayList？</h1><p><code>ArrayList</code> 不是线程安全的，如果遇到多线程场景，可以通过 <code>Collections</code> 的 <code>synchronizedList</code> 方法将其转换成线程安全的容器后再使用。例如像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;string&gt; synchronizedList = Collections.synchronizedList(list);<br>synchronizedList.add(<span class="hljs-string">&quot;aaa&quot;</span>);<br>synchronizedList.add(<span class="hljs-string">&quot;bbb&quot;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i &lt; synchronizedList.size(); i++) &#123; <br>  System.out.println(synchronizedList.get(i));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="十三-说一下-HashMap-的实现原理？"><a href="#十三-说一下-HashMap-的实现原理？" class="headerlink" title="十三. 说一下 HashMap 的实现原理？"></a>十三. 说一下 HashMap 的实现原理？</h1><p><strong>HashMap概述</strong>：HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并<strong>允许使用<code>null</code>值和<code>null</code>键</strong>。此类<strong>不保证映射的顺序</strong>，特别是它不保证该顺序恒久不变。</p>
+<h2 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a><strong>HashMap的数据结构</strong></h2><p>在<code>Java</code>编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，<code>HashMap</code>也不例外。**<code>HashMap</code>实际上是一个“链表散列”的数据结构，即数组和链表的结合体。**</p>
+<h2 id="HashMap存取值原理及过程"><a href="#HashMap存取值原理及过程" class="headerlink" title="HashMap存取值原理及过程"></a>HashMap存取值原理及过程</h2><p><strong>HashMap 基于 Hash 算法实现的</strong></p>
+<p>1.当我们往<code>Hashmap</code>中<code>put</code>元素时，利用<code>key</code>的<code>hashCode</code>重新<code>hash</code>计算出当前对象的元素在数组中的下标</p>
+<p>2.存储时，如果出现<code>hash</code>值相同的<code>key</code>，此时有两种情况。(1)如果<code>key</code>相同，则覆盖原始值；(2)如果<code>key</code>不同（出现冲突），则将当前的<code>key-value</code>放入链表中</p>
+<p>3.获取时，直接找到<code>hash</code>值对应的下标，在进一步判断<code>key</code>是否相同，从而找到对应值。</p>
+<p>4.理解了以上过程就不难明白<u><strong><code>HashMap</code>是如何解决<code>hash</code>冲突的问题，核心就是使用了数组的存储方式，然后将冲突的<code>key</code>的对象放入链表中，一旦发现冲突就在链表中做进一步的对比。</strong></u></p>
+<p><strong>需要注意<code>Jdk 1.8</code>中对<code>HashMap</code>的实现做了优化，当链表中的节点数据超过八个之后，该链表会转为红黑树来提高查询效率，从原来的<code>O(n)</code>到<code>O(logn)</code></strong></p>
+<h1 id="十四-为什么HashMap中String、Integer这样的包装类适合作为K？"><a href="#十四-为什么HashMap中String、Integer这样的包装类适合作为K？" class="headerlink" title="十四. 为什么HashMap中String、Integer这样的包装类适合作为K？"></a>十四. 为什么HashMap中String、Integer这样的包装类适合作为K？</h1><p>答：<code>String</code>、<code>Integer</code>等包装类的特性能够保证<code>Hash</code>值的不可更改性和计算准确性，能够有效的减少Hash碰撞的几率</p>
+<p>都是<code>final</code>类型，即不可变性，保证<code>key</code>的不可更改性，不会存在获取<code>hash</code>值不同的情况</p>
+<p>内部已重写了<code>equals()</code>、<code>hashCode()</code>等方法，遵守了<code>HashMap</code>内部的规范（不清楚可以去上面看看<code>putValue</code>的过程），不容易出现Hash值计算错误的情况；</p>
+<p>转载:<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MvdGDLm2qhwbgz6GxEV5vQ">https://mp.weixin.qq.com/s/MvdGDLm2qhwbgz6GxEV5vQ</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9B%86%E5%90%88/" class="print-no-link">#集合</a>
+      
+        <a href="/tags/list/" class="print-no-link">#list</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>java集合</div>
+      <div>http://www.lifeab.com/2020/12/04/集合/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年12月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/04/%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E5%B7%A5%E5%85%B7%E7%B1%BB/" title="获取ip地址工具类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">获取ip地址工具类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/02/springboot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" title="springboot单元测试">
+                        <span class="hidden-mobile">springboot单元测试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
