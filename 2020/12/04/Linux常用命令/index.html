@@ -23,13 +23,15 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="linux常用命令">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040920679.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040924040.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/30/5Ss9Fx7OVICRnKN.png">
 <meta property="article:published_time" content="2020-12-04T02:10:17.000Z">
-<meta property="article:modified_time" content="2024-04-09T03:04:55.085Z">
+<meta property="article:modified_time" content="2024-06-04T09:44:05.991Z">
 <meta property="article:author" content="John Wick">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.loli.net/2021/01/30/5Ss9Fx7OVICRnKN.png">
+<meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040920679.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          2.6k 字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
         
-          15 分钟
+          22 分钟
         
       </span>
     
@@ -298,82 +300,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">友好展示信息</span><br>ll -h<br><span class="hljs-meta prompt_"># </span><span class="language-bash">展示指定目录的文件</span><br>ll -h /etc<br><span class="hljs-meta prompt_">#</span><span class="language-bash">切换到上次访问目录,只能最后两个目录间切换</span><br>cd -<br></code></pre></td></tr></table></figure>
+                <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="展示路径文件"><a href="#展示路径文件" class="headerlink" title="展示路径文件"></a>展示路径文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">友好展示信息</span><br>ll -h<br><span class="hljs-meta prompt_"># </span><span class="language-bash">展示指定目录的文件</span><br>ll -h /etc<br><span class="hljs-meta prompt_">#</span><span class="language-bash">切换到上次访问目录,只能最后两个目录间切换</span><br>cd -<br></code></pre></td></tr></table></figure>
 
-<h1 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">创建多层目录</span><br>mkdir /t1/t2<br><span class="hljs-meta prompt_"># </span><span class="language-bash">t3目录不存在的话则先创建t3</span><br>mkdir -p t3/t4<br></code></pre></td></tr></table></figure>
+<h2 id="显示主机名"><a href="#显示主机名" class="headerlink" title="显示主机名"></a><strong>显示主机名</strong></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">hostname        #显示完整名字<br>hostname -s 	  #显示短格式名字<br>hostname -a	    #显示主机别名<br>hostname -i	    #显示主机ip<br></code></pre></td></tr></table></figure>
 
-
-
-<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a><strong>端口</strong></h1><blockquote>
-<p>netstat -an		  #<strong>查看本机启用的端口</strong></p>
-</blockquote>
-<blockquote>
-<p>netstat -tuln	#查看本机开了哪些端口和正在被远程调用的调用方</p>
-<p>ipnetstat -tuln	查看本机开了哪些端口和正在被远程调用的调用方ip</p>
-</blockquote>
-<blockquote>
-<p>telnet [域名或ip] [端口]	#远程管理与端口探测命令<br> eg:telnet 192.168.0.252 80	#探测服务器80端口,成功的话没有提示,进入空白页,退出摁ctrl+],退回到telnet界面,输入quit命令退出</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">1、开放端口</span><br>firewall-cmd --zone=public --add-port=5672/tcp --permanent   # 开放5672端口<br>firewall-cmd --zone=public --remove-port=5672/tcp --permanent  #关闭5672端口<br>firewall-cmd --reload   # 配置立即生效<br><span class="hljs-meta prompt_">#</span><span class="language-bash">2、查看防火墙所有开放的端口</span><br>firewall-cmd --zone=public --list-ports<br><span class="hljs-meta prompt_">#</span><span class="language-bash">3.、关闭防火墙</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果要开放的端口太多，嫌麻烦，可以关闭防火墙，安全性自行评估</span><br>systemctl stop firewalld.service<br><span class="hljs-meta prompt_">#</span><span class="language-bash">4、查看防火墙状态</span><br> firewall-cmd --state<br><span class="hljs-meta prompt_">#</span><span class="language-bash">5、查看监听的端口</span><br>netstat -lnpt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">PS:centos7默认没有 netstat 命令，需要安装 net-tools 工具，yum install -y net-tools</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">6、检查端口被哪个进程占用</span><br>netstat -lnpt |grep 5672<br><span class="hljs-meta prompt_"># </span><span class="language-bash">7 查看进程的详细信息</span><br>ps 6832<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -verbose #查看jdk安装路径.最后两行为jdk安装路径<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="配置ip-修改网卡信息文件"><a href="#配置ip-修改网卡信息文件" class="headerlink" title="配置ip,修改网卡信息文件"></a><strong>配置ip,修改网卡信息文件</strong></h1><blockquote>
-<p>vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-etho	</p>
-</blockquote>
-<h1 id="后台启动jar并把日志输出到指定文件中-启动springboot项目"><a href="#后台启动jar并把日志输出到指定文件中-启动springboot项目" class="headerlink" title="后台启动jar并把日志输出到指定文件中(启动springboot项目)"></a><strong>后台启动jar并把日志输出到指定文件中(启动springboot项目)</strong></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup java -jar my-blog.jar &gt; mylog.txt  &amp; <br><br>nohup java -jar my-blog.jar &gt; catalina.out 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
-
-
-
-
-<h1 id="查看系统是32位或64位"><a href="#查看系统是32位或64位" class="headerlink" title="查看系统是32位或64位"></a><strong>查看系统是32位或64位</strong></h1><blockquote>
-<p>getconf LONG_BIT  </p>
-</blockquote>
-<h1 id="复制解压"><a href="#复制解压" class="headerlink" title="复制解压"></a><strong>复制解压</strong></h1><p>压缩包格式:</p>
-<ul>
-<li>*.tar 	打包,不压缩.</li>
-<li>*.tar.gz 打包并压缩</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp -r 源文件夹 目的地  #Linux复制文件夹,-r表示递归<br>cp 文件 新目录/新文件名 #复制并改名<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">压缩 -zcvf参数顺序不能变.eg压缩当前目录下全部文件:tar -zcvf hehe.tar.gz *</span><br>tar -zcvf 压缩包名字.tar.gz 需压缩的文件<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">解压缩到当前目录</span><br>tar -zxvf 压缩包名<br><span class="hljs-meta prompt_">#</span><span class="language-bash">解压缩到指定目录</span><br>tar -zxvf 压缩包名 -C 指定目录地址<br><br></code></pre></td></tr></table></figure>
-
-<h1 id="查看服务器DNS信息"><a href="#查看服务器DNS信息" class="headerlink" title="查看服务器DNS信息:"></a><strong>查看服务器DNS信息:</strong></h1><blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash"><span class="hljs-built_in">cat</span> /etc/resolv.conf</span><br></code></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">nslookup 127.0.0.1 | grep Server</span><br></code></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>修改DNS服务器非常简单，只需要修改<code>/etc/resolv.conf</code>配置文件即可。那么修改DNS是否需要重启某些服务，答案是不需要。修改后会立即生效，不需做任何额外处理。</p>
-</blockquote>
-<h1 id="ping：测试网络命令"><a href="#ping：测试网络命令" class="headerlink" title="ping：测试网络命令"></a><strong>ping：测试网络命令</strong></h1><blockquote>
-<pre><code class="hljs">  -c count：ping的次数
--W timeout：超时时间，配合-c使用
--I ipaddress：指定用自己主机的IP去ping对方主机
--s size：每次ping发出的数据包大小，最大值65507
--f：竭尽自己主机的能力发出数据包
-</code></pre>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@centos7 ~]# ping -c1 -W1 192.168.0.6 #脚本中常用的ping测试，ping一次，超时时间1s<br>[root@centos7 ~]# ping -s 65507 -f 192.168.0.6 #竭尽自己所能，向192.168.0.6发出大数据包，ddos攻击<br></code></pre></td></tr></table></figure>
-
-<h1 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件:"></a><strong>查找文件:</strong></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">find / -name httpd.conf　　#在根目录下查找文件httpd.conf，表示在整个硬盘查找<br><br>find /etc -name httpd.conf　　#在/etc目录下文件httpd.conf<br><br>find /etc -name &#x27;*srm*&#x27;　　#使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件<br><br>find . -name &#x27;srm*&#x27; 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件<br><br>sudo find / -type d -name *tomcat*  #查找文件夹位置,文件夹名字不确定的用*补上<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="显示主机名"><a href="#显示主机名" class="headerlink" title="显示主机名:"></a><strong>显示主机名:</strong></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">hostname        #显示完整名字<br>hostname -s 	  #显示短格式名字<br>hostname -a	    #显示主机别名<br>hostname -i	    #显示主机ip<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="查看DNS服务器地址"><a href="#查看DNS服务器地址" class="headerlink" title="查看DNS服务器地址:"></a><strong>查看DNS服务器地址:</strong></h1><blockquote>
-<p>cat &#x2F;etc&#x2F;resolv.conf</p>
-</blockquote>
-<h1 id="命令行登陆linux服务器"><a href="#命令行登陆linux服务器" class="headerlink" title="命令行登陆linux服务器:"></a><strong>命令行登陆linux服务器:</strong></h1><blockquote>
-<p>ssh -p22 用户名@ip<br>如果不输用户名,则以当前用户名登陆linux服务器,第一次连接会下载服务器公钥,选yes.</p>
-</blockquote>
-<h1 id="上传下载"><a href="#上传下载" class="headerlink" title="上传下载:"></a><strong>上传下载:</strong></h1><blockquote>
+<h2 id="上传下载"><a href="#上传下载" class="headerlink" title="上传下载:"></a><strong>上传下载:</strong></h2><blockquote>
 <p>scp [r] 用户名@ip:文件路径 本地路径 #下载文件 -r表示下载文件夹</p>
 </blockquote>
 <blockquote>
@@ -383,7 +314,106 @@
 <p>wget <a target="_blank" rel="noopener" href="http://soft.vpser.net/Inmp/Inmp1.1-full.tar.gz">http://soft.vpser.net/Inmp/Inmp1.1-full.tar.gz</a>   #下载命令</p>
 </blockquote>
 <p>crl软件按:alt p</p>
-<h1 id="浏览文件内容"><a href="#浏览文件内容" class="headerlink" title="浏览文件内容"></a>浏览文件内容</h1><ul>
+<h2 id="grep和管道"><a href="#grep和管道" class="headerlink" title="grep和管道"></a>grep和管道</h2><p><code>|</code> 是管道符号,可连接不同命令</p>
+<p>grep是正则表达式,用于字符串搜索.格式:<code>grep 字符串</code> 搜索的文件,eg:<code>ll | grep aaa</code></p>
+<h2 id="命令行登陆linux服务器"><a href="#命令行登陆linux服务器" class="headerlink" title="命令行登陆linux服务器:"></a><strong>命令行登陆linux服务器:</strong></h2><blockquote>
+<p>ssh -p22 用户名@ip<br>如果不输用户名,则以当前用户名登陆linux服务器,第一次连接会下载服务器公钥,选yes.</p>
+</blockquote>
+<h2 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h2><blockquote>
+<p>rpm命令相当于windows下的添加&#x2F;卸载程序.</p>
+<p>yum命令相当于带联网功能的rpm.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">程序安装</span><br>rpm -ivh 程序名<br><span class="hljs-meta prompt_">#</span><span class="language-bash">程序查看</span><br>rpm -qa<br><span class="hljs-meta prompt_">#</span><span class="language-bash">程序卸载</span><br>rpm -e --nodeps 程序名<br></code></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="启动springboot项目"><a href="#启动springboot项目" class="headerlink" title="启动springboot项目"></a>启动springboot项目</h1><blockquote>
+<p>后台启动jar并把日志输出到指定文件中</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup java -jar my-blog.jar &gt; mylog.txt  &amp; <br><br>nohup java -jar my-blog.jar &gt; catalina.out 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
+
+<h1 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><h2 id="查看系统是32位或64位"><a href="#查看系统是32位或64位" class="headerlink" title="查看系统是32位或64位"></a><strong>查看系统是32位或64位</strong></h2><p><code>getconf LONG_BIT</code>  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">查看系统进程</span><br>ps -ef<br><span class="hljs-meta prompt_">#</span><span class="language-bash">重启</span><br>reboot<br><span class="hljs-meta prompt_">#</span><span class="language-bash">关机</span><br>halt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">网络设置</span><br>setup<br><span class="hljs-meta prompt_">#</span><span class="language-bash">开启某端口防火墙</span><br>firewall-cmd --permanent --zone=public --add-port=7006/tcp --permanent<br></code></pre></td></tr></table></figure>
+
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><p>systemctl 命令是用来控制系统服务的实用工具，它可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态，在<code>Centos7.0</code>之前，使用的是<code>service</code>命令，在<code>Centos7.0</code>之后， 使用<code>systemctl</code>命令来进行服务控制</p>
+<table>
+<thead>
+<tr>
+<th>服务管理命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>systemctl start 服务名</td>
+<td>开启服务</td>
+</tr>
+<tr>
+<td>systemctl stop 服务名</td>
+<td>关闭服务</td>
+</tr>
+<tr>
+<td>systemctl status 服务名</td>
+<td>显示服务状态</td>
+</tr>
+<tr>
+<td>systemctl enable 服务名</td>
+<td>设置开机自启动</td>
+</tr>
+<tr>
+<td>systemctl disable 服务名</td>
+<td>关闭开机自启动</td>
+</tr>
+</tbody></table>
+<ul>
+<li>网络操作<ul>
+<li>systemctl status network ＃ 查看网络服务状态 </li>
+<li>systemctl stop network ＃ 停止网络服务 </li>
+<li>systemctl start network ＃ 启动网络服务 </li>
+<li>systemctl restart network ＃ 重启网络服务</li>
+</ul>
+</li>
+<li>防火墙操作<ul>
+<li>systemctl stop firewalld.service #停止firewall</li>
+<li>systemctl disable firewalld.service #禁止firewall开机启动 </li>
+<li>systemctl status firewalld.service #查看防火墙状态</li>
+</ul>
+</li>
+</ul>
+<h2 id="磁盘管理-硬盘-内存"><a href="#磁盘管理-硬盘-内存" class="headerlink" title="磁盘管理:硬盘&#x2F;内存"></a>磁盘管理:硬盘&#x2F;内存</h2><ul>
+<li><code>df -h</code>  显示磁盘剩余空间</li>
+<li><code>du -h［目录名］</code>  显示目录下的目录大小</li>
+<li><code>free -h</code>    查看内存使用率</li>
+</ul>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a><strong>端口</strong></h2><ul>
+<li><p><code>netstat -nltp</code> 查看本机系统每个进程占用的端口</p>
+</li>
+<li><p><code>netstat -an</code>		  #<strong>查看本机启用的端口</strong></p>
+</li>
+<li><p><code>netstat -tuln</code>	#查看本机开了哪些端口和正在被远程调用的调用方</p>
+</li>
+<li><p><code>ipnetstat -tuln</code>	查看本机开了哪些端口和正在被远程调用的调用方ip</p>
+</li>
+</ul>
+<blockquote>
+<p>telnet [域名或ip] [端口]	#远程管理与端口探测命令<br>eg:telnet 192.168.0.252 80	#探测服务器80端口,成功的话没有提示,进入空白页,退出摁ctrl+],退回到telnet界面,输入quit命令退出</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">1、开放端口</span><br>firewall-cmd --zone=public --add-port=5672/tcp --permanent   # 开放5672端口<br>firewall-cmd --zone=public --remove-port=5672/tcp --permanent  #关闭5672端口<br>firewall-cmd --reload   # 配置立即生效<br><span class="hljs-meta prompt_">#</span><span class="language-bash">2、查看防火墙所有开放的端口</span><br>firewall-cmd --zone=public --list-ports<br><span class="hljs-meta prompt_">#</span><span class="language-bash">3.、关闭防火墙</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果要开放的端口太多，嫌麻烦，可以关闭防火墙，安全性自行评估</span><br>systemctl stop firewalld.service<br><span class="hljs-meta prompt_">#</span><span class="language-bash">4、查看防火墙状态</span><br> firewall-cmd --state<br><span class="hljs-meta prompt_">#</span><span class="language-bash">5、查看监听的端口</span><br>netstat -lnpt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">PS:centos7默认没有 netstat 命令，需要安装 net-tools 工具，yum install -y net-tools</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">6、检查端口被哪个进程占用</span><br>netstat -lnpt |grep 5672<br><span class="hljs-meta prompt_"># </span><span class="language-bash">7 查看进程的详细信息</span><br>ps 6832<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向 &gt;  &gt;&gt;"></a>重定向 <code>&gt;</code>  <code>&gt;&gt;</code></h2><ul>
+<li><code>ll &gt; aaa.txt</code>  把ll命令的输入覆盖到aaa.txt</li>
+<li><code>ll &gt;&gt; aaa.txt</code>  把ll命令的输入追加到aaa.txt</li>
+</ul>
+<h1 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h1><ul>
+<li><code>date</code>   查看系统时间（默认格式）</li>
+<li><code>date + &quot;%Y-%m-%d %H:%M:%S&quot;</code> 查看系统时间（指定格式）</li>
+<li><code>date-s “时间字符串“</code>      设置系统时间</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@nohurry ~]#  date<br>2024年 06月 04日 星期二 09:09:01 CST<br>[root@nohurry ~]# date +&quot;%Y-%m-%d %H:%M:%S&quot;<br>2024-06-04 09:09:32<br>[root@nohurry ~]# date -s &quot;2024-06-04 09:09:32&quot;<br>2024年 06月 04日 星期二 09:09:32 CST<br>[root@nohurry ~]# date +&quot;%Y-%m-%d %H:%M:%S&quot;<br>2024-06-04 09:09:45<br></code></pre></td></tr></table></figure>
+
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">- RWX RW- R--<br>1  2   3   4<br><span class="hljs-meta prompt_"># </span><span class="language-bash">1:类型,d目录,-普通文件,l链接文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2:所属用户权限,用u(user)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">3:所属组权限,用g(group)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">4:其他用户权限,用o(other)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">所有权限,用a(all)表示</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">修改权限</span><br>chmod u=rwx demo.java<br>chmod g=rw- demo.java<br>chmod o=rwx demo.java<br><span class="hljs-meta prompt_">#</span><span class="language-bash">给所属用户添加执行权限</span><br>chmod 744 demo.java<br><span class="hljs-meta prompt_">#</span><span class="language-bash">给所属用户添加执行权限</span><br>chmod u+x demo.java<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">更改文件夹内所有文件的权限</span><br>chmod -R 权限 文件夹名<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">增加执行权限</span><br>chmod +X demo.java<br></code></pre></td></tr></table></figure>
+
+<h2 id="浏览文件内容"><a href="#浏览文件内容" class="headerlink" title="浏览文件内容"></a>浏览文件内容</h2><ul>
 <li><p>cat 文件名</p>
 <p>适合查看数据量小的文件,全部展示.</p>
 </li>
@@ -402,19 +432,64 @@
 <p>输入 : set nu,会显示行号.</p>
 </li>
 </ul>
-<h1 id="grep和管道"><a href="#grep和管道" class="headerlink" title="grep和管道"></a>grep和管道</h1><p>| 是管道符号,可连接不同命令</p>
-<p>grep是正则表达式,用于字符串搜索.格式:grep 字符串 搜索的文件,eg:ll | grep aaa</p>
-<h1 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">查看系统进程</span><br>ps -ef<br><span class="hljs-meta prompt_">#</span><span class="language-bash">重启</span><br>reboot<br><span class="hljs-meta prompt_">#</span><span class="language-bash">关机</span><br>halt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">网络设置</span><br>setup<br><span class="hljs-meta prompt_">#</span><span class="language-bash">开启某端口防火墙</span><br>firewall-cmd --permanent --zone=public --add-port=7006/tcp --permanent<br></code></pre></td></tr></table></figure>
+<h2 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a><strong>查找文件</strong></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">find / -name httpd.conf　　#在根目录下查找文件httpd.conf，表示在整个硬盘查找<br><br>find /etc -name httpd.conf　　#在/etc目录下文件httpd.conf<br><br>find /etc -name &#x27;*srm*&#x27;　　#使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件<br><br>find . -name &#x27;srm*&#x27; 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件<br><br>sudo find / -type d -name *tomcat*  #查找文件夹位置,文件夹名字不确定的用*补上<br></code></pre></td></tr></table></figure>
 
-<h1 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell">- RWX RW- R--<br>1  2   3   4<br><span class="hljs-meta prompt_"># </span><span class="language-bash">1:类型,d目录,-普通文件,l链接文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2:所属用户权限,用u(user)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">3:所属组权限,用g(group)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">4:其他用户权限,用o(other)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">所有权限,用a(all)表示</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">修改权限</span><br>chmod u=rwx demo.java<br>chmod g=rw- demo.java<br>chmod a=rwx demo.java<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">更改文件夹权限</span><br>chmod -R 权限 文件夹名<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">增加执行权限</span><br>chmod +X demo.java<br></code></pre></td></tr></table></figure>
+<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">创建多层目录</span><br>mkdir /t1/t2<br><span class="hljs-meta prompt_"># </span><span class="language-bash">t3目录不存在的话则先创建t3</span><br>mkdir -p t3/t4<br></code></pre></td></tr></table></figure>
 
-<h1 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h1><blockquote>
-<p>rpm命令相当于windows下的添加&#x2F;卸载程序.</p>
-<p>yum命令相当于带联网功能的rpm.</p>
+<h2 id="复制解压"><a href="#复制解压" class="headerlink" title="复制解压"></a><strong>复制解压</strong></h2><p>压缩包格式:</p>
+<ul>
+<li>*.tar 	打包,不压缩.</li>
+<li>*.tar.gz 打包并压缩</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp -r 源文件夹 目的地  #Linux复制文件夹,-r表示递归<br>cp 文件 新目录/新文件名 #复制并改名<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">压缩 -zcvf参数顺序不能变.eg压缩当前目录下全部文件:tar -zcvf hehe.tar.gz *</span><br>tar -zcvf 压缩包名字.tar.gz 需压缩的文件<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">解压缩到当前目录</span><br>tar -zxvf 压缩包名<br><span class="hljs-meta prompt_">#</span><span class="language-bash">解压缩到指定目录</span><br>tar -zxvf 压缩包名 -C 指定目录地址<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h2><p><code>ln -s 原文件 快捷方式</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">在当前目录为文件设置快捷方式</span><br>[root@nohurry ~]# ln -s /usr/local/java/reload.sh sbreload.sh<br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看快捷方式,指向原文件</span><br>[root@nohurry ~]# ll<br>lrwxrwxrwx  1 root root       25 6月   4 09:14 sbreload.sh -&gt; /usr/local/java/reload.sh<br></code></pre></td></tr></table></figure>
+
+<h2 id="文件编辑器VIM"><a href="#文件编辑器VIM" class="headerlink" title="文件编辑器VIM"></a>文件编辑器VIM</h2><p><code>vim</code>命令进入文件后默认进入命令行模式,此时只能敲命令,常用命令如下:</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040920679.png" srcset="/img/loading.gif" lazyload alt="image-20240604092037630"></p>
+<p>按<code>i</code>或<code>o</code>进入<strong>输入模式</strong></p>
+<p>按<code>esc</code>进入<strong>底行模式</strong>:</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040924040.png" srcset="/img/loading.gif" lazyload alt="image-20240604092424969"></p>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="ping：测试网络命令"><a href="#ping：测试网络命令" class="headerlink" title="ping：测试网络命令"></a><strong>ping：测试网络命令</strong></h2><blockquote>
+<pre><code class="hljs">  - -c count：ping的次数
+  - -W timeout：超时时间，配合-c使用
+  - -I ipaddress：指定用自己主机的IP去ping对方主机
+  - -s size：每次ping发出的数据包大小，最大值65507
+  - -f：竭尽自己主机的能力发出数据包
+</code></pre>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">程序安装</span><br>rpm -ivh 程序名<br><span class="hljs-meta prompt_">#</span><span class="language-bash">程序查看</span><br>rpm -qa<br><span class="hljs-meta prompt_">#</span><span class="language-bash">程序卸载</span><br>rpm -e --nodeps 程序名<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@centos7 ~]# ping -c1 -W1 192.168.0.6 #脚本中常用的ping测试，ping一次，超时时间1s<br>[root@centos7 ~]# ping -s 65507 -f 192.168.0.6 #竭尽自己所能，向192.168.0.6发出大数据包，ddos攻击<br></code></pre></td></tr></table></figure>
 
-<h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><ul>
+
+
+<h2 id="VMWARE虚拟机网络连接方式"><a href="#VMWARE虚拟机网络连接方式" class="headerlink" title="VMWARE虚拟机网络连接方式"></a>VMWARE虚拟机网络连接方式</h2><ul>
+<li>桥接模式</li>
+</ul>
+<blockquote>
+<p>需要依赖外部网络环境，VMware 虚拟出来的操作系统就像是局域网中的一台独立的主机， 需要手工为虚拟系统配置IP地址，虚拟机解ip必须和宿主机（windows）的ip是同一个网段。开发环境下可能会使用，学习环境不用，<strong>类似于虚剂机和主机就好比插在同一台交换机上的两台电脑</strong></p>
+</blockquote>
+<ul>
+<li><p>NAT模式</p>
+<blockquote>
+<p>使用 NAT 模式，就是让虚拟系统借助 NAT（网络地址转换）功能，通过宿主机器所在的网络来访问公网，<strong>如果主机能够正常上网，那么虚拟机也能够直接上网。</strong>此时虚拟机处于一个新的网段内，由 VMware提供的DHCP服务自动分配IP地址，然后通过VMware提供的NAT服务，共享主机实现上网，不依赖外部网络环境</p>
+</blockquote>
+</li>
+<li><p>仅主机模式</p>
+</li>
+</ul>
+<blockquote>
+<p>仅主机模式和NAT模式是类似的，<strong>在该模式下，虚拟网络是一个全封闭的网络，它唯一能够访问的就是主机</strong>，当然多个虚拟机之间也可以互相访问，只需要记住<strong>仅主机模式是无法进行上网的</strong></p>
+</blockquote>
+<h2 id="配置ip-修改网卡信息文件"><a href="#配置ip-修改网卡信息文件" class="headerlink" title="配置ip,修改网卡信息文件"></a><strong>配置ip,修改网卡信息文件</strong></h2><p><code>vi /etc/sysconfig/network-scripts/ifcfg-etho</code>	</p>
+<h2 id="查看DNS服务器地址"><a href="#查看DNS服务器地址" class="headerlink" title="查看DNS服务器地址:"></a><strong>查看DNS服务器地址:</strong></h2><p><code>cat /etc/resolv.conf</code></p>
+<p><code>nslookup 127.0.0.1 | grep Server</code></p>
+<p>修改DNS服务器非常简单，只需要修改<code>/etc/resolv.conf</code>配置文件即可。那么修改DNS是否需要重启某些服务，答案是不需要。修改后会立即生效，不需做任何额外处理。</p>
+<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><ul>
 <li>安装依赖</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install glibc.i686<br>yum -y install libaio.so.1 libgcc_s.so.1 libstdc++.so.6<br>yum update libstdc++-4.4.7-4.e16.x86-64<br>yum install gcc-c++<br></code></pre></td></tr></table></figure>
@@ -423,6 +498,10 @@
 <li>安装jdk</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1 查看已安装老版本</span><br>rpm -qa | grep java<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2 卸载老版本</span><br>rpm -e --nodeps 上面查到的<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3 上传jdk包,解压到指定目录</span><br>tar -zxvf -C /usr/local/java<br><span class="hljs-meta prompt_"># </span><span class="language-bash">4 配置环境变量 vim /etc/profile</span><br>JAVA_HOME=/usr/local/java/jdk...<br>CLASS_PATH=.:$JAVA_HOME/lib.tools.jar<br>PATH=$JAVA_HOME/bin:$PATH<br>export JAVA_HONE CLASSPATH PATH<br><span class="hljs-meta prompt_"># </span><span class="language-bash">5 重新加载配置文件</span><br>source /etc/profile<br></code></pre></td></tr></table></figure>
+
+<h2 id="查看JDK安装路径"><a href="#查看JDK安装路径" class="headerlink" title="查看JDK安装路径"></a>查看JDK安装路径</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -verbose #查看jdk安装路径.最后两行为jdk安装路径<br></code></pre></td></tr></table></figure>
+
+
 
 <h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><h2 id="1-yum安装时报cannot-find-a-valid-baseurl-for-repo"><a href="#1-yum安装时报cannot-find-a-valid-baseurl-for-repo" class="headerlink" title="1.yum安装时报cannot find a valid baseurl for repo"></a>1.yum安装时报<a target="_blank" rel="noopener" href="https://www.cnblogs.com/phpandmysql/p/7773063.html">cannot find a valid baseurl for repo</a></h2><blockquote>
 <p>出现这个问题是因为yum在安装包的过程中，虽然已经联网，但是没法解析远程包管理库对应的域名，所以我们只需要在网络配置中添加上DNS对应的ip地址即可。</p>
@@ -527,9 +606,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/04/Hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" title="hexo搭建静态博客">
+                      <a href="/2021/01/02/SQL%E4%BC%98%E5%8C%96/" title="SQL语句性能提升">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo搭建静态博客</span>
+                        <span class="hidden-mobile">SQL语句性能提升</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -537,8 +616,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/04/Spring%20Boot%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%BC%93%E5%AD%98/" title="Spring Boot中使用缓存">
-                        <span class="hidden-mobile">Spring Boot中使用缓存</span>
+                      <a href="/2020/12/04/Hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" title="hexo搭建静态博客">
+                        <span class="hidden-mobile">hexo搭建静态博客</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
