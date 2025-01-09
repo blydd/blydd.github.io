@@ -3,7 +3,7 @@ date: 2025-1-7 10:50:17
 categories: java
 toc: true
 description: javaFX
-tags: 
+tags:
 
 	- javaFX
 
@@ -12,55 +12,7 @@ tags:
 
 
 
-# Stage舞台
-
-窗口的五种类型
-
-```java
-Stage s1 = new Stage();
-s1.setTitle("s1");
-s1.initStyle(StageStyle.DECORATED);//默认,有按钮及标题栏
-//s1.initStyle(StageStyle.TRANSPARENT);//透明背景
-//s1.initStyle(StageStyle.UNIFIED);//和默认背景无异
-//s1.initStyle(StageStyle.UTILITY);//无最小化最大化按钮
-//s1.initStyle(StageStyle.UNDECORATED);//无标题栏及任何按钮,无法移动
-s1.show();
-```
-
-模态窗口1
-
-```java
-        Stage s1 = new Stage();
-        s1.setTitle("s1");
-        s1.show();
-
-        Stage s2 = new Stage();
-        s2.setTitle("s2");
-        //设置程序模态窗口,这种类型窗口只有关闭了才能点程序内其他窗口
-        s2.initModality(Modality.APPLICATION_MODAL);
-        s2.show();
-```
-
-模态窗口2
-
-```java
-Stage s1 = new Stage();
-s1.setTitle("s1");
-s1.show();
-
-Stage s2 = new Stage();
-s2.setTitle("s2");
-//指定s2点所有者为s1,只有s2关闭后才能操作s1,但不影响s3
-s2.initOwner(s1);
-//设置程序模态窗口,这种类型窗口只有关闭了才能点s1
-s2.initModality(Modality.WINDOW_MODAL);
-s2.show();
-
-Stage s3 = new Stage();
-s3.setTitle("s3");
-s3.show();
-```
-
+# Stage舞台窗口
 
 
 ```java
@@ -112,6 +64,55 @@ stage.setY(0);
                           
                           
 ```
+
+## 窗口的五种类型
+
+```java
+Stage s1 = new Stage();
+s1.setTitle("s1");
+s1.initStyle(StageStyle.DECORATED);//默认,有按钮及标题栏
+//s1.initStyle(StageStyle.TRANSPARENT);//透明背景
+//s1.initStyle(StageStyle.UNIFIED);//和默认背景无异
+//s1.initStyle(StageStyle.UTILITY);//无最小化最大化按钮
+//s1.initStyle(StageStyle.UNDECORATED);//无标题栏及任何按钮,无法移动
+s1.show();
+```
+
+## 模态窗口1
+
+```java
+        Stage s1 = new Stage();
+        s1.setTitle("s1");
+        s1.show();
+
+        Stage s2 = new Stage();
+        s2.setTitle("s2");
+        //设置程序模态窗口,这种类型窗口只有关闭了才能点程序内其他窗口
+        s2.initModality(Modality.APPLICATION_MODAL);
+        s2.show();
+```
+
+## 模态窗口2
+
+```java
+Stage s1 = new Stage();
+s1.setTitle("s1");
+s1.show();
+
+Stage s2 = new Stage();
+s2.setTitle("s2");
+//指定s2点所有者为s1,只有s2关闭后才能操作s1,但不影响s3
+s2.initOwner(s1);
+//设置程序模态窗口,这种类型窗口只有关闭了才能点s1
+s2.initModality(Modality.WINDOW_MODAL);
+s2.show();
+
+Stage s3 = new Stage();
+s3.setTitle("s3");
+s3.show();
+```
+
+
 
 # Platform平台
 
@@ -239,15 +240,20 @@ button.setOnAction((event -> {
 group.getChildren().add(button);
 Scene sceen = new Scene(group);
 
-        //设置快捷键
-        //SHORTCUT_DOWN在window下处理为ctrl键,在mac下处理为cmd键
-        KeyCombination kc2 = new KeyCodeCombination(KeyCode.C,KeyCombination.SHORTCUT_DOWN);
-        sceen.getAccelerators().put(kc2, new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("快捷键触发");
-            }
-        });
+ //设置快捷键1
+ //SHORTCUT_DOWN在window下处理为ctrl键,在mac下处理为cmd键
+ KeyCombination kc2 = new KeyCodeCombination(KeyCode.C,KeyCombination.SHORTCUT_DOWN);
+ sceen.getAccelerators().put(kc2, new Runnable() {
+     @Override
+     public void run() {
+         System.out.println("快捷键触发");
+     }
+ });
+ 
+ //设置快捷键2
+ KeyCodeCombination kc5 = KeyCodeCombination.valueOf("ctrl+alt+k");
+ Mnemonic m5 = new Mnemonic(b1,kc5);
+ scene.addMnemonic(m5);
 
 stage.setScene(sceen);
 stage.setTitle("javafx");
@@ -310,8 +316,8 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
 
  stage.show();
 ```
-
-# FlowPane 流式布局
+# 布局
+## 1.FlowPane 流式布局
 ```java
 @Override
     public void start(Stage stage) throws Exception {
@@ -340,7 +346,7 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
     }
 ```
 
-# GridPane网格布局
+## 2.GridPane网格布局
 ```java
 @Override
     public void start(Stage stage) throws Exception {
@@ -369,7 +375,7 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
     }
 ```
 
-#BorderPane边框布局
+## 3.BorderPane边框布局
 ```java
 @Override
     public void start(Stage stage) throws Exception {
@@ -416,7 +422,7 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
         stage.show();
     }
 ```
-#TextFlow文字布局
+## 4.TextFlow文字布局
 ```java
     @Override
     public void start(Stage stage) throws Exception {
@@ -432,5 +438,172 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
         stage.setWidth(600);
         stage.setHeight(500);
         stage.show();
+    }
+```
+## 5.DialogPane 对话框布局
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        //锚点布局
+        AnchorPane an = new AnchorPane();
+        //背景颜色
+        an.setStyle("-fx-background-color: grey");
+        Button b = new Button("点击显示对话框");
+        an.getChildren().add(b);
+        //给按钮绑定单击事件
+        b.setOnAction(actionEvent -> {
+            Stage s = new Stage();
+            s.setTitle("弹出的窗口");
+            //设置弹窗模态化
+            s.initOwner(stage);
+            s.initModality(Modality.WINDOW_MODAL);
+            //设置弹窗置顶
+            s.setAlwaysOnTop(true);
+            //设置弹窗不可改变大小
+            s.setResizable(false);
+            //设置弹框大小
+//            s.setWidth(450);
+//            s.setHeight(260);
+
+            // 设置对话框
+            DialogPane diallog = new DialogPane();
+            //对话框内容
+            diallog.setHeaderText("HeaderText");
+            diallog.setContentText("ContentText");
+            //设置对话框按钮
+            diallog.getButtonTypes().add(ButtonType.APPLY);
+            diallog.getButtonTypes().add(ButtonType.CLOSE);
+            //给按钮绑定点击事件
+            ((Button)diallog.lookupButton(ButtonType.APPLY)).setOnAction(actionEvent2 -> {
+                System.out.println("点击了APPLY");
+            });
+            ((Button)diallog.lookupButton(ButtonType.CLOSE)).setOnAction(actionEvent2 -> {
+                System.out.println("点击了CLOSE");
+                s.close();
+            });
+            //对话框设置图片
+            ImageView imageView = new ImageView(new Image(getClass().getResource("/img/warning.png").toExternalForm()));
+            imageView.setFitHeight(50);
+            imageView.setFitWidth(50);
+            diallog.setGraphic(imageView);
+            //设置扩展内容
+            diallog.setExpanded(false);//扩展内容默认关闭
+            diallog.setExpandableContent(new Text("扩展内容...."));
+
+            s.setScene(new Scene(diallog));
+            s.show();
+        });
+
+        Scene sceen = new Scene(an);
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+
+# 组件
+## Hyperlink超链接样式组件
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        VBox vBox = new VBox();
+        //超链接样式
+//        Hyperlink hl = new Hyperlink("http://www.baidu.com");
+        Hyperlink hl = new Hyperlink("http://www.baidu.com", new Button("百度一下"));
+        vBox.getChildren().add(hl);
+        //设定单击事件
+        hl.setOnAction(actionEvent -> {
+            HostServices hs = this.getHostServices();
+            hs.showDocument(((Hyperlink)actionEvent.getSource()).getText());
+        });
+        Scene sceen = new Scene(vBox);
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+
+## 菜单栏
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        /**菜单栏*/
+        AnchorPane an = new AnchorPane();
+        an.setStyle("-fx-background-color: grey");
+        MenuBar menuBar = new MenuBar();
+
+        /**菜单*/
+        Menu menu1 = new Menu("普通菜单");
+        Menu menu2 = new Menu("多选菜单");
+        Menu menu3 = new Menu("单选菜单");
+        Menu menu4 = new Menu("子菜单");
+        /**普通菜单项*/
+        MenuItem mi1 = new MenuItem("菜单项1",new ImageView(new Image(getClass().getResource("/img/warning.png").toExternalForm())));
+        MenuItem mi2 = new MenuItem("菜单项2");
+        MenuItem menuItem5 = new MenuItem("菜单项5");
+        MenuItem menuItem6 = new MenuItem("菜单项6");
+        /**菜单项的子菜单*/
+        Menu em = new Menu("下面还有菜单项");
+        em.getItems().addAll(menuItem5,menuItem6);
+        /*菜单项分割线*/
+        SeparatorMenuItem separate1 = new SeparatorMenuItem();
+        //给菜单选项添加快捷键
+        mi1.setAccelerator(KeyCombination.valueOf("ctrl+j"));
+        //给菜单选项添加单击事件
+        mi1.setOnAction(actionEvent -> System.out.println("点击了菜单项1"));
+        //把菜单选项添加到熬菜单
+        menu1.getItems().addAll(mi1,separate1,mi2);
+        menu4.getItems().addAll(em);
+
+        /**多选菜单*/
+        CheckMenuItem cm1 = new CheckMenuItem("111");
+        CheckMenuItem cm2= new CheckMenuItem("222");
+        CheckMenuItem cm3 = new CheckMenuItem("333");
+        //设置默认选中状态
+        cm2.setSelected(true);
+        menu2.getItems().addAll(cm1,cm2,cm3);
+
+        /**一组菜单项单选*/
+        ToggleGroup tg = new ToggleGroup();
+        RadioMenuItem rm1 = new RadioMenuItem("111");
+        RadioMenuItem rm2 = new RadioMenuItem("222");
+        RadioMenuItem rm3 = new RadioMenuItem("333");
+        //设置默认选中状态
+        rm1.setSelected(true);
+        rm1.setToggleGroup(tg);
+        rm2.setToggleGroup(tg);
+        rm2.setToggleGroup(tg);
+        menu3.getItems().addAll(rm1,rm2,rm3);
+        //监听rm1是否被选中点击
+        rm1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                System.out.println("111是否被选中"+newValue);
+            }
+        });
+
+        //把菜单添加到菜单栏
+        menuBar.getMenus().addAll(menu1,menu2,menu3,menu4);
+
+        an.getChildren().add(menuBar);
+        Scene sceen = new Scene(an);
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+        //设置菜单栏长度和主布局等长
+        menuBar.setPrefWidth(an.getWidth());
+        //监听主窗口变化,动态设置菜单栏宽度
+        an.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                menuBar.setPrefWidth(newValue.doubleValue());
+            }
+        });
     }
 ```
