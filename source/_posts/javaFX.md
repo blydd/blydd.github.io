@@ -651,7 +651,7 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
         stage.show();
     }
 ```
-### TitledPane&Accordion折叠面板
+## TitledPane&Accordion折叠面板
 ```java
 @Override
     public void start(Stage stage) throws Exception {
@@ -672,6 +672,42 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
 
         an.getChildren().addAll(ac);
         Scene sceen = new Scene(an);ac
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+## TabPane选项卡布局
+```java
+ @Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+       //选项卡布局
+        TabPane tp = new TabPane();
+        tp.setPrefWidth(299);
+        tp.setPrefHeight(300);
+        tp.setStyle("-fx-background-color: green");
+        //选项卡1
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(new Button("button1"),new Button("button2"));
+        Tab tab1 = new Tab("tab1", hBox);
+
+        //选项卡2
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(new Button("button1"),new Button("button2"));
+        Tab tab2 = new Tab("tab1", vBox);
+        //添加选项卡进tabpane
+        tp.getTabs().addAll(tab1,tab2);
+
+        //单独/全局设置选项卡是否可关闭
+        tab1.setClosable(false);
+        tp.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        //设置选项卡位置
+        tp.setSide(Side.TOP);
+        an.getChildren().addAll(tp);
+        Scene sceen = new Scene(an);
         stage.setScene(sceen);
         stage.setTitle("javafx");
         stage.setWidth(600);
