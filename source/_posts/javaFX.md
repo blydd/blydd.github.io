@@ -311,3 +311,126 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
  stage.show();
 ```
 
+# FlowPane 流式布局
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        //流式布局
+        FlowPane flow = new FlowPane();
+        //设置背景颜色
+        flow.setStyle("-fx-background-color: grey");
+        //添加按钮
+        flow.getChildren().add(new Button("button1"));
+        flow.getChildren().add(new Button("button2"));
+        flow.getChildren().add(new Button("button3"));
+        flow.getChildren().add(new Button("button4"));
+        flow.getChildren().add(new Button("button5"));
+        flow.getChildren().add(new Button("button6"));
+        flow.getChildren().add(new Button("button7"));
+        //设置间距
+        flow.setHgap(10);
+        flow.setVgap(10);
+        //设置边距
+        flow.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
+        Scene sceen = new Scene(flow);
+        stage.setScene(sceen);
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+
+# GridPane网格布局
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        //网格布局
+        GridPane grid = new GridPane();
+        //设置背景颜色
+        grid.setStyle("-fx-background-color: grey");
+        //添加按钮到第几列第几行
+        grid.add(new Button("button1"),0,0);
+        grid.add(new Button("button2"),1,0);
+        grid.add(new Button("button3"),2,0);
+        grid.add(new Button("button4"),0,1);
+        grid.add(new Button("button5"),1,1);
+        grid.add(new Button("button6"),2,1);
+        grid.add(new Button("button7"),0,2);
+        //设置间距
+        grid.setHgap(10);
+        grid.setVgap(10);
+        //设置边距
+        grid.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
+        Scene sceen = new Scene(grid);
+        stage.setScene(sceen);
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+
+#BorderPane边框布局
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        //网格布局
+        BorderPane bp = new BorderPane();
+        //设置背景颜色
+        bp.setStyle("-fx-background-color: grey");
+        //添加上部分
+        BorderPane top = new BorderPane();
+        top.setStyle("-fx-background-color: red");
+        top.setPrefWidth(100);
+        top.setPrefHeight(100);
+        bp.setTop(top);
+        //添加right部分
+        BorderPane right = new BorderPane();
+        right.setStyle("-fx-background-color: green");
+        right.setPrefWidth(100);
+        right.setPrefHeight(100);
+        bp.setRight(right);
+        //添加bottom部分
+        BorderPane bottom = new BorderPane();
+        bottom.setStyle("-fx-background-color: blue");
+        bottom.setPrefWidth(100);
+        bottom.setPrefHeight(100);
+        bp.setBottom(bottom);
+        //添加left部分
+        BorderPane left = new BorderPane();
+        left.setStyle("-fx-background-color: yellow");
+        left.setPrefWidth(100);
+        left.setPrefHeight(100);
+        bp.setLeft(left);
+        //添加center部分
+        BorderPane center = new BorderPane();
+        center.setStyle("-fx-background-color: orange");
+        center.setPrefWidth(100);
+        center.setPrefHeight(100);
+        bp.setCenter(center);
+        //设置间距
+        bp.setPadding(new Insets(10));
+        Scene sceen = new Scene(bp);
+        stage.setScene(sceen);
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+#TextFlow文字布局
+```java
+    @Override
+    public void start(Stage stage) throws Exception {
+        //文字流布局
+        TextFlow bp = new TextFlow();
+        bp.getChildren().add(new Text("aaaaaaaaaaaaaaaaaaaa"));
+        bp.getChildren().add(new Text("vvvvvvvvvvvvvvvvvvvv"));
+        bp.getChildren().add(new Text("cccccccccccccccccccc"));
+        //设置间距
+//        bp.setPadding(new Insets(10));
+        Scene sceen = new Scene(bp);
+        stage.setScene(sceen);
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
