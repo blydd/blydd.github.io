@@ -651,3 +651,31 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
         stage.show();
     }
 ```
+### TitledPane&Accordion折叠面板
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+        //折叠布局1
+        TitledPane tp = new TitledPane("个人信息", new Button("button"));
+        //折叠布局2
+        TitledPane tp1 = new TitledPane();
+        tp1.setText("个人信息");
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(new Button("button1"),new Button("button2"));
+        tp1.setContent(hBox);
+        AnchorPane.setTopAnchor(tp1,200d);
+        //对多个折叠布局编组，每次展开一个
+        Accordion ac = new Accordion();
+        ac.getPanes().addAll(tp,tp1);
+
+
+        an.getChildren().addAll(ac);
+        Scene sceen = new Scene(an);ac
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
