@@ -528,6 +528,7 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
 ```
 
 ## 菜单栏
+### 菜单，选项，单/多选菜单项
 ```java
 @Override
     public void start(Stage stage) throws Exception {
@@ -605,5 +606,48 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
                 menuBar.setPrefWidth(newValue.doubleValue());
             }
         });
+    }
+```
+### 自定义菜单项
+```java
+    @Override
+    public void start(Stage stage) throws Exception {
+        /**菜单栏*/
+        AnchorPane an = new AnchorPane();
+        an.setStyle("-fx-background-color: grey");
+        MenuBar menuBar = new MenuBar();
+
+        /**菜单*/
+        Menu menu1 = new Menu("自定义菜单");
+        //自定义菜单项-按钮
+        CustomMenuItem ci1 = new CustomMenuItem();
+        ci1.setContent(new Button("button"));
+        //自定义菜单项-进度条
+        CustomMenuItem ci2 = new CustomMenuItem();
+        ci2.setContent(new ProgressBar(1));
+        //自定义菜单项-布局
+        CustomMenuItem ci3 = new CustomMenuItem();
+        HBox hb = new HBox();
+        hb.setStyle("-fx-background-color: yellow");
+        hb.setPrefWidth(200);
+        hb.setPrefHeight(100);
+        hb.getChildren().add(new Button("button1"));
+        hb.getChildren().add(new Button("button2"));
+        hb.getChildren().add(new Button("button3"));
+        ci3.setContent(hb);
+
+
+
+        menu1.getItems().addAll(ci1,ci2,ci3);
+        //把菜单添加到菜单栏
+        menuBar.getMenus().addAll(menu1);
+
+        an.getChildren().add(menuBar);
+        Scene sceen = new Scene(an);
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
     }
 ```
