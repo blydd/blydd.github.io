@@ -715,3 +715,169 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
         stage.show();
     }
 ```
+## RadioButton单选按钮
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        /**单选按钮*/
+        AnchorPane an = new AnchorPane();
+        ToggleGroup tg = new ToggleGroup();
+        RadioButton rb1 = new RadioButton("单选按钮1");
+        RadioButton rb2 = new RadioButton("单选按钮2");
+        rb1.setToggleGroup(tg);
+        rb2.setToggleGroup(tg);
+        //设置默认选中按钮
+        tg.selectToggle(rb2);
+        //把单选组放进容器
+        HBox hBox = new HBox(rb1, rb2);
+        //监听选择了哪个按钮
+        tg.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                System.out.println("选中了按钮:"+ ((RadioButton) t1).getText());
+            }
+        });
+
+        an.getChildren().add(hBox);
+        Scene sceen = new Scene(an);
+        //设置舞台信息
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+## CheckBox复选框
+```java
+ @Override
+    public void start(Stage stage) throws Exception {
+        /**多选按钮*/
+        AnchorPane an = new AnchorPane();
+        CheckBox cb1 = new CheckBox("复选框1");
+        CheckBox cb2 = new CheckBox("复选框2");
+        CheckBox cb3 = new CheckBox("复选框3");
+        CheckBox cb4 = new CheckBox("复选框4");
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(cb1, cb2,cb3,cb4);
+        //设置默认选中
+        cb2.setSelected(true);
+        //设置默认为不确定状态,只有默认时才是不确定,点击后只有是和否两种
+        cb3.setIndeterminate(true);
+        //设置可以一直有不确定状态,点击后只有"是"和"否"和"不确定"三种
+        cb4.setAllowIndeterminate(true);
+
+        //监听各个复选框的选中状态
+        an.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                hBox.getChildren().forEach(item->{
+                    if (item instanceof CheckBox) {
+                        CheckBox cb = (CheckBox) item;
+                        System.out.println(cb.getText() + "的选中状态是:" + cb.isSelected()+",不确定状态是:"+cb.isIndeterminate());
+                    }
+                });
+            }
+        });
+        an.getChildren().add(hBox);
+        Scene sceen = new Scene(an);
+        //设置舞台信息
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+
+## TextArea多行文本
+```java
+ @Override
+    public void start(Stage stage) throws Exception {
+        /**多行文本*/
+        AnchorPane an = new AnchorPane();
+        TextArea ta = new TextArea("请输入描述");
+        //设置自动换行
+        ta.setWrapText(true);
+        //设置宽高
+        ta.setPrefWidth(200);
+        ta.setPrefHeight(100);
+        //设置初始化时展示几行几列
+//        ta.setPrefRowCount(2);
+//        ta.setPrefColumnCount(2);
+        //设置全选
+        ta.selectAll();
+        //设置光标位置
+        ta.positionCaret(3);
+        //设置光标在头部
+        ta.home();
+        //设置是否可编辑
+        ta.setEditable(true);
+        //清除文本
+//        ta.clear();
+        //复制
+        ta.copy();
+        //监听文本
+        ta.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldVal, String newVal) {
+                System.out.println("输入的内容:"+newVal);
+            }
+        });
+
+        an.getChildren().add(ta);
+        Scene sceen = new Scene(an);
+        //设置舞台信息
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+
+## TextArea&TextField监听输入
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+        TextField tf = new TextField();
+        //限制用户输入只能字母,输入数字无效
+        tf.setTextFormatter(new TextFormatter<>(change -> change.getControlNewText().matches("[a-zA-Z]*") ? change : null));
+
+        TextArea ta = new TextArea();
+        //多行文本监听输入的内容,如果出现数字5,替换为伍
+        ta.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                ta.setTextFormatter(new TextFormatter<String>(new StringConverter<String>() {
+                    @Override
+                    public String toString(String s) {
+                        System.out.println("toString:"+s);
+                        return s;
+                    }
+                    @Override
+                    public String fromString(String s) {
+                        System.out.println("fromString:"+s);
+                        if (s.contains("5")){
+                            return s.replace("5","伍");
+                        }
+                        return s;
+                    }
+                }));
+                //TextArea必须有这个提交
+                ta.commitValue();
+            }
+        });
+        AnchorPane.setTopAnchor(ta,100d);
+        an.getChildren().addAll(tf,ta);
+
+        Scene sceen = new Scene(an);
+        //设置舞台信息
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
