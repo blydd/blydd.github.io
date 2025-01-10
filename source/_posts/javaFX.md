@@ -3,7 +3,7 @@ date: 2025-1-7 10:50:17
 categories: java
 toc: true
 description: javaFX
-tags: 
+tags:
 
 	- javaFX
 
@@ -528,6 +528,7 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
 ```
 
 ## 菜单栏
+### 菜单，选项，单/多选菜单项
 ```java
 @Override
     public void start(Stage stage) throws Exception {
@@ -605,5 +606,112 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
                 menuBar.setPrefWidth(newValue.doubleValue());
             }
         });
+    }
+```
+### 自定义菜单项
+```java
+    @Override
+    public void start(Stage stage) throws Exception {
+        /**菜单栏*/
+        AnchorPane an = new AnchorPane();
+        an.setStyle("-fx-background-color: grey");
+        MenuBar menuBar = new MenuBar();
+
+        /**菜单*/
+        Menu menu1 = new Menu("自定义菜单");
+        //自定义菜单项-按钮
+        CustomMenuItem ci1 = new CustomMenuItem();
+        ci1.setContent(new Button("button"));
+        //自定义菜单项-进度条
+        CustomMenuItem ci2 = new CustomMenuItem();
+        ci2.setContent(new ProgressBar(1));
+        //自定义菜单项-布局
+        CustomMenuItem ci3 = new CustomMenuItem();
+        HBox hb = new HBox();
+        hb.setStyle("-fx-background-color: yellow");
+        hb.setPrefWidth(200);
+        hb.setPrefHeight(100);
+        hb.getChildren().add(new Button("button1"));
+        hb.getChildren().add(new Button("button2"));
+        hb.getChildren().add(new Button("button3"));
+        ci3.setContent(hb);
+
+
+
+        menu1.getItems().addAll(ci1,ci2,ci3);
+        //把菜单添加到菜单栏
+        menuBar.getMenus().addAll(menu1);
+
+        an.getChildren().add(menuBar);
+        Scene sceen = new Scene(an);
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+## TitledPane&Accordion折叠面板
+```java
+@Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+        //折叠布局1
+        TitledPane tp = new TitledPane("个人信息", new Button("button"));
+        //折叠布局2
+        TitledPane tp1 = new TitledPane();
+        tp1.setText("个人信息");
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(new Button("button1"),new Button("button2"));
+        tp1.setContent(hBox);
+        AnchorPane.setTopAnchor(tp1,200d);
+        //对多个折叠布局编组，每次展开一个
+        Accordion ac = new Accordion();
+        ac.getPanes().addAll(tp,tp1);
+
+
+        an.getChildren().addAll(ac);
+        Scene sceen = new Scene(an);ac
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
+## TabPane选项卡布局
+```java
+ @Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+       //选项卡布局
+        TabPane tp = new TabPane();
+        tp.setPrefWidth(299);
+        tp.setPrefHeight(300);
+        tp.setStyle("-fx-background-color: green");
+        //选项卡1
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(new Button("button1"),new Button("button2"));
+        Tab tab1 = new Tab("tab1", hBox);
+
+        //选项卡2
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(new Button("button1"),new Button("button2"));
+        Tab tab2 = new Tab("tab1", vBox);
+        //添加选项卡进tabpane
+        tp.getTabs().addAll(tab1,tab2);
+
+        //单独/全局设置选项卡是否可关闭
+        tab1.setClosable(false);
+        tp.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        //设置选项卡位置
+        tp.setSide(Side.TOP);
+        an.getChildren().addAll(tp);
+        Scene sceen = new Scene(an);
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
     }
 ```
