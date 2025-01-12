@@ -881,3 +881,138 @@ text.selectedTextProperty().addListener(new ChangeListener<String>() {
         stage.show();
     }
 ```
+
+## choiceBox下拉框
+```java
+package com.bgt.javafxdemo;
+
+import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import java.util.Objects;
+
+public class HelloApplication extends Application {
+    @Override
+    public void start(Stage stage) throws Exception {
+//        new LoginPanel();
+
+        AnchorPane root = new AnchorPane();
+        //下拉框单选-字符串
+        ChoiceBox<String> cb = new ChoiceBox<>();
+        cb.getItems().addAll("选项1","选项2","选项3");
+        //设置默认选择项
+        cb.setValue("选项2");
+        //监听选择项
+        cb.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println("选择了："+t1);
+            }
+        });
+
+        //下拉框单选-对象类型
+        ChoiceBox<Student> cb2 = new ChoiceBox<Student>();
+        cb2.getItems().addAll(new Student("张三"),new Student("李四"));
+        AnchorPane.setTopAnchor(cb2,100d);
+        root.getChildren().addAll(cb,cb2);
+        //监听选择项
+        cb2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Student>() {
+            @Override
+            public void changed(ObservableValue<? extends Student> observableValue, Student s, Student t1) {
+                System.out.println("选择了："+t1.getName());
+            }
+        });
+        //下拉项显示对象属性（数据转换）
+        cb2.setConverter(new StringConverter<Student>() {
+            @Override
+            public String toString(Student student) {
+                return Objects.nonNull(student)?student.getName():"";
+            }
+
+            @Override
+            public Student fromString(String s) {
+                return null;
+            }
+        });
+
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setWidth(800);
+        stage.setHeight(600);
+        stage.setTitle("javafx");
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+
+class Student{
+    private String name;
+    public Student(String name){this.name=name;}
+    public String getName(){
+        return this.name;
+    }
+}
+```
+## ColorPicker颜色拾取器
+```java
+ @Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane root = new AnchorPane();
+
+        ColorPicker cp = new ColorPicker();
+        cp.setPrefWidth(200);
+        root.getChildren().add(cp);
+
+        //监听选择的颜色，设置为主页面背景颜色
+        cp.valueProperty().addListener(new ChangeListener<Color>() {
+            @Override
+            public void changed(ObservableValue<? extends Color> observableValue, Color color, Color t1) {
+                System.out.println( t1.toString());
+                root.setStyle("-fx-background-color: #"+t1.toString().substring(2));
+            }
+        });
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setWidth(800);
+        stage.setHeight(600);
+        stage.setTitle("javafx");
+        stage.show();
+    }
+```
+
+## DatePicker日期选择器
+```java
+   @Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane root = new AnchorPane();
+
+        DatePicker cp = new DatePicker();
+        cp.setPrefWidth(200);
+        root.getChildren().add(cp);
+
+        //监听选择的颜色，设置为主页面背景颜色
+        cp.valueProperty().addListener(new ChangeListener<LocalDate>() {
+            @Override
+            public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate color, LocalDate t1) {
+                System.out.println("选择的时间是："+ t1.toString());
+            }
+        });
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setWidth(800);
+        stage.setHeight(600);
+        stage.setTitle("javafx");
+        stage.show();
+    }
+```
