@@ -1016,3 +1016,188 @@ class Student{
         stage.show();
     }
 ```
+
+## 把图片转成字符画
+```java
+package com.leewyatt.player;
+
+import javafx.application.Application;
+import javafx.scene.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+import java.io.*;
+
+/**
+ * @author: bgt
+ * @Date: 2025/1/7 15:21
+ * @Desc:
+ */
+public class Demo extends Application {
+    @Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+        //加载要转字符的图片
+        Image im = new Image("file:/Users/boguotong/Pictures/tuzi.png");
+        //读取图片像素
+        PixelReader pr = im.getPixelReader();
+        //存储字符
+        StringBuffer sb = new StringBuffer();
+        //遍历每个像素,获取字符
+        for(int i=0;i<im.getHeight();i++){
+            for (int k=0;k<im.getWidth();k++){
+                Color color = pr.getColor(k, i);
+                //获取明暗效果最明显的一种颜色
+                int value= (int) (color.getRed()*255);
+                System.out.println(value);
+                sb.append(getVal(value));
+            }
+            sb.append("\r\n");
+        }
+        //把sb的内容存储成一个文本文件,存储到本地
+        writeTxt(sb);
+        System.out.println("完成");
+
+        ImageView imageView = new ImageView(im);
+        an.getChildren().add(imageView);
+        Scene sceen = new Scene(an);
+        //设置舞台信息
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+
+    /**
+     * 把字符写出到文本文件
+     * @param sb
+     * @throws IOException
+     */
+    private void writeTxt(StringBuffer sb) throws IOException {
+        File file = new File("/Users/boguotong/Desktop/test.txt");
+        FileOutputStream fos = new FileOutputStream(file);
+        OutputStreamWriter osw = new OutputStreamWriter(fos);
+        BufferedWriter bu = new BufferedWriter(osw);
+        bu.write(sb.toString());
+        bu.close();
+        osw.close();
+        fos.close();
+    }
+
+    public static void main(String[] args){
+        launch(args);
+    }
+
+
+    /**
+     * 根据rgb数字获取对应字符,使其出现明暗效果
+     * 数字越大说明越亮
+     * @param val
+     * @return
+     */
+    public String getVal(Integer val){
+        //传入的val范围是0-255,判断val,每10个数值范围返回一个不同的字符
+
+        if (val >= 0 && val < 10) {
+            return "#";
+        }else if (val >= 10 && val <20) {
+            return "#";
+        } else if (val >= 20 && val < 30) {
+            return "@";
+        } else if (val >= 30 && val < 40) {
+            return "@";
+        } else if (val >= 40 && val < 50) {
+            return "$";
+        } else if (val >= 50 && val < 60) {
+            return "$";
+        } else if (val >= 60 && val < 70) {
+            return "%";
+        }else if (val >= 70 && val < 80) {
+            return "W";
+        } else if (val >= 80 && val < 90) {
+            return "M";
+        }else if (val >= 90 && val <= 100) {
+            return "g";
+        }  else if (val >= 100 && val <= 110) {
+            return "a";
+        } else if (val >= 110 && val <= 120) {
+            return "c";
+        } else if (val >= 120 && val <= 130) {
+            return "s";
+        }  else if (val >= 130 && val <= 140) {
+            return "u";
+        } else if (val >= 140 && val <= 150) {
+            return "o";
+        } else if (val >= 150 && val <= 160) {
+            return "?";
+        } else if (val >= 160 && val <= 170) {
+            return ";";
+        } else if (val >= 170 && val <= 180) {
+            return "!";
+        } else if (val >= 180 && val <= 190) {
+            return "!";
+        } else if (val >= 190 && val <= 200) {
+            return "|";
+        } else if (val >= 200 && val <= 210) {
+            return "|";
+        } else if (val >= 210 && val <= 220) {
+            return "-";
+        } else if (val >= 220 && val <= 230) {
+            return ",";
+        } else if (val >= 230 && val <= 240) {
+            return ".";
+        } else if (val >= 240 && val <= 250) {
+            return " ";
+        }  else if (val >= 250 && val <= 260) {
+            return " ";
+        } else {
+            return " ";
+        }
+        
+
+
+    }
+}
+
+```
+## WritableImage 往图片内写像素
+```java
+ @Override
+    public void start(Stage stage) throws Exception {
+        AnchorPane an = new AnchorPane();
+        //加载要转字符的图片
+        Image im = new Image("file:/Users/boguotong/Pictures/tuzi.png");
+
+        WritableImage wi = new WritableImage(300, 200);
+        PixelWriter pixelWriter = wi.getPixelWriter();
+
+        for (int i = 0; i < 100; i++) {
+            for (int k = 0; k < 100; k++) {
+                pixelWriter.setColor(i,k,Color.WHITE);
+            }
+        }
+        //图像对角线画红色
+        for (int i = 0; i < 100; i++) {
+                pixelWriter.setColor(i,i,Color.RED);
+        }
+        //图像斜对角线画绿色
+        for (int i = 100; i > 0; i--) {
+           pixelWriter.setColor(i,100-i,Color.GREEN);
+        }
+
+        ImageView imageView = new ImageView(wi);
+        an.getChildren().add(imageView);
+        Scene sceen = new Scene(an);
+        //设置舞台信息
+        stage.setScene(sceen);
+        stage.setTitle("javafx");
+        stage.setWidth(600);
+        stage.setHeight(500);
+        stage.show();
+    }
+```
