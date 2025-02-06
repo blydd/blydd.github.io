@@ -1201,3 +1201,54 @@ public class Demo extends Application {
         stage.show();
     }
 ```
+
+# javafx项目打包成exe
+## 1.添加打包插件依赖
+  打包插件地址:  https://github.com/openjfx/javafx-maven-plugin
+```xml
+<build>
+        <plugins>
+            <!-- maven打包插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>17</source>
+                    <encoding>utf-8</encoding>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+            <!-- 打包插件-->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManPages>true</noManPages>
+                    <!--  启动器名称-->
+                    <launcher>bill</launcher>
+                    <jlinkImageName>bill</jlinkImageName>
+                    <jlinkZipName>billZip</jlinkZipName>
+                    <!-- 主类名称-->
+                    <mainClass>com.bgt.bill.App</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+```
+
+## 2.执行命令
+```shell
+mvn clean javafx:jlink
+
+```
+在target下即生成指定的zip压缩包
+
+## 3.把bat文件转成exe文件
+下载软件:bat_to_exe  
+https://blog.csdn.net/2301_77012231/article/details/142915140
+打开->选择bat文件->可选图标->exe格式选64位 windows隐形->点击转换,选择输出地址即可
