@@ -1202,6 +1202,128 @@ public class Demo extends Application {
     }
 ```
 
+# 动画
+## 翻转动画
+主类:
+```java
+package com.bgt.javafxdemo;
+
+import javafx.application.Application;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class MainApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+
+        //正面
+        Pane frontPane = new Pane();
+        frontPane.setStyle("-fx-background-color: red");
+        //默认隐藏
+        frontPane.setRotate(-90);
+        frontPane.setRotationAxis(Rotate.Y_AXIS);
+        //反面
+        Pane backPane = new Pane();
+        backPane.setStyle("-fx-background-color: green");
+        //都塞入sp,反面展示,因为是后添加的.
+        StackPane sp = new StackPane(frontPane,backPane);
+        sp.setMaxSize(160,220);
+
+        //sp点击后翻转
+        sp.setOnMouseClicked(mouseEvent -> {
+            //翻转方向
+            boolean dir = mouseEvent.getX() <= sp.getWidth() / 2;
+            if (backPane.isVisible()){
+                FxUtil.flip(backPane, frontPane,dir,500);
+            }else {
+                FxUtil.flip(frontPane,backPane,dir,500);
+            }
+
+        });
+        Scene scene = new Scene(new BorderPane(sp), 500, 500);
+        //添加立体相机,使翻转效果更逼真
+        scene.setCamera(new PerspectiveCamera());
+        primaryStage.setTitle("翻转效果");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+```
+动画工具类:
+```java
+package com.bgt.javafxdemo;
+
+import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
+import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+
+/**
+ * @author: bgt
+ * @Date: 2025/2/14 17:39
+ * @Desc: 工具类
+ */
+public class FxUtil {
+    //是否正在翻转
+    private static boolean isFlipping;
+    /**
+     * 翻转效果
+     * @param hidePane 要隐藏的
+     * @param showPane 要展示的
+     * @param dir true:向左翻转,false:向右翻转
+     * @param durationMill 动画时长,单位毫秒
+     */
+    public static void flip(Pane hidePane, Pane showPane, boolean dir,long durationMill) {
+        //如果正在翻转,则返回
+        if (isFlipping){
+            return;
+        }
+        isFlipping = true;
+        //隐藏当前显示的页面
+        Duration duration = Duration.millis(durationMill);
+        RotateTransition hideRt = new RotateTransition(duration, hidePane);
+        hideRt.setAxis(Rotate.Y_AXIS);
+        hideRt.setFromAngle(0);
+        hideRt.setToAngle(dir?90:-90);
+        //动画播完
+        hideRt.setOnFinished(actionEvent -> {
+            showPane.setVisible(true);
+            hidePane.setVisible(false);
+        });
+
+
+        //显示当前隐藏的页面
+        RotateTransition showRt = new RotateTransition(duration, showPane);
+        showRt.setAxis(Rotate.Y_AXIS);
+        showRt.setFromAngle(dir? -90 :90);
+        showRt.setToAngle(0);
+        //翻转结束
+        showRt.setOnFinished(actionEvent -> {
+            isFlipping = false;
+        });
+        //对两个动画编组,先隐藏再显示
+        SequentialTransition st = new SequentialTransition(hideRt, showRt);
+        st.play();
+    }
+
+}
+
+```
+
+
+
 # javafx项目打包成exe
 ## 1.添加打包插件依赖
   打包插件地址:  https://github.com/openjfx/javafx-maven-plugin
