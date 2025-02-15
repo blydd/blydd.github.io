@@ -1,0 +1,1233 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python">
+<meta property="og:url" content="http://www.lifeab.com/2024/08/08/python/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="python">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-08T02:50:17.000Z">
+<meta property="article:modified_time" content="2025-01-09T01:30:11.375Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>python - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="python"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-08 10:50" pubdate>
+          2024年8月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          95 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">python</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="0-了解python"><a href="#0-了解python" class="headerlink" title="0.了解python"></a>0.了解python</h1><p>Python是一种相当高级的语言。</p>
+<p>比如，完成同一个任务，C语言要写1000行代码，Java只需要写100行，而Python可能只要20行。</p>
+<p>代码少的代价是运行速度慢，C程序运行1秒钟，Java程序可能需要2秒，而Python程序可能就需要10秒。</p>
+<p>用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写的；可以做网络游戏的后台，很多在线游戏的后台都是Python开发的。总之就是能干很多很多事啦。</p>
+<p>Python当然也有不能干的事情，比如写操作系统，这个只能用C语言写；写手机应用，只能用Swift&#x2F;Objective-C（针对iPhone）和Java（针对Android）；写3D游戏，最好用C或C++。</p>
+<p>Python为我们提供了非常完善的基础代码库，覆盖了网络、文件、GUI、数据库、文本等大量内容，被形象地称作“内置电池（batteries included）”。用Python开发，许多功能不必从零编写，直接使用现成的即可。</p>
+<p>除了内置的库外，Python还有大量的第三方库，也就是别人开发的，供你直接使用的东西。当然，如果你开发的代码通过很好的封装，也可以作为第三方库给别人使用。</p>
+<p>那Python适合开发哪些类型的应用呢？</p>
+<ul>
+<li>首选是网络应用，包括网站、后台服务等等；</li>
+<li>其次是许多日常需要的小工具，包括系统管理员需要的脚本任务等等；</li>
+<li>另外就是把其他语言开发的程序再包装起来，方便使用。</li>
+</ul>
+<p>Python的缺点</p>
+<ul>
+<li>*<em>运行速度慢</em>***。和C程序相比非常慢，因为Python是解释型语言，你的代码在执行时会一行一行地翻译成CPU能理解的机器码，这个翻译过程非常耗时，所以很慢。而C程序是运行前直接编译成CPU能执行的机器码，所以非常快。</li>
+<li><strong>代码不能加密</strong>。如果要发布你的Python程序，实际上就是发布源代码，这一点跟C语言不同，C语言不用发布源代码，只需要把编译后的机器码（也就是你在Windows上常见的xxx.exe文件）发布出去。要从机器码反推出C代码是不可能的</li>
+</ul>
+<p><strong>因为Python是跨平台的，它可以运行在Windows、Mac和各种Linux&#x2F;Unix系统上。在Windows上写Python程序，放到Linux上也是能够运行的。</strong></p>
+<h1 id="1-安装python"><a href="#1-安装python" class="headerlink" title="1.安装python"></a>1.安装python</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><ul>
+<li>​	<strong><a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">下载安装包</a></strong> </li>
+<li>​	特别要注意勾上<code>Add Python 3.x to PATH</code>，然后点“Install Now”即可完成安装。</li>
+</ul>
+<p>		</p>
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><ul>
+<li>方法一：从Python官网下载Python 3 macOS版的<a target="_blank" rel="noopener" href="https://www.python.org/downloads/macos/">安装程序</a>，下载后双击运行并安装；</li>
+<li>方法二：如果安装了<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>，直接通过命令<code>brew install python3</code>安装即可。</li>
+</ul>
+<p>安装成功后，打开命令提示符窗口，敲入<code>python</code> 或 <code>python3</code>,进入交互模式即安装成功.</p>
+<p>在Python交互模式下输入<code>exit()</code>并回车，就退出了Python交互模式</p>
+<h1 id="Python解释器"><a href="#Python解释器" class="headerlink" title="Python解释器"></a>Python解释器</h1><p>当我们编写Python代码时，我们得到的是一个包含Python代码的以<code>.py</code>为扩展名的文本文件。要运行代码，就需要Python解释器去执行<code>.py</code>文件。</p>
+<p>由于整个Python语言从规范到解释器都是开源的，所以理论上，只要水平够高，任何人都可以编写Python解释器来执行Python代码（当然难度很大）。事实上，确实存在多种Python解释器。</p>
+<h2 id="CPython"><a href="#CPython" class="headerlink" title="CPython"></a>CPython</h2><p>当我们从<a target="_blank" rel="noopener" href="https://www.python.org/">Python官方网站</a>下载并安装好Python 3.x后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用C语言开发的，所以叫CPython。在命令行下运行<code>python</code>就是启动CPython解释器。</p>
+<p><strong>CPython是使用最广的Python解释器。</strong></p>
+<h1 id="直接运行py文件"><a href="#直接运行py文件" class="headerlink" title="直接运行py文件"></a>直接运行py文件</h1><p>能不能像.exe文件那样直接运行<code>.py</code>文件呢？在Windows上是不行的，但是，在Mac和Linux上是可以的，方法是在<code>.py</code>文件的第一行加上一个特殊的注释：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#!/usr/bin/env python3</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hello, world&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>然后，通过命令给<code>hello.py</code>以执行权限：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">chmod</span> a+x hello.py</span><br></code></pre></td></tr></table></figure>
+
+<p>就可以直接运行<code>hello.py</code>了，比如在Mac下运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">./hello.py</span><br>hello, world<br></code></pre></td></tr></table></figure>
+
+<h1 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h1><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>用<code>print()</code>在括号中加上字符串，就可以向屏幕上输出指定的文字。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hello, world&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><code>print()</code>函数也可以接受多个字符串，用逗号“,”隔开，就可以连成一串输出：<br><code>print()会依次打印每个字符串，遇到逗号“,”会输出一个空格</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;The quick brown fox&#x27;</span>, <span class="hljs-string">&#x27;jumps over&#x27;</span>, <span class="hljs-string">&#x27;the lazy dog&#x27;</span>)<br>The quick brown fox jumps over the lazy dog<br></code></pre></td></tr></table></figure>
+
+<p><code>print()</code>也可以打印整数，或者计算结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-number">300</span>)<br><span class="hljs-number">300</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-number">100</span> + <span class="hljs-number">200</span>)<br><span class="hljs-number">300</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;100 + 200 =&#x27;</span>, <span class="hljs-number">100</span> + <span class="hljs-number">200</span>)<br><span class="hljs-number">100</span> + <span class="hljs-number">200</span> = <span class="hljs-number">300</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>Python提供了一个<code>input()</code>，可以让用户输入字符串，并存放到一个变量里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>name = <span class="hljs-built_in">input</span>()<br>Michaels<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#hello.py</span><br>name = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;please enter your name: &#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;hello,&#x27;</span>, name)<br><br>C:\Workspace&gt; python hello.py<br>please enter your name: Michael<br>hello, Michael<br></code></pre></td></tr></table></figure>
+
+<h1 id="注释和代码规范"><a href="#注释和代码规范" class="headerlink" title="注释和代码规范"></a>注释和代码规范</h1><p>以<code>#</code>开头的语句是注释</p>
+<p>Python使用缩进来组织代码块，请务必遵守约定俗成的习惯，<strong>坚持使用4个空格的缩进</strong>；(在文本编辑器中，需要设置把Tab自动转换为4个空格，确保不混用Tab和空格。)</p>
+<p>每一行都是一个语句，当语句以冒号<code>:</code>结尾时，缩进的语句视为代码块。</p>
+<p>Python程序是<em><strong>大小写敏感</strong></em>的</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>Python可以处理任意大小的整数，当然包括负整数.</p>
+<p><strong>Python的整数没有大小限制</strong></p>
+<p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用<code>0x</code>前缀和0-9，a-f表示.</p>
+<p>对于很大的数，例如<code>10000000000</code>，很难数清楚0的个数。Python允许在数字中间以<code>_</code>分隔，因此，写成<code>10_000_000_000</code>和<code>10000000000</code>是完全一样的。十六进制数也可以写成<code>0xa1b2_c3d4</code>。</p>
+<p><strong>整数的除法是精确的</strong>。</p>
+<p>​	在Python中，有两种除法，</p>
+<ul>
+<li>​	一种除法是<code>/</code>,此除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">10</span> / <span class="hljs-number">3</span><br><span class="hljs-number">3.3333333333333335</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">9</span> / <span class="hljs-number">3</span><br><span class="hljs-number">3.0</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>一种除法是<code>//</code>，称为地板除，两个整数的除法仍然是整数,因为只取结果的整数部分</p>
+<p>Python还提供一个余数运算，可以得到两个整数相除的余数：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">10</span> // <span class="hljs-number">3</span><br><span class="hljs-number">3</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">10</span> % <span class="hljs-number">3</span><br><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x10^9和12.3x10^8是完全相等的。</p>
+<p>浮点数可以用数学写法，如<code>1.23</code>，<code>3.14</code>，<code>-9.01</code>，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x10^9就是<code>1.23e9</code>，或者<code>12.3e8</code>，0.000012可以写成<code>1.2e-5</code>，等等。</p>
+<p>整数和浮点数在计算机内部存储的方式是不同的，<strong>整数运算永远是精确的（除法难道也是精确的？是的！），而浮点数运算则可能会有四舍五入的误差。</strong></p>
+<p>Python的浮点数也没有大小限制，但是超出一定范围就直接表示为<code>inf</code>（无限大）。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li><p>字符串是以单引号<code>&#39;</code>或双引号<code>&quot;</code>括起来的任意文本，比如<code>&#39;abc&#39;</code>，<code>&quot;xyz&quot;</code>等等。</p>
+</li>
+<li><p>如果<code>&#39;</code>本身也是一个字符，那就可以用<code>&quot;&quot;</code>括起来，比如<code>&quot;I&#39;m OK&quot;</code>包含的字符是<code>I</code>，<code>&#39;</code>，<code>m</code>，空格，<code>O</code>，<code>K</code>这6个字符。</p>
+</li>
+<li><p>如果字符串内部既包含<code>&#39;</code>又包含<code>&quot;</code>可以用转义字符<code>\</code>来标识,比如:  <code>&#39;I\&#39;m \&quot;OK\&quot;!&#39;</code></p>
+</li>
+<li><p>转义字符<code>\</code>可以转义很多字符，比如<code>\n</code>表示<strong>换行</strong>，<code>\t</code>表示<strong>制表符</strong>，字符<code>\</code>本身也要转义，所以<code>\\</code>表示的字符就是<code>\</code></p>
+</li>
+<li><p>如果字符串里面有很多字符都需要转义，就需要加很多<code>\</code>，为了简化，Python还允许用<code>r&#39;&#39;</code>表示<code>&#39;&#39;</code>内部的字符串默认不转义,例如:<code>print(r&#39;\\\t\\&#39;)</code></p>
+</li>
+<li><p>如果字符串内部有很多换行，用<code>\n</code>写在一行里不好阅读，为了简化，Python允许用<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>的格式表示多行内容:</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;&#x27;line1</span><br><span class="hljs-string"><span class="hljs-meta">... </span>line2</span><br><span class="hljs-string"><span class="hljs-meta">... </span>line3&#x27;&#x27;&#x27;</span>)<br>line1<br>line2<br>line3<br></code></pre></td></tr></table></figure>
+
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>一个布尔值只有<code>True</code>、<code>False</code>两种值（请注意大小写）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-literal">True</span><br><span class="hljs-literal">True</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3</span> &gt; <span class="hljs-number">2</span><br><span class="hljs-literal">True</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3</span> &gt; <span class="hljs-number">5</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<p>布尔值可以用<code>and</code>、<code>or</code>和<code>not</code>运算:</p>
+<ul>
+<li><code>and</code>运算是与运算，只有所有都为<code>True</code>，<code>and</code>运算结果才是<code>True</code></li>
+<li><code>or</code>运算是或运算，只要其中有一个为<code>True</code>，<code>or</code>运算结果就是<code>True</code></li>
+<li><code>not</code>运算是非运算，它是一个单目运算符，把<code>True</code>变成<code>False</code>，<code>False</code>变成<code>True</code></li>
+</ul>
+<h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>空值是Python里一个特殊的值，用<code>None</code>表示。<code>None</code>不能理解为<code>0</code>，因为<code>0</code>是有意义的，而<code>None</code>是一个特殊的空值。</p>
+<h2 id="有序集合list"><a href="#有序集合list" class="headerlink" title="有序集合list"></a>有序集合list</h2><p><code>classmates = [&#39;Michael&#39;, &#39;Bob&#39;, &#39;Tracy&#39;]</code></p>
+<p>索引是从<code>0</code>开始</p>
+<p><strong>获得list元素的个数</strong>: <code>len(classmates)</code></p>
+<p>索引超出范围时，会报<code>IndexError</code>错误，要确保索引不要越界，最后一个元素的索引是<code>len(classmates) - 1</code></p>
+<p>还可以用<code>-1</code>做索引，直接获取最后一个元素：<code>classmates[-1]</code></p>
+<p>以此类推，可以获取倒数第2个、倒数第3个：classmates[-2]</p>
+<p><strong>追加元素到末尾</strong>：<code>classmates.append(&#39;Adam&#39;)</code></p>
+<p><strong>把元素插入到指定位置</strong>:  <code>classmates.insert(1, &#39;Jack&#39;)</code></p>
+<p><strong>删除末尾元素</strong>:   <code>classmates.pop()</code></p>
+<p><strong>删除指定位置元素</strong>:   <code>classmates.pop(1)</code></p>
+<p><strong>把某个元素替换成别的元素</strong>：<code>classmates[1] = &#39;Sarah&#39;</code></p>
+<p>list里面的元素的数据类型也可以不同:  <code>L = [&#39;Apple&#39;, 123, True]</code></p>
+<p>list元素也可以是另一个list :  <code>s = [&#39;python&#39;, &#39;java&#39;, [&#39;asp&#39;, &#39;php&#39;], &#39;scheme&#39;]</code></p>
+<h2 id="有序集合tuple"><a href="#有序集合tuple" class="headerlink" title="有序集合tuple"></a>有序集合tuple</h2><p>另一种有序列表叫元组：tuple。tuple和list非常类似，但是<strong>tuple一旦初始化就不能修改</strong>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">classmates = (<span class="hljs-string">&#x27;Michael&#x27;</span>, <span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-string">&#x27;Tracy&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>现在，classmates这个tuple不能变了，它也没有append()，insert()这样的方法。其他获取元素的方法和list是一样的，你可以正常地使用<code>classmates[0]</code>，<code>classmates[-1]</code>，但不能赋值成另外的元素。</p>
+<p><strong>当你定义一个tuple时，在定义的时候，tuple的元素就必须被确定下来</strong></p>
+<p><strong>定义一个空的tuple</strong>，可以写成<code>()</code>:  <code>t = ()</code></p>
+<p><strong>定义一个只有1个元素的tuple</strong>:  <code>t = (1,)</code></p>
+<p><strong>“可变的”tuple：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>t = (<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>])<br><span class="hljs-meta">&gt;&gt;&gt; </span>t[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;X&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>t[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;Y&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>t<br>(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, [<span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量名必须是大小写英文、数字和<code>_</code>的组合，且不能用数字开头</p>
+<p>在Python中，等号<code>=</code>是赋值语句，可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量</p>
+<p>这种变量本身类型不固定的语言称之为<em><strong>动态语言</strong></em>，与之对应的是<em><strong>静态语言</strong></em>。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如<strong>Java是静态语言</strong>.</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>使用内建的<code>isinstance</code>函数可以判断一个变量是不是字符串： <code>isinstance(x, str)</code></p>
+<h1 id="字符串和编码"><a href="#字符串和编码" class="headerlink" title="字符串和编码"></a>字符串和编码</h1><h2 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h2><p>因为计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。最早的计算机在设计时采用8个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是255（二进制11111111&#x3D;十进制255），如果要表示更大的整数，就必须用更多的字节。比如两个字节可以表示的最大整数是<code>65535</code>，4个字节可以表示的最大整数是<code>4294967295</code>。</p>
+<p>由于计算机是美国人发明的，因此，最早只有127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为<code>ASCII</code>编码，比如大写字母<code>A</code>的编码是<code>65</code>，小写字母<code>z</code>的编码是<code>122</code>。</p>
+<p>但是要处理中文显然一个字节是不够的，至少需要两个字节，而且还不能和ASCII编码冲突，所以，中国制定了<code>GB2312</code>编码，用来把中文编进去。</p>
+<p>你可以想得到的是，全世界有上百种语言，日本把日文编到<code>Shift_JIS</code>里，韩国把韩文编到<code>Euc-kr</code>里，各国有各国的标准，就会不可避免地出现冲突，结果就是，在多语言混合的文本中，显示出来会有乱码。</p>
+<p>因此，Unicode字符集应运而生。Unicode把所有语言都统一到一套编码里，这样就不会再有乱码问题了。</p>
+<p>Unicode标准也在不断发展，但最常用的是UCS-16编码，用两个字节表示一个字符（如果要用到非常偏僻的字符，就需要4个字节）。现代操作系统和大多数编程语言都直接支持Unicode。</p>
+<p>现在，捋一捋ASCII编码和Unicode编码的区别：ASCII编码是1个字节，而Unicode编码通常是2个字节。</p>
+<ul>
+<li>字母<code>A</code>用ASCII编码是十进制的<code>65</code>，二进制的<code>01000001</code>；</li>
+<li>字符<code>0</code>用ASCII编码是十进制的<code>48</code>，二进制的<code>00110000</code>，注意字符<code>&#39;0&#39;</code>和整数<code>0</code>是不同的；</li>
+<li>汉字<code>中</code>已经超出了ASCII编码的范围，用Unicode编码是十进制的<code>20013</code>，二进制的<code>01001110 00101101</code>。</li>
+</ul>
+<p>你可以猜测，如果把ASCII编码的<code>A</code>用Unicode编码，只需要在前面补0就可以，因此，<code>A</code>的Unicode编码是<code>00000000 01000001</code>。</p>
+<p>新的问题又出现了：如果统一成Unicode编码，乱码问题从此消失了。但是，如果你写的文本基本上全部是英文的话，用Unicode编码比ASCII编码需要多一倍的存储空间，在存储和传输上就十分不划算。</p>
+<p>所以，本着节约的精神，又<strong>出现了把Unicode编码转化为“可变长编码”的<code>UTF-8</code>编码。UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>ASCII</th>
+<th>Unicode</th>
+<th>UTF-8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>01000001</td>
+<td>00000000 01000001</td>
+<td>01000001</td>
+</tr>
+<tr>
+<td>中</td>
+<td></td>
+<td>01001110 00101101</td>
+<td>11100100 10111000 10101101</td>
+</tr>
+</tbody></table>
+<p>从上面的表格还可以发现，UTF-8编码有一个额外的好处，就是ASCII编码实际上可以被看成是UTF-8编码的一部分，所以，大量只支持ASCII编码的历史遗留软件可以在UTF-8编码下继续工作。</p>
+<p>搞清楚了ASCII、Unicode和UTF-8的关系，我们就可以总结一下现在计算机系统通用的字符编码工作方式：</p>
+<p><strong>在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。</strong></p>
+<p>用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件：</p>
+<p>浏览网页的时候，服务器会把动态生成的Unicode内容转换为UTF-8再传输到浏览器：</p>
+<p>所以你看到很多网页的源码上会有类似<code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>的信息，表示该网页正是用的UTF-8编码。</p>
+<h2 id="Python的字符串"><a href="#Python的字符串" class="headerlink" title="Python的字符串"></a>Python的字符串</h2><p><strong>在最新的Python 3版本中，字符串是以Unicode编码的</strong>，也就是说，Python的字符串支持多语言，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;包含中文的str&#x27;</span>)<br>包含中文的<span class="hljs-built_in">str</span><br></code></pre></td></tr></table></figure>
+
+<p>对于单个字符的编码，Python提供了<code>ord()</code>函数获取字符的整数表示，<code>chr()</code>函数把编码转换为对应的字符：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; ord(<span class="hljs-string">&#x27;A&#x27;</span>)<br>65<br>&gt;&gt;&gt; ord(<span class="hljs-string">&#x27;中&#x27;</span>)<br>20013<br>&gt;&gt;&gt; chr(66)<br><span class="hljs-string">&#x27;B&#x27;</span><br>&gt;&gt;&gt; chr(25991)<br><span class="hljs-string">&#x27;文&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果知道字符的整数编码，还可以用十六进制这么写<code>str</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; <span class="hljs-string">&#x27;\u4e2d\u6587&#x27;</span><br><span class="hljs-string">&#x27;中文&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>两种写法完全是等价的。</p>
+<p>由于Python的字符串类型是<code>str</code>，在内存中以Unicode表示，一个字符对应若干个字节。如果要在网络上传输，或者保存到磁盘上，就需要把<code>str</code>变为以字节为单位的<code>bytes</code>。</p>
+<p>Python对<code>bytes</code>类型的数据用带<code>b</code>前缀的单引号或双引号表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">x = <span class="hljs-string">b&#x27;ABC&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>要注意区分<code>&#39;ABC&#39;</code>和<code>b&#39;ABC&#39;</code>，前者是<code>str</code>，后者虽然内容显示得和前者一样，但<code>bytes</code>的每个字符都只占用一个字节。</p>
+<p>以Unicode表示的<code>str</code>通过<code>encode()</code>方法可以编码为指定的<code>bytes</code>，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; <span class="hljs-string">&#x27;ABC&#x27;</span>.encode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br>b<span class="hljs-string">&#x27;ABC&#x27;</span><br>&gt;&gt;&gt; <span class="hljs-string">&#x27;中文&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>b<span class="hljs-string">&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span><br>&gt;&gt;&gt; <span class="hljs-string">&#x27;中文&#x27;</span>.encode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="hljs-keyword">in</span> &lt;module&gt;<br>UnicodeEncodeError: <span class="hljs-string">&#x27;ascii&#x27;</span> codec can<span class="hljs-string">&#x27;t encode characters in position 0-1: ordinal not in range(128)</span><br></code></pre></td></tr></table></figure>
+
+<p>纯英文的<code>str</code>可以用<code>ASCII</code>编码为<code>bytes</code>，内容是一样的，含有中文的<code>str</code>可以用<code>UTF-8</code>编码为<code>bytes</code>。含有中文的<code>str</code>无法用<code>ASCII</code>编码，因为中文编码的范围超过了<code>ASCII</code>编码的范围，Python会报错。</p>
+<p>在<code>bytes</code>中，无法显示为ASCII字符的字节，用<code>\x##</code>显示。</p>
+<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是<code>bytes</code>。要把<code>bytes</code>变为<code>str</code>，就需要用<code>decode()</code>方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; b<span class="hljs-string">&#x27;ABC&#x27;</span>.decode(<span class="hljs-string">&#x27;ascii&#x27;</span>)<br><span class="hljs-string">&#x27;ABC&#x27;</span><br>&gt;&gt;&gt; b<span class="hljs-string">&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br><span class="hljs-string">&#x27;中文&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>如果<code>bytes</code>中包含无法解码的字节，<code>decode()</code>方法会报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; b<span class="hljs-string">&#x27;\xe4\xb8\xad\xff&#x27;</span>.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>Traceback (most recent call last):<br>  ...<br>UnicodeDecodeError: <span class="hljs-string">&#x27;utf-8&#x27;</span> codec can<span class="hljs-string">&#x27;t decode byte 0xff in position 3: invalid start byte</span><br></code></pre></td></tr></table></figure>
+
+<p>如果<code>bytes</code>中只有一小部分无效的字节，可以传入<code>errors=&#39;ignore&#39;</code>忽略错误的字节：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; b<span class="hljs-string">&#x27;\xe4\xb8\xad\xff&#x27;</span>.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br><span class="hljs-string">&#x27;中&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>要计算<code>str</code>包含多少个字符，可以用<code>len()</code>函数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; len(<span class="hljs-string">&#x27;ABC&#x27;</span>)<br>3<br>&gt;&gt;&gt; len(<span class="hljs-string">&#x27;中文&#x27;</span>)<br>2<br></code></pre></td></tr></table></figure>
+
+<p><code>len()</code>函数计算的是<code>str</code>的字符数，如果换成<code>bytes</code>，<code>len()</code>函数就计算字节数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; len(b<span class="hljs-string">&#x27;ABC&#x27;</span>)<br>3<br>&gt;&gt;&gt; len(b<span class="hljs-string">&#x27;\xe4\xb8\xad\xe6\x96\x87&#x27;</span>)<br>6<br>&gt;&gt;&gt; len(<span class="hljs-string">&#x27;中文&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>6<br></code></pre></td></tr></table></figure>
+
+<p>可见，1个中文字符经过UTF-8编码后通常会占用3个字节，而1个英文字符只占用1个字节。</p>
+<p>在操作字符串时，我们经常遇到<code>str</code>和<code>bytes</code>的互相转换。为了避免乱码问题，应当始终坚持使用UTF-8编码对<code>str</code>和<code>bytes</code>进行转换。</p>
+<p>由于Python源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br></code></pre></td></tr></table></figure>
+
+<p>第一行注释是为了告诉Linux&#x2F;OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释；</p>
+<p>第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
+<p>申明了UTF-8编码并不意味着你的<code>.py</code>文件就是UTF-8编码的，必须并且要确保文本编辑器正在使用UTF-8编码。</p>
+<p>如果<code>.py</code>文件本身使用UTF-8编码，并且也申明了<code># -*- coding: utf-8 -*-</code>，打开命令提示符测试就可以正常显示中文：</p>
+<h1 id="高级特性-切片"><a href="#高级特性-切片" class="headerlink" title="高级特性-切片"></a>高级特性-切片</h1><p>取一个list或tuple的部分元素  <code>L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;]</code></p>
+<ul>
+<li><strong>取前3个元素</strong>:</li>
+</ul>
+<p>​	<code>L[0:3]</code> <code>:表示，从索引</code>0<code>开始取，直到索引</code>3<code>为止，但不包括索引</code>3<code>。即索引</code>0<code>，</code>1<code>，</code>2&#96;，正好是3个元素。</p>
+<p>​	<code>L[:3]</code>  :如果第一个索引是<code>0</code>，还可以省略.</p>
+<ul>
+<li><p><strong>从索引1开始，取出2个元素出来：</strong></p>
+<p><code>L[1:3]</code></p>
+</li>
+<li><p><strong>类似的，既然Python支持<code>L[-1]</code>取倒数第一个元素，那么它同样支持倒数切片，试试：</strong></p>
+<blockquote>
+<p>倒数第一个元素的索引是<code>-1</code></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[-2:]<br>[<span class="hljs-string">&#x27;Bob&#x27;</span>, <span class="hljs-string">&#x27;Jack&#x27;</span>]<br>&gt;&gt;&gt; L[-2:-1]<br>[<span class="hljs-string">&#x27;Bob&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>切片操作十分有用。我们先创建一个0-99的数列：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L = list(range(100))<br>&gt;&gt;&gt; L<br>[0, 1, 2, 3, ..., 99]<br></code></pre></td></tr></table></figure>
+
+<p>可以通过切片轻松取出某一段数列。比如前10个数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[:10]<br>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]<br></code></pre></td></tr></table></figure>
+
+<p>后10个数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[-10:]<br>[90, 91, 92, 93, 94, 95, 96, 97, 98, 99]<br></code></pre></td></tr></table></figure>
+
+<p>前11-20个数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[10:20]<br>[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]<br></code></pre></td></tr></table></figure>
+
+<p>前10个数，每两个取一个：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[:10:2]<br>[0, 2, 4, 6, 8]<br></code></pre></td></tr></table></figure>
+
+<p>所有数，每5个取一个：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[::5]<br>[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]<br></code></pre></td></tr></table></figure>
+
+<p>甚至什么都不写，只写<code>[:]</code>就可以原样复制一个list：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L[:]<br>[0, 1, 2, 3, ..., 99]<br></code></pre></td></tr></table></figure>
+
+<p>tuple也是一种list，唯一区别是tuple不可变。因此，tuple也可以用切片操作，只是操作的结果仍是tuple：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; (0, 1, 2, 3, 4, 5)[:3]<br>(0, 1, 2)<br></code></pre></td></tr></table></figure>
+
+<p>字符串<code>&#39;xxx&#39;</code>也可以看成是一种list，每个元素就是一个字符。因此，字符串也可以用切片操作，只是操作结果仍是字符串：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; <span class="hljs-string">&#x27;ABCDEFG&#x27;</span>[:3]<br><span class="hljs-string">&#x27;ABC&#x27;</span><br>&gt;&gt;&gt; <span class="hljs-string">&#x27;ABCDEFG&#x27;</span>[::2]<br><span class="hljs-string">&#x27;ACEG&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>在很多编程语言中，针对字符串提供了很多各种截取函数（例如，substring），其实目的就是对字符串切片。Python没有针对字符串的截取函数，只需要切片一个操作就可以完成，非常简单。</p>
+<h1 id="高级特性-迭代"><a href="#高级特性-迭代" class="headerlink" title="高级特性-迭代"></a>高级特性-迭代</h1><h2 id="迭代list或tuple"><a href="#迭代list或tuple" class="headerlink" title="迭代list或tuple"></a>迭代<code>list</code>或<code>tuple</code></h2><p>如果给定一个<code>list</code>或<code>tuple</code>，我们可以通过<code>for</code>循环来遍历这个<code>list</code>或<code>tuple</code>，这种遍历我们称为迭代（Iteration）。</p>
+<p>在Python中，迭代是通过<code>for ... in</code>来完成的</p>
+<p><strong>Python的<code>for</code>循环不仅可以用在<code>list</code>或<code>tuple</code>上，还可以作用在其他可迭代对象上。</strong></p>
+<h2 id="迭代dict"><a href="#迭代dict" class="headerlink" title="迭代dict"></a>迭代dict</h2><p><code>list</code>这种数据类型虽然有下标，但很多其他数据类型是没有下标的，但是，只要是可迭代对象，无论有无下标，都可以迭代，比如<code>dict</code>就可以迭代：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; d = &#123;<span class="hljs-string">&#x27;a&#x27;</span>: 1, <span class="hljs-string">&#x27;b&#x27;</span>: 2, <span class="hljs-string">&#x27;c&#x27;</span>: 3&#125;<br>&gt;&gt;&gt; <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> d:<br>...     <span class="hljs-built_in">print</span>(key)<br>...<br>a<br>c<br>b<br></code></pre></td></tr></table></figure>
+
+<p><strong>默认情况下，<code>dict</code>迭代的是key。如果要迭代value，可以用<code>for value in d.values()</code>，如果要同时迭代key和value，可以用<code>for k, v in d.items()</code>。</strong></p>
+<h2 id="迭代字符串"><a href="#迭代字符串" class="headerlink" title="迭代字符串"></a>迭代字符串</h2><p>由于字符串也是可迭代对象，因此，也可以作用于<code>for</code>循环：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;ABC&#x27;</span>:<br>...     <span class="hljs-built_in">print</span>(ch)<br>...<br>A<br>B<br>C<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="判断一个对象是可迭代对象"><a href="#判断一个对象是可迭代对象" class="headerlink" title="判断一个对象是可迭代对象"></a>判断一个对象是可迭代对象</h2><p><strong>方法是通过<code>collections.abc</code>模块的<code>Iterable</code>类型判断：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; from collections.abc import Iterable<br>&gt;&gt;&gt; isinstance(<span class="hljs-string">&#x27;abc&#x27;</span>, Iterable) <span class="hljs-comment"># str是否可迭代</span><br>True<br>&gt;&gt;&gt; isinstance([1,2,3], Iterable) <span class="hljs-comment"># list是否可迭代</span><br>True<br>&gt;&gt;&gt; isinstance(123, Iterable) <span class="hljs-comment"># 整数是否可迭代</span><br>False<br></code></pre></td></tr></table></figure>
+
+<h2 id="list实现类似Java的下标循环"><a href="#list实现类似Java的下标循环" class="headerlink" title="list实现类似Java的下标循环"></a><code>list</code>实现类似Java的下标循环</h2><p>Python内置的<code>enumerate</code>函数可以把一个<code>list</code>变成索引-元素对，这样就可以在<code>for</code>循环中同时迭代索引和元素本身：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; <span class="hljs-keyword">for</span> i, value <span class="hljs-keyword">in</span> enumerate([<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>]):<br>...     <span class="hljs-built_in">print</span>(i, value)<br>...<br>0 A<br>1 B<br>2 C<br></code></pre></td></tr></table></figure>
+
+<h1 id="高级特性-列表生成式"><a href="#高级特性-列表生成式" class="headerlink" title="高级特性-列表生成式"></a>高级特性-列表生成式</h1><blockquote>
+<p>列表生成式即List Comprehensions，是Python内置的非常简单却强大的可以用来创建list的生成式。</p>
+</blockquote>
+<p>举个例子，要生成list <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>可以用<code>list(range(1, 11))</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; list(range(1, 11))<br>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]<br></code></pre></td></tr></table></figure>
+
+<p>但如果要生成<code>[1x1, 2x2, 3x3, ..., 10x10]</code>怎么做？方法一是循环：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L = []<br>&gt;&gt;&gt; <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11):<br>...    L.append(x * x)<br>...<br>&gt;&gt;&gt; L<br>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]<br></code></pre></td></tr></table></figure>
+
+<p><strong>但是循环太繁琐，而列表生成式则可以用一行语句代替循环生成上面的list：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11)]<br>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]<br></code></pre></td></tr></table></figure>
+
+<p><strong>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11) <span class="hljs-keyword">if</span> x % 2 == 0]<br>[4, 16, 36, 64, 100]<br></code></pre></td></tr></table></figure>
+
+<p><strong>还可以使用两层循环，可以生成全排列：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [m + n <span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;ABC&#x27;</span> <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;XYZ&#x27;</span>]<br>[<span class="hljs-string">&#x27;AX&#x27;</span>, <span class="hljs-string">&#x27;AY&#x27;</span>, <span class="hljs-string">&#x27;AZ&#x27;</span>, <span class="hljs-string">&#x27;BX&#x27;</span>, <span class="hljs-string">&#x27;BY&#x27;</span>, <span class="hljs-string">&#x27;BZ&#x27;</span>, <span class="hljs-string">&#x27;CX&#x27;</span>, <span class="hljs-string">&#x27;CY&#x27;</span>, <span class="hljs-string">&#x27;CZ&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>三层和三层以上的循环就很少用到了。</p>
+<p>运用列表生成式，可以写出非常简洁的代码。例如，列出当前目录下的所有文件和目录名，可以通过一行代码实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; import os <span class="hljs-comment"># 导入os模块，模块的概念后面讲到</span><br>&gt;&gt;&gt; [d <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> os.listdir(<span class="hljs-string">&#x27;.&#x27;</span>)] <span class="hljs-comment"># os.listdir可以列出文件和目录</span><br>[<span class="hljs-string">&#x27;.emacs.d&#x27;</span>, <span class="hljs-string">&#x27;.ssh&#x27;</span>, <span class="hljs-string">&#x27;.Trash&#x27;</span>, <span class="hljs-string">&#x27;Adlm&#x27;</span>, <span class="hljs-string">&#x27;Applications&#x27;</span>, <span class="hljs-string">&#x27;Desktop&#x27;</span>, <span class="hljs-string">&#x27;Documents&#x27;</span>, <span class="hljs-string">&#x27;Downloads&#x27;</span>, <span class="hljs-string">&#x27;Library&#x27;</span>, <span class="hljs-string">&#x27;Movies&#x27;</span>, <span class="hljs-string">&#x27;Music&#x27;</span>, <span class="hljs-string">&#x27;Pictures&#x27;</span>, <span class="hljs-string">&#x27;Public&#x27;</span>, <span class="hljs-string">&#x27;VirtualBox VMs&#x27;</span>, <span class="hljs-string">&#x27;Workspace&#x27;</span>, <span class="hljs-string">&#x27;XCode&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p><code>for</code>循环其实可以同时使用两个甚至多个变量，比如<code>dict</code>的<code>items()</code>可以同时迭代key和value：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; d = &#123;<span class="hljs-string">&#x27;x&#x27;</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>: <span class="hljs-string">&#x27;C&#x27;</span> &#125;<br>&gt;&gt;&gt; <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> d.items():<br>...     <span class="hljs-built_in">print</span>(k, <span class="hljs-string">&#x27;=&#x27;</span>, v)<br>...<br>y = B<br>x = A<br>z = C<br></code></pre></td></tr></table></figure>
+
+<p><strong>因此，列表生成式也可以使用两个变量来生成list：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; d = &#123;<span class="hljs-string">&#x27;x&#x27;</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>: <span class="hljs-string">&#x27;C&#x27;</span> &#125;<br>&gt;&gt;&gt; [k + <span class="hljs-string">&#x27;=&#x27;</span> + v <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> d.items()]<br>[<span class="hljs-string">&#x27;y=B&#x27;</span>, <span class="hljs-string">&#x27;x=A&#x27;</span>, <span class="hljs-string">&#x27;z=C&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong>最后把一个list中所有的字符串变成小写：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L = [<span class="hljs-string">&#x27;Hello&#x27;</span>, <span class="hljs-string">&#x27;World&#x27;</span>, <span class="hljs-string">&#x27;IBM&#x27;</span>, <span class="hljs-string">&#x27;Apple&#x27;</span>]<br>&gt;&gt;&gt; [s.lower() <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> L]<br>[<span class="hljs-string">&#x27;hello&#x27;</span>, <span class="hljs-string">&#x27;world&#x27;</span>, <span class="hljs-string">&#x27;ibm&#x27;</span>, <span class="hljs-string">&#x27;apple&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<h2 id="if-…-else"><a href="#if-…-else" class="headerlink" title="if … else"></a>if … else</h2><p>使用列表生成式的时候，有些童鞋经常搞不清楚<code>if...else</code>的用法。</p>
+<p>例如，以下代码正常输出偶数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11) <span class="hljs-keyword">if</span> x % 2 == 0]<br>[2, 4, 6, 8, 10]<br></code></pre></td></tr></table></figure>
+
+<p>但是，我们不能在最后的<code>if</code>加上<code>else</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11) <span class="hljs-keyword">if</span> x % 2 == 0 <span class="hljs-keyword">else</span> 0]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line 1<br>    [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11) <span class="hljs-keyword">if</span> x % 2 == 0 <span class="hljs-keyword">else</span> 0]<br>                                              ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure>
+
+<p>这是因为跟在<code>for</code>后面的<code>if</code>是一个筛选条件，不能带<code>else</code>，否则如何筛选？</p>
+<p>另一些童鞋发现把<code>if</code>写在<code>for</code>前面必须加<code>else</code>，否则报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [x <span class="hljs-keyword">if</span> x % 2 == 0 <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11)]<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line 1<br>    [x <span class="hljs-keyword">if</span> x % 2 == 0 <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11)]<br>                       ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure>
+
+<p>这是因为<code>for</code>前面的部分是一个表达式，它必须根据<code>x</code>计算出一个结果。因此，考察表达式：<code>x if x % 2 == 0</code>，它无法根据<code>x</code>计算出结果，因为缺少<code>else</code>，必须加上<code>else</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; [x <span class="hljs-keyword">if</span> x % 2 == 0 <span class="hljs-keyword">else</span> -x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 11)]<br>[-1, 2, -3, 4, -5, 6, -7, 8, -9, 10]<br></code></pre></td></tr></table></figure>
+
+<p>上述<code>for</code>前面的表达式<code>x if x % 2 == 0 else -x</code>才能根据<code>x</code>计算出确定的结果。</p>
+<p><strong>可见，在一个列表生成式中，<code>for</code>前面的<code>if ... else</code>是表达式，而<code>for</code>后面的<code>if</code>是过滤条件，不能带<code>else</code>。</strong></p>
+<h1 id="高级特性-生成器"><a href="#高级特性-生成器" class="headerlink" title="高级特性-生成器"></a>高级特性-生成器</h1><p>通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。</p>
+<p>所以，如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？这样就不必创建完整的list，从而节省大量的空间。<strong>在Python中，这种一边循环一边计算的机制，称为生成器：generator。</strong></p>
+<p>要创建一个generator，有很多种方法。<strong>第一种方法很简单，只要把一个列表生成式的<code>[]</code>改成<code>()</code>，就创建了一个generator：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; L = [x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(10)]<br>&gt;&gt;&gt; L<br>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]<br>&gt;&gt;&gt; g = (x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(10))<br>&gt;&gt;&gt; g<br>&lt;generator object &lt;genexpr&gt; at 0x1022ef630&gt;<br></code></pre></td></tr></table></figure>
+
+<p>创建<code>L</code>和<code>g</code>的区别仅在于最外层的<code>[]</code>和<code>()</code>，<code>L</code>是一个list，而<code>g</code>是一个generator。</p>
+<p>我们可以直接打印出list的每一个元素，但我们怎么打印出generator的每一个元素呢？</p>
+<p>如果要一个一个打印出来，可以通过<code>next()</code>函数获得generator的下一个返回值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; next(g)<br>0<br>&gt;&gt;&gt; next(g)<br>1<br>&gt;&gt;&gt; next(g)<br>4<br>&gt;&gt;&gt; next(g)<br>9<br>&gt;&gt;&gt; next(g)<br>16<br>&gt;&gt;&gt; next(g)<br>25<br>&gt;&gt;&gt; next(g)<br>36<br>&gt;&gt;&gt; next(g)<br>49<br>&gt;&gt;&gt; next(g)<br>64<br>&gt;&gt;&gt; next(g)<br>81<br>&gt;&gt;&gt; next(g)<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="hljs-keyword">in</span> &lt;module&gt;<br>StopIteration<br></code></pre></td></tr></table></figure>
+
+<p>我们讲过，generator保存的是算法，每次调用<code>next(g)</code>，就计算出<code>g</code>的下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出<code>StopIteration</code>的错误。</p>
+<p>当然，上面这种不断调用<code>next(g)</code>实在是太变态了，正确的方法是使用<code>for</code>循环，因为generator也是可迭代对象：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; g = (x * x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(10))<br>&gt;&gt;&gt; <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> g:<br>...     <span class="hljs-built_in">print</span>(n)<br>... <br>0<br>1<br>4<br>9<br>16<br>25<br>36<br>49<br>64<br>81<br></code></pre></td></tr></table></figure>
+
+<p>所以，我们创建了一个generator后，基本上永远不会调用<code>next()</code>，而是通过<code>for</code>循环来迭代它，并且不需要关心<code>StopIteration</code>的错误。</p>
+<p>generator非常强大。如果推算的算法比较复杂，用类似列表生成式的<code>for</code>循环无法实现的时候，还可以用函数来实现。</p>
+<p>比如，著名的斐波拉契数列（Fibonacci），除第一个和第二个数外，任意一个数都可由前两个数相加得到：</p>
+<p>1, 1, 2, 3, 5, 8, 13, 21, 34, …</p>
+<p>斐波拉契数列用列表生成式写不出来，但是，用函数把它打印出来却很容易：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 输出斐波那契数列的前N个数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">fib</span>(<span class="hljs-params"><span class="hljs-built_in">max</span></span>):<br>    n, a, b = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> n &lt; <span class="hljs-built_in">max</span>:<br>        <span class="hljs-built_in">print</span>(b)<br>        a, b = b, a + b<br>        n = n + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;done&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>仔细观察，可以看出，<code>fib</code>函数实际上是定义了斐波拉契数列的推算规则，可以从第一个元素开始，推算出后续任意的元素，这种逻辑其实非常类似generator。</p>
+<p>也就是说，上面的函数和generator仅一步之遥。要把<code>fib</code>函数变成generator函数，只需要把<code>print(b)</code>改为<code>yield b</code>就可以了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fib</span>(<span class="hljs-params"><span class="hljs-built_in">max</span></span>):<br>    n, a, b = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> n &lt; <span class="hljs-built_in">max</span>:<br>        <span class="hljs-keyword">yield</span> b<br>        a, b = b, a + b<br>        n = n + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;done&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>这就是定义generator的另一种方法。<strong>如果一个函数定义中包含<code>yield</code>关键字，那么这个函数就不再是一个普通函数，而是一个generator函数，调用一个generator函数将返回一个generator：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; f = fib(6)<br>&gt;&gt;&gt; f<br>&lt;generator object fib at 0x104feaaa0&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这里，最难理解的就是generator函数和普通函数的执行流程不一样。普通函数是顺序执行，遇到<code>return</code>语句或者最后一行函数语句就返回。而变成generator的函数，在每次调用<code>next()</code>的时候执行，遇到<code>yield</code>语句返回，再次执行时从上次返回的<code>yield</code>语句处继续执行。</p>
+<p>举个简单的例子，定义一个generator函数，依次返回数字1，3，5：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">odd</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;step 1&#x27;</span>)<br>    <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;step 2&#x27;</span>)<br>    <span class="hljs-keyword">yield</span>(<span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;step 3&#x27;</span>)<br>    <span class="hljs-keyword">yield</span>(<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
+
+<p>调用该generator函数时，首先要生成一个generator对象，然后用<code>next()</code>函数不断获得下一个返回值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; o = odd()<br>&gt;&gt;&gt; next(o)<br>step 1<br>1<br>&gt;&gt;&gt; next(o)<br>step 2<br>3<br>&gt;&gt;&gt; next(o)<br>step 3<br>5<br>&gt;&gt;&gt; next(o)<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line 1, <span class="hljs-keyword">in</span> &lt;module&gt;<br>StopIteration<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，<code>odd</code>不是普通函数，而是generator函数，<strong>在执行过程中，遇到<code>yield</code>就中断，下次又继续执行</strong>。执行3次<code>yield</code>后，已经没有<code>yield</code>可以执行了，所以，第4次调用<code>next(o)</code>就报错。</p>
+<p><strong>请务必注意：调用generator函数会创建一个generator对象，多次调用generator函数会创建多个相互独立的generator。</strong></p>
+<p>有的童鞋会发现这样调用<code>next()</code>每次都返回1：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; next(odd())<br>step 1<br>1<br>&gt;&gt;&gt; next(odd())<br>step 1<br>1<br>&gt;&gt;&gt; next(odd())<br>step 1<br>1<br></code></pre></td></tr></table></figure>
+
+<p>原因在于<code>odd()</code>会创建一个新的generator对象，上述代码实际上创建了3个完全独立的generator，对3个generator分别调用<code>next()</code>当然每个都会返回第一个值。</p>
+<p><strong>正确的写法是创建一个generator对象，然后不断对这一个generator对象调用<code>next()</code>：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; g = odd()<br>&gt;&gt;&gt; next(g)<br>step 1<br>1<br>&gt;&gt;&gt; next(g)<br>step 2<br>3<br>&gt;&gt;&gt; next(g)<br>step 3<br>5<br></code></pre></td></tr></table></figure>
+
+<p>回到<code>fib</code>的例子，我们在循环过程中不断调用<code>yield</code>，就会不断中断。当然要给循环设置一个条件来退出循环，不然就会产生一个无限数列出来。</p>
+<p>同样的，把函数改成generator函数后，我们基本上从来不会用<code>next()</code>来获取下一个返回值，而是直接使用<code>for</code>循环来迭代：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> fib(6):<br>...     <span class="hljs-built_in">print</span>(n)<br>...<br>1<br>1<br>2<br>3<br>5<br>8<br></code></pre></td></tr></table></figure>
+
+<p>但是用<code>for</code>循环调用generator时，发现拿不到generator的<code>return</code>语句的返回值。如果想要拿到返回值，必须捕获<code>StopIteration</code>错误，返回值包含在<code>StopIteration</code>的<code>value</code>中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; g = fib(6)<br>&gt;&gt;&gt; <span class="hljs-keyword">while</span> True:<br>...     try:<br>...         x = next(g)<br>...         <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;g:&#x27;</span>, x)<br>...     except StopIteration as e:<br>...         <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Generator return value:&#x27;</span>, e.value)<br>...         <span class="hljs-built_in">break</span><br>...<br>g: 1<br>g: 1<br>g: 2<br>g: 3<br>g: 5<br>g: 8<br>Generator <span class="hljs-built_in">return</span> value: <span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<p>关于如何捕获错误，后面的错误处理还会详细讲解。</p>
+<h1 id="高级特性-迭代器"><a href="#高级特性-迭代器" class="headerlink" title="高级特性-迭代器"></a>高级特性-迭代器</h1><p>我们已经知道，可以直接作用于<code>for</code>循环的数据类型有以下几种：</p>
+<p>一类是集合数据类型，如<code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>、<code>str</code>等；</p>
+<p>一类是<code>generator</code>，包括生成器和带<code>yield</code>的generator function。</p>
+<p>这些<strong>可以直接作用于<code>for</code>循环的对象统称为可迭代对象：<code>Iterable</code>。</strong></p>
+<p><strong>可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterable</code>对象：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; from collections.abc import Iterable<br>&gt;&gt;&gt; isinstance([], Iterable)<br>True<br>&gt;&gt;&gt; isinstance(&#123;&#125;, Iterable)<br>True<br>&gt;&gt;&gt; isinstance(<span class="hljs-string">&#x27;abc&#x27;</span>, Iterable)<br>True<br>&gt;&gt;&gt; isinstance((x for x in range(<span class="hljs-number">10</span>)), Iterable)<br>True<br>&gt;&gt;&gt; isinstance(100, Iterable)<br>False<br></code></pre></td></tr></table></figure>
+
+<p>而生成器不但可以作用于<code>for</code>循环，还可以被<code>next()</code>函数不断调用并返回下一个值，直到最后抛出<code>StopIteration</code>错误表示无法继续返回下一个值了。</p>
+<p><strong>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code>。</strong></p>
+<p><strong>可以使用<code>isinstance()</code>判断一个对象是否是<code>Iterator</code>对象：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; from collections.abc import Iterator<br>&gt;&gt;&gt; isinstance((x for x in range(<span class="hljs-number">10</span>)), Iterator)<br>True<br>&gt;&gt;&gt; isinstance([], Iterator)<br>False<br>&gt;&gt;&gt; isinstance(&#123;&#125;, Iterator)<br>False<br>&gt;&gt;&gt; isinstance(<span class="hljs-string">&#x27;abc&#x27;</span>, Iterator)<br>False<br></code></pre></td></tr></table></figure>
+
+<p><strong>生成器都是<code>Iterator</code>对象，但<code>list</code>、<code>dict</code>、<code>str</code>虽然是<code>Iterable</code>，却不是<code>Iterator</code>。</strong></p>
+<p><strong>把<code>list</code>、<code>dict</code>、<code>str</code>等<code>Iterable</code>变成<code>Iterator</code>可以使用<code>iter()</code>函数：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; isinstance(iter([]), Iterator)<br>True<br>&gt;&gt;&gt; isinstance(iter(<span class="hljs-string">&#x27;abc&#x27;</span>), Iterator)<br>True<br></code></pre></td></tr></table></figure>
+
+<p>你可能会问，为什么<code>list</code>、<code>dict</code>、<code>str</code>等数据类型不是<code>Iterator</code>？</p>
+<p>这是因为Python的<code>Iterator</code>对象表示的是一个数据流，<code>Iterator</code>对象可以被<code>next()</code>函数调用并不断返回下一个数据，直到没有数据时抛出<code>StopIteration</code>错误。可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过<code>next()</code>函数实现按需计算下一个数据，所以<code>Iterator</code>的计算是惰性的，只有在需要返回下一个数据时它才会计算。</p>
+<p><code>Iterator</code>甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。</p>
+<p><strong>小结:</strong></p>
+<p><strong>凡是可作用于<code>for</code>循环的对象都是<code>Iterable</code>类型；</strong></p>
+<p><strong>凡是可作用于<code>next()</code>函数的对象都是<code>Iterator</code>类型，它们表示一个惰性计算的序列；</strong></p>
+<p><strong>集合数据类型如<code>list</code>、<code>dict</code>、<code>str</code>等是<code>Iterable</code>但不是<code>Iterator</code>，不过可以通过<code>iter()</code>函数获得一个<code>Iterator</code>对象。</strong></p>
+<p><strong>Python的<code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的</strong>，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]:<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+<p>实际上完全等价于：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 首先获得Iterator对象:</span><br>it = <span class="hljs-built_in">iter</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])<br><span class="hljs-comment"># 循环:</span><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># 获得下一个值:</span><br>        x = <span class="hljs-built_in">next</span>(it)<br>    <span class="hljs-keyword">except</span> StopIteration:<br>        <span class="hljs-comment"># 遇到StopIteration就退出循环</span><br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><blockquote>
+<p>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！</p>
+</blockquote>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><blockquote>
+<p><code>map</code>用于将一个函数作用于一个序列，以此得到另一个序列；</p>
+</blockquote>
+<p><strong><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，<u><code>map</code>将传入的函数依次作用到序列的每个元素，并把结果作为新的<code>Iterator</code>返回。</strong></u></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">str</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]))<br>[<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-string">&#x27;9&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>map()</code>传入的第一个参数是<code>str</code>，即函数对象本身。由于结果是一个<code>Iterator</code>，<code>Iterator</code>是惰性序列，因此通过<code>list()</code>函数让它把整个序列都计算出来并返回一个list。</strong></p>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><blockquote>
+<p><code>reduce</code>用于将一个函数依次作用于上次计算的结果和序列的下一个元素，以此得到最终结果。</p>
+</blockquote>
+<p><strong><code>reduce</code>把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上，这个函数必须接收两个参数，<code>reduce</code>把结果继续和序列的下一个元素做累积计算</strong>.  </p>
+<p>eg: <code>reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> reduce<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">def</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">x, y</span>):<br><span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> x * <span class="hljs-number">10</span> + y<br>...<br><span class="hljs-meta">&gt;&gt;&gt; </span>reduce(fn, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>])<br><span class="hljs-number">13579</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><blockquote>
+<p><code>filter()</code>函数用于过滤序列。和<code>map()</code>类似，<code>filter()</code>也接收一个函数和一个序列。和<code>map()</code>不同的是，<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是<code>True</code>还是<code>False</code>决定保留还是丢弃该元素。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">not_empty</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-keyword">return</span> s <span class="hljs-keyword">and</span> s.strip()<br><br><span class="hljs-built_in">list</span>(<span class="hljs-built_in">filter</span>(not_empty, [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-string">&#x27;  &#x27;</span>]))<br><span class="hljs-comment"># 结果: [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>:<code>filter()</code>函数返回的是一个<code>Iterator</code>，也就是一个惰性序列，所以要强迫<code>filter()</code>完成计算结果，需要用<code>list()</code>函数获得所有结果并返回list。</p>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><blockquote>
+<p>排序</p>
+</blockquote>
+<p><strong>Python内置的<code>sorted()</code>函数就可以对list进行排序：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; sorted([36, 5, -12, 9, -21])<br>[-21, -12, 5, 9, 36]<br></code></pre></td></tr></table></figure>
+
+<p><strong>此外，<code>sorted()</code>函数也是一个高阶函数，它还可以接收一个<code>key</code>函数来实现自定义的排序，例如按绝对值大小排序：</strong></p>
+<p>key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; sorted([36, 5, -12, 9, -21], key=abs)<br>[5, 9, -12, -21, 36]<br></code></pre></td></tr></table></figure>
+
+<p><strong>字符串排序：</strong></p>
+<p>默认情况下，对字符串排序，是按照ASCII的大小比较的，由于<code>&#39;Z&#39; &lt; &#39;a&#39;</code>，结果，大写字母<code>Z</code>会排在小写字母<code>a</code>的前面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; sorted([<span class="hljs-string">&#x27;bob&#x27;</span>, <span class="hljs-string">&#x27;about&#x27;</span>, <span class="hljs-string">&#x27;Zoo&#x27;</span>, <span class="hljs-string">&#x27;Credit&#x27;</span>])<br>[<span class="hljs-string">&#x27;Credit&#x27;</span>, <span class="hljs-string">&#x27;Zoo&#x27;</span>, <span class="hljs-string">&#x27;about&#x27;</span>, <span class="hljs-string">&#x27;bob&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>若想忽略大小写，按照字母序排序,不必对现有代码大加改动，只要我们能用一个<code>key</code>函数把字符串映射为忽略大小写排序即可:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; sorted([<span class="hljs-string">&#x27;bob&#x27;</span>, <span class="hljs-string">&#x27;about&#x27;</span>, <span class="hljs-string">&#x27;Zoo&#x27;</span>, <span class="hljs-string">&#x27;Credit&#x27;</span>], key=str.lower)<br>[<span class="hljs-string">&#x27;about&#x27;</span>, <span class="hljs-string">&#x27;bob&#x27;</span>, <span class="hljs-string">&#x27;Credit&#x27;</span>, <span class="hljs-string">&#x27;Zoo&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong>要进行反向排序，不必改动key函数，可以传入第三个参数<code>reverse=True</code>：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; sorted([<span class="hljs-string">&#x27;bob&#x27;</span>, <span class="hljs-string">&#x27;about&#x27;</span>, <span class="hljs-string">&#x27;Zoo&#x27;</span>, <span class="hljs-string">&#x27;Credit&#x27;</span>], key=str.lower, reverse=True)<br>[<span class="hljs-string">&#x27;Zoo&#x27;</span>, <span class="hljs-string">&#x27;Credit&#x27;</span>, <span class="hljs-string">&#x27;bob&#x27;</span>, <span class="hljs-string">&#x27;about&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><h2 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h2><h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p><strong>在Python中，一个.py文件就称之为一个模块（Module）。</strong></p>
+<p><strong>为了避免模块名冲突，Python又引入了按目录来组织模块的方法，称为包（Package）。</strong></p>
+<p>举个例子，一个<code>abc.py</code>的文件就是一个名字叫<code>abc</code>的模块，一个<code>xyz.py</code>的文件就是一个名字叫<code>xyz</code>的模块。</p>
+<p>假设我们的<code>abc</code>和<code>xyz</code>这两个模块名字与其他模块冲突了，于是我们可以通过包来组织模块，避免冲突。方法是选择一个顶层包名，比如<code>mycompany</code>，按照如下目录存放：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim">mycompany<br>├─ __init__.<span class="hljs-keyword">py</span><br>├─ <span class="hljs-keyword">abc</span>.<span class="hljs-keyword">py</span><br>└─ xyz.<span class="hljs-keyword">py</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>引入了包以后，只要顶层的包名不与别人冲突，那所有模块都不会与别人冲突</strong>。现在，<code>abc.py</code>模块的名字就变成了<code>mycompany.abc</code>，类似的，<code>xyz.py</code>的模块名变成了<code>mycompany.xyz</code>。</p>
+<p>请注意，<strong>每一个包目录下面都会有一个<code>__init__.py</code>的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。<code>__init__.py</code>可以是空文件，也可以有Python代码，因为<code>__init__.py</code>本身就是一个模块，而它的模块名就是<code>mycompany</code>。</strong></p>
+<h2 id="Python模块的标准文件模板"><a href="#Python模块的标准文件模板" class="headerlink" title="Python模块的标准文件模板"></a>Python模块的标准文件模板</h2><p><code>hello.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-string">&#x27; a test module &#x27;</span><br><br>__author__ = <span class="hljs-string">&#x27;Michael Liao&#x27;</span><br><br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>():<br>    args = sys.argv<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args)==<span class="hljs-number">1</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Hello, world!&#x27;</span>)<br>    <span class="hljs-keyword">elif</span> <span class="hljs-built_in">len</span>(args)==<span class="hljs-number">2</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Hello, %s!&#x27;</span> % args[<span class="hljs-number">1</span>])<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Too many arguments!&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    test()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>第1行和第2行是标准注释，第1行注释可以让这个<code>hello.py</code>文件直接在Unix&#x2F;Linux&#x2F;Mac上运行，</li>
+<li>第2行注释表示.py文件本身使用标准UTF-8编码；</li>
+<li>第4行是一个字符串，表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释；</li>
+<li>第6行使用<code>__author__</code>变量把作者写进去，这样当你公开源代码后别人就可以瞻仰你的大名；</li>
+<li>以上就是Python模块的标准文件模板，当然也可以全部删掉不写，但是，按标准办事肯定没错。</li>
+</ul>
+<h2 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h2><ul>
+<li>第一步，导入模块：<code>import sys</code></li>
+<li>导入<code>sys</code>模块后，我们就有了变量<code>sys</code>指向该模块，利用<code>sys</code>这个变量，就可以访问<code>sys</code>模块的所有功能。</li>
+<li><code>sys</code>模块有一个<code>argv</code>变量，用list存储了命令行的所有参数。**<code>argv</code>至少有一个元素，因为第一个参数永远是该.py文件的名称**，例如：运行<code>python3 hello.py</code>获得的<code>sys.argv</code>就是<code>[&#39;hello.py&#39;]</code>；</li>
+<li>运行<code>python3 hello.py Michael</code>获得的<code>sys.argv</code>就是<code>[&#39;hello.py&#39;, &#39;Michael&#39;]</code>。</li>
+</ul>
+<p>注意到这两行代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    test()<br></code></pre></td></tr></table></figure>
+
+<p>当我们在命令行运行<code>hello</code>模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该<code>hello</code>模块时，<code>if</code>判断将失败，因此，这种<code>if</code>测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。</p>
+<p>我们可以用命令行运行<code>hello.py</code>看看效果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3 hello.py<br>Hello, world!<br>$ python hello.py Michael<br>Hello, Michael!<br></code></pre></td></tr></table></figure>
+
+<p>如果启动Python交互环境，再导入<code>hello</code>模块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ python3<br>Python 3.4.3 (v3.4.3:9b73f1c3e601, Feb 23 2015, 02:52:03) <br>[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin<br>Type <span class="hljs-string">&quot;help&quot;</span>, <span class="hljs-string">&quot;copyright&quot;</span>, <span class="hljs-string">&quot;credits&quot;</span> or <span class="hljs-string">&quot;license&quot;</span> <span class="hljs-keyword">for</span> more information.<br>&gt;&gt;&gt; import hello<br>&gt;&gt;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>导入时，没有打印<code>Hello, word!</code>，因为没有执行<code>test()</code>函数。</p>
+<p>调用<code>hello.test()</code>时，才能打印出<code>Hello, word!</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; hello.test()<br>Hello, world!<br></code></pre></td></tr></table></figure>
+
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在一个模块中，我们可能会定义很多函数和变量，但有的函数和变量我们希望给别人使用，有的函数和变量我们希望仅仅在模块内部使用。在Python中，是通过<code>_</code>前缀来实现的。</p>
+<ul>
+<li><strong>正常的函数和变量名是公开的（public），可以被直接引用，比如：<code>abc</code>，<code>x123</code>，<code>PI</code>等；</strong></li>
+<li><strong>类似<code>__xxx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊用途，比如上面的<code>__author__</code>，<code>__name__</code>就是特殊变量，<code>hello</code>模块定义的文档注释也可以用特殊变量<code>__doc__</code>访问，我们自己的变量一般不要用这种变量名；</strong></li>
+<li><strong>类似<code>_xxx</code>和<code>__xxx</code>这样的函数或变量就是非公开的（private），不应该被直接引用，比如<code>_abc</code>，<code>__abc</code>等；</strong></li>
+</ul>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<p>private函数或变量不应该被别人引用，那它们有什么用呢？请看例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">_private_1</span>(<span class="hljs-params">name</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello, %s&#x27;</span> % name<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">_private_2</span>(<span class="hljs-params">name</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hi, %s&#x27;</span> % name<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">greeting</span>(<span class="hljs-params">name</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(name) &gt; <span class="hljs-number">3</span>:<br>        <span class="hljs-keyword">return</span> _private_1(name)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> _private_2(name)<br></code></pre></td></tr></table></figure>
+
+<p>我们在模块里公开<code>greeting()</code>函数，而把内部逻辑用private函数隐藏起来了，这样，调用<code>greeting()</code>函数不用关心内部的private函数细节，这也是一种非常有用的代码封装和抽象的方法，即：</p>
+<p><strong>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</strong></p>
+<h2 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>python</div>
+      <div>http://www.lifeab.com/2024/08/08/python/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/28/Stable%20diffusion%20webui/" title="stable diffusion webui">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">stable diffusion webui</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/17/docker/" title="docker">
+                        <span class="hidden-mobile">docker</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

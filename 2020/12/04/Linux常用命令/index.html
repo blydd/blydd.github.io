@@ -1,0 +1,1008 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="linux常用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux常用命令">
+<meta property="og:url" content="http://www.lifeab.com/2020/12/04/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="linux常用命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040920679.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040924040.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/30/5Ss9Fx7OVICRnKN.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406082302729.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406082308436.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406081833209.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406081834540.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406081837658.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406082259050.png">
+<meta property="article:published_time" content="2020-12-04T02:10:17.000Z">
+<meta property="article:modified_time" content="2025-01-09T01:30:11.371Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040920679.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>linux常用命令 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="linux常用命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-12-04 10:10" pubdate>
+          2020年12月4日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">linux常用命令</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="展示路径文件"><a href="#展示路径文件" class="headerlink" title="展示路径文件"></a>展示路径文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">友好展示信息</span><br>ll -h<br><span class="hljs-meta prompt_"># </span><span class="language-bash">展示指定目录的文件</span><br>ll -h /etc<br><span class="hljs-meta prompt_">#</span><span class="language-bash">切换到上次访问目录,只能最后两个目录间切换</span><br>cd -<br></code></pre></td></tr></table></figure>
+
+<h2 id="显示主机名"><a href="#显示主机名" class="headerlink" title="显示主机名"></a><strong>显示主机名</strong></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">hostname        #显示完整名字<br>hostname -s 	  #显示短格式名字<br>hostname -a	    #显示主机别名<br>hostname -i	    #显示主机ip<br></code></pre></td></tr></table></figure>
+
+<h2 id="上传下载"><a href="#上传下载" class="headerlink" title="上传下载:"></a><strong>上传下载:</strong></h2><blockquote>
+<p>scp [r] 用户名@ip:文件路径 本地路径 #下载文件 -r表示下载文件夹</p>
+</blockquote>
+<blockquote>
+<p>scp [r] 本地文件 用户名@ip:上传路径 #上传文件 -r表示上传文件夹</p>
+</blockquote>
+<blockquote>
+<p>wget <a target="_blank" rel="noopener" href="http://soft.vpser.net/Inmp/Inmp1.1-full.tar.gz">http://soft.vpser.net/Inmp/Inmp1.1-full.tar.gz</a>   #下载命令</p>
+</blockquote>
+<p>crl软件按:alt p</p>
+<h2 id="grep和管道"><a href="#grep和管道" class="headerlink" title="grep和管道"></a>grep和管道</h2><p><code>|</code> 是管道符号,可连接不同命令</p>
+<p>grep是正则表达式,用于字符串搜索.格式:<code>grep 字符串</code> 搜索的文件,eg:<code>ll | grep aaa</code></p>
+<h2 id="命令行登陆linux服务器"><a href="#命令行登陆linux服务器" class="headerlink" title="命令行登陆linux服务器:"></a><strong>命令行登陆linux服务器:</strong></h2><blockquote>
+<p>ssh -p22 用户名@ip<br>如果不输用户名,则以当前用户名登陆linux服务器,第一次连接会下载服务器公钥,选yes.</p>
+</blockquote>
+<h2 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h2><blockquote>
+<p>rpm命令相当于windows下的添加&#x2F;卸载程序.</p>
+<p>yum命令相当于带联网功能的rpm.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">程序安装</span><br>rpm -ivh 程序名<br><span class="hljs-meta prompt_">#</span><span class="language-bash">程序查看</span><br>rpm -qa<br><span class="hljs-meta prompt_">#</span><span class="language-bash">程序卸载</span><br>rpm -e --nodeps 程序名<br></code></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="启动springboot项目"><a href="#启动springboot项目" class="headerlink" title="启动springboot项目"></a>启动springboot项目</h1><blockquote>
+<p>后台启动jar并把日志输出到指定文件中</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup java -jar my-blog.jar &gt; mylog.txt  &amp; <br><br>nohup java -jar my-blog.jar &gt; catalina.out 2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
+
+<h1 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><h2 id="查看系统是32位或64位"><a href="#查看系统是32位或64位" class="headerlink" title="查看系统是32位或64位"></a><strong>查看系统是32位或64位</strong></h2><p><code>getconf LONG_BIT</code>  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">查看系统进程</span><br>ps -ef<br><span class="hljs-meta prompt_">#</span><span class="language-bash">重启</span><br>reboot<br><span class="hljs-meta prompt_">#</span><span class="language-bash">关机</span><br>halt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">网络设置</span><br>setup<br><span class="hljs-meta prompt_">#</span><span class="language-bash">开启某端口防火墙</span><br>firewall-cmd --permanent --zone=public --add-port=7006/tcp --permanent<br></code></pre></td></tr></table></figure>
+
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><p>systemctl 命令是用来控制系统服务的实用工具，它可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态，在<code>Centos7.0</code>之前，使用的是<code>service</code>命令，在<code>Centos7.0</code>之后， 使用<code>systemctl</code>命令来进行服务控制</p>
+<table>
+<thead>
+<tr>
+<th>服务管理命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>systemctl start 服务名</td>
+<td>开启服务</td>
+</tr>
+<tr>
+<td>systemctl stop 服务名</td>
+<td>关闭服务</td>
+</tr>
+<tr>
+<td>systemctl status 服务名</td>
+<td>显示服务状态</td>
+</tr>
+<tr>
+<td>systemctl enable 服务名</td>
+<td>设置开机自启动</td>
+</tr>
+<tr>
+<td>systemctl disable 服务名</td>
+<td>关闭开机自启动</td>
+</tr>
+</tbody></table>
+<ul>
+<li>网络操作<ul>
+<li>systemctl status network ＃ 查看网络服务状态 </li>
+<li>systemctl stop network ＃ 停止网络服务 </li>
+<li>systemctl start network ＃ 启动网络服务 </li>
+<li>systemctl restart network ＃ 重启网络服务</li>
+</ul>
+</li>
+<li>防火墙操作<ul>
+<li>systemctl stop firewalld.service #停止firewall</li>
+<li>systemctl disable firewalld.service #禁止firewall开机启动 </li>
+<li>systemctl status firewalld.service #查看防火墙状态</li>
+</ul>
+</li>
+</ul>
+<h2 id="磁盘管理-硬盘-内存"><a href="#磁盘管理-硬盘-内存" class="headerlink" title="磁盘管理:硬盘&#x2F;内存"></a>磁盘管理:硬盘&#x2F;内存</h2><ul>
+<li><code>df -h</code>  显示磁盘剩余空间</li>
+<li><code>du -h［目录名］</code>  显示目录下的目录大小</li>
+<li><code>free -h</code>    查看内存使用率</li>
+</ul>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a><strong>端口</strong></h2><ul>
+<li><p><code>netstat -nltp</code> 查看本机系统每个进程占用的端口</p>
+</li>
+<li><p><code>netstat -an</code>		  #<strong>查看本机启用的端口</strong></p>
+</li>
+<li><p><code>netstat -tuln</code>	#查看本机开了哪些端口和正在被远程调用的调用方</p>
+</li>
+<li><p><code>ipnetstat -tuln</code>	查看本机开了哪些端口和正在被远程调用的调用方ip</p>
+</li>
+</ul>
+<blockquote>
+<p>telnet [域名或ip] [端口]	#远程管理与端口探测命令<br>eg:telnet 192.168.0.252 80	#探测服务器80端口,成功的话没有提示,进入空白页,退出摁ctrl+],退回到telnet界面,输入quit命令退出</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">1、开放端口</span><br>firewall-cmd --zone=public --add-port=5672/tcp --permanent   # 开放5672端口<br>firewall-cmd --zone=public --remove-port=5672/tcp --permanent  #关闭5672端口<br>firewall-cmd --reload   # 配置立即生效<br><span class="hljs-meta prompt_">#</span><span class="language-bash">2、查看防火墙所有开放的端口</span><br>firewall-cmd --zone=public --list-ports<br><span class="hljs-meta prompt_">#</span><span class="language-bash">3.、关闭防火墙</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果要开放的端口太多，嫌麻烦，可以关闭防火墙，安全性自行评估</span><br>systemctl stop firewalld.service<br><span class="hljs-meta prompt_">#</span><span class="language-bash">4、查看防火墙状态</span><br> firewall-cmd --state<br><span class="hljs-meta prompt_">#</span><span class="language-bash">5、查看监听的端口</span><br>netstat -lnpt<br><span class="hljs-meta prompt_">#</span><span class="language-bash">PS:centos7默认没有 netstat 命令，需要安装 net-tools 工具，yum install -y net-tools</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">6、检查端口被哪个进程占用</span><br>netstat -lnpt |grep 5672<br><span class="hljs-meta prompt_"># </span><span class="language-bash">7 查看进程的详细信息</span><br>ps 6832<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向 &gt;  &gt;&gt;"></a>重定向 <code>&gt;</code>  <code>&gt;&gt;</code></h2><ul>
+<li><code>ll &gt; aaa.txt</code>  把ll命令的输入覆盖到aaa.txt</li>
+<li><code>ll &gt;&gt; aaa.txt</code>  把ll命令的输入追加到aaa.txt</li>
+</ul>
+<h2 id="生成公钥与私钥"><a href="#生成公钥与私钥" class="headerlink" title="生成公钥与私钥"></a>生成公钥与私钥</h2><blockquote>
+<p>保存目录: <code>/root/.ssh</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t -rsa<br></code></pre></td></tr></table></figure>
+
+<p>拷贝公钥到指定服务器:</p>
+<blockquote>
+<p>完成即可实现免密登陆</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-copy-id 指定服务器ip<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h1><ul>
+<li><code>date</code>   查看系统时间（默认格式）</li>
+<li><code>date + &quot;%Y-%m-%d %H:%M:%S&quot;</code> 查看系统时间（指定格式）</li>
+<li><code>date-s “时间字符串“</code>      设置系统时间</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@nohurry ~]#  date<br>2024年 06月 04日 星期二 09:09:01 CST<br>[root@nohurry ~]# date +&quot;%Y-%m-%d %H:%M:%S&quot;<br>2024-06-04 09:09:32<br>[root@nohurry ~]# date -s &quot;2024-06-04 09:09:32&quot;<br>2024年 06月 04日 星期二 09:09:32 CST<br>[root@nohurry ~]# date +&quot;%Y-%m-%d %H:%M:%S&quot;<br>2024-06-04 09:09:45<br></code></pre></td></tr></table></figure>
+
+<h2 id="和网络时间同步-对表"><a href="#和网络时间同步-对表" class="headerlink" title="和网络时间同步(对表)"></a>和网络时间同步(对表)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">crontab -e<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">每隔一分钟和阿里云服务器对表</span><br>* * * * * /usr/sbin/ntpdate ntp4.aliyun.com<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell">- RWX RW- R--<br>1  2   3   4<br><span class="hljs-meta prompt_"># </span><span class="language-bash">1:类型,d目录,-普通文件,l链接文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2:所属用户权限,用u(user)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">3:所属组权限,用g(group)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">4:其他用户权限,用o(other)表示</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">所有权限,用a(all)表示</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">修改权限</span><br>chmod u=rwx demo.java<br>chmod g=rw- demo.java<br>chmod o=rwx demo.java<br><span class="hljs-meta prompt_">#</span><span class="language-bash">给所属用户添加执行权限</span><br>chmod 744 demo.java<br><span class="hljs-meta prompt_">#</span><span class="language-bash">给所属用户添加执行权限</span><br>chmod u+x demo.java<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">更改文件夹内所有文件的权限</span><br>chmod -R 权限 文件夹名<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">增加执行权限</span><br>chmod +X demo.java<br></code></pre></td></tr></table></figure>
+
+<h2 id="浏览文件内容"><a href="#浏览文件内容" class="headerlink" title="浏览文件内容"></a>浏览文件内容</h2><ul>
+<li><p>cat 文件名</p>
+<p>适合查看数据量小的文件,全部展示.</p>
+</li>
+<li><p>more 文件名</p>
+<p>分页显示文件内容</p>
+<p>空格:下一页	回车:下一行	ctrl+b:上一屏 	q:退出</p>
+</li>
+<li><p>less 文件名</p>
+<p>分页查看文件内容.操作同more.</p>
+<p>标注行号:less -mN 文件名</p>
+</li>
+<li><p>tail -20 文件名</p>
+<p>快速查看文件最后20行内容.</p>
+</li>
+<li><p>Vim 文件名</p>
+<p>输入 : set nu,会显示行号.</p>
+</li>
+</ul>
+<h2 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a><strong>查找文件</strong></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">find / -name httpd.conf　　#在根目录下查找文件httpd.conf，表示在整个硬盘查找<br><br>find /etc -name httpd.conf　　#在/etc目录下文件httpd.conf<br><br>find /etc -name &#x27;*srm*&#x27;　　#使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件<br><br>find . -name &#x27;srm*&#x27; 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件<br><br>sudo find / -type d -name *tomcat*  #查找文件夹位置,文件夹名字不确定的用*补上<br></code></pre></td></tr></table></figure>
+
+<h2 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">创建多层目录</span><br>mkdir /t1/t2<br><span class="hljs-meta prompt_"># </span><span class="language-bash">t3目录不存在的话则先创建t3</span><br>mkdir -p t3/t4<br></code></pre></td></tr></table></figure>
+
+<h2 id="复制解压"><a href="#复制解压" class="headerlink" title="复制解压"></a><strong>复制解压</strong></h2><p>压缩包格式:</p>
+<ul>
+<li>*.tar 	打包,不压缩.</li>
+<li>*.tar.gz 打包并压缩</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp -r 源文件夹 目的地  #Linux复制文件夹,-r表示递归<br>cp 文件 新目录/新文件名 #复制并改名<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">压缩 -zcvf参数顺序不能变.eg压缩当前目录下全部文件:tar -zcvf hehe.tar.gz *</span><br>tar -zcvf 压缩包名字.tar.gz 需压缩的文件<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">解压缩到当前目录</span><br>tar -zxvf 压缩包名<br><span class="hljs-meta prompt_">#</span><span class="language-bash">解压缩到指定目录</span><br>tar -zxvf 压缩包名 -C 指定目录地址<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h2><p><code>ln -s 原文件 快捷方式</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">在当前目录为文件设置快捷方式</span><br>[root@nohurry ~]# ln -s /usr/local/java/reload.sh sbreload.sh<br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看快捷方式,指向原文件</span><br>[root@nohurry ~]# ll<br>lrwxrwxrwx  1 root root       25 6月   4 09:14 sbreload.sh -&gt; /usr/local/java/reload.sh<br></code></pre></td></tr></table></figure>
+
+<h2 id="文件编辑器VIM"><a href="#文件编辑器VIM" class="headerlink" title="文件编辑器VIM"></a>文件编辑器VIM</h2><p><code>vim</code>命令进入文件后默认进入命令行模式,此时只能敲命令,常用命令如下:</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040920679.png" srcset="/img/loading.gif" lazyload alt="image-20240604092037630"></p>
+<p>按<code>i</code>或<code>o</code>进入<strong>输入模式</strong></p>
+<p>按<code>esc</code>进入<strong>底行模式</strong>:</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406040924040.png" srcset="/img/loading.gif" lazyload alt="image-20240604092424969"></p>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="ping：测试网络命令"><a href="#ping：测试网络命令" class="headerlink" title="ping：测试网络命令"></a><strong>ping：测试网络命令</strong></h2><blockquote>
+<pre><code class="hljs">  - -c count：ping的次数
+  - -W timeout：超时时间，配合-c使用
+  - -I ipaddress：指定用自己主机的IP去ping对方主机
+  - -s size：每次ping发出的数据包大小，最大值65507
+  - -f：竭尽自己主机的能力发出数据包
+</code></pre>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@centos7 ~]# ping -c1 -W1 192.168.0.6 #脚本中常用的ping测试，ping一次，超时时间1s<br>[root@centos7 ~]# ping -s 65507 -f 192.168.0.6 #竭尽自己所能，向192.168.0.6发出大数据包，ddos攻击<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="VMWARE虚拟机网络连接方式"><a href="#VMWARE虚拟机网络连接方式" class="headerlink" title="VMWARE虚拟机网络连接方式"></a>VMWARE虚拟机网络连接方式</h2><ul>
+<li>桥接模式</li>
+</ul>
+<blockquote>
+<p>需要依赖外部网络环境，VMware 虚拟出来的操作系统就像是局域网中的一台独立的主机， 需要手工为虚拟系统配置IP地址，虚拟机解ip必须和宿主机（windows）的ip是同一个网段。开发环境下可能会使用，学习环境不用，<strong>类似于虚剂机和主机就好比插在同一台交换机上的两台电脑</strong></p>
+</blockquote>
+<ul>
+<li><p>NAT模式</p>
+<blockquote>
+<p>使用 NAT 模式，就是让虚拟系统借助 NAT（网络地址转换）功能，通过宿主机器所在的网络来访问公网，<strong>如果主机能够正常上网，那么虚拟机也能够直接上网。</strong>此时虚拟机处于一个新的网段内，由 VMware提供的DHCP服务自动分配IP地址，然后通过VMware提供的NAT服务，共享主机实现上网，不依赖外部网络环境</p>
+</blockquote>
+</li>
+<li><p>仅主机模式</p>
+</li>
+</ul>
+<blockquote>
+<p>仅主机模式和NAT模式是类似的，<strong>在该模式下，虚拟网络是一个全封闭的网络，它唯一能够访问的就是主机</strong>，当然多个虚拟机之间也可以互相访问，只需要记住<strong>仅主机模式是无法进行上网的</strong></p>
+</blockquote>
+<h2 id="配置ip-修改网卡信息文件"><a href="#配置ip-修改网卡信息文件" class="headerlink" title="配置ip,修改网卡信息文件"></a><strong>配置ip,修改网卡信息文件</strong></h2><p><code>vi /etc/sysconfig/network-scripts/ifcfg-etho</code>	</p>
+<h2 id="查看DNS服务器地址"><a href="#查看DNS服务器地址" class="headerlink" title="查看DNS服务器地址:"></a><strong>查看DNS服务器地址:</strong></h2><p><code>cat /etc/resolv.conf</code></p>
+<p><code>nslookup 127.0.0.1 | grep Server</code></p>
+<p>修改DNS服务器非常简单，只需要修改<code>/etc/resolv.conf</code>配置文件即可。那么修改DNS是否需要重启某些服务，答案是不需要。修改后会立即生效，不需做任何额外处理。</p>
+<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><ul>
+<li>安装依赖</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install glibc.i686<br>yum -y install libaio.so.1 libgcc_s.so.1 libstdc++.so.6<br>yum update libstdc++-4.4.7-4.e16.x86-64<br>yum install gcc-c++<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>安装jdk</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">1 查看已安装老版本</span><br>rpm -qa | grep java<br><span class="hljs-meta prompt_"># </span><span class="language-bash">2 卸载老版本</span><br>rpm -e --nodeps 上面查到的<br><span class="hljs-meta prompt_"># </span><span class="language-bash">3 上传jdk包,解压到指定目录</span><br>tar -zxvf -C /usr/local/java<br><span class="hljs-meta prompt_"># </span><span class="language-bash">4 配置环境变量 vim /etc/profile</span><br>JAVA_HOME=/usr/local/java/jdk...<br>CLASS_PATH=.:$JAVA_HOME/lib.tools.jar<br>PATH=$JAVA_HOME/bin:$PATH<br>export JAVA_HONE CLASSPATH PATH<br><span class="hljs-meta prompt_"># </span><span class="language-bash">5 重新加载配置文件</span><br>source /etc/profile<br></code></pre></td></tr></table></figure>
+
+<h2 id="查看JDK安装路径"><a href="#查看JDK安装路径" class="headerlink" title="查看JDK安装路径"></a>查看JDK安装路径</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -verbose #查看jdk安装路径.最后两行为jdk安装路径<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><h2 id="1-yum安装时报cannot-find-a-valid-baseurl-for-repo"><a href="#1-yum安装时报cannot-find-a-valid-baseurl-for-repo" class="headerlink" title="1.yum安装时报cannot find a valid baseurl for repo"></a>1.yum安装时报<a target="_blank" rel="noopener" href="https://www.cnblogs.com/phpandmysql/p/7773063.html">cannot find a valid baseurl for repo</a></h2><blockquote>
+<p>出现这个问题是因为yum在安装包的过程中，虽然已经联网，但是没法解析远程包管理库对应的域名，所以我们只需要在网络配置中添加上DNS对应的ip地址即可。</p>
+</blockquote>
+<p>​	1.查看网卡名:<code>ip addr</code></p>
+<p><img src="https://i.loli.net/2021/01/30/5Ss9Fx7OVICRnKN.png" srcset="/img/loading.gif" lazyload alt="image-20210130103817342"></p>
+<p>​	2.修改网络配置文件<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">文件末尾添加</span><br>DNS1=8.8.8.8<br>DNS2=4.2.2.2<br></code></pre></td></tr></table></figure>
+
+<p>​	3.重启网络<code>ifup ens33</code>,成功</p>
+<h2 id="2-ifconfig命令报-bash-ifconfig-command-not-found"><a href="#2-ifconfig命令报-bash-ifconfig-command-not-found" class="headerlink" title="2.ifconfig命令报-bash: ifconfig: command not found"></a>2.ifconfig命令报<code>-bash: ifconfig: command not found</code></h2><p> 安装网络工具:<code>yum install -y net-tools</code></p>
+<h2 id="3-CentOS下ifconfig命令不显示ip"><a href="#3-CentOS下ifconfig命令不显示ip" class="headerlink" title="3.CentOS下ifconfig命令不显示ip"></a>3.CentOS下<code>ifconfig</code>命令不显示ip</h2><p>1.查看网卡名:<code>ip addr</code>,我的显示<code>ens33</code></p>
+<p>2.修改配置文件:<code>/etc/sysconfig/network-scripts/ifcfg-ens33</code>,ONBOOT改为yes</p>
+<p>3.启动网卡<code>ifup ens33</code>即可.</p>
+<h1 id="定时器crontab"><a href="#定时器crontab" class="headerlink" title="定时器crontab"></a>定时器crontab</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法:"></a>语法:</h2><p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406082302729.png" srcset="/img/loading.gif" lazyload alt="image-20240608230223691"></p>
+<p><code>?</code> 表示不参与运算</p>
+<ul>
+<li><p>分（0~59）</p>
+</li>
+<li><p>时（0~23）</p>
+</li>
+<li><p>日（0~31，但是你需要考虑你月的天数）</p>
+</li>
+<li><p>月（1~12）</p>
+</li>
+<li><p>周（0~6 O&#x3D;SUN 或 SUN， MON， TUE， WED， THU， FRI， SAT） </p>
+</li>
+<li><p>年（1970-2099）</p>
+</li>
+<li><p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406082308436.png" srcset="/img/loading.gif" lazyload alt="image-20240608230834371"></p>
+</li>
+</ul>
+<h2 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h2><p><code>crontab -e</code>,进入定时器编辑界面,编辑定时任务.</p>
+<p>例如,每隔一分钟输出一个日期:<code>* * * * * date &gt;&gt; /root/time.txt</code></p>
+<h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="语句判断"><a href="#语句判断" class="headerlink" title="语句判断"></a>语句判断</h3><h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406081833209.png" srcset="/img/loading.gif" lazyload alt="image-20240608183334090"></p>
+<h4 id="文件-1"><a href="#文件-1" class="headerlink" title="文件"></a>文件</h4><p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406081834540.png" srcset="/img/loading.gif" lazyload alt="image-20240608183411474"><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406081837658.png" srcset="/img/loading.gif" lazyload alt="image-20240608183756575"></p>
+<h2 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h2><h3 id="猜字游戏"><a href="#猜字游戏" class="headerlink" title="猜字游戏"></a>猜字游戏</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">！/bih/bash</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">生成100以内的随机数提示用户猜测猜对为止</span> <br><span class="hljs-meta prompt_">#</span><span class="language-bash">random 系统自带，值为0-32767任意数</span> <br><span class="hljs-meta prompt_">#</span><span class="language-bash">随机数1-100</span><br>num=$[RANDOM%100+1]<br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-built_in">read</span> 提示用户猜数字</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-keyword">if</span>判断</span><br>while :<br>do<br>read -p &quot;计算机生成了一个 1-100 的随机数,你猜:&quot; cai <br>	if [ $cai -eq $num ]<br>then<br>	echo &quot;恭喜,猜对了&quot;<br>	exit<br>elif [ $cai -gt $num ]<br>then<br>	echo &quot;不巧,猜大了&quot;<br>else<br>	echo&quot;不巧,猜小了&quot;<br>fi<br>done<br></code></pre></td></tr></table></figure>
+
+<h3 id="一键安装jdk"><a href="#一键安装jdk" class="headerlink" title="一键安装jdk"></a>一键安装jdk</h3><blockquote>
+<p>先卸载完已安装的jdk</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">1.提示安装idk I</span><br>echo &quot;现在开始安装jdk&quot; <br>sleep 1 # 休眼1秒钟<br><span class="hljs-meta prompt_">#</span><span class="language-bash">2.删除centos自带的jdk</span><br>oldjava= ` rpm -qa | grep java `<br>for old in $&#123;oldiava&#125;;<br>do<br><span class="hljs-meta prompt_">	# </span><span class="language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$old</span></span><br><span class="hljs-meta prompt_">	#</span><span class="language-bash">卸载命令</span><br>	rpm -e --nodeps $old<br>done<br><span class="hljs-meta prompt_">#</span><span class="language-bash">3.创建安装目录/export/server,进入安装目录</span> <br>java_path=&quot;/export/server&quot; <br>if [ ! -d $java_path ]<br>then<br>	mkdir -p $java_path<br>fi<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">4:解压jdk安装包</span><br>tar -xvf /export/software/jdk-8u241-1inux-x64.tar.gz -C $java_path<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">6.设置环境变量</span><br>JAVA_HOME=&quot;/export/server/jdk1.8.0_241&quot; <br>if ! grep &quot;JAVA_HOME&quot; /etc/profile<br>then<br><span class="hljs-meta prompt_">	# </span><span class="language-bash">JAVA HOME</span><br>	echo &quot;------------JAVA HOME ----------&quot;<br>	echo &#x27;export JAVA_HOME=/export/server/jdk.1.8.0_241&#x27; &gt;&gt; /etc/profile<br><span class="hljs-meta prompt_">	# </span><span class="language-bash">PATH</span><br>	echo &quot;------------PATH ----------&quot;<br>	echo &#x27;export PATH=:$JAVA_HOME/bin:$PATH&#x27; &gt;&gt; /etc/profile<br>fi<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">7.加载环境变量</span><br>source /etc/profile<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">8。 提示用户安装成功，查看jdk安装版本</span> <br>echo &quot;恭喜您，jdk安装成功！&quot;<br>java -version<br></code></pre></td></tr></table></figure>
+
+<h3 id="数据库定时备份"><a href="#数据库定时备份" class="headerlink" title="数据库定时备份"></a>数据库定时备份</h3><ul>
+<li>编写备份脚本 <code>dump_mysql.sh</code>,并赋予执行权限:<code>chmod +x dump_mysql.sh</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">完成数据库定时备份</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">备份的路径</span><br>BACKUP=/export/data/db<br><span class="hljs-meta prompt_">#</span><span class="language-bash">当前时间作为文件名</span><br>DATETIME=$(date +%Y_%m_%d_%H_%M_%S)<br>echo $DATETIME<br><span class="hljs-meta prompt_">#</span><span class="language-bash">使甲变量的时候中可以用小花括号的方式把变量名包起来,如下：</span><br>echo $&#123;DATETIME&#125;<br><br>echo &quot;----------------开始备份数据库-------------------&quot;<br>echo &quot;----------------备份的路径是$BACKUP/$DATETIME.tar.gz--------------------&quot;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">主机ip地址</span> <br>HOST=XXX.XXX.XXX.XXX<br><span class="hljs-meta prompt_">#</span><span class="language-bash">数据库用户密码,数据库名</span><br>DB_USER=root<br>DB_PWD=xxxxxxxx<br>DATABASE=your_db_name<br><span class="hljs-meta prompt_">#</span><span class="language-bash">创建备份路径</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果备份的文件夹路径存在的话，就直接使用，否则就创建</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">用法:如果文件夹不存在,则才执行后面的创建命令</span><br>[ ! -d &quot;$&#123;BACKUP&#125;/$&#123;DATETIME&#125;&quot; ] &amp;&amp; mkdir -p &quot;$&#123;BACKUP&#125;/$&#123;DATETIME&#125;&quot;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">执行mysql备份数据库的指令</span><br>mysqldump -u$&#123;DB_USER&#125; -p$&#123;DB_PWD&#125; --host=$&#123;HOST&#125; $&#123;DATABASE&#125; &gt; $&#123;BACKUP&#125;/$&#123;DATETIME&#125;/$&#123;DATETIME&#125;.sql<br><span class="hljs-meta prompt_">#</span><span class="language-bash">打包备份文件</span><br>cd $&#123;BACKUP&#125;<br>tar -czvf $&#123;DATATIME&#125;.tar.gz $&#123;DATETIME&#125;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">删除临时目录</span><br>rm -rf $&#123;BACKUP&#125;/$&#123;DATETIME&#125;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">删除十天前的备份文件</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">语法:-mtime  修改时间,+10  十天前,最后的&#123;&#125;为前面找到的文件</span> <br>find $&#123;BACKUP&#125; -mtime +10 -name &quot;*.tar.gz&quot; -exec rm -rf &#123;&#125; \;<br>echo &quot;_----------------备份成功---------------&quot;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202406082259050.png" srcset="/img/loading.gif" lazyload alt="image-20240608225903999"></p>
+<ul>
+<li><p>定时任务</p>
+<p><code>crontab -e</code></p>
+<p><code>15 1 * * *  /export/shell/dump_mysql.sh</code></p>
+</li>
+</ul>
+<h1 id="ZooKeeper集群搭建"><a href="#ZooKeeper集群搭建" class="headerlink" title="ZooKeeper集群搭建"></a>ZooKeeper集群搭建</h1><blockquote>
+<p>Zookeeper是一个分布式协调服务的开源框架。主要用来解决分布式集群中应用系统的一致性问题.</p>
+<p>ZooKeeper本质上是一个分布式的小文件存储系统。提供基于类似于文件系统的目录树方式的数据存储，并且可以对树中的节点进行有效管理。从而用来维护和监控你存储的数据的状态变化，通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。</p>
+</blockquote>
+<p>Zookeeper集群搭建指的是Zookeeper分布式模式安装。通常由2n+1台server组成。这是因为为了保证Leader选举（基于Paxos算法的实现）能过得到多数的支持，所以ZooKeeper集群的数量一般为奇数。</p>
+<p>Zookeeper运行需要java环境，所以需要提前安装jdk。对于安装leader+follower模式的集群，大致过程如下： </p>
+<p>配置主机名称到IP地址映射配置</p>
+<p>修改ZooKeeper配置文件</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>linux常用命令</div>
+      <div>http://www.lifeab.com/2020/12/04/Linux常用命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年12月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/04/Hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" title="hexo搭建静态博客">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">hexo搭建静态博客</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/04/Spring%20Boot%20AOP%E8%AE%B0%E5%BD%95%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%97%A5%E5%BF%97/" title="Spring Boot AOP记录用户操作日志">
+                        <span class="hidden-mobile">Spring Boot AOP记录用户操作日志</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

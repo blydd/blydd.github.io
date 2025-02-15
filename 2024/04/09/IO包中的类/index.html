@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="IO 是 Input&#x2F;Output 的缩写，它是基于流模型实现的，比如操作文件时使用输入流和输出流来写入和读取文件等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java.io 包下的类">
+<meta property="og:url" content="http://www.lifeab.com/2024/04/09/IO%E5%8C%85%E4%B8%AD%E7%9A%84%E7%B1%BB/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="IO 是 Input&#x2F;Output 的缩写，它是基于流模型实现的，比如操作文件时使用输入流和输出流来写入和读取文件等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404091402865.png">
+<meta property="article:published_time" content="2024-04-09T05:10:17.000Z">
+<meta property="article:modified_time" content="2025-01-09T01:30:11.371Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404091402865.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>java.io 包下的类 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="java.io 包下的类"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-09 13:10" pubdate>
+          2024年4月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">java.io 包下的类</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-IO-介绍"><a href="#1-IO-介绍" class="headerlink" title="1.IO 介绍"></a>1.<code>IO</code> 介绍</h1><p><code>IO</code> 是 <code>Input/Output</code> 的缩写，它是基于流模型实现的，比如操作文件时使用输入流和输出流来写入和读取文件等。</p>
+<h2 id="IO-分类"><a href="#IO-分类" class="headerlink" title="IO 分类"></a><code>IO</code> 分类</h2><p>传统的 IO(BIO)，按照流类型我们可以分为：</p>
+<ul>
+<li>字符流</li>
+<li>字节流</li>
+</ul>
+<p>其中，字符流包括 <code>Reader</code>、<code>Writer</code>；字节流包括 <code>InputStream</code>、<code>OutputStream</code>。<br>传统 IO 的类关系图，如下图所示：</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404091402865.png" srcset="/img/loading.gif" lazyload alt=" IO 的类关系图"></p>
+<h1 id="2-IO-使用"><a href="#2-IO-使用" class="headerlink" title="2.IO 使用"></a>2.IO 使用</h1><h2 id="①-字符流-Writer-使用"><a href="#①-字符流-Writer-使用" class="headerlink" title="① 字符流 Writer 使用"></a>① 字符流 <code>Writer</code> 使用</h2><p>Writer 可用来写入文件，请参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 给指定目录下的文件追加信息</span><br><span class="hljs-type">Writer</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(<span class="hljs-string">&quot;d:\\io.txt&quot;</span>,<span class="hljs-literal">true</span>);<br>writer.append(<span class="hljs-string">&quot;老王&quot;</span>);<br>writer.close();<br></code></pre></td></tr></table></figure>
+
+<p>这几行简单的代码就可以实现把信息 <code>老王</code> 追加到 <code>d:\\io.txt</code> 的文件下，参数二表示的是覆盖文字还是追加文字。</p>
+<h2 id="②-字符流Reader-使用"><a href="#②-字符流Reader-使用" class="headerlink" title="② 字符流Reader 使用"></a>② 字符流<code>Reader</code> 使用</h2><p>Reader 可用来读取文件，请参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Reader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>(<span class="hljs-string">&quot;d:\\io.txt&quot;</span>);<br><span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(reader);<br><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br><span class="hljs-comment">// 逐行读取信息</span><br><span class="hljs-keyword">while</span> (<span class="hljs-literal">null</span> != (str = bufferedReader.readLine())) &#123;<br>    System.out.println(str);<br>&#125;<br>bufferedReader.close();<br>reader.close();<br></code></pre></td></tr></table></figure>
+
+<h2 id="③-字节流-InputStream-使用"><a href="#③-字节流-InputStream-使用" class="headerlink" title="③ 字节流 InputStream 使用"></a>③ 字节流 <code>InputStream</code> 使用</h2><p><code>InputStream</code> 可用来读取文件，请参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;d:\\io.txt&quot;</span>));<br><span class="hljs-type">byte</span>[] bytes = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[inputStream.available()];<br><span class="hljs-comment">// 读取到 byte 数组</span><br>inputStream.read(bytes);<br><span class="hljs-comment">// 内容转换为字符串</span><br><span class="hljs-type">String</span> <span class="hljs-variable">content</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(bytes, <span class="hljs-string">&quot;UTF-8&quot;</span>);<br>inputStream.close();<br></code></pre></td></tr></table></figure>
+
+<h2 id="④-字节流-OutputStream-使用"><a href="#④-字节流-OutputStream-使用" class="headerlink" title="④ 字节流 OutputStream 使用"></a>④ 字节流 <code>OutputStream</code> 使用</h2><p>OutputStream 可用来写入文件，请参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">OutputStream</span> <span class="hljs-variable">outputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;d:\\io.txt&quot;</span>),<span class="hljs-literal">true</span>);<br>outputStream.write(<span class="hljs-string">&quot;老王&quot;</span>.getBytes());<br>outputStream.close();<br></code></pre></td></tr></table></figure>
+
+<h1 id="3-NIO-介绍"><a href="#3-NIO-介绍" class="headerlink" title="3.NIO 介绍"></a>3.<code>NIO</code> 介绍</h1><p>上面讲的内容都是 java.io 包下的知识点，但随着 Java 的不断发展，在 <code>Java 1.4</code> 时新的 <code>IO</code> 包出现了 <code>java.nio</code>，<code>NIO（Non-Blocking IO）</code>的出现解决了传统 <code>IO</code>，也就是我们经常说的 <code>BIO（Blocking IO）</code>同步阻塞的问题，<code>NIO</code> 提供了 <code>Channel</code>、<code>Selector</code> 和 <code>Buffer</code> 等概念，可以实现多路复用和同步非阻塞 <code>IO</code> 操作，从而大大提升了 <code>IO</code> 操作的性能。<br>前面提到同步和阻塞的问题，那下面来看看同步和阻塞结合都有哪些含义。</p>
+<table>
+<thead>
+<tr>
+<th align="center">组合方式</th>
+<th align="left">性能分析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">同步阻塞</td>
+<td align="left">最常用的一种用法，使用也是最简单的，但是 <strong><code>I/O</code> 性能一般很差，<code>CPU</code> 大部分在空闲状态</strong></td>
+</tr>
+<tr>
+<td align="center">同步非阻塞</td>
+<td align="left">提升 <code>I/O</code> 性能的常用手段，就是将 <code>I/O</code> 的阻塞改成非阻塞方式，尤其在网络 <code>I/O</code> 是长连接，同时传输数据也不是很多的情况下，提升性能非常有效。 这种方式通常能提升 <code>I/O</code> 性能，但是会增加 <code>CPU</code> 消耗，要考虑增加的 <code>I/O</code> 性能能不能补偿 CPU 的消耗，也就是系统的瓶颈是在 <code>I/O</code> 还是在 <code>CPU</code> 上</td>
+</tr>
+<tr>
+<td align="center">异步阻塞</td>
+<td align="left">这种方式在分布式数据库中经常用到。例如，在往一个分布式数据库中写一条记录，通常会有一份是同步阻塞的记录，而还有两至三份是备份记录会写到其他机器上，这些备份记录通常都是采用异步阻塞的方式写 <code>I/O</code>；异步阻塞对网络 <code>I/O</code> 能够提升效率，尤其像上面这种同时写多份相同数据的情况</td>
+</tr>
+<tr>
+<td align="center">异步非阻塞</td>
+<td align="left">这种组合方式用起来比较复杂，只有在一些非常复杂的分布式情况下使用，像集群之间的消息同步机制一般用这种 I&#x2F;O 组合方式。例如，<code>Cassandra</code> 的 <code>Gossip</code> 通信机制就是采用异步非阻塞的方式。它适合同时要传多份相同的数据到集群中不同的机器，同时数据的传输量虽然不大，但是却非常频繁。这种网络 <code>I/O</code> 用这个方式性能能达到最高</td>
+</tr>
+</tbody></table>
+<p>了解了同步和阻塞的含义，下面来看 <strong>NIO 的具体使用</strong>，请参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">port</span> <span class="hljs-operator">=</span> <span class="hljs-number">6666</span>;<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">Selector</span> <span class="hljs-variable">selector</span> <span class="hljs-operator">=</span> Selector.open();<br>             <span class="hljs-type">ServerSocketChannel</span> <span class="hljs-variable">serverSocketChannel</span> <span class="hljs-operator">=</span> ServerSocketChannel.open();) &#123;<br>            serverSocketChannel.bind(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InetSocketAddress</span>(InetAddress.getLocalHost(), port));<br>            serverSocketChannel.configureBlocking(<span class="hljs-literal">false</span>);<br>            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);<br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>                selector.select(); <span class="hljs-comment">// 阻塞等待就绪的 Channel</span><br>                Set&lt;SelectionKey&gt; selectionKeys = selector.selectedKeys();<br>                Iterator&lt;SelectionKey&gt; iterator = selectionKeys.iterator();<br>                <span class="hljs-keyword">while</span> (iterator.hasNext()) &#123;<br>                    <span class="hljs-type">SelectionKey</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> iterator.next();<br>                    <span class="hljs-keyword">try</span> (<span class="hljs-type">SocketChannel</span> <span class="hljs-variable">channel</span> <span class="hljs-operator">=</span> ((ServerSocketChannel) key.channel()).accept()) &#123;<br>                        channel.write(Charset.defaultCharset().encode(<span class="hljs-string">&quot;老王，你好~&quot;</span>));<br>                    &#125;<br>                    iterator.remove();<br>                &#125;<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;).start();<br><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// Socket 客户端 1（接收信息并打印）</span><br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">Socket</span> <span class="hljs-variable">cSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(InetAddress.getLocalHost(), port)) &#123;<br>            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(cSocket.getInputStream()));<br>            bufferedReader.lines().forEach(s -&gt; System.out.println(<span class="hljs-string">&quot;客户端 1 打印：&quot;</span> + s));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;).start();<br><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// Socket 客户端 2（接收信息并打印）</span><br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">Socket</span> <span class="hljs-variable">cSocket</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Socket</span>(InetAddress.getLocalHost(), port)) &#123;<br>            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(cSocket.getInputStream()));<br>            bufferedReader.lines().forEach(s -&gt; System.out.println(<span class="hljs-string">&quot;客户端 2 打印：&quot;</span> + s));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;).start();<br></code></pre></td></tr></table></figure>
+
+<p>以上代码创建了两个 Socket 客户端，用于收取和打印服务器端的消息。<br>其中，服务器端通过 <code>SelectionKey</code>（选择键）获取到 <code>SocketChannel</code>（通道），而通道都注册到 <code>Selector</code>（选择器）上，所有的客户端都可以获得对应的通道，而不是所有客户端都排队堵塞等待一个服务器连接，这样就实现多路复用的效果了。</p>
+<p><strong>多路指的是多个通道（<code>SocketChannel</code>），而复用指的是一个服务器端连接重复被不同的客户端使用。</strong></p>
+<h1 id="4-AIO-介绍"><a href="#4-AIO-介绍" class="headerlink" title="4.AIO 介绍"></a>4.AIO 介绍</h1><p>AIO（Asynchronous IO）是 NIO 的升级，也叫 NIO2，实现了异步非堵塞 IO ，异步 IO 的操作基于事件和回调机制。<br>AIO 实现简单的 Socket 服务器，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">port</span> <span class="hljs-operator">=</span> <span class="hljs-number">8888</span>;<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">AsynchronousChannelGroup</span> <span class="hljs-variable">group</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            group = AsynchronousChannelGroup.withThreadPool(Executors.newFixedThreadPool(<span class="hljs-number">4</span>));<br>            <span class="hljs-type">AsynchronousServerSocketChannel</span> <span class="hljs-variable">server</span> <span class="hljs-operator">=</span> AsynchronousServerSocketChannel.open(group).bind(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InetSocketAddress</span>(InetAddress.getLocalHost(), port));<br>            server.accept(<span class="hljs-literal">null</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">CompletionHandler</span>&lt;AsynchronousSocketChannel, AsynchronousServerSocketChannel&gt;() &#123;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">completed</span><span class="hljs-params">(AsynchronousSocketChannel result, AsynchronousServerSocketChannel attachment)</span> &#123;<br>                    server.accept(<span class="hljs-literal">null</span>, <span class="hljs-built_in">this</span>); <span class="hljs-comment">// 接收下一个请求</span><br>                    <span class="hljs-keyword">try</span> &#123;<br>                        Future&lt;Integer&gt; f = result.write(Charset.defaultCharset().encode(<span class="hljs-string">&quot;Hi, 老王&quot;</span>));<br>                        f.get();<br>                        System.out.println(<span class="hljs-string">&quot;服务端发送时间：&quot;</span> + DateFormat.getDateTimeInstance().format(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()));<br>                        result.close();<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException | ExecutionException | IOException e) &#123;<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">failed</span><span class="hljs-params">(Throwable exc, AsynchronousServerSocketChannel attachment)</span> &#123;<br>                &#125;<br>            &#125;);<br>            group.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);<br>        &#125; <span class="hljs-keyword">catch</span> (IOException | InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;).start();<br><br><span class="hljs-comment">// Socket 客户端</span><br><span class="hljs-type">AsynchronousSocketChannel</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> AsynchronousSocketChannel.open();<br>Future&lt;Void&gt; future = client.connect(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InetSocketAddress</span>(InetAddress.getLocalHost(), port));<br>future.get();<br><span class="hljs-type">ByteBuffer</span> <span class="hljs-variable">buffer</span> <span class="hljs-operator">=</span> ByteBuffer.allocate(<span class="hljs-number">100</span>);<br>client.read(buffer, <span class="hljs-literal">null</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">CompletionHandler</span>&lt;Integer, Void&gt;() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">completed</span><span class="hljs-params">(Integer result, Void attachment)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;客户端打印：&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(buffer.array()));<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">failed</span><span class="hljs-params">(Throwable exc, Void attachment)</span> &#123;<br>        exc.printStackTrace();<br>        <span class="hljs-keyword">try</span> &#123;<br>            client.close();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;);<br>Thread.sleep(<span class="hljs-number">10</span> * <span class="hljs-number">1000</span>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="5-相关面试题"><a href="#5-相关面试题" class="headerlink" title="5.相关面试题"></a>5.相关面试题</h1><h2 id="1-使用以下哪个方法来判断一个文件是否存在？"><a href="#1-使用以下哪个方法来判断一个文件是否存在？" class="headerlink" title="1.使用以下哪个方法来判断一个文件是否存在？"></a>1.使用以下哪个方法来判断一个文件是否存在？</h2><p>A：createFile<br>B：exists<br>C：read<br>D：exist</p>
+<p>答：B</p>
+<h2 id="2-以下说法错误的是？"><a href="#2-以下说法错误的是？" class="headerlink" title="2.以下说法错误的是？"></a>2.以下说法错误的是？</h2><p>A：同步操作不一定会阻塞<br>B：异步操作不一定会阻塞<br>C：阻塞一定是同步操作<br>D：同步或异步都可能会阻塞</p>
+<p>答：C</p>
+<p>题目解析：异步操作也可能会阻塞，比如分布式集群消息同步，采用的就是异步阻塞的方式。</p>
+<h2 id="3-BIO、NIO、AIO-的区别是什么？"><a href="#3-BIO、NIO、AIO-的区别是什么？" class="headerlink" title="3.BIO、NIO、AIO 的区别是什么？"></a>3.BIO、NIO、AIO 的区别是什么？</h2><p>答：它们三者的区别如下。</p>
+<ul>
+<li>BIO 就是传统的 java.io 包，它是基于流模型实现的，交互的方式是同步、阻塞方式，也就是说在读入输入流或者输出流时，在读写动作完成之前，线程会一直阻塞在那里，它们之间的调用是可靠的线性顺序。它的优点就是代码比较简单、直观；缺点就是 IO 的效率和扩展性很低，容易成为应用性能瓶颈。</li>
+<li>NIO 是 Java 1.4 引入的 java.nio 包，提供了 Channel、Selector、Buffer 等新的抽象，可以构建多路复用的、同步非阻塞 IO 程序，同时提供了更接近操作系统底层高性能的数据操作方式。</li>
+<li>AIO 是 Java 1.7 之后引入的包，是 NIO 的升级版本，提供了异步非堵塞的 IO 操作方式，因此人们叫它 AIO（Asynchronous IO），异步 IO 是基于事件和回调机制实现的，也就是应用操作之后会直接返回，不会堵塞在那里，当后台处理完成，操作系统会通知相应的线程进行后续的操作。</li>
+</ul>
+<p>简单来说 BIO 就是传统 IO 包，产生的最早；NIO 是对 BIO 的改进提供了多路复用的同步非阻塞 IO，而 AIO 是 NIO 的升级，提供了异步非阻塞 IO。</p>
+<h2 id="4-读取和写入文件最简洁的方式是什么？"><a href="#4-读取和写入文件最简洁的方式是什么？" class="headerlink" title="4.读取和写入文件最简洁的方式是什么？"></a>4.读取和写入文件最简洁的方式是什么？</h2><p>答：使用 Java 7 提供的 Files 读取和写入文件是最简洁，请参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 读取文件</span><br><span class="hljs-type">byte</span>[] bytes = Files.readAllBytes(Paths.get(<span class="hljs-string">&quot;d:\\io.txt&quot;</span>));<br><span class="hljs-comment">// 写入文件</span><br>Files.write(Paths.get(<span class="hljs-string">&quot;d:\\io.txt&quot;</span>), <span class="hljs-string">&quot;追加内容&quot;</span>.getBytes(), StandardOpenOption.APPEND);<br></code></pre></td></tr></table></figure>
+
+<p>读取和写入都是一行代码搞定，可以说很简洁了。</p>
+<h2 id="5-Files-常用方法都有哪些？"><a href="#5-Files-常用方法都有哪些？" class="headerlink" title="5.Files 常用方法都有哪些？"></a>5.Files 常用方法都有哪些？</h2><p>答：Files 是 Java 1.7 提供的，使得文件和文件夹的操作更加方便，它的常用方法有以下几个：</p>
+<ul>
+<li>Files. exists()：检测文件路径是否存在</li>
+<li>Files. createFile()：创建文件</li>
+<li>Files. createDirectory()：创建文件夹</li>
+<li>Files. delete()：删除一个文件或目录</li>
+<li>Files. copy()：复制文件</li>
+<li>Files. move()：移动文件</li>
+<li>Files. size()：查看文件个数</li>
+<li>Files. read()：读取文件</li>
+<li>Files. write()：写入文件</li>
+</ul>
+<h2 id="6-FileInputStream-可以实现什么功能？"><a href="#6-FileInputStream-可以实现什么功能？" class="headerlink" title="6.FileInputStream 可以实现什么功能？"></a>6.FileInputStream 可以实现什么功能？</h2><p>答：FileInputStream 可以实现文件的读取。</p>
+<p>题目解析：因为 FileInputStream 和 FileOutputStream 很容易被记反，FileOutputStream 才是用来写入文件的，所以也经常被面试官问到。</p>
+<h2 id="7-不定项选择：为了提高读写性能，可以采用什么流？"><a href="#7-不定项选择：为了提高读写性能，可以采用什么流？" class="headerlink" title="7.不定项选择：为了提高读写性能，可以采用什么流？"></a>7.不定项选择：为了提高读写性能，可以采用什么流？</h2><p> A：InputStream<br> B：DataInputStream<br> C：BufferedReader<br> D：BufferedInputStream<br> E：OutputStream<br> F：BufferedOutputStream</p>
+<p>答：D、F</p>
+<p>题目解析：BufferedInputStream 是一种带缓存区的输入流，在读取字节数据时可以从底层流中一次性读取多个字节到缓存区，而不必每次都调用系统底层；同理，BufferedOutputStream 也是一种带缓冲区的输出流，通过缓冲区输出流，应用程序先把字节写入缓冲区，缓存区满后再调用操作系统底层，从而提高系统性能，而不必每次都去调用系统底层方法。</p>
+<h2 id="8-FileInputStream-和-BufferedInputStream-的区别是什么？"><a href="#8-FileInputStream-和-BufferedInputStream-的区别是什么？" class="headerlink" title="8.FileInputStream 和 BufferedInputStream 的区别是什么？"></a>8.FileInputStream 和 BufferedInputStream 的区别是什么？</h2><p>答：FileInputStream 在小文件读写时性能较好，而在大文件操作时使用 BufferedInputStream 更有优势。</p>
+<h2 id="9-以下这段代码运行在-Windwos-平台，执行的结果是？"><a href="#9-以下这段代码运行在-Windwos-平台，执行的结果是？" class="headerlink" title="9.以下这段代码运行在 Windwos 平台，执行的结果是？"></a>9.以下这段代码运行在 Windwos 平台，执行的结果是？</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Files.createFile(Paths.get(<span class="hljs-string">&quot;c:\\pf.txt&quot;</span>), PosixFilePermissions.asFileAttribute(<br>    EnumSet.of(PosixFilePermission.OWNER_READ)));<br></code></pre></td></tr></table></figure>
+
+<p>A：在指定的盘符产生了对应的文件，文件只读<br>B：在指定的盘符产生了对应的文件，文件只写<br>C：在指定的盘符产生了对应的文件，文件可读写<br>D：程序报错</p>
+<p>答：D</p>
+<p>题目解析：本题目考察的是 Files.createFile 参数传递的问题，PosixFilePermissions 不支持 Windows，因此在 Windows 执行会报错 java.lang.UnsupportedOperationException: ‘posix:permissions’ not supported as initial attribute。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在 Java 1.4 之前只有 BIO（Blocking IO）可供使用，也就是 java.io 包下的那些类，它的缺点是同步阻塞式运行的。随后在 Java 1.4 时，提供了 NIO（Non-Blocking IO）属于 BIO 的升级，提供了同步非阻塞的 IO 操作方式，它的重要组件是 Selector（选择器）、Channel（通道）、Buffer（高效数据容器）实现了多路复用的高效 IO 操作。而 AIO（Asynchronous IO）也叫 NIO 2.0，属于 NIO 的补充和升级，提供了异步非阻塞的 IO 操作。</p>
+<p>还有另一个重要的知识点，是 Java 7.0 时新增的 Files 类，极大地提升了文件操作的便利性，比如读、写文件 Files.write()、Files.readAllBytes() 等，都是非常简便和实用的方法。</p>
+<blockquote>
+<p>[点击此处下载本文源码](</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/io/" class="print-no-link">#io</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>java.io 包下的类</div>
+      <div>http://www.lifeab.com/2024/04/09/IO包中的类/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/19/jenkins_%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/" title="jenkins">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jenkins</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/09/Spring%E4%B8%AD%E7%9A%84InitializingBean%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" title="Spring中的InitializingBean的使用详解">
+                        <span class="hidden-mobile">Spring中的InitializingBean的使用详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

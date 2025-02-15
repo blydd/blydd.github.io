@@ -1,0 +1,961 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="介绍：​    Dart是由谷歌开发的计算机编程语言,它可以被用于web、服务器、移动应用 和物联网等领域的开发。 ​    Dart诞生于2011年，号称要取代JavaScript。但是过去的几年中一直不温不火。直到Flutter的出现现在被人们重新重视。 ​    要学Flutter的话我们必须首先得会Dart。 ​    官网：https:&#x2F;&#x2F;dart.dev&#x2F; 环境搭建：​      要在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dart">
+<meta property="og:url" content="http://www.lifeab.com/2024/04/23/dart_%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="介绍：​    Dart是由谷歌开发的计算机编程语言,它可以被用于web、服务器、移动应用 和物联网等领域的开发。 ​    Dart诞生于2011年，号称要取代JavaScript。但是过去的几年中一直不温不火。直到Flutter的出现现在被人们重新重视。 ​    要学Flutter的话我们必须首先得会Dart。 ​    官网：https:&#x2F;&#x2F;dart.dev&#x2F; 环境搭建：​      要在">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-23T04:10:17.000Z">
+<meta property="article:modified_time" content="2025-01-09T01:30:11.374Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="dart">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>dart - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="dart"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-23 12:10" pubdate>
+          2024年4月23日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">dart</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h1><p>​    Dart是由谷歌开发的计算机编程语言,它可以被用于web、服务器、移动应用 和物联网等领域的开发。</p>
+<p>​    Dart诞生于2011年，号称要取代JavaScript。但是过去的几年中一直不温不火。直到Flutter的出现现在被人们重新重视。</p>
+<p>​    要学Flutter的话我们必须首先得会Dart。</p>
+<p>​    官网：<a target="_blank" rel="noopener" href="https://dart.dev/">https://dart.dev/</a></p>
+<h2 id="环境搭建："><a href="#环境搭建：" class="headerlink" title="环境搭建："></a>环境搭建：</h2><p>​      要在我们本地开发Dart程序的话首先需要安装<code>Dart Sdk</code></p>
+<p>​	  官方文档：<a target="_blank" rel="noopener" href="https://dart.dev/get-dart">https://dart.dev/get-dart</a></p>
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows:"></a>windows:</h3><p>​       <a target="_blank" rel="noopener" href="http://www.gekorm.com/dart-windows/">http://www.gekorm.com/dart-windows/</a></p>
+<h3 id="mac："><a href="#mac：" class="headerlink" title="mac："></a>mac：</h3><p>​        如果mac电脑没有安装<code>brew</code>这个工具首先第一步需要安装它：  <a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">brew tap dart-lang/dart<br>brew install dart<br></code></pre></td></tr></table></figure>
+
+<h2 id="Dart-开发工具："><a href="#Dart-开发工具：" class="headerlink" title="Dart 开发工具："></a>Dart 开发工具：</h2><p>​    Dart的开发工具有很多： IntelliJ IDEA  、 WebStorm、 Atom、Vscode等</p>
+<h3 id="Vscode中配置Dart。"><a href="#Vscode中配置Dart。" class="headerlink" title="Vscode中配置Dart。"></a>Vscode中配置Dart。</h3><p>​       1、vscode插件安装<code>dart</code></p>
+<p>​      2、vscode插安装<code>code runner</code>     <code>code runner</code>  可以运行我们的文件</p>
+<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="入口方法"><a href="#入口方法" class="headerlink" title="入口方法"></a>入口方法</h2><p> 入口方法的两种定义方式</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dart">main()&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你好dart&#x27;</span>);<br>&#125;<br><br><span class="hljs-comment">//表示main方法没有返回值</span><br><span class="hljs-keyword">void</span> main()&#123;<br> 		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你好dart&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>  dart是一个强大的脚本类语言，可以不预先定义变量类型 ，自动会类型推断</p>
+<p>  dart中定义变量可以通过<strong>var</strong>关键字申明</p>
+<p>  如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">var</span> str=<span class="hljs-string">&#x27;this is var&#x27;</span>;<br><span class="hljs-built_in">String</span> str=<span class="hljs-string">&#x27;this is var&#x27;</span>;<br><span class="hljs-built_in">int</span> str=<span class="hljs-number">123</span>;<br></code></pre></td></tr></table></figure>
+
+<p>  注意： <code>var</code> 后就不要写类型 ，写了类型就不要<code>var</code>   两者都写报错</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p><strong><code>const</code> 值不变,一开始就得赋值</strong>.</p>
+<p><strong><code>final</code> 可以不赋初始值,但只能赋一次.</strong></p>
+<p>常量命名一般全大写.</p>
+<p>而final不仅有const的编译时常量的特性，最重要的它是运行时常量，并且final是惰性初始化，即在运行时第一次使用前才初始化</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart">main() &#123;<br>  <span class="hljs-keyword">final</span> name = <span class="hljs-string">&#x27;Bob&#x27;</span>;<br>  <span class="hljs-keyword">final</span> <span class="hljs-built_in">String</span> nickname = <span class="hljs-string">&#x27;Bobby&#x27;</span>;<br>  <span class="hljs-built_in">print</span>(name);<br>  <span class="hljs-built_in">print</span>(nickname);<br><br>  <span class="hljs-keyword">const</span> bar = <span class="hljs-number">1000000</span>; <br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">double</span> atm = <span class="hljs-number">1.01325</span> * bar; <br>  <span class="hljs-built_in">print</span>(bar);<br>  <span class="hljs-built_in">print</span>(atm);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h2><ol>
+<li>变量名称必须<strong>由数字、字母、下划线和美元符($)组成</strong>。</li>
+<li>标识符<strong>开头不能是数字</strong></li>
+<li>标识符<strong>不能是保留字和关键字</strong>。   </li>
+<li>变量的名字是<strong>区分大小写</strong>的.如: age和Age是不同的变量。</li>
+<li>标识符(变量名称)一定要见名思意 ：变量名称建议用名词，方法名称建议用动词</li>
+</ol>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><blockquote>
+<p>int</p>
+<p>double</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><br>  <span class="hljs-comment">//1、int   必须是整型</span><br>    <span class="hljs-built_in">int</span> a=<span class="hljs-number">123</span>;<br>    a=<span class="hljs-number">45</span>;<br>    <span class="hljs-built_in">print</span>(a);<br>  <span class="hljs-comment">//2、double  既可以是整型 也可是浮点型</span><br>    <span class="hljs-built_in">double</span> b=<span class="hljs-number">23.5</span>;<br>    b=<span class="hljs-number">24</span>;<br>    <span class="hljs-built_in">print</span>(b);<br>  <span class="hljs-comment">//3、运算符</span><br>    <span class="hljs-comment">// + - * / %</span><br>    <span class="hljs-keyword">var</span> c=a+b;<br>    <span class="hljs-built_in">print</span>(c);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-comment">//1、字符串定义的几种方式:单引号 双引号</span><br>  <span class="hljs-comment">// var str1=&#x27;this is str1&#x27;;</span><br>  <span class="hljs-comment">// var str2=&quot;this is str2&quot;;</span><br>  <span class="hljs-comment">// print(str1);</span><br>  <span class="hljs-comment">// print(str2);</span><br>  <br>	<span class="hljs-comment">//2.三单引号 可换行</span><br>  <span class="hljs-comment">// String str1=&#x27;&#x27;&#x27;this is str1</span><br>  <span class="hljs-comment">// this is str1</span><br>  <span class="hljs-comment">// this is str1</span><br>  <span class="hljs-comment">// &#x27;&#x27;&#x27;;</span><br>  <span class="hljs-comment">//  print(str1);</span><br><br>	<span class="hljs-comment">//3.三双引号 可换行</span><br>  <span class="hljs-comment">//   String str1=&quot;&quot;&quot;</span><br>  <span class="hljs-comment">//   this is str1</span><br>  <span class="hljs-comment">//   this is str1</span><br>  <span class="hljs-comment">//   this is str1</span><br>  <span class="hljs-comment">//   &quot;&quot;&quot;;</span><br>  <span class="hljs-comment">//  print(str1);</span><br><br>  <span class="hljs-comment">//4、字符串的拼接</span><br>  <span class="hljs-built_in">String</span> str1=<span class="hljs-string">&#x27;你好&#x27;</span>;<br>  <span class="hljs-built_in">String</span> str2=<span class="hljs-string">&#x27;Dart&#x27;</span>;<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;<span class="hljs-subst">$str1</span> <span class="hljs-subst">$str2</span>&quot;</span>);<br>  <span class="hljs-built_in">print</span>(str1 + str2);  <br>  <span class="hljs-built_in">print</span>(str1 +<span class="hljs-string">&quot; &quot;</span>+ str2);<br><br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="Booleans"><a href="#Booleans" class="headerlink" title="Booleans"></a>Booleans</h3><blockquote>
+<p>bool</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><br>  <span class="hljs-comment">//1、bool</span><br>  <span class="hljs-built_in">bool</span> flag1=<span class="hljs-keyword">true</span>;<br>  <span class="hljs-built_in">print</span>(flag1);<br><br>  <span class="hljs-built_in">bool</span> flag2=<span class="hljs-keyword">false</span>;<br>  <span class="hljs-built_in">print</span>(flag2);<br><br>  <span class="hljs-comment">//2、条件判断语句</span><br>  <span class="hljs-keyword">var</span> flag=<span class="hljs-keyword">true</span>;<br>  <span class="hljs-keyword">if</span>(flag)&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;真&#x27;</span>);      <br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;假&#x27;</span>);<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> a=<span class="hljs-number">123</span>;<br>  <span class="hljs-keyword">var</span> b=<span class="hljs-number">123</span>;<br>  <span class="hljs-keyword">if</span>(a==b)&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a=b&#x27;</span>);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>     <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;a!=b&#x27;</span>);<br>  &#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="List（数组）"><a href="#List（数组）" class="headerlink" title="List（数组）"></a>List（数组）</h3><blockquote>
+<p>在Dart中，数组是列表对象，所以大多数人只是称它们为列表</p>
+</blockquote>
+<h4 id="创建list方式"><a href="#创建list方式" class="headerlink" title="创建list方式"></a>创建list方式</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main() &#123;<br>  <span class="hljs-comment">//1、第一种定义List的方式</span><br>  <span class="hljs-keyword">var</span> l1=[<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-number">20</span>,<span class="hljs-keyword">true</span>];<br>  <span class="hljs-built_in">print</span>(l1);  <span class="hljs-comment">//[张三, 20, true]</span><br>  <span class="hljs-built_in">print</span>(l1.length);  <span class="hljs-comment">//3</span><br>  <span class="hljs-built_in">print</span>(l1[<span class="hljs-number">0</span>]); <span class="hljs-comment">//张三</span><br>  <span class="hljs-built_in">print</span>(l1[<span class="hljs-number">1</span>]); <span class="hljs-comment">//20</span><br><br>  <span class="hljs-comment">//2、第二种定义List的方式 指定类型</span><br>  <span class="hljs-keyword">var</span> l2=&lt;<span class="hljs-built_in">String</span>&gt;[<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-string">&quot;李四&quot;</span>];<br>  <span class="hljs-built_in">print</span>(l2);<br><br> <span class="hljs-keyword">var</span> l3 = &lt;<span class="hljs-built_in">int</span>&gt;[<span class="hljs-number">12</span>, <span class="hljs-number">30</span>];<br> <span class="hljs-built_in">print</span>(l3);<br><br>  <span class="hljs-comment">//3、第三种定义List的方式  增加数据 ,通过[]创建的集合它的容量可以变化</span><br><br>  <span class="hljs-keyword">var</span> l4 = [];<br>  <span class="hljs-built_in">print</span>(l4);<br>  <span class="hljs-built_in">print</span>(l4.length);<br><br>  l4.add(<span class="hljs-string">&quot;张三&quot;</span>);<br>  l4.add(<span class="hljs-string">&quot;李四&quot;</span>);<br>  l4.add(<span class="hljs-number">20</span>);<br>  <span class="hljs-built_in">print</span>(l4);<br>  <span class="hljs-built_in">print</span>(l4.length);<br><br>  <span class="hljs-keyword">var</span> l5 = [<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-keyword">true</span>];<br>  l5.add(<span class="hljs-string">&quot;李四&quot;</span>);<br>  l5.add(<span class="hljs-string">&quot;zhaosi&quot;</span>);<br>  <span class="hljs-built_in">print</span>(l5);<br><br><br>  <span class="hljs-comment">//4、第四种定义List的方式 创建一个固定长度的集合</span><br><br>  <span class="hljs-keyword">var</span> l6=<span class="hljs-built_in">List</span>.filled(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;&quot;</span>);<br>  <span class="hljs-built_in">print</span>(l6);<br>  <span class="hljs-built_in">print</span>(l6[<span class="hljs-number">0</span>]);<br><br>  l6[<span class="hljs-number">0</span>]=<span class="hljs-string">&quot;张三&quot;</span>;   <span class="hljs-comment">//修改集合的内容</span><br>  l6[<span class="hljs-number">1</span>]=<span class="hljs-string">&quot;李四&quot;</span>;<br>  <span class="hljs-built_in">print</span>(l6);  <span class="hljs-comment">//[张三, 李四]</span><br>  l6.add(<span class="hljs-string">&quot;王五&quot;</span>);  <span class="hljs-comment">//报错  通过List.filled创建的集合长度是固定,没法增加数据</span><br><br><br><br>  <span class="hljs-comment">//通过List.filled创建的集合长度是固定</span><br>  <span class="hljs-keyword">var</span> l6=<span class="hljs-built_in">List</span>.filled(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;&quot;</span>);<br>  <span class="hljs-built_in">print</span>(l6.length);<br>  l6.length=<span class="hljs-number">0</span>;  <span class="hljs-comment">//修改集合的长度   报错</span><br><br>  <span class="hljs-keyword">var</span> l7=&lt;<span class="hljs-built_in">String</span>&gt;[<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-string">&quot;李四&quot;</span>];<br>  <span class="hljs-built_in">print</span>(l7.length);  <span class="hljs-comment">//2</span><br>  l7.length=<span class="hljs-number">0</span>;  <span class="hljs-comment">//可以改变的</span><br>  <span class="hljs-built_in">print</span>(l7);  <span class="hljs-comment">//[]</span><br><br>	<span class="hljs-comment">//生成时可以不是指定类型</span><br>  <span class="hljs-keyword">var</span> l8=<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;.filled(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;&quot;</span>);<br>  l8[<span class="hljs-number">0</span>]=<span class="hljs-string">&quot;string&quot;</span>;<br>  <span class="hljs-comment">// l8[0]=222;//报错.修改时必须是指定类型</span><br>  <span class="hljs-built_in">print</span>(l8);<span class="hljs-comment">//[string, ]   </span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="List常用属性-方法："><a href="#List常用属性-方法：" class="headerlink" title="List常用属性&amp;方法："></a>List常用属性&amp;方法：</h4><p>​    <strong>常用属性：</strong></p>
+<ul>
+<li>length          长度</li>
+<li>reversed        翻转</li>
+<li>isEmpty         是否为空</li>
+<li>isNotEmpty      是否不为空</li>
+</ul>
+<p>​    <strong>常用方法：</strong>  </p>
+<ul>
+<li>add         增加</li>
+<li>addAll      拼接数组</li>
+<li>indexOf     查找  传入具体值</li>
+<li>remove      删除  传入具体值</li>
+<li>removeAt    删除  传入索引值</li>
+<li>fillRange   修改   </li>
+<li>insert(index,value);            指定位置插入    </li>
+<li>insertAll(index,list)           指定位置插入List</li>
+<li>toList()    其他类型转换成List  </li>
+<li>join()      List转换成字符串</li>
+<li>split()     字符串转化成List</li>
+<li>forEach   </li>
+<li>map</li>
+<li>where 返回满足条件的元素</li>
+<li>any 只要集合里面有满足条件的就返回true</li>
+<li>every 每个元素都满足条件返回true</li>
+</ul>
+<p><strong>示例:</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><br><span class="hljs-comment">//List里面的属性：</span><br> <span class="hljs-built_in">List</span> myList=[<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;西瓜&#x27;</span>];<br> <span class="hljs-built_in">print</span>(myList.length);<br> <span class="hljs-built_in">print</span>(myList.isEmpty);<br> <span class="hljs-built_in">print</span>(myList.isNotEmpty);<br> <span class="hljs-built_in">print</span>(myList.reversed);  <span class="hljs-comment">//对列表倒序排序</span><br> <span class="hljs-keyword">var</span> newMyList=myList.reversed.toList();<br> <span class="hljs-built_in">print</span>(newMyList);<br><br><span class="hljs-comment">//List里面的方法：</span><br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;西瓜&#x27;</span>];<br>  myList.add(<span class="hljs-string">&#x27;桃子&#x27;</span>);   <span class="hljs-comment">//增加数据  增加一个</span><br>  myList.addAll([<span class="hljs-string">&#x27;桃子&#x27;</span>,<span class="hljs-string">&#x27;葡萄&#x27;</span>]);  <span class="hljs-comment">//拼接数组</span><br>  <span class="hljs-built_in">print</span>(myList);<br>  <span class="hljs-built_in">print</span>(myList.indexOf(<span class="hljs-string">&#x27;苹x果&#x27;</span>));    <span class="hljs-comment">//indexOf查找数据 查找不到返回-1  查找到返回索引值</span><br><span class="hljs-comment">//forEach 遍历</span><br> myList.forEach((value)&#123;<br>     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;<span class="hljs-subst">$value</span>&quot;</span>);<br>     <span class="hljs-built_in">print</span>(value);<br> &#125;);<br><br>  myList.remove(<span class="hljs-string">&#x27;西瓜&#x27;</span>);<span class="hljs-comment">//删除元素</span><br>  myList.removeAt(<span class="hljs-number">1</span>);<span class="hljs-comment">//根据索引删除元素</span><br>  <span class="hljs-built_in">print</span>(myList);<br>  <br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;西瓜&#x27;</span>];<br>  myList.fillRange(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>,<span class="hljs-string">&#x27;aaa&#x27;</span>);  <span class="hljs-comment">//修改  [香蕉, aaa, 西瓜]</span><br>  myList.fillRange(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>,<span class="hljs-string">&#x27;aaa&#x27;</span>);<span class="hljs-comment">//修改  [香蕉, aaa, aaa]</span><br>  <span class="hljs-built_in">print</span>(myList);<br><br>  myList.insert(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;aaa&#x27;</span>);      <span class="hljs-comment">//插入  一个</span><br>  myList.insertAll(<span class="hljs-number">1</span>, [<span class="hljs-string">&#x27;aaa&#x27;</span>,<span class="hljs-string">&#x27;bbb&#x27;</span>]);  <span class="hljs-comment">//插入 多个</span><br>  <span class="hljs-built_in">print</span>(myList);<br><br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;西瓜&#x27;</span>];<br>  <span class="hljs-keyword">var</span> str=myList.join(<span class="hljs-string">&#x27;-&#x27;</span>);   <span class="hljs-comment">//list转换成字符串</span><br>  <span class="hljs-built_in">print</span>(str);<br>  <span class="hljs-built_in">print</span>(str <span class="hljs-keyword">is</span> <span class="hljs-built_in">String</span>);  <span class="hljs-comment">//true</span><br><br>  <span class="hljs-keyword">var</span> str=<span class="hljs-string">&#x27;香蕉-苹果-西瓜&#x27;</span>;<br>  <span class="hljs-keyword">var</span> list=str.split(<span class="hljs-string">&#x27;-&#x27;</span>);<br>  <span class="hljs-built_in">print</span>(list);<span class="hljs-comment">//[香蕉, 苹果, 西瓜]</span><br>  <span class="hljs-built_in">print</span>(list <span class="hljs-keyword">is</span> <span class="hljs-built_in">List</span>);<span class="hljs-comment">//true</span><br>  <span class="hljs-comment">//every 每一个都满足条件返回true  否则返回false</span><br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];<br>   <span class="hljs-keyword">var</span> f=myList.every((value)&#123;<br>       <span class="hljs-keyword">return</span> value&gt;<span class="hljs-number">5</span>;<br>   &#125;);<br>   <span class="hljs-built_in">print</span>(f);<span class="hljs-comment">//false</span><br>  <span class="hljs-comment">//any 只要集合里面有满足条件的就返回true</span><br>   <span class="hljs-built_in">List</span> myList=[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];<br>   <span class="hljs-keyword">var</span> f=myList.any((value)&#123;<br>       <span class="hljs-keyword">return</span> value&gt;<span class="hljs-number">5</span>;<br>   &#125;);<br>   <span class="hljs-built_in">print</span>(f);<br>  <span class="hljs-comment">//where 返回满足条件的元素</span><br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>];<br>   <span class="hljs-keyword">var</span> newList=myList.where((value)&#123;<br>       <span class="hljs-keyword">return</span> value&gt;<span class="hljs-number">5</span>;<br>   &#125;);<br>   <span class="hljs-built_in">print</span>(newList.toList());<br>  <span class="hljs-comment">//map</span><br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];      <br>   <span class="hljs-keyword">var</span> newList=myList.map((value)&#123;<br>       <span class="hljs-keyword">return</span> value*<span class="hljs-number">2</span>;<br>   &#125;);<br>   <span class="hljs-built_in">print</span>(newList.toList());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><blockquote>
+<p>无序 不重复集合</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-comment">//set转list</span><br>  <span class="hljs-keyword">var</span> s=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();<br>  s.add(<span class="hljs-string">&#x27;香蕉&#x27;</span>);<br>  s.add(<span class="hljs-string">&#x27;苹果&#x27;</span>);<br>  s.add(<span class="hljs-string">&#x27;苹果&#x27;</span>);<br>  <span class="hljs-built_in">print</span>(s);   <span class="hljs-comment">//&#123;香蕉, 苹果&#125;</span><br>  <span class="hljs-built_in">print</span>(s.toList()); <br><br><span class="hljs-comment">//list转set</span><br>  <span class="hljs-built_in">List</span> myList=[<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;西瓜&#x27;</span>,<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;苹果&#x27;</span>];<br>  <span class="hljs-keyword">var</span> s=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();<br>  s.addAll(myList);<br>  <span class="hljs-built_in">print</span>(s);<br>  <span class="hljs-built_in">print</span>(s.toList());<br>  <br>  <span class="hljs-comment">//遍历</span><br>  s.forEach((value)=&gt;<span class="hljs-built_in">print</span>(value));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="Maps（字典）"><a href="#Maps（字典）" class="headerlink" title="Maps（字典）"></a>Maps（字典）</h3><blockquote>
+<p> 通常来说，Map 是一个键值对相关的对象。 键和值可以是任何类型的对象。</p>
+<p><strong>每个键只出现一次， 而一个值则可以出现多次</strong></p>
+</blockquote>
+<h4 id="创建map方式"><a href="#创建map方式" class="headerlink" title="创建map方式"></a>创建map方式</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-comment">//第一种定义 Maps的方式</span><br>  <span class="hljs-keyword">var</span> person=&#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;张三&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">20</span>,<br>    <span class="hljs-string">&quot;work&quot;</span>:[<span class="hljs-string">&quot;程序员&quot;</span>,<span class="hljs-string">&quot;送外卖&quot;</span>]<br>  &#125;;<br><br>  <span class="hljs-built_in">print</span>(person);<br>  <span class="hljs-built_in">print</span>(person[<span class="hljs-string">&quot;name&quot;</span>]);<br>  <span class="hljs-built_in">print</span>(person[<span class="hljs-string">&quot;age&quot;</span>]);<br>  <span class="hljs-built_in">print</span>(person[<span class="hljs-string">&quot;work&quot;</span>]);<br><br> <span class="hljs-comment">//第二种定义 Maps的方式</span><br> <span class="hljs-keyword">var</span> p=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br> p[<span class="hljs-string">&quot;name&quot;</span>]=<span class="hljs-string">&quot;李四&quot;</span>;<br> p[<span class="hljs-string">&quot;age&quot;</span>]=<span class="hljs-number">22</span>;<br> p[<span class="hljs-string">&quot;work&quot;</span>]=[<span class="hljs-string">&quot;程序员&quot;</span>,<span class="hljs-string">&quot;送外卖&quot;</span>];<br> <span class="hljs-built_in">print</span>(p);<br> <span class="hljs-built_in">print</span>(p[<span class="hljs-string">&quot;age&quot;</span>]);   <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Map常用属性-方法"><a href="#Map常用属性-方法" class="headerlink" title="Map常用属性&amp;方法"></a>Map常用属性&amp;方法</h4><p><strong>常用属性：</strong></p>
+<ul>
+<li><p>keys            获取所有的key值</p>
+</li>
+<li><p>values          获取所有的value值</p>
+</li>
+<li><p>isEmpty         是否为空</p>
+</li>
+<li><p>isNotEmpty      是否不为空</p>
+</li>
+</ul>
+<p><strong>常用方法:</strong></p>
+<ul>
+<li><p>remove(key)     删除指定key的数据</p>
+</li>
+<li><p>addAll({…})   合并映射  给映射内增加属性</p>
+</li>
+<li><p>containsValue   映射内的值是否包含指定值  返回true&#x2F;false</p>
+</li>
+<li><p>forEach    遍历</p>
+</li>
+<li><p>map </p>
+</li>
+<li><p>where</p>
+</li>
+<li><p>any</p>
+</li>
+<li><p>every</p>
+</li>
+</ul>
+<p><strong>示例</strong>:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><span class="hljs-comment">//常用属性：</span><br>  <span class="hljs-built_in">Map</span> person=&#123;<br>    <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;张三&quot;</span>,<br>    <span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">20</span>,<br>    <span class="hljs-string">&quot;sex&quot;</span>:<span class="hljs-string">&quot;男&quot;</span><br>  &#125;;<br><br>  <span class="hljs-built_in">print</span>(person.keys.toList());<br>  <span class="hljs-built_in">print</span>(person.values.toList());<br>  <span class="hljs-built_in">print</span>(person.isEmpty);<br>  <span class="hljs-built_in">print</span>(person.isNotEmpty);<br><br><br><span class="hljs-comment">//常用方法：</span><br>    <span class="hljs-built_in">Map</span> person=&#123;<br>      <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;张三&quot;</span>,<br>      <span class="hljs-string">&quot;age&quot;</span>:<span class="hljs-number">20</span>,<br>      <span class="hljs-string">&quot;sex&quot;</span>:<span class="hljs-string">&quot;男&quot;</span><br>    &#125;;<br>		<span class="hljs-comment">//增加元素</span><br>    person.addAll(&#123;<br>      <span class="hljs-string">&quot;work&quot;</span>:[<span class="hljs-string">&#x27;敲代码&#x27;</span>,<span class="hljs-string">&#x27;送外卖&#x27;</span>],<br>      <span class="hljs-string">&quot;height&quot;</span>:<span class="hljs-number">160</span><br>    &#125;);<br>    <span class="hljs-built_in">print</span>(person);<br>		<span class="hljs-comment">//删除元素</span><br>    person.remove(<span class="hljs-string">&quot;sex&quot;</span>);<br>    <span class="hljs-built_in">print</span>(person);<br>		<span class="hljs-comment">//value是否包含张三</span><br>    <span class="hljs-built_in">print</span>(person.containsValue(<span class="hljs-string">&#x27;张三&#x27;</span>));<br>		<span class="hljs-comment">//遍历</span><br>    person.forEach((key,value)&#123;            <br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;<span class="hljs-subst">$key</span>---<span class="hljs-subst">$value</span>&quot;</span>);<br>    &#125;);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="用不到的数据类型："><a href="#用不到的数据类型：" class="headerlink" title="用不到的数据类型："></a><strong>用不到的数据类型：</strong></h3><ul>
+<li>Runes</li>
+</ul>
+<p>​	        Rune是UTF-32编码的字符串。它可以通过文字转换成符号表情或者代表特定的文字。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dart">main() &#123;<br>     <span class="hljs-keyword">var</span> clapping = <span class="hljs-string">&#x27;\u&#123;1f44f&#125;&#x27;</span>;<br>     <span class="hljs-built_in">print</span>(clapping);<br>     <span class="hljs-built_in">print</span>(clapping.codeUnits);<br>     <span class="hljs-built_in">print</span>(clapping.runes.toList());<br>     Runes input = <span class="hljs-keyword">new</span> Runes(<br>         <span class="hljs-string">&#x27;\u2665  \u&#123;1f605&#125;  \u&#123;1f60e&#125;  \u&#123;1f47b&#125;  \u&#123;1f596&#125;  \u&#123;1f44d&#125;&#x27;</span>);<br>     <span class="hljs-built_in">print</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>.fromCharCodes(input));<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Symbols</li>
+</ul>
+<p>​        Symbol对象表示在Dart程序中声明的运算符或标识符。您可能永远不需要使用符号，但它们对于按名称引用标识符的API非常有用，因为缩小会更改标识符名称而不会更改标识符符号。要获取标识符的符号，请使用符号文字，它只是＃后跟标识符.</p>
+<h3 id="数据类型判断"><a href="#数据类型判断" class="headerlink" title="数据类型判断"></a>数据类型判断</h3><blockquote>
+<p>is 关键词来判断类型</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><br>  <span class="hljs-keyword">var</span> str=<span class="hljs-number">123</span>;<br>  <span class="hljs-keyword">if</span>(str <span class="hljs-keyword">is</span> <span class="hljs-built_in">String</span>)&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;是string类型&#x27;</span>);<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(str <span class="hljs-keyword">is</span> <span class="hljs-built_in">int</span>)&#123;<br>     <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;int&#x27;</span>);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>     <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;其他类型&#x27;</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-built_in">int</span> a=<span class="hljs-number">13</span>;<br>  <span class="hljs-built_in">int</span> b=<span class="hljs-number">5</span>;<br><br>  <span class="hljs-built_in">print</span>(a+b);   <span class="hljs-comment">//加</span><br>  <span class="hljs-built_in">print</span>(a-b);   <span class="hljs-comment">//减</span><br>  <span class="hljs-built_in">print</span>(a*b);   <span class="hljs-comment">//乘</span><br>  <span class="hljs-built_in">print</span>(a/b);   <span class="hljs-comment">//除</span><br>  <span class="hljs-built_in">print</span>(a%b);   <span class="hljs-comment">//取余</span><br>  <span class="hljs-built_in">print</span>(a~/b);  <span class="hljs-comment">//取整</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-built_in">int</span> a=<span class="hljs-number">5</span>;<br>  <span class="hljs-built_in">int</span> b=<span class="hljs-number">3</span>;<br>  <span class="hljs-built_in">print</span>(a==b);   <span class="hljs-comment">//相等</span><br>  <span class="hljs-built_in">print</span>(a!=b);   <span class="hljs-comment">//不等</span><br>  <span class="hljs-built_in">print</span>(a&gt;b);    <span class="hljs-comment">//大于</span><br>  <span class="hljs-built_in">print</span>(a&lt;b);    <span class="hljs-comment">//小于</span><br>  <span class="hljs-built_in">print</span>(a&gt;=b);   <span class="hljs-comment">//大于等于</span><br>  <span class="hljs-built_in">print</span>(a&lt;=b);   <span class="hljs-comment">//小于等于</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-comment">/* ! 取反 */</span> <br>  <span class="hljs-built_in">bool</span> flag=<span class="hljs-keyword">false</span>;<br>  <span class="hljs-built_in">print</span>(!flag);<br><br>  <span class="hljs-comment">/* &amp;&amp;并且:全部为true的话值为true 否则值为false */</span> <br>  <span class="hljs-built_in">bool</span> a=<span class="hljs-keyword">true</span>;<br>  <span class="hljs-built_in">bool</span> b=<span class="hljs-keyword">true</span>;<br>  <span class="hljs-built_in">print</span>(a &amp;&amp; b);<br><br>  <span class="hljs-comment">/* ||或者：全为false的话值为false 否则值为true */</span> <br>  <span class="hljs-built_in">bool</span> a=<span class="hljs-keyword">false</span>;<br>  <span class="hljs-built_in">bool</span> b=<span class="hljs-keyword">false</span>;<br>  <span class="hljs-built_in">print</span>(a || b);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><span class="hljs-comment">//  1、基础赋值运算符   =   ??=      </span><br>   <span class="hljs-built_in">int</span> a=<span class="hljs-number">10</span>;<br>   <span class="hljs-built_in">int</span> b=<span class="hljs-number">3</span>;<br>   <span class="hljs-built_in">print</span>(a);<br>   <span class="hljs-built_in">int</span> c=a+b; <br><br>    <span class="hljs-comment">// b??=23;  表示如果b为空的话把 23赋值给b</span><br>    <span class="hljs-built_in">int</span> b=<span class="hljs-number">6</span>;<br>    b??=<span class="hljs-number">23</span>;<br>    <span class="hljs-built_in">print</span>(b);<br><br><span class="hljs-comment">//2、  复合赋值运算符   +=  -=  *=   /=   %=  ~/=</span><br>   <span class="hljs-keyword">var</span> a=<span class="hljs-number">13</span>;<br>   a+=<span class="hljs-number">10</span>;<br>   <span class="hljs-built_in">print</span>(a);<br>  <br>  <span class="hljs-comment">//3.如果++ -- 写在前面 这时候先运算 再赋值，如果++ --写在后面 先赋值后运行运算</span><br>    <span class="hljs-keyword">var</span> a=<span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">var</span> b=a--;<br><br>    <span class="hljs-built_in">print</span>(a);  <span class="hljs-comment">//9</span><br>    <span class="hljs-built_in">print</span>(b);  <span class="hljs-comment">//10</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>  <span class="hljs-comment">//1、if else   switch case </span><br>  <span class="hljs-keyword">var</span> score=<span class="hljs-number">41</span>;<br>  <span class="hljs-keyword">if</span>(score&gt;<span class="hljs-number">90</span>)&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;优秀&#x27;</span>);<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(score&gt;<span class="hljs-number">70</span>)&#123;<br>     <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;良好&#x27;</span>);<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(score&gt;=<span class="hljs-number">60</span>)&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;及格&#x27;</span>);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;不及格&#x27;</span>);<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> sex=<span class="hljs-string">&quot;女&quot;</span>;<br>  <span class="hljs-keyword">switch</span>(sex)&#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;男&quot;</span>:<br>      <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;性别是男&#x27;</span>);<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;女&quot;</span>:<br>      <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;性别是女&#x27;</span>);<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>      <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;传入参数错误&#x27;</span>);<br>      <span class="hljs-keyword">break</span>;<br>  &#125;<br><br>  <span class="hljs-comment">//2、三目运算符 </span><br>  <span class="hljs-built_in">bool</span> flag=<span class="hljs-keyword">false</span>;<br>  <span class="hljs-built_in">String</span> c=flag?<span class="hljs-string">&#x27;我是true&#x27;</span>:<span class="hljs-string">&#x27;我是false&#x27;</span>;<br>  <span class="hljs-built_in">print</span>(c);<br>     <br>  <span class="hljs-comment">//3  ??运算符  为空才赋值</span><br>  <span class="hljs-keyword">var</span> a;<br>  <span class="hljs-keyword">var</span> b= a ?? <span class="hljs-number">10</span>;<br>  <span class="hljs-built_in">print</span>(b);   <span class="hljs-comment">//10</span><br><br>  <span class="hljs-keyword">var</span> a=<span class="hljs-number">22</span>;<br>  <span class="hljs-keyword">var</span> b= a ?? <span class="hljs-number">10</span>;<br>  <span class="hljs-built_in">print</span>(b);<span class="hljs-comment">//22</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br>    <span class="hljs-comment">//1、Number与String类型之间的转换</span><br><br>      <span class="hljs-comment">// Number类型转换成String类型 toString()</span><br>      <span class="hljs-keyword">var</span> myNum=<span class="hljs-number">12</span>;<br>    	<span class="hljs-keyword">var</span> str=myNum.toString();<br>    	<span class="hljs-built_in">print</span>(str <span class="hljs-keyword">is</span> <span class="hljs-built_in">String</span>);<br>      <span class="hljs-comment">// String类型转成Number类型  int.parse()</span><br>      <span class="hljs-built_in">String</span> str=<span class="hljs-string">&#x27;123&#x27;</span>;<br>      <span class="hljs-keyword">var</span> myNum=<span class="hljs-built_in">int</span>.parse(str);<br>      <span class="hljs-built_in">print</span>(myNum <span class="hljs-keyword">is</span> <span class="hljs-built_in">int</span>);<br><br>      <span class="hljs-built_in">String</span> str=<span class="hljs-string">&#x27;123.1&#x27;</span>;<br>      <span class="hljs-keyword">var</span> myNum=<span class="hljs-built_in">double</span>.parse(str);<br>      <span class="hljs-built_in">print</span>(myNum <span class="hljs-keyword">is</span> <span class="hljs-built_in">double</span>);<br><br>    <span class="hljs-comment">// try  ... catch</span><br>    <span class="hljs-built_in">String</span> price=<span class="hljs-string">&#x27;&#x27;</span>;<br>     <span class="hljs-keyword">try</span>&#123;<br>       <span class="hljs-keyword">var</span> myNum=<span class="hljs-built_in">double</span>.parse(price);<br>       <span class="hljs-built_in">print</span>(myNum);<br>     &#125;<span class="hljs-keyword">catch</span>(err)&#123;<br>          <span class="hljs-built_in">print</span>(<span class="hljs-number">0</span>);<br>     &#125; <br><br> <span class="hljs-comment">// 2、其他类型转换成Booleans类型</span><br>        <span class="hljs-comment">// isEmpty:判断字符串是否为空</span><br>        <br>        <span class="hljs-comment">// var str=&#x27;&#x27;;</span><br>        <span class="hljs-comment">// if(str.isEmpty)&#123;</span><br>        <span class="hljs-comment">//   print(&#x27;str空&#x27;);</span><br>        <span class="hljs-comment">// &#125;else&#123;</span><br>        <span class="hljs-comment">//   print(&#x27;str不为空&#x27;);</span><br>        <span class="hljs-comment">// &#125;</span><br><br>        <span class="hljs-comment">// var myNum=123;</span><br>        <span class="hljs-comment">// if(myNum==0)&#123;</span><br>        <span class="hljs-comment">//    print(&#x27;0&#x27;);</span><br>        <span class="hljs-comment">// &#125;else&#123;</span><br>        <span class="hljs-comment">//   print(&#x27;非0&#x27;);</span><br>        <span class="hljs-comment">// &#125;</span><br><br>        <span class="hljs-comment">// var myNum;</span><br>        <span class="hljs-comment">// if(myNum==0)&#123;</span><br>        <span class="hljs-comment">//    print(&#x27;0&#x27;);</span><br>        <span class="hljs-comment">// &#125;else&#123;</span><br>        <span class="hljs-comment">//   print(&#x27;非0&#x27;);</span><br>        <span class="hljs-comment">// &#125;</span><br><br>        <span class="hljs-comment">// var myNum;</span><br>        <span class="hljs-comment">// if(myNum==null)&#123;</span><br>        <span class="hljs-comment">//    print(&#x27;空&#x27;);</span><br>        <span class="hljs-comment">// &#125;else&#123;</span><br>        <span class="hljs-comment">//   print(&#x27;非空&#x27;);</span><br>        <span class="hljs-comment">// &#125;</span><br><br>        <span class="hljs-keyword">var</span> myNum=<span class="hljs-number">0</span>/<span class="hljs-number">0</span>;        <br>        <span class="hljs-comment">// print(myNum);</span><br>        <span class="hljs-keyword">if</span>(myNum.isNaN)&#123;<br>          <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;NaN&#x27;</span>);<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="循环遍历"><a href="#循环遍历" class="headerlink" title="循环遍历"></a>循环遍历</h2><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><ul>
+<li>基本语法</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i&lt;=<span class="hljs-number">100</span>; i++) &#123;   <br>  <span class="hljs-built_in">print</span>(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>示例</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><br>  <span class="hljs-comment">//1、打印0-50所有的偶数</span><br>   <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;=<span class="hljs-number">50</span>;i++)&#123;<br>       <span class="hljs-keyword">if</span>(i%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>         <span class="hljs-built_in">print</span>(i);<br>       &#125;<br>   &#125;<br><br>  <span class="hljs-comment">//2、求 1+2+3+4 +...100的和</span><br>    <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">100</span>;i++)&#123;<br>        sum+=i;<br>    &#125;<br>    <span class="hljs-built_in">print</span>(sum);<br><br>  <span class="hljs-comment">// 3、计算5的阶乘   (1*2*3*4*5    n的阶乘1*2……*n)</span><br><br>   <span class="hljs-keyword">var</span> sum=<span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">5</span>;i++)&#123;<br>       sum*=i;<br>   &#125;<br>   <span class="hljs-built_in">print</span>(sum);<br><br>  <span class="hljs-comment">//4、打印List  [&#x27;张三&#x27;,&#x27;李四&#x27;,&#x27;王五&#x27;] 里面的内容</span><br>   <span class="hljs-built_in">List</span> list=[<span class="hljs-string">&#x27;张三&#x27;</span>,<span class="hljs-string">&#x27;李四&#x27;</span>,<span class="hljs-string">&#x27;王五&#x27;</span>];<br>   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;list.length;i++)&#123;<br>     <span class="hljs-built_in">print</span>(list[i]);<br>   &#125;<br><br>  <span class="hljs-comment">//5、打印List </span><br>  <span class="hljs-built_in">List</span> list=[&#123;<br>    <span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;新闻111&quot;</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;新闻222&quot;</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;新闻333&quot;</span><br>  &#125;];<br><br>  <span class="hljs-built_in">print</span>(list[<span class="hljs-number">1</span>]);<br><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;list.length;i++)&#123;<br>    <span class="hljs-built_in">print</span>(list[i][<span class="hljs-string">&#x27;title&#x27;</span>]);<br>  &#125;<br><br><br>  <span class="hljs-comment">//4、定义一个二维数组 打印里面的内容</span><br>        <span class="hljs-built_in">List</span> list=[<br>          &#123;<br>              <span class="hljs-string">&quot;cate&quot;</span>:<span class="hljs-string">&#x27;国内&#x27;</span>,<br>              <span class="hljs-string">&quot;news&quot;</span>:[<br>                &#123;<span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;国内新闻1&quot;</span>&#125;,<br>                &#123;<span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;国内新闻2&quot;</span>&#125;,<br>                &#123;<span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;国内新闻3&quot;</span>&#125;<br>              ]<br>          &#125;,<br>          &#123;<br>              <span class="hljs-string">&quot;cate&quot;</span>:<span class="hljs-string">&#x27;国际&#x27;</span>,<br>              <span class="hljs-string">&quot;news&quot;</span>:[<br>                &#123;<span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;国际新闻1&quot;</span>&#125;,<br>                &#123;<span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;国际新闻2&quot;</span>&#125;,<br>                &#123;<span class="hljs-string">&quot;title&quot;</span>:<span class="hljs-string">&quot;国际新闻3&quot;</span>&#125;<br>              ]<br>          &#125;<br>        ];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;list.length;i++)&#123;<br>            <span class="hljs-built_in">print</span>(list[i][<span class="hljs-string">&quot;cate&quot;</span>]);<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-------------&#x27;</span>);<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>;j&lt;list[i][<span class="hljs-string">&quot;news&quot;</span>].length;j++)&#123;<br>                <span class="hljs-built_in">print</span>(list[i][<span class="hljs-string">&quot;news&quot;</span>][j][<span class="hljs-string">&quot;title&quot;</span>]);<br>            &#125;<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><ul>
+<li>基础语法</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">while</span>(表达式/循环条件)&#123;			<br>			语句/循环体<br>&#125;			<br>    		<br><span class="hljs-keyword">do</span>&#123;<br>	语句/循环体<br>&#125;<span class="hljs-keyword">while</span>(表达式/循环条件);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>示例</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main()&#123;<br><br><span class="hljs-comment">//1、求1+2+3+4 ...+100的和</span><br>   <span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">while</span>(i&lt;=<span class="hljs-number">100</span>)&#123;<br>      sum+=i;<br>      i++;<br>   &#125;<br>   <span class="hljs-built_in">print</span>(sum);<br><br><br>   <span class="hljs-built_in">int</span> ii=<span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">var</span> sum2=<span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">do</span>&#123;<br>      sum2+=ii;<br>      ii++;<br>   &#125;<span class="hljs-keyword">while</span>(ii&lt;=<span class="hljs-number">100</span>);<br>   <span class="hljs-built_in">print</span>(sum2);<br><br>  <span class="hljs-comment">//while 和 do while的区别   第一次循环条件不成立的情况下do while执行一次</span><br>    <span class="hljs-built_in">int</span> iii=<span class="hljs-number">10</span>;<br>	  <span class="hljs-keyword">while</span>(iii&lt;<span class="hljs-number">2</span>)&#123;<br>	  	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;执行代码&#x27;</span>);<span class="hljs-comment">//未执行</span><br>	  &#125;<br><br>	  <span class="hljs-keyword">var</span> jj=<span class="hljs-number">10</span>;	  <br>	  <span class="hljs-keyword">do</span>&#123;<br>	  	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;执行代码&#x27;</span>);<span class="hljs-comment">//执行</span><br>	  &#125;<span class="hljs-keyword">while</span>(jj&lt;<span class="hljs-number">2</span>);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="break-continue"><a href="#break-continue" class="headerlink" title="break &amp; continue"></a>break &amp; continue</h3><ul>
+<li><strong>break语句功能:</strong></li>
+</ul>
+<p>​          1、在switch语句中使流程跳出switch结构。</p>
+<p>​          2、在循环语句中使流程跳出当前循环,遇到break 循环终止，后面代码也不会执行</p>
+<p>​          注意:</p>
+<p>​          1、如果在循环中已经执行了break语句,就不会执行循环体中位于break后的语句。</p>
+<p>​          2、在多层循环中,一个break语句只能向外跳出一层</p>
+<p>​        <strong>break可以用在switch case中 也可以用在 for 循环和 while循环中</strong></p>
+<ul>
+<li><strong>continue语句的功能:</strong></li>
+</ul>
+<p>​          【注】只能在循环语句中使用,使本次循环结束，即跳过循环体重下面尚未执行的语句，接着进行下次的是否执行循环的判断。</p>
+<p>​	        <em>continue可以用在for循环以及 while循环中，但是不建议用在while循环中，不小心容易死循环</em></p>
+<ul>
+<li><p>示例</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs dart">main() &#123;<br><br>    <span class="hljs-comment">//1、如果i等于4的话跳过</span><br>     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">10</span>;i++)&#123;<br>       <span class="hljs-keyword">if</span>(i==<span class="hljs-number">4</span>)&#123;<br>         <span class="hljs-keyword">continue</span>;  <span class="hljs-comment">/*跳过当前循环体 然后循环还会继续执行*/</span><br>       &#125;<br>       <span class="hljs-built_in">print</span>(i);<br>     &#125;<br>  <br><br><br>    <span class="hljs-comment">//2、如果 i等于4的话跳出循环</span><br>     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">10</span>;i++)&#123;<br>       <span class="hljs-keyword">if</span>(i==<span class="hljs-number">4</span>)&#123;<br>         <span class="hljs-keyword">break</span>;  <span class="hljs-comment">/*跳出循环体*/</span><br>       &#125;<br>       <span class="hljs-built_in">print</span>(i);<br>     &#125;<br>      <br><br>    <span class="hljs-comment">//3、break语句只能向外跳出一层</span><br>      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;	 	           	<br>		   	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;外层---<span class="hljs-subst">$i</span>&#x27;</span>);<br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)&#123;            <br>            <span class="hljs-keyword">if</span>(j==<span class="hljs-number">1</span>)&#123;<br>              <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;里层<span class="hljs-subst">$j</span>&#x27;</span>);	<br>          &#125;	<br>		  &#125;<br><br><br><br>  <span class="hljs-comment">//4、while循环 break跳出循环</span><br>  <span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span>(i&lt;=<span class="hljs-number">10</span>)&#123;<br>    <span class="hljs-keyword">if</span>(i==<span class="hljs-number">4</span>)&#123;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-built_in">print</span>(i);<br>    i++;<br>  &#125;<br><br> <span class="hljs-comment">//5. break跳出switch语句</span><br>   <span class="hljs-keyword">var</span> sex=<span class="hljs-string">&quot;男&quot;</span>;<br>   <span class="hljs-keyword">switch</span> (sex) &#123;<br>     <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;男&quot;</span>:<br>       <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;男&#x27;</span>);<br>       <span class="hljs-keyword">break</span>;<br>     <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;女&quot;</span>:<br>       <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;男&#x27;</span>);<br>       <span class="hljs-keyword">break</span>;<br>     <span class="hljs-keyword">default</span>:<br>   &#125;<br>    <br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="自定义方法"><a href="#自定义方法" class="headerlink" title="自定义方法"></a>自定义方法</h2><h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart">返回类型  方法名称（参数<span class="hljs-number">1</span>，参数<span class="hljs-number">2</span>,...）&#123;<br>  方法体<br>  <span class="hljs-keyword">return</span> 返回值;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> printInfo()&#123;<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;我是一个自定义方法&#x27;</span>);<br>&#125;<br><br><span class="hljs-built_in">int</span> getNum()&#123;<br>  <span class="hljs-keyword">var</span> myNum=<span class="hljs-number">123</span>;<br>  <span class="hljs-keyword">return</span> myNum;<br>&#125;<br><br><span class="hljs-built_in">String</span> printUserInfo()&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;this is str&#x27;</span>;<br>&#125;<br><br><span class="hljs-built_in">List</span> getList()&#123;<br>  <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;111&#x27;</span>,<span class="hljs-string">&#x27;2222&#x27;</span>,<span class="hljs-string">&#x27;333&#x27;</span>];<br>&#125;<br><br><span class="hljs-keyword">void</span> main()&#123;<br>   <span class="hljs-built_in">print</span>(printUserInfo());<span class="hljs-comment">//this is str</span><br><br><span class="hljs-comment">//演示方法的作用域:方法内部可以再定义方法,但作用域仅限外部方法</span><br>  <span class="hljs-keyword">void</span> xxx()&#123;<br>      aaa()&#123;<br><br>          <span class="hljs-built_in">print</span>(getList());<br>          <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;aaa&#x27;</span>);<br>      &#125;<br>      aaa();<br>  &#125;<br><br>  <span class="hljs-comment">// aaa();  错误写法 </span><br>  xxx();  <span class="hljs-comment">//调用方法</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="方法传参"><a href="#方法传参" class="headerlink" title="方法传参"></a>方法传参</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs dart">main() &#123;<br><span class="hljs-comment">//1、定义一个方法 求1到这个数的所有数的和</span><br>  <span class="hljs-built_in">int</span> sumNum(<span class="hljs-built_in">int</span> n)&#123;<br>      <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;<br>      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        sum+=i;<br>      &#125;<br>      <span class="hljs-keyword">return</span> sum;<br>    &#125; <br><br>    <span class="hljs-keyword">var</span> n1=sumNum(<span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">print</span>(n1);<br><br><span class="hljs-comment">//2、定义一个带可选参数的方法 ，最新的dart定义可选参数需要指定类型默认值</span><br>   <span class="hljs-built_in">String</span> printUserInfo(<span class="hljs-built_in">String</span> username,[<span class="hljs-built_in">int</span> age=<span class="hljs-number">0</span>])&#123;  <span class="hljs-comment">//行参</span><br>     <span class="hljs-keyword">if</span>(age!=<span class="hljs-number">0</span>)&#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;姓名:<span class="hljs-subst">$username</span>---年龄:<span class="hljs-subst">$age</span>&quot;</span>;<br>     &#125;<br>     <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;姓名:<span class="hljs-subst">$username</span>---年龄保密&quot;</span>;<br>   &#125;<br>   <span class="hljs-built_in">print</span>(printUserInfo(<span class="hljs-string">&#x27;张三&#x27;</span>,<span class="hljs-number">21</span>)); <span class="hljs-comment">//实参</span><br>   <span class="hljs-built_in">print</span>(printUserInfo(<span class="hljs-string">&#x27;张三&#x27;</span>));<br><br><span class="hljs-comment">//3、定义一个带默认参数的方法</span><br>   <span class="hljs-built_in">String</span> printUserInfo(<span class="hljs-built_in">String</span> username,[<span class="hljs-built_in">String</span> sex=<span class="hljs-string">&#x27;男&#x27;</span>,<span class="hljs-built_in">int</span> age=<span class="hljs-number">0</span>])&#123;  <span class="hljs-comment">//行参</span><br>     <span class="hljs-keyword">if</span>(age!=<span class="hljs-number">0</span>)&#123;<br>       <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;姓名:<span class="hljs-subst">$username</span>---性别:<span class="hljs-subst">$sex</span>--年龄:<span class="hljs-subst">$age</span>&quot;</span>;<br>     &#125;<br>     <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;姓名:<span class="hljs-subst">$username</span>---性别:<span class="hljs-subst">$sex</span>--年龄保密&quot;</span>;<br>   &#125;<br>   <span class="hljs-built_in">print</span>(printUserInfo(<span class="hljs-string">&#x27;张三&#x27;</span>));<br>   <span class="hljs-built_in">print</span>(printUserInfo(<span class="hljs-string">&#x27;小李&#x27;</span>,<span class="hljs-string">&#x27;女&#x27;</span>));<br>   <span class="hljs-built_in">print</span>(printUserInfo(<span class="hljs-string">&#x27;小李&#x27;</span>,<span class="hljs-string">&#x27;女&#x27;</span>,<span class="hljs-number">30</span>));<br><br><span class="hljs-comment">//5、定义一个命名参数的方法，最新的dart定义命名参数需要指定类型默认值</span><br><br>  <span class="hljs-comment">// String printUserInfo(String username, &#123;int age = 0, String sex = &#x27;男&#x27;&#125;) &#123;//行参    </span><br>  <span class="hljs-comment">//   if (age != 0) &#123;</span><br>  <span class="hljs-comment">//     return &quot;姓名:$username---性别:$sex--年龄:$age&quot;;</span><br>  <span class="hljs-comment">//   &#125;</span><br>  <span class="hljs-comment">//   return &quot;姓名:$username---性别:$sex--年龄保密&quot;;</span><br>  <span class="hljs-comment">// &#125;</span><br>  <span class="hljs-comment">// print(printUserInfo(&#x27;张三&#x27;, age: 20, sex: &#x27;未知&#x27;));</span><br><br><br><span class="hljs-comment">//6、实现一个 把方法当做参数的方法</span><br><br>  <span class="hljs-comment">// var fn=()&#123;</span><br>  <span class="hljs-comment">//   print(&#x27;我是一个匿名方法&#x27;);</span><br>  <span class="hljs-comment">// &#125;;</span><br>  <span class="hljs-comment">// fn();</span><br><br><br>  <span class="hljs-comment">//fn1方法</span><br>  fn1() &#123;<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;fn1&#x27;</span>);<br>  &#125;<br>  <span class="hljs-comment">//fn2方法</span><br>  fn2(fn) &#123;<br>    fn();<br>  &#125;<br>  <span class="hljs-comment">//调用fn2这个方法 把fn1这个方法当做参数传入</span><br>  fn2(fn1);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><blockquote>
+<p>箭头函数内只能写一条语句，并且语句后面没有分号</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main() &#123;<br>   <span class="hljs-built_in">List</span> list=[<span class="hljs-string">&#x27;苹果&#x27;</span>,<span class="hljs-string">&#x27;香蕉&#x27;</span>,<span class="hljs-string">&#x27;西瓜&#x27;</span>];<br>   list.forEach((value)=&gt;<span class="hljs-built_in">print</span>(value));<br><br>  <span class="hljs-comment">//注意和方法的区别: 箭头函数内只能写一条语句，并且语句后面没有分号(;)</span><br>   list.forEach((value)=&gt;&#123;<br>     <span class="hljs-built_in">print</span>(value)<br>   &#125;);<br><br><span class="hljs-comment">/*需求：修改下面List里面的数据，让数组中大于2的值乘以2*/</span><br>   <span class="hljs-built_in">List</span> list=[<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br>   <span class="hljs-keyword">var</span> newList=list.map((value)=&gt;value&gt;<span class="hljs-number">2</span>?value*<span class="hljs-number">2</span>:value);<br>   <span class="hljs-built_in">print</span>(newList.toList());<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="匿名方法-自执行方法-递归"><a href="#匿名方法-自执行方法-递归" class="headerlink" title="匿名方法&amp;自执行方法&amp;递归"></a>匿名方法&amp;自执行方法&amp;递归</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">void</span> main() &#123;<br>  <span class="hljs-comment">//匿名方法</span><br>   <span class="hljs-keyword">var</span> printNum=()&#123;<br>     <span class="hljs-built_in">print</span>(<span class="hljs-number">123</span>);<br>   &#125;;<br>   printNum();<br><br>   <span class="hljs-keyword">var</span> printNum=(<span class="hljs-built_in">int</span> n)&#123;<br>     <span class="hljs-built_in">print</span>(n+<span class="hljs-number">2</span>);<br>   &#125;;<br>   printNum(<span class="hljs-number">12</span>);<br><br><span class="hljs-comment">//自执行方法</span><br>  ((<span class="hljs-built_in">int</span> n)&#123;<br>    <span class="hljs-built_in">print</span>(n);<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;我是自执行方法&#x27;</span>);<br>  &#125;)(<span class="hljs-number">12</span>);<br><br><span class="hljs-comment">//通过方法的递归 求1-100的和</span><br>  <span class="hljs-keyword">var</span> sum=<span class="hljs-number">0</span>;<br>  fn(<span class="hljs-built_in">int</span> n)&#123;<br>      sum+=n;<br>      <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>      fn(n-<span class="hljs-number">1</span>);<br>  &#125;<br><br>  fn(<span class="hljs-number">100</span>);<br>  <span class="hljs-built_in">print</span>(sum);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><blockquote>
+<p>1、全局变量特点:    全局变量常驻内存、全局变量污染全局<br> 2、局部变量的特点：  不常驻内存会被垃圾机制回收、不会污染全局</p>
+<p>想实现的功能：<br>   1.常驻内存<br>   2.不污染全局</p>
+<p>闭包可以解决这个问题.</p>
+</blockquote>
+<p><strong>闭包</strong>: 函数嵌套函数, 内部函数会调用外部函数的变量或参数, <strong>实现变量或参数不会被系统回收</strong>(不会释放内存)</p>
+<p><strong>闭包的写法</strong>： 函数嵌套函数，并<code>return</code> 里面的函数，这样就形成了闭包。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">/*全局变量*/</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br><br><span class="hljs-keyword">void</span> main() &#123;<br>  fn()&#123;<br>    a++;<br>    <span class="hljs-built_in">print</span>(a);<br>  &#125;<br>  fn();<span class="hljs-comment">//124</span><br>  fn();<span class="hljs-comment">//125</span><br>  fn();<span class="hljs-comment">//126</span><br><br><br><span class="hljs-comment">//闭包</span><br>  fn1() &#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>; <span class="hljs-comment">/*不会污染全局   常驻内存*/</span><br>    <span class="hljs-keyword">return</span> () &#123;<span class="hljs-comment">//返回一个匿名函数</span><br>      a++;<br>      <span class="hljs-built_in">print</span>(a);<br>    &#125;;<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> b = fn1();<br>  b();<span class="hljs-comment">//124</span><br>  b();<span class="hljs-comment">//125</span><br>  b();<span class="hljs-comment">//126</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象编程(OOP)的三个基本特征是：封装、继承、多态      </p>
+<ul>
+<li>封装：封装是对象和类概念的主要特性。封装，把客观事物封装成抽象的类，并且把自己的部分属性和方法提供给其他对象调用, 而一部分属性和方法则隐藏。               </li>
+<li>继承：面向对象编程 (OOP) 语言的一个主要功能就是“继承”。继承是指这样一种能力：它可以使用现有类的功能，并在无需重新编写原来的类的情况下对这些功能进行扩展。       </li>
+<li>多态：允许将子类类型的指针赋值给父类类型的指针, 同一个函数调用会有不同的执行效果 。</li>
+</ul>
+<p>Dart所有的东西都是对象，所有的对象都继承自Object类。</p>
+<p>Dart是一门使用类和单继承的面向对象语言，所有的对象都是类的实例，并且所有的类都是Object的子类</p>
+<p>一个类通常由属性和方法组成。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/dart/" class="category-chain-item">dart</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/dart/" class="print-no-link">#dart</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>dart</div>
+      <div>http://www.lifeab.com/2024/04/23/dart_未完待续/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/26/websocket/" title="WebSocket">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WebSocket</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/19/jenkins_%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/" title="jenkins">
+                        <span class="hidden-mobile">jenkins</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

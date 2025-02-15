@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.赛博朋克案例窗口界面初始化:窗口--工作区--默认 导入素材 项目面板出双击 直接拖动  新建合成自定义或者选HDTV 1080 25,分辨率完整,修改合适持续时间. 创建跟踪器:选中素材–指针放到素材开始位置–右侧找到跟踪器面板–跟踪摄像机–智能分析,完成后及时保存–按shift选中三个或多个牢靠的点组成一个平面– 右击创建实底和摄像机–素材区就多出一个跟踪实底的图层 ​	替换跟踪实底素材:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AE">
+<meta property="og:url" content="http://www.lifeab.com/2021/02/25/AE/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="1.赛博朋克案例窗口界面初始化:窗口--工作区--默认 导入素材 项目面板出双击 直接拖动  新建合成自定义或者选HDTV 1080 25,分辨率完整,修改合适持续时间. 创建跟踪器:选中素材–指针放到素材开始位置–右侧找到跟踪器面板–跟踪摄像机–智能分析,完成后及时保存–按shift选中三个或多个牢靠的点组成一个平面– 右击创建实底和摄像机–素材区就多出一个跟踪实底的图层 ​	替换跟踪实底素材:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654028.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654843.png">
+<meta property="og:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654268.png">
+<meta property="article:published_time" content="2021-02-25T14:23:17.000Z">
+<meta property="article:modified_time" content="2025-01-09T01:30:11.370Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="ae">
+<meta property="article:tag" content="剪辑">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654028.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>AE - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AE"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-02-25 22:23" pubdate>
+          2021年2月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AE</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-赛博朋克案例"><a href="#1-赛博朋克案例" class="headerlink" title="1.赛博朋克案例"></a>1.赛博朋克案例</h1><p><strong>窗口界面初始化</strong>:<code>窗口--工作区--默认</code></p>
+<h2 id="导入素材"><a href="#导入素材" class="headerlink" title="导入素材"></a><strong>导入素材</strong></h2><ol>
+<li>项目面板出双击</li>
+<li>直接拖动</li>
+</ol>
+<h2 id="新建合成"><a href="#新建合成" class="headerlink" title="新建合成"></a><strong>新建合成</strong></h2><p>自定义或者选<code>HDTV 1080 25</code>,分辨率完整,修改合适持续时间.</p>
+<h2 id="创建跟踪器"><a href="#创建跟踪器" class="headerlink" title="创建跟踪器"></a><strong>创建跟踪器</strong></h2><p>:选中素材–指针放到素材开始位置–右侧找到跟踪器面板–跟踪摄像机–智能分析,完成后及时保存–按shift选中三个或多个牢靠的点组成一个平面– 右击创建实底和摄像机–素材区就多出一个跟踪实底的图层</p>
+<p>​	替换跟踪实底素材:导入文字特效素材–选中跟踪实底图层–按着<code>alt</code>键点选特效素材拉到实底图层.解决黑底:模式改为屏幕</p>
+<p>​	往右一帧:<code>page down</code>,往左一帧:<code>page up</code>;按住shift则10帧</p>
+<p><strong>裁剪(蒙版)</strong>:创建跟踪电脑屏幕的实底时,上下和左右无法同时靠边,需要裁剪:选中粒子流素材–选择菜单栏下<code>矩形工具</code>–裁剪即可.</p>
+<p>调整参数时幅度比较大,按住<code>ctrl</code>再调整就变小.</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键:"></a><strong>快捷键:</strong></h2><ul>
+<li>缩放快捷键<code>S</code>,</li>
+<li>不透明度快捷键<code>T</code>, </li>
+<li>位置快捷键<code>P</code>,  <code>shift P</code>把位置属性调出来</li>
+<li><code>ctrll shift C</code>:新建一个预合成</li>
+</ul>
+<p>导入模板素材–双击新跟踪实底进入预合成–把模板拖入预合成上面–预合成小眼睛去掉就只显示模板内容了.</p>
+<ul>
+<li><p><strong>裁剪视频</strong>:指针放到时间轴后</p>
+<ul>
+<li><p>按<code>alt [</code> 或 <code>option [</code>裁剪左半段,</p>
+</li>
+<li><p>同样<code>alt ]</code>或 <code>option ]</code>裁剪右半段.</p>
+</li>
+<li><p>或者<code>ctrl shift D</code>  或 <code>command shift D</code>在指针位置截断视频</p>
+</li>
+</ul>
+</li>
+<li><p><strong>调整画面大小</strong>  :  鼠标放到视频窗口:<code>alt + 滚轮</code> </p>
+</li>
+<li><p><strong>导出</strong></p>
+</li>
+</ul>
+<p>​	快捷键<code>ctrl M</code>:输出模块选无损,格式选<code>quick time</code>,格式选项进去视频编解码器选动画,–点击渲染导出 </p>
+<p>​	推荐使用<code>media encoder</code>导出</p>
+<h1 id="2-动态电子相册案例-动态追踪"><a href="#2-动态电子相册案例-动态追踪" class="headerlink" title="2.动态电子相册案例-动态追踪"></a>2.动态电子相册案例-动态追踪</h1><h2 id="预合成"><a href="#预合成" class="headerlink" title="预合成"></a><strong>预合成</strong></h2><p>裁剪视频片段(<code>ctrl shift D</code>  或 <code>command shift D</code>)–&gt;添加预合成(<code>ctrl shift c</code>)–&gt;第二个选项,同时勾选.	</p>
+<ul>
+<li><strong>选项一</strong>:把效果添加到合成外面.</li>
+<li><strong>选项二</strong>:把效果添加到合成里面的片段上</li>
+</ul>
+<h2 id="四点追踪"><a href="#四点追踪" class="headerlink" title="四点追踪:"></a><strong>四点追踪</strong>:</h2><p>选中素材–&gt;指针放到开始位置–&gt;跟踪器–&gt;跟踪运动–&gt;跟踪类型改为<code>透视边角定位</code>–&gt;调整四点(按空格变为抓手工具)–&gt;点击向右分析(追踪不准:手动配帧.) –&gt;把要替换的图片拖到素材上面–&gt;选中追踪素材–&gt;跟踪器–&gt;运动源选追踪素材–&gt;编辑目标–&gt;选择图片–&gt;应用</p>
+<p>​	<strong>Q&amp;A:如果追踪素材是横版,图片是竖版,图片大小和追踪素材不一致</strong>:项目面板新建合成–&gt;横版参数–&gt;横版图片拖入–&gt;调整大小–&gt;把该合成拖入追踪素材–&gt;选中追踪素材–&gt;运动源–&gt;编辑目标选新合成–&gt;应用</p>
+<p><strong>添加边框阴影</strong>:把边框阴影文件导入–&gt;拖到合成中图片上面–&gt;模式选相乘–&gt;拖动调整,确保上下左右和边框贴合</p>
+<h2 id="模板推荐"><a href="#模板推荐" class="headerlink" title="模板推荐:"></a><strong>模板推荐:</strong></h2><ul>
+<li>生日聚会主题模板:</li>
+</ul>
+<p>​	<a target="_blank" rel="noopener" href="https://www.cgown.com/ae/ae-project/32614.html">https://www.cgown.com/ae/ae-project/32614.html</a><br>​	<a target="_blank" rel="noopener" href="https://www.cgown.com/ae/ae-project/50830.html">https://www.cgown.com/ae/ae-project/50830.html</a><br>​	<a target="_blank" rel="noopener" href="https://www.cgown.com/ae/ae-project/46964.html">https://www.cgown.com/ae/ae-project/46964.html</a><br>​	<a target="_blank" rel="noopener" href="https://www.cgown.com/ae/ae-project/48155.html">https://www.cgown.com/ae/ae-project/48155.html</a><br>​	<a target="_blank" rel="noopener" href="https://www.cgown.com/ae/ae-project/37001.html">https://www.cgown.com/ae/ae-project/37001.html</a></p>
+<ul>
+<li>毕业纪念主题</li>
+</ul>
+<p>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/hand-drawn-slideshow-26144584/">http://www.gfxcamp.com/hand-drawn-slideshow-26144584/</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/kids-slideshow-ii-23470025/">http://www.gfxcamp.com/kids-slideshow-ii-23470025/</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/viaggio-romantic-gallery/">http://www.gfxcamp.com/viaggio-romantic-gallery/</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/travel-adventure-20817229/">http://www.gfxcamp.com/travel-adventure-20817229/</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/a-little-story/">http://www.gfxcamp.com/a-little-story/</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/wonderful-moments-photo-gallery-and-logo-reveal/">http://www.gfxcamp.com/wonderful-moments-photo-gallery-and-logo-reveal/</a></p>
+<ul>
+<li>情人节表白主题</li>
+</ul>
+<p>​	<a target="_blank" rel="noopener" href="https://www.cgown.com/ae/ae-project/26733.html">https://www.cgown.com/ae/ae-project/26733.html</a><br>​	<a target="_blank" rel="noopener" href="http://www.lookae.com/blossom-wedding/">http://www.lookae.com/blossom-wedding/</a><br>​	<a target="_blank" rel="noopener" href="https://www.newcger.com/aemoban/33018.html">https://www.newcger.com/aemoban/33018.html</a><br>​	<a target="_blank" rel="noopener" href="https://www.newcger.com/aemoban/30278.html">https://www.newcger.com/aemoban/30278.html</a><br>​	<a target="_blank" rel="noopener" href="https://www.newcger.com/aemoban/31117.html">https://www.newcger.com/aemoban/31117.html</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/paper-love-photo-video-slideshow/">http://www.gfxcamp.com/paper-love-photo-video-slideshow/</a><br>​	<a target="_blank" rel="noopener" href="http://www.gfxcamp.com/animated-love-messages/">http://www.gfxcamp.com/animated-love-messages/</a></p>
+<h2 id="快捷键-1"><a href="#快捷键-1" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li><strong>调整图片大小铺满全屏</strong></li>
+</ul>
+<ol>
+<li>上下对齐优先:<code>ctrl shift alt G</code> </li>
+<li>左右对齐优先:<code>ctrl shift alt H</code></li>
+</ol>
+<ul>
+<li><strong>打标记</strong></li>
+</ul>
+<p>​	选中素材–按小键盘上的星号键打标记</p>
+<ul>
+<li>导出一段素材快捷键:</li>
+</ul>
+<p>​	 开始位置B,结束位置N.</p>
+<h2 id="复制合成"><a href="#复制合成" class="headerlink" title="复制合成:"></a>复制合成:</h2><p>选中合成–&gt;<code>ctrl d</code>复制一个–&gt;右击复制品:显示–&gt;在项目中显示–&gt;在项目中选中再次<code>ctrl d</code>复制一个然后重命名–&gt;选中下面复制品,按住<code>alt</code>把上面复制品拖到下面复制品上–&gt; 同样如果合成中还有合成也是同样操作.</p>
+<h1 id="3-百发百中"><a href="#3-百发百中" class="headerlink" title="3.百发百中"></a>3.百发百中</h1><p>拍摄:机位固定 光线固定 背景固定   </p>
+<p>调整合成:ctrl K</p>
+<p>时间轴上两个条:一个显示预览,一个显示选定的工作区(工作区内片段循环播放;右键工作区修剪合成时长;快捷键B &amp; N)</p>
+<p>蒙版:选中素材–选择钢笔工具画蒙版,蒙版羽化选10左右减轻画面过度不自然问题–把前面部分裁掉即可.</p>
+<p>钢笔工具长按可以调出添加顶点等操作.</p>
+<p>补帧法:先定位出几帧笔的轨迹,把图片笔的位置 缩放 旋转 不透明度关键帧都打开;</p>
+<p>模糊效果:搜索定向模糊.</p>
+<p>运动轨迹调整:选中位置属性–调整线条上的小点</p>
+<p>把原画面的笔的轨迹遮罩掉:截一张干净的背景图(合成–帧另存为–文件–输出模块png,通道RGB–确定)–导入项目放到笔下面–画个蒙版遮罩,只画笔轨迹部分–羽化值60</p>
+<p>RGB分离特效:裁剪要做特效的片段–打预合成–进入预合成–效果搜索通道混合器拖到素材–把绿色蓝色调整为0–复制一个素材,把红色蓝色调整为0以此类推–把第二层素材删除一帧,对齐,把第一层素材删除两帧对齐.模式都改成屏幕</p>
+<p>镜头晃动特效:裁剪要做特效片段–调出位置属性–按住alt点下位置小闹钟图标调出wiggle表达式输入wiggle(10,30),10表示晃动频率,30表示晃动幅度–给上面两层都做晃动效果.</p>
+<h1 id="4-ae模板套用详解"><a href="#4-ae模板套用详解" class="headerlink" title="4.ae模板套用详解"></a>4.ae模板套用详解</h1><blockquote>
+<p>模板分为四类:logo演绎类,图片展示类,视频展示类,文字动画类</p>
+</blockquote>
+<h2 id="模板网站"><a href="#模板网站" class="headerlink" title="模板网站"></a>模板网站</h2><h3 id="免费"><a href="#免费" class="headerlink" title="免费"></a>免费</h3><ul>
+<li><h3 id="www-newcger-com"><a href="#www-newcger-com" class="headerlink" title="www.newcger.com"></a><a target="_blank" rel="noopener" href="http://www.newcger.com/">www.newcger.com</a></h3></li>
+<li><p><a target="_blank" rel="noopener" href="http://www.lookae.com/">www.lookae.com</a>  模板和插件</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.cgown.com/">www.cgown.com</a>	</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.gfxcamp.com/">www.gfxcamp.com</a></p>
+</li>
+</ul>
+<h3 id="收费"><a href="#收费" class="headerlink" title="收费"></a><strong>收费</strong></h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.vjshi.com/">www.vjshi.com</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.envato.com/">www.envato.com</a></li>
+</ul>
+<h2 id="优化ae速度"><a href="#优化ae速度" class="headerlink" title="优化ae速度"></a>优化ae速度</h2><ul>
+<li>注意字体和插件,插件无则安装–编辑-首选项-媒体和磁盘缓存-启用磁盘缓存-清空缓存提高–内存,其他应用保留内存可以小点.</li>
+<li>点击项目面板三道杠–项目设置–使用范围选mercury Gpu加速</li>
+</ul>
+<h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="表达式错误"><a href="#表达式错误" class="headerlink" title="表达式错误:"></a>表达式错误:</h3><ol>
+<li>窗口–&gt;ae表达式助手–&gt;修复(该插件需安装)</li>
+<li>修改为英文版：搜索<code>application.xml</code>把<code>zh_CN</code>改成<code>en_US</code> </li>
+<li>修改表达式</li>
+</ol>
+<h3 id="解决脱机素材"><a href="#解决脱机素材" class="headerlink" title="解决脱机素材"></a>解决脱机素材</h3><p>右击脱机素材–替换素材–文件–找到文件替换</p>
+<h2 id="快捷键-2"><a href="#快捷键-2" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>按<code>U</code>打开关键帧属性，</li>
+<li>按<code>UU</code>所有被更改的关键帧参数显示出来</li>
+</ul>
+<h1 id="5-中国风水墨片头"><a href="#5-中国风水墨片头" class="headerlink" title="5.中国风水墨片头"></a>5.中国风水墨片头</h1><p>导入psd格式素材（多层素材）–导入种类选第三个（保持图层大小），勾选第一个–确定–项目面板出现一个合成和里面的素材</p>
+<p>搜图网 </p>
+<p>第一镜：把导入的第一镜素材复制到新建的第一镜合成中–时间轴面板右击–新建–纯色–颜色纯白色–拖到最底层–把纯色之外所有素材打开3d开关（正方体图标）–右击–新建–摄像机–类型选双节点摄像机，预设35mm–2个视图，左侧用顶部视图–选中某个素材–左侧视图出现蓝色图标，鼠标移上去多一个Z的图标可上下拖动，调整出层次感</p>
+<p>摄像机移动：时间轴面板右击–新建一个空对象 –点击摄像机–父级连接指向空对象–打开空对象3d开关–为空对象添加位置关键帧，Y轴旋转关键帧开始5度，后恢复0度。</p>
+<p>给摄像机和小船添加缓动关键帧:选中空对象&#x2F;小船–打开图表编辑器–调整曲线先快后慢</p>
+<p>小船动画：给小船加位置关键帧。</p>
+<p>关键帧类型:    </p>
+<p>​	匀速关键帧</p>
+<p>​	缓入关键帧:先快后慢.选中全部关键帧,右击–关键帧辅助–缓入 shift F9</p>
+<p>​	缓出关键帧:先慢后快, 选中全部关键帧,右击–关键帧辅助–缓出 ctrl shift F9</p>
+<p>​	定格关键帧:最后一帧完成所有动画,选中全部关键帧,右击–切换定格关键帧  </p>
+<p>​	缓动关键帧:F9 </p>
+<p>选中一个属性:J跳转到前一关键帧,K跳转到下一关键帧,选中全部关键帧,按着alt键实现左右等比例缩放关键帧. </p>
+<p>图表编辑器:时间轴面板右击–编辑速度图表. </p>
+<p> 摄像机：</p>
+<p>​	生效的前提是图层打开3d开关。</p>
+<p>​	选中预览面板，ctrl R调出标尺，十字点就是摄像机焦点。双节点摄像机的目标点（焦点）保持固定。</p>
+<p>​	两种摄像机转换：选中摄像机–ctrl alt O –关–确定–双节点就变成单节点</p>
+<p>​								选中摄像机–ctrl alt O –定向到目标点–确定–单节点就变成双节点</p>
+<p>新建第二镜合成:宽5500,高1080 </p>
+<p>新建第三镜合成:宽1920,高1080 </p>
+<h1 id="8-爱情公寓片头拆解"><a href="#8-爱情公寓片头拆解" class="headerlink" title="8.爱情公寓片头拆解"></a>8.爱情公寓片头拆解</h1><p> 质量高的模板:up痕迹痕迹.</p>
+<p>板块1:抠图</p>
+<p>在线网站抠图:稿定抠图,<a target="_blank" rel="noopener" href="http://www.remove.bg/">www.remove.bg</a>,</p>
+<p>ps抠图:导入图片–解锁–快速选择工具–alt键取消选区–ctrl shift I–delete–ctrl D</p>
+<p>​			导入图片–解锁–钢笔工具–alt修改拉杆,ctrl修改落点 –ctrl enter–选择并遮住–调整边缘画笔工具–显示边缘….</p>
+<p>板块2:套模板</p>
+<p>替换图片,修改文字</p>
+<p>板块3:做模板效果</p>
+<p>整体镜头效果通过控制图层实现,其他图层父级连接都指向控制图层.</p>
+<p>运动模糊:斜圆柱的图标预览上面渲染器选经典3D :</p>
+<p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654028.png" srcset="/img/loading.gif" lazyload alt="image-20210824232051750"></p>
+<p>投影效果:复制人物图层–搜索填充效果拖到复制图层–修改颜色 </p>
+<p>百叶窗效果:效果搜索百叶窗拖到素材–效果控件过渡完成添加关键帧–修改方向45宽度45. </p>
+<p>修改天空颜色:选中蓝天背景–效果搜索色相&#x2F;饱和度拖到素材–调整主色相</p>
+<h1 id="9-AE绿幕抠图"><a href="#9-AE绿幕抠图" class="headerlink" title="9.AE绿幕抠图"></a>9.AE绿幕抠图</h1><h3 id="情况1-绿幕比较好"><a href="#情况1-绿幕比较好" class="headerlink" title="情况1:绿幕比较好"></a>情况1:绿幕比较好</h3><p>1.搜索效果<code>颜色范围</code>拖到素材–&gt;点击最上面吸管吸取人物旁边绿色–&gt;反复点击第二个加号吸管吸取其他地方绿色–&gt;边上可以通过蒙版排除绿色.</p>
+<p>2.效果搜索<code>keyCleaner</code>拖到素材,人物边缘变柔和一些–&gt;其他边缘半径5左右,减少震颤勾选,alpha对比度30-50,</p>
+<p>3.效果搜索抠像下的<code>advanced spill suppressor</code>(高级溢出抑制器)拖到素材,人物周围绿色被消除–背景是绿幕则方法选标准. </p>
+<p>4.通过上面三步还有点泛绿的话:新建调整图层–效果搜索曲线拖到调整图层–效果控件通道选绿色–曲线往右下稍微拉点有效减轻泛绿问题.</p>
+<h3 id="情况2-复杂情况抠图"><a href="#情况2-复杂情况抠图" class="headerlink" title="情况2:复杂情况抠图"></a>情况2:复杂情况抠图</h3><p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654843.png" srcset="/img/loading.gif" lazyload alt="image-20210824222100345"></p>
+<p>搜索效果keylight拖到素材–预览选final result–screen colour吸管工具吸下绿色–预览选screen matte(黑遮白显)–修改clip black,数字越大黑色 越黑(10-20)–修改clip white:数字越小,白色越干净(70多)–预览切回final result查看效果.–可以添加白色纯色图层,画蒙版使人物背景只在白色背景中–人物周围还是有些模糊,调整keylight中screen pro-blur为3-5,用来解决噪点问题.–screen shrink&#x2F;G一般调整为负值-1左右,使人物有线收缩效果–修改screen softness为1左右,羽化边缘,使边缘平滑–效果搜索key cleaner拖到素材–其他边缘半径1左右–勾选减小震颤–效果搜索advanced spill suppressor(高级溢出抑制器)拖到素材</p>
+<h3 id="情况3-裸眼3d-roto笔刷"><a href="#情况3-裸眼3d-roto笔刷" class="headerlink" title="情况3:裸眼3d,roto笔刷"></a>情况3:裸眼3d,roto笔刷</h3><p><img src="https://nohurry-imgbed.oss-cn-qingdao.aliyuncs.com/imgs/202404031654268.png" srcset="/img/loading.gif" lazyload alt="image-20210824224834585"></p>
+<p> 导入原始素材–活动摄像机旁边有个切换透明网格,不显示,保证背景全黑–最上方矩形工具画两个黑条–裁剪需要抠图的素材,alt复制一层放在最上层图层用来抠图–最上面小人毛笔图标长按选择roto笔刷工具– 双击预览面板–按着ctrl鼠标左右拖动出现合适大小图标–抹一笔就选中–如果要取消选区按着alt,抹一笔– 扣好后按下空格自动续扣,只能自动分析20帧左右–逐帧微调</p>
+<h3 id="绿幕素材的抠图"><a href="#绿幕素材的抠图" class="headerlink" title="绿幕素材的抠图"></a>绿幕素材的抠图</h3><p>  绿幕素材直接拖进去有绿底–效果搜索线性颜色键拖到绿幕素材–吸管工具吸下绿色即可–如果边缘有泛绿情况可以把匹配容差拉大一点.匹配柔和度也稍微拉大</p>
+<p>也可以用keylight效果.</p>
+<h1 id="18-多机位攻略"><a href="#18-多机位攻略" class="headerlink" title="18.多机位攻略"></a>18.多机位攻略</h1><p>​		简单多机位</p>
+<p>​		复杂多机位</p>
+<h1 id="20-素材网站"><a href="#20-素材网站" class="headerlink" title="20.素材网站"></a>20.素材网站</h1><h2 id="图片"><a href="#图片" class="headerlink" title="图片:"></a>图片:</h2><h3 id="免费-1"><a href="#免费-1" class="headerlink" title="免费:"></a>免费:</h3><ol>
+<li>pixabay.com</li>
+<li>pexels.com  图片和视频</li>
+<li>unsplash.com</li>
+<li><a href="sc.chinaz.com">站长素材</a>图片 模板 字体 等</li>
+</ol>
+<h3 id="收费-1"><a href="#收费-1" class="headerlink" title="收费:"></a>收费:</h3><ol>
+<li><a href="699pic.com">摄图网</a></li>
+<li><a href="588ku.com">千库网</a>,优点是可下一些免抠图图片</li>
+</ol>
+<p>​	</p>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频:"></a>视频:</h2><ol>
+<li>videvo.net</li>
+<li>videezy.com</li>
+<li>mixkit.co</li>
+</ol>
+<h2 id="ae模板"><a href="#ae模板" class="headerlink" title="ae模板:"></a>ae模板:</h2><h3 id="免费-2"><a href="#免费-2" class="headerlink" title="免费:"></a>免费:</h3><ol>
+<li>newcger.com</li>
+<li><a href="lookae.com">大众脸网</a></li>
+<li><a href="gfxcamp.com">龋齿一号</a></li>
+<li>adobeae.com</li>
+</ol>
+<h3 id="收费-2"><a href="#收费-2" class="headerlink" title="收费:"></a>收费:</h3><ol>
+<li>envato.com</li>
+<li>vjshi.com</li>
+</ol>
+<h2 id="音效"><a href="#音效" class="headerlink" title="音效:"></a>音效:</h2><ol>
+<li><a href="aigei.com">爱给网</a></li>
+<li><a href="sc.chinaz.com">站长素材</a></li>
+<li><a href="tosound.com">淘声网</a></li>
+</ol>
+<p>​	</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体:"></a>字体:</h2><ol>
+<li><a href="hellofont.com">字由网</a></li>
+<li>100font.com</li>
+<li><a href="qiuziti.com">求字体网</a>,可识别字体</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他:"></a>其他:</h2><ol>
+<li><a href="anduril.cn">配色网站</a> 	</li>
+<li><a href="iconfont.cn">阿里巴巴矢量图标库</a>	</li>
+<li><a href="bilibili.huangyuehe.com">bilibili封面提取</a>		</li>
+<li>安全软件,火绒安全,智能屏蔽电脑上基本全部广告弹窗</li>
+<li>windows自带截图功能快捷键:<code>shift windows s</code></li>
+<li>播放器:potplayer.无广告,解码器多,c快进,x降速,z还原,f往右一帧,d往左一帧,p打标签,h快速查找标签,置顶功能,</li>
+<li><code>screenToGif</code> 录制gif,体积小且高清,可录制gif,可编辑gif</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ae/" class="print-no-link">#ae</a>
+      
+        <a href="/tags/%E5%89%AA%E8%BE%91/" class="print-no-link">#剪辑</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AE</div>
+      <div>http://www.lifeab.com/2021/02/25/AE/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年2月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/07/Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" title="nginx配置文件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">nginx配置文件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/25/PR/" title="PR">
+                        <span class="hidden-mobile">PR</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

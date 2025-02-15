@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Wick">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="面向对象构造器参数太多怎么办 Java类设计过程中，如果类的构造器或者静态工厂中具有多个参数，并且其中有大量的可选参数时，我们应该怎么办？  Telescoping Constructor模式(重叠构造器)我们首先想到的方法肯定是传统的构造器 123456789101112131415&#x2F;** * Created by itbird on 2017&#x2F;3&#x2F;23 *&#x2F;public class Perso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写高效优雅java代码">
+<meta property="og:url" content="http://www.lifeab.com/2021/01/26/%E7%BC%96%E5%86%99%E4%BC%98%E9%9B%85%E9%AB%98%E6%95%88%E7%9A%84java%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="面向对象构造器参数太多怎么办 Java类设计过程中，如果类的构造器或者静态工厂中具有多个参数，并且其中有大量的可选参数时，我们应该怎么办？  Telescoping Constructor模式(重叠构造器)我们首先想到的方法肯定是传统的构造器 123456789101112131415&#x2F;** * Created by itbird on 2017&#x2F;3&#x2F;23 *&#x2F;public class Perso">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-26T06:08:00.000Z">
+<meta property="article:modified_time" content="2025-01-09T01:30:11.377Z">
+<meta property="article:author" content="John Wick">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>编写高效优雅java代码 - 我的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.lifeab.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":4},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Freedom is as important as breathing</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="编写高效优雅java代码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-26 14:08" pubdate>
+          2021年1月26日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">编写高效优雅java代码</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h1 id="构造器参数太多怎么办"><a href="#构造器参数太多怎么办" class="headerlink" title="构造器参数太多怎么办"></a>构造器参数太多怎么办</h1><blockquote>
+<p>Java类设计过程中，如果类的构造器或者静态工厂中具有多个参数，并且其中有大量的可选参数时，我们应该怎么办？</p>
+</blockquote>
+<h2 id="Telescoping-Constructor模式-重叠构造器"><a href="#Telescoping-Constructor模式-重叠构造器" class="headerlink" title="Telescoping Constructor模式(重叠构造器)"></a>Telescoping Constructor模式(重叠构造器)</h2><p>我们首先想到的方法肯定是传统的构造器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Created by itbird on 2017/3/23</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String sex;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> year;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, String sex, <span class="hljs-type">int</span> year)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>        <span class="hljs-built_in">this</span>.year = year;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>但是设计以及使用过程中我们发现以下几点问题：</p>
+<ul>
+<li>属性参数逐渐变多时属性参数逐渐变多时，由于要对之前的代码做兼容，所以不可以直接在现有构造器后面追加属性，只能不断新增构造器<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Created by itbird on 2017/3/23</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String sex;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> year;<br>    <span class="hljs-keyword">private</span> String city;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, String sex, <span class="hljs-type">int</span> year)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>        <span class="hljs-built_in">this</span>.year = year;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, String sex, <span class="hljs-type">int</span> year, String city)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>        <span class="hljs-built_in">this</span>.year = year;<br>        <span class="hljs-built_in">this</span>.city = city;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>属性参数中有大量的可选参数<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Created by itbird on 2017/3/23</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String sex;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> year;<br>    <span class="hljs-keyword">private</span> String city;<br>    <span class="hljs-keyword">private</span> String state;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isFemale;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isEmployed;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isHomewOwner;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, String sex, <span class="hljs-type">int</span> year)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>        <span class="hljs-built_in">this</span>.year = year;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, String sex, <span class="hljs-type">int</span> year, String city)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>        <span class="hljs-built_in">this</span>.year = year;<br>        <span class="hljs-built_in">this</span>.city = city;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, String sex, <span class="hljs-type">int</span> year, String city, String newState,</span><br><span class="hljs-params">                  <span class="hljs-type">boolean</span> newIsFemale, <span class="hljs-type">boolean</span> newIsEmployed, <span class="hljs-type">boolean</span> newIsHomeOwner)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>        <span class="hljs-built_in">this</span>.year = year;<br>        <span class="hljs-built_in">this</span>.city = city;<br>        <span class="hljs-built_in">this</span>.state = newState;<br>        <span class="hljs-built_in">this</span>.isFemale = newIsFemale;<br>        <span class="hljs-built_in">this</span>.isEmployed = newIsEmployed;<br>        <span class="hljs-built_in">this</span>.isHomewOwner = newIsHomeOwner;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+显而易见，这样写的类构造器虽然无可厚非，但是当有许多参数的时候，客户端代码会很难编写，并且难以阅读。如果读者想知道那些值是什么意思，必须很仔细的数着这些参数来探个究竟。</li>
+</ul>
+<h2 id="JavaBeans模式"><a href="#JavaBeans模式" class="headerlink" title="JavaBeans模式"></a>JavaBeans模式</h2><p>在这种模式下，调用一个无参构造器来创建对象，然后调用setter方法来设置每个必要的参数，以及每个相关的可选参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Created by itbird on 2017/3/23</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String sex;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> year;<br>    <span class="hljs-keyword">private</span> String city;<br>    <span class="hljs-keyword">private</span> String state;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isFemale;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isEmployed;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isHomewOwner;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getSex</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> sex;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSex</span><span class="hljs-params">(String sex)</span> &#123;<br>        <span class="hljs-built_in">this</span>.sex = sex;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getYear</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> year;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setYear</span><span class="hljs-params">(<span class="hljs-type">int</span> year)</span> &#123;<br>        <span class="hljs-built_in">this</span>.year = year;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getCity</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> city;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCity</span><span class="hljs-params">(String city)</span> &#123;<br>        <span class="hljs-built_in">this</span>.city = city;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getState</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> state;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setState</span><span class="hljs-params">(String state)</span> &#123;<br>        <span class="hljs-built_in">this</span>.state = state;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isFemale</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> isFemale;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setFemale</span><span class="hljs-params">(<span class="hljs-type">boolean</span> female)</span> &#123;<br>        isFemale = female;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEmployed</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> isEmployed;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setEmployed</span><span class="hljs-params">(<span class="hljs-type">boolean</span> employed)</span> &#123;<br>        isEmployed = employed;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isHomewOwner</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> isHomewOwner;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHomewOwner</span><span class="hljs-params">(<span class="hljs-type">boolean</span> homewOwner)</span> &#123;<br>        isHomewOwner = homewOwner;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这种模式弥补重叠构造器模式的不足。说的明白一点，就是创建实例很容易，这样产生的代码读起来也很容易:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>person.setCity(<span class="hljs-string">&quot;重庆&quot;</span>);<br>person.setYear(<span class="hljs-number">12</span>);<br>person.setSex(<span class="hljs-string">&quot;男&quot;</span>);<br>person.setName(<span class="hljs-string">&quot;itbird&quot;</span>);<br></code></pre></td></tr></table></figure>
+<p>遗憾的是，JavaBeans模式自身有着很严重的缺点。因为构造过程被分到几个调用中，在构造过程中JavaBean可能处于非一致的状态。JavaBeans模式阻止了把类做成不可变的可能，这就需要程序员付出额外的努力来确保他的线程安全。</p>
+<h2 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h2><p>5个或者5个以上的成员变量 参数不多，但是在未来，参数会增加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String sex;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> year;<br>    <span class="hljs-keyword">private</span> String city;<br>    <span class="hljs-keyword">private</span> String state;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isFemale;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isEmployed;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isHomewOwner;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PersonBuilder</span> &#123;<br>        <span class="hljs-comment">// 必要参数</span><br>        <span class="hljs-keyword">private</span> String name;<br>        <span class="hljs-comment">// 可选参数</span><br>        <span class="hljs-keyword">private</span> String sex;<br>        <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> year;<br>        <span class="hljs-keyword">private</span> String city;<br>        <span class="hljs-keyword">private</span> String state;<br>        <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isFemale;<br>        <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isEmployed;<br>        <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isHomewOwner;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">PersonBuilder</span><span class="hljs-params">(String name)</span> &#123;<br>            <span class="hljs-built_in">this</span>.name = name;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setSex</span><span class="hljs-params">(String sex)</span> &#123;<br>            <span class="hljs-built_in">this</span>.sex = sex;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setYear</span><span class="hljs-params">(<span class="hljs-type">int</span> year)</span> &#123;<br>            <span class="hljs-built_in">this</span>.year = year;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setCity</span><span class="hljs-params">(String city)</span> &#123;<br>            <span class="hljs-built_in">this</span>.city = city;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setState</span><span class="hljs-params">(String state)</span> &#123;<br>            <span class="hljs-built_in">this</span>.state = state;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setFemale</span><span class="hljs-params">(<span class="hljs-type">boolean</span> female)</span> &#123;<br>            isFemale = female;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setEmployed</span><span class="hljs-params">(<span class="hljs-type">boolean</span> employed)</span> &#123;<br>            isEmployed = employed;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> PersonBuilder <span class="hljs-title function_">setHomewOwner</span><span class="hljs-params">(<span class="hljs-type">boolean</span> homewOwner)</span> &#123;<br>            isHomewOwner = homewOwner;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> Person <span class="hljs-title function_">build</span><span class="hljs-params">()</span> &#123;<br>            <span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>            person.name = name;<br>            person.sex = sex;<br>            person.city = city;<br>            person.isEmployed = isEmployed;<br>            person.isFemale = isFemale;<br>            person.isHomewOwner = isHomewOwner;<br>            person.state = state;<br>            person.year = year;<br>            <span class="hljs-keyword">return</span> person;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>调用的实例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Person</span> <span class="hljs-variable">person</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>.PersonBuilder(<span class="hljs-string">&quot;itbird&quot;</span>)<br>                   .setCity(<span class="hljs-string">&quot;重庆&quot;</span>).setYear(<span class="hljs-number">15</span>).build();<br></code></pre></td></tr></table></figure>
+<p>显然，使用Builder模式解决了上诉的难题，达到了“以不变(Builder)应万变(参数)”的目的。</p>
+<h1 id="不需要实例化的类应该构造器私有"><a href="#不需要实例化的类应该构造器私有" class="headerlink" title="不需要实例化的类应该构造器私有"></a>不需要实例化的类应该构造器私有</h1><p> 一些工具类提供的都是静态方法，这些类是不应该提供具体的实例的。可以参考JDK中的Arrays。</p>
+<h1 id="不要创建不必要的对象"><a href="#不要创建不必要的对象" class="headerlink" title="不要创建不必要的对象"></a>不要创建不必要的对象</h1><ul>
+<li>反例<blockquote>
+<p>该语句每次被执行的时候都创建一个新的String实例，但这些创建对象的动作全部都是不必要的。传递给String构造器的参数（”stringette”）本身就是一个String实例，功能方面等同于构造器创建的对象。如果这种用法实在一个循环中，或者在一个被频繁调用的方法中，就会创建出成千上万不必要的String实例。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;stringette&quot;</span>);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>正例<blockquote>
+<p>这个版本只用了一个String实例，而不是每一次执行代码都创建一个新的实例。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;stringette&quot;</span>;<br></code></pre></td></tr></table></figure>
+<h1 id="避免使用终结方法"><a href="#避免使用终结方法" class="headerlink" title="避免使用终结方法"></a>避免使用终结方法</h1><p>终结方法（finalizer）通常是不可预测的，也是很危险的，一般情况下是不必要的。使用终结方法会导致行为不稳定，降低性能以及可移植性问题。</p>
+<ul>
+<li>反例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Foo</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>(...);<br><span class="hljs-keyword">try</span>&#123;<br>    <span class="hljs-comment">//Do what must be done with foo</span><br>    ...<br>&#125;<span class="hljs-keyword">finally</span>&#123;<br>    foo.terminate();        <span class="hljs-comment">//Explicit termination method</span><br>&#125;<br></code></pre></td></tr></table></figure>
+使用终结方法的好处，它们有两种合法用途：</li>
+</ul>
+<p>第一种用途是，当对象的所有者忘记调用前面建议的显示终止方法的时，终结方法可以充当“安全网（safety net）”。迟一点释放关键资源总比永远不释放要好。但是如果终结方法发现资源还未被终止，则应该在日志中记录一条警告，因为这是客户端的一个BUG，应当被修复。</p>
+<p>第二种合理用途与对象的本地对等体（native peer）有关。本地对等体是一个本地对象（native object），普通对象通过本地方法（native method）委托给一个本地对象。因为本地对等体不是一个普通对象，所以垃圾回收器不会知道它，当它的Java对等体被回收的时候，它不会被回收。在本地对等体不拥有关键资源的前提下，终结方法正是执行这项任务最合适的工具。如果本地对等体拥有必须被及时终止的资源，那么该类就应该具有一个显示的终止方法，如前所述。终止方法应该完成所有必要的工作以便释放关键资源。终止方法可以是本地的，或者调用本地方法。</p>
+<h1 id="使类和成员的可访问性最小化"><a href="#使类和成员的可访问性最小化" class="headerlink" title="使类和成员的可访问性最小化"></a>使类和成员的可访问性最小化</h1><p>编写程序和设计架构，最重要的目标之一就是模块之间的解耦。使类和成员的可访问性最小化无疑是有效的途径之一。</p>
+<h2 id="为什么要使类和成员的可访问性最小化"><a href="#为什么要使类和成员的可访问性最小化" class="headerlink" title="为什么要使类和成员的可访问性最小化"></a>为什么要使类和成员的可访问性最小化</h2><p>可以有效的解除系统中各个模块的耦合度、实现每个模块的独立开发、使得系统更加的可维护，更加的健壮。</p>
+<h2 id="如何最小化类和接口的可访问性？"><a href="#如何最小化类和接口的可访问性？" class="headerlink" title="如何最小化类和接口的可访问性？"></a>如何最小化类和接口的可访问性？</h2><p> 能将类和接口做成包级私有就一定要做成包级私有的。</p>
+<p> 如果一个类或者接口，只被另外的一个类应用，那么最好将这个类或者接口做成其内部的私有类或者接口。</p>
+<h2 id="如何最小化一个了类中的成员的可访问性？"><a href="#如何最小化一个了类中的成员的可访问性？" class="headerlink" title="如何最小化一个了类中的成员的可访问性？"></a>如何最小化一个了类中的成员的可访问性？</h2><h4 id="首先设计出该类需要暴露出来的api，然后将剩下的成员的设计成private类型。然后再其他类需要访问某些private类型的成员时，在删掉private，使其变成包级私有。如果你发现你需要经常这样做，那么就请你重新设计一下这个类的api。"><a href="#首先设计出该类需要暴露出来的api，然后将剩下的成员的设计成private类型。然后再其他类需要访问某些private类型的成员时，在删掉private，使其变成包级私有。如果你发现你需要经常这样做，那么就请你重新设计一下这个类的api。" class="headerlink" title="首先设计出该类需要暴露出来的api，然后将剩下的成员的设计成private类型。然后再其他类需要访问某些private类型的成员时，在删掉private，使其变成包级私有。如果你发现你需要经常这样做，那么就请你重新设计一下这个类的api。"></a>首先设计出该类需要暴露出来的api，然后将剩下的成员的设计成private类型。然后再其他类需要访问某些private类型的成员时，在删掉private，使其变成包级私有。如果你发现你需要经常这样做，那么就请你重新设计一下这个类的api。</h4><h4 id="对于protected类型的成员，作用域是整个系统，所以，能用包访问类型的成员的话就尽量不要使用保护行的成员。"><a href="#对于protected类型的成员，作用域是整个系统，所以，能用包访问类型的成员的话就尽量不要使用保护行的成员。" class="headerlink" title="对于protected类型的成员，作用域是整个系统，所以，能用包访问类型的成员的话就尽量不要使用保护行的成员。"></a>对于protected类型的成员，作用域是整个系统，所以，能用包访问类型的成员的话就尽量不要使用保护行的成员。</h4><h4 id="不能为了测试而将包中的类或者成员变为public类型的，最多只能设置成包级私有类型。"><a href="#不能为了测试而将包中的类或者成员变为public类型的，最多只能设置成包级私有类型。" class="headerlink" title="不能为了测试而将包中的类或者成员变为public类型的，最多只能设置成包级私有类型。"></a>不能为了测试而将包中的类或者成员变为public类型的，最多只能设置成包级私有类型。</h4><h4 id="实例域绝对不能是public类型的"><a href="#实例域绝对不能是public类型的" class="headerlink" title="实例域绝对不能是public类型的."></a>实例域绝对不能是public类型的.</h4><h2 id="使可变性最小化"><a href="#使可变性最小化" class="headerlink" title="使可变性最小化"></a>使可变性最小化</h2><blockquote>
+<p>尽量使类不可变，不可变的类比可变的类更加易于设计、实现和使用，而且更不容易出错，更安全。</p>
+</blockquote>
+<h3 id="常用的手段"><a href="#常用的手段" class="headerlink" title="常用的手段"></a>常用的手段</h3><ul>
+<li>不提供任何可以修改对象状态的方法；</li>
+<li>使所有的域都是final的。</li>
+<li>使所有的域都是私有的。</li>
+<li>使用写时复制机制。带来的问题：会导致系统产生大量的对象，而且性能有一定的影响，需要在使用过程中小心权衡。</li>
+</ul>
+<h2 id="优先使用复合"><a href="#优先使用复合" class="headerlink" title="优先使用复合"></a>优先使用复合</h2><p>继承容易破坏封装性，而且会使子类的实现依赖于父类。<br>复合则是在类中增加一个私有域，引用类的一个实例，这样的话就避免了依赖类的具体实现。<br>只有在子类确实是父类的一个子类型时，才比较适合用继承。</p>
+<h2 id="接口优于抽象类"><a href="#接口优于抽象类" class="headerlink" title="接口优于抽象类"></a>接口优于抽象类</h2><p>java是个单继承的，但是类允许实现多个接口。<br>所以当发生业务变化时，新增接口，并且需要进行业务变化的类现新接口即可。但是抽象类有可能导致不需要变化的类也不得不实现新增的业务方法。<br>在JDK里常用的一种设计方法是：定义一个接口，声明一个抽象的骨架类实现接口，骨架类类实现通用的方法，而实际的业务类可以同时实现接口又继承骨架类，也可以只实现接口。<br>如HashSet实现了implements Set接口 但是又extends 类AbstractSet，而AbstractSet本身也实现了Set接口。其他如Map，List都是这样的设计的。</p>
+<hr>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="可变参数要谨慎使用"><a href="#可变参数要谨慎使用" class="headerlink" title="可变参数要谨慎使用"></a>可变参数要谨慎使用</h2><p>可变参数是允许传0个参数的<br>如果是参数个数在1~多个之间的时候，要做单独的业务控制。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//可能很多 0~很多</span><br>   <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span>... args)</span> &#123;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> arg : args)<br>           sum += arg;<br>       <span class="hljs-keyword">return</span> sum;<br>   &#125;<br>   <br>   <span class="hljs-comment">//要求参数的个数，是1~多个</span><br>   <span class="hljs-comment">//</span><br>   <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum1</span><span class="hljs-params">(<span class="hljs-type">int</span>... args)</span> &#123;<br>       <span class="hljs-keyword">if</span>(args.length==<span class="hljs-number">0</span>) &#123;<br>           <span class="hljs-comment">//做点异常处理</span><br>       &#125;<br>       <span class="hljs-keyword">if</span>(args[<span class="hljs-number">0</span>]==<span class="hljs-number">100</span>) &#123;<br><br>       &#125;<br>       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;args.length;i++) &#123;<br>           <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>           sum += args[i];<br>           <span class="hljs-keyword">return</span> sum; <br>       &#125;<br>   &#125;<br><br>   <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum2</span><span class="hljs-params">(<span class="hljs-type">int</span> flag, <span class="hljs-type">int</span>... args)</span> &#123;<br>       <span class="hljs-keyword">if</span>(flag==<span class="hljs-number">100</span>) &#123;<br><br>       &#125;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> arg : args)<br>           sum += arg;<br>       <span class="hljs-keyword">return</span> sum;<br>       <span class="hljs-keyword">return</span> Collections.EMPTY_LIST;<br>   &#125;<br>   <br></code></pre></td></tr></table></figure>
+<h2 id="优先使用标准的异常"><a href="#优先使用标准的异常" class="headerlink" title="优先使用标准的异常"></a>优先使用标准的异常</h2><blockquote>
+<p>要尽量追求代码的重用，同时减少类加载的数目，提高类装载的性能。</p>
+</blockquote>
+<p>NullPointerException 在参数值不能为null的情况下参数值为null 抛出空指针异常</p>
+<p>IndexOutOfBoundsException 下标参数值越界 抛出索引越界异常</p>
+<p>ConcurrentModificationException 在禁止并发修改的情况下，检测到对象的并发修改 抛出</p>
+<p>UnsupportedOperationException 对象不支持用户请求的方法 抛出</p>
+<hr>
+<h1 id="让代码性能更高"><a href="#让代码性能更高" class="headerlink" title="让代码性能更高"></a>让代码性能更高</h1><h1 id="需要-Map-的主键和取值时，应该迭代-entrySet"><a href="#需要-Map-的主键和取值时，应该迭代-entrySet" class="headerlink" title="需要 Map 的主键和取值时，应该迭代 entrySet()"></a>需要 Map 的主键和取值时，应该迭代 entrySet()</h1><p>当循环中只需要 Map 的主键时，迭代 keySet() 是正确的。但是，当需要主键和取值时，迭代 entrySet() 才是更高效的做法，比先迭代 keySet() 后再去 get 取值性能更佳。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;String, String&gt; map = ...;<br><span class="hljs-keyword">for</span> (String key : map.keySet()) &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> map.get(key);<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">Map&lt;String, String&gt; map = ...;<br><span class="hljs-keyword">for</span> (Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> entry.getKey();<br>    <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> entry.getValue();<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="应该使用Collection-isEmpty-检测空"><a href="#应该使用Collection-isEmpty-检测空" class="headerlink" title="应该使用Collection.isEmpty()检测空"></a>应该使用Collection.isEmpty()检测空</h1><p>使用 Collection.size() 来检测空逻辑上没有问题，但是使用 Collection.isEmpty()使得代码更易读，并且可以获得更好的性能。任何 Collection.isEmpty() 实现的时间复杂度都是 O(1) ，但是某些 Collection.size() 实现的时间复杂度可能是 O(n) 。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (collection.size() == <span class="hljs-number">0</span>) &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (collection.isEmpty()) &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果需要还需要检测 null ，可采用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">CollectionUtils.isEmpty(collection)和CollectionUtils.isNotEmpty(collection)。<br></code></pre></td></tr></table></figure>
+<h1 id="不要把集合对象传给自己"><a href="#不要把集合对象传给自己" class="headerlink" title="不要把集合对象传给自己"></a>不要把集合对象传给自己</h1><p>此外，由于某些方法要求参数在执行期间保持不变，因此将集合传递给自身可能会导致异常行为。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;String&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>list.add(<span class="hljs-string">&quot;Hello&quot;</span>);<br>list.add(<span class="hljs-string">&quot;World&quot;</span>);<br><span class="hljs-keyword">if</span> (list.containsAll(list)) &#123; <span class="hljs-comment">// 无意义,总是返回true</span><br>    ...<br>&#125;<br>list.removeAll(list); <span class="hljs-comment">// 性能差, 直接使用clear()</span><br></code></pre></td></tr></table></figure>
+<h1 id="集合初始化尽量指定大小"><a href="#集合初始化尽量指定大小" class="headerlink" title="集合初始化尽量指定大小"></a>集合初始化尽量指定大小</h1><p>java 的集合类用起来十分方便，但是看源码可知，集合也是有大小限制的。每次扩容的时间复杂度很有可能是 O(n) ，所以尽量指定可预知的集合大小，能减少集合的扩容次数。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;<br>List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i : arr) &#123;<br>    list.add(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;<br>List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(arr.length);<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i : arr) &#123;<br>    list.add(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="字符串拼接使用-StringBuilder"><a href="#字符串拼接使用-StringBuilder" class="headerlink" title="字符串拼接使用 StringBuilder"></a>字符串拼接使用 StringBuilder</h1><p>一般的字符串拼接在编译期 java 会进行优化，但是在循环中字符串拼接， java 编译器无法做到优化，所以需要使用 StringBuilder 进行替换。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>    s += i;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;b&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;c&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> a + b + c; <span class="hljs-comment">// 没问题，java编译器会进行优化</span><br><span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>    sb.append(i);  <span class="hljs-comment">// 循环中，java编译器无法进行优化，所以要手动使用StringBuilder</span><br>&#125;<br>```java<br># List 的随机访问<br>大家都知道数组和链表的区别：数组的随机访问效率更高。当调用方法获取到 List 后，如果想随机访问其中的数据，并不知道该数组内部实现是链表还是数组，怎么办呢？可以判断它是否实现 RandomAccess 接口。<br><br>正例<br>```java<br><span class="hljs-comment">// 调用别人的服务获取到list</span><br>List&lt;Integer&gt; list = otherService.getList();<br><span class="hljs-keyword">if</span> (list <span class="hljs-keyword">instanceof</span> RandomAccess) &#123;<br>    <span class="hljs-comment">// 内部数组实现，可以随机访问</span><br>    System.out.println(list.get(list.size() - <span class="hljs-number">1</span>));<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 内部可能是链表实现，随机访问效率低</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="频繁调用-Collection-contains-方法请使用-Set"><a href="#频繁调用-Collection-contains-方法请使用-Set" class="headerlink" title="频繁调用 Collection.contains 方法请使用 Set"></a>频繁调用 Collection.contains 方法请使用 Set</h1><p>在 java 集合类库中，List 的 contains 方法普遍时间复杂度是 O(n) ，如果在代码中需要频繁调用 contains 方法查找数据，可以先将 list 转换成 HashSet 实现，将 O(n) 的时间复杂度降为 O(1) 。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">ArrayList&lt;Integer&gt; list = otherService.getList();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= Integer.MAX_VALUE; i++) &#123;<br>    <span class="hljs-comment">// 时间复杂度O(n)</span><br>    list.contains(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">ArrayList&lt;Integer&gt; list = otherService.getList();<br>Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>(list);<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= Integer.MAX_VALUE; i++) &#123;<br>    <span class="hljs-comment">// 时间复杂度O(1)</span><br>    set.contains(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="让代码更优雅"><a href="#让代码更优雅" class="headerlink" title="让代码更优雅"></a>让代码更优雅</h1><h1 id="长整型常量后添加大写-L"><a href="#长整型常量后添加大写-L" class="headerlink" title="长整型常量后添加大写 L"></a>长整型常量后添加大写 L</h1><p>在使用长整型常量值时，后面需要添加 L ，必须是大写的 L ，不能是小写的 l ，小写 l 容易跟数字 1 混淆而造成误解。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">long</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> <span class="hljs-number">1l</span>;<br><span class="hljs-type">long</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Math.max(<span class="hljs-number">1L</span>, <span class="hljs-number">5</span>);<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">long</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br><span class="hljs-type">long</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Math.max(<span class="hljs-number">1L</span>, <span class="hljs-number">5L</span>);<br></code></pre></td></tr></table></figure>
+<h1 id="不要使用魔法值"><a href="#不要使用魔法值" class="headerlink" title="不要使用魔法值"></a>不要使用魔法值</h1><p>当你编写一段代码时，使用魔法值可能看起来很明确，但在调试时它们却不显得那么明确了。这就是为什么需要把魔法值定义为可读取常量的原因。但是，-1、0 和 1不被视为魔法值。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++)&#123;<br>    ...<br>&#125;<br><span class="hljs-keyword">if</span> (a == <span class="hljs-number">100</span>) &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">MAX_COUNT</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; MAX_COUNT; i++)&#123;<br>    ...<br>&#125;<br><span class="hljs-keyword">if</span> (count == MAX_COUNT) &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="不要使用集合实现来赋值静态成员变量"><a href="#不要使用集合实现来赋值静态成员变量" class="headerlink" title="不要使用集合实现来赋值静态成员变量"></a>不要使用集合实现来赋值静态成员变量</h1><p>对于集合类型的静态成员变量，不要使用集合实现来赋值，应该使用静态代码块赋值。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Integer&gt;() &#123;<br>    &#123;<br>        put(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-number">1</span>);<br>        put(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-number">2</span>);<br>    &#125;<br>&#125;;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;String&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;String&gt;() &#123;<br>    &#123;<br>        add(<span class="hljs-string">&quot;a&quot;</span>);<br>        add(<span class="hljs-string">&quot;b&quot;</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><span class="hljs-keyword">static</span> &#123;<br>    map.put(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-number">1</span>);<br>    map.put(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-number">2</span>);<br>&#125;;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;String&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><span class="hljs-keyword">static</span> &#123;<br>    list.add(<span class="hljs-string">&quot;a&quot;</span>);<br>    list.add(<span class="hljs-string">&quot;b&quot;</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="建议使用-try-with-resources-语句"><a href="#建议使用-try-with-resources-语句" class="headerlink" title="建议使用 try-with-resources 语句"></a>建议使用 try-with-resources 语句</h1><p>Java 7 中引入了 try-with-resources 语句，该语句能保证将相关资源关闭，优于原来的 try-catch-finally 语句，并且使程序代码更安全更简洁。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handle</span><span class="hljs-params">(String fileName)</span> &#123;<br>    <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        String line;<br>        reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>(fileName));<br>        <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>            ...<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        ...<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">if</span> (reader != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                reader.close();<br>            &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                ...<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<blockquote>
+<p>那什么是try-with-resource呢？简而言之，当一个外部资源的句柄对象（比如FileInputStream对象）实现了AutoCloseable接口，那么就可以将上面的板式代码简化为如下形式：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handle</span><span class="hljs-params">(String fileName)</span> &#123;<br>    <span class="hljs-keyword">try</span> (<span class="hljs-type">BufferedReader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>(fileName))) &#123;<br>        String line;<br>        <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>            ...<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>将外部资源的句柄对象的创建放在try关键字后面的括号中，当这个try-catch代码块执行完毕后，Java会确保外部资源的close方法被调用。代码是不是瞬间简洁许多！</p>
+<h1 id="删除未使用的私有方法和字段"><a href="#删除未使用的私有方法和字段" class="headerlink" title="删除未使用的私有方法和字段"></a>删除未使用的私有方法和字段</h1><p>删除未使用的私有方法和字段，使代码更简洁更易维护。若有需要再使用，可以从历史提交中找回。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DoubleDemo1</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">unusedField</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">unusedMethod</span><span class="hljs-params">()</span> &#123;<br>        ...<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-keyword">return</span> a + b;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DoubleDemo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-keyword">return</span> a + b;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="删除未使用的局部变量"><a href="#删除未使用的局部变量" class="headerlink" title="删除未使用的局部变量"></a>删除未使用的局部变量</h1><p>删除未使用的局部变量，使代码更简洁更易维护。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="删除未使用的方法参数"><a href="#删除未使用的方法参数" class="headerlink" title="删除未使用的方法参数"></a>删除未使用的方法参数</h1><p>未使用的方法参数具有误导性，删除未使用的方法参数，使代码更简洁更易维护。但是，由于重写方法是基于父类或接口的方法定义，即便有未使用的方法参数，也是不能删除的。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> c)</span> &#123;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="删除表达式的多余括号"><a href="#删除表达式的多余括号" class="headerlink" title="删除表达式的多余括号"></a>删除表达式的多余括号</h1><p>对应表达式中的多余括号，有人认为有助于代码阅读，也有人认为完全没有必要。对于一个熟悉 Java 语法的人来说，表达式中的多余括号反而会让代码显得更繁琐。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">return</span> (x);<br><span class="hljs-keyword">return</span> (x + <span class="hljs-number">2</span>);<br><span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> (y * <span class="hljs-number">3</span>) + <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> (n * <span class="hljs-number">4</span> + <span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">return</span> x;<br><span class="hljs-keyword">return</span> x + <span class="hljs-number">2</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> y * <span class="hljs-number">3</span> + <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> n * <span class="hljs-number">4</span> + <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+<h1 id="工具类应该屏蔽构造函数"><a href="#工具类应该屏蔽构造函数" class="headerlink" title="工具类应该屏蔽构造函数"></a>工具类应该屏蔽构造函数</h1><p>工具类是一堆静态字段和函数的集合，不应该被实例化。但是，Java 为每个没有明确定义构造函数的类添加了一个隐式公有构造函数。所以，为了避免 java “小白”使用有误，应该显式定义私有构造函数来屏蔽这个隐式公有构造函数。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MathUtils</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">double</span> <span class="hljs-variable">PI</span> <span class="hljs-operator">=</span> <span class="hljs-number">3.1415926D</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-keyword">return</span> a + b;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MathUtils</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">double</span> <span class="hljs-variable">PI</span> <span class="hljs-operator">=</span> <span class="hljs-number">3.1415926D</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-title function_">MathUtils</span><span class="hljs-params">()</span> &#123;&#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-keyword">return</span> a + b;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="删除多余的异常捕获并抛出"><a href="#删除多余的异常捕获并抛出" class="headerlink" title="删除多余的异常捕获并抛出"></a>删除多余的异常捕获并抛出</h1><p>用 catch 语句捕获异常后，什么也不进行处理，就让异常重新抛出，这跟不捕获异常的效果一样，可以删除这块代码或添加别的处理。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">readFile</span><span class="hljs-params">(String fileName)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-keyword">try</span> (<span class="hljs-type">BufferedReader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>(fileName))) &#123;<br>        String line;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">builder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>            builder.append(line);<br>        &#125;<br>        <span class="hljs-keyword">return</span> builder.toString();<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        <span class="hljs-keyword">throw</span> e;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">readFile</span><span class="hljs-params">(String fileName)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-keyword">try</span> (<span class="hljs-type">BufferedReader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>(fileName))) &#123;<br>        String line;<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">builder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">while</span> ((line = reader.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>            builder.append(line);<br>        &#125;<br>        <span class="hljs-keyword">return</span> builder.toString();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="公有静态常量应该通过类访问"><a href="#公有静态常量应该通过类访问" class="headerlink" title="公有静态常量应该通过类访问"></a>公有静态常量应该通过类访问</h1><p>虽然通过类的实例访问公有静态常量是允许的，但是容易让人它误认为每个类的实例都有一个公有静态常量。所以，公有静态常量应该直接通过类访问。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">CONST_NAME</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;name&quot;</span>;<br>    ...<br>&#125;<br><br><span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br><span class="hljs-type">String</span> <span class="hljs-variable">nameKey</span> <span class="hljs-operator">=</span> user.CONST_NAME;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">CONST_NAME</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;name&quot;</span>;<br>    ...<br>&#125;<br><br><span class="hljs-type">String</span> <span class="hljs-variable">nameKey</span> <span class="hljs-operator">=</span> User.CONST_NAME;<br></code></pre></td></tr></table></figure>
+<h1 id="不要用NullPointerException判断空"><a href="#不要用NullPointerException判断空" class="headerlink" title="不要用NullPointerException判断空"></a>不要用NullPointerException判断空</h1><p>空指针异常应该用代码规避（比如检测不为空），而不是用捕获异常的方式处理。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUserName</span><span class="hljs-params">(User user)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">return</span> user.getName();<br>    &#125; <span class="hljs-keyword">catch</span> (NullPointerException e) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUserName</span><span class="hljs-params">(User user)</span> &#123;<br>    <span class="hljs-keyword">if</span> (Objects.isNull(user)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> user.getName();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用String.valueOf(value)代替””+value<br>当要把其它对象或类型转化为字符串时，使用 String.valueOf(value) 比””+value 的效率更高。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span> + i;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> String.valueOf(i);<br></code></pre></td></tr></table></figure>
+<h1 id="过时代码添加-Deprecated-注解"><a href="#过时代码添加-Deprecated-注解" class="headerlink" title="过时代码添加 @Deprecated 注解"></a>过时代码添加 @Deprecated 注解</h1><p>当一段代码过时，但为了兼容又无法直接删除，不希望以后有人再使用它时，可以添加 @Deprecated 注解进行标记。在文档注释中添加 @deprecated 来进行解释，并提供可替代方案</p>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 保存</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@deprecated</span> 此方法效率较低，请使用&#123;<span class="hljs-doctag">@link</span> newSave()&#125;方法替换它</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Deprecated</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">save</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-comment">// do something</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="让代码远离-bug"><a href="#让代码远离-bug" class="headerlink" title="让代码远离 bug"></a>让代码远离 bug</h1><h1 id="禁止使用构造方法-BigDecimal-double"><a href="#禁止使用构造方法-BigDecimal-double" class="headerlink" title="禁止使用构造方法 BigDecimal(double)"></a>禁止使用构造方法 BigDecimal(double)</h1><p>BigDecimal(double) 存在精度损失风险，在精确计算或值比较的场景中可能会导致业务逻辑异常。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">BigDecimal</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-number">0.1D</span>); <span class="hljs-comment">// 0.100000000000000005551115...</span><br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">BigDecimal</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> BigDecimal.valueOf(<span class="hljs-number">0.1D</span>);; <span class="hljs-comment">// 0.1</span><br></code></pre></td></tr></table></figure>
+<h1 id="返回空数组和空集合而不是-null"><a href="#返回空数组和空集合而不是-null" class="headerlink" title="返回空数组和空集合而不是 null"></a>返回空数组和空集合而不是 null</h1><p>返回 null ，需要调用方强制检测 null ，否则就会抛出空指针异常。返回空数组或空集合，有效地避免了调用方因为未检测 null 而抛出空指针异常，还可以删除调用方检测 null 的语句使代码更简洁。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Result[] getResults() &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;Result&gt; <span class="hljs-title function_">getResultList</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Map&lt;String, Result&gt; <span class="hljs-title function_">getResultMap</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    Result[] results = getResults();<br>    <span class="hljs-keyword">if</span> (results != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">for</span> (Result result : results) &#123;<br>            ...<br>        &#125;<br>    &#125;<br><br>    List&lt;Result&gt; resultList = getResultList();<br>    <span class="hljs-keyword">if</span> (resultList != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">for</span> (Result result : resultList) &#123;<br>            ...<br>        &#125;<br>    &#125;<br><br>    Map&lt;String, Result&gt; resultMap = getResultMap();<br>    <span class="hljs-keyword">if</span> (resultMap != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Result&gt; resultEntry : resultMap) &#123;<br>            ...<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Result[] getResults() &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Result</span>[<span class="hljs-number">0</span>];<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;Result&gt; <span class="hljs-title function_">getResultList</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> Collections.emptyList();<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Map&lt;String, Result&gt; <span class="hljs-title function_">getResultMap</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> Collections.emptyMap();<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    Result[] results = getResults();<br>    <span class="hljs-keyword">for</span> (Result result : results) &#123;<br>        ...<br>    &#125;<br><br>    List&lt;Result&gt; resultList = getResultList();<br>    <span class="hljs-keyword">for</span> (Result result : resultList) &#123;<br>        ...<br>    &#125;<br><br>    Map&lt;String, Result&gt; resultMap = getResultMap();<br>    <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Result&gt; resultEntry : resultMap) &#123;<br>        ...<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="优先使用常量或确定值来调用-equals-方法"><a href="#优先使用常量或确定值来调用-equals-方法" class="headerlink" title="优先使用常量或确定值来调用 equals 方法"></a>优先使用常量或确定值来调用 equals 方法</h1><p>对象的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals 方法。当然，使用 java.util.Objects.equals() 方法是最佳实践。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">isFinished</span><span class="hljs-params">(OrderStatus status)</span> &#123;<br>    <span class="hljs-keyword">return</span> status.equals(OrderStatus.FINISHED); <span class="hljs-comment">// 可能抛空指针异常</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">isFinished</span><span class="hljs-params">(OrderStatus status)</span> &#123;<br>    <span class="hljs-keyword">return</span> OrderStatus.FINISHED.equals(status);<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">isFinished</span><span class="hljs-params">(OrderStatus status)</span> &#123;<br>    <span class="hljs-keyword">return</span> Objects.equals(status, OrderStatus.FINISHED);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="枚举的属性字段必须是私有不可变"><a href="#枚举的属性字段必须是私有不可变" class="headerlink" title="枚举的属性字段必须是私有不可变"></a>枚举的属性字段必须是私有不可变</h1><p>枚举通常被当做常量使用，如果枚举中存在公共属性字段或设置字段方法，那么这些枚举常量的属性很容易被修改。理想情况下，枚举中的属性字段是私有的，并在私有构造函数中赋值，没有对应的 Setter 方法，最好加上 final 修饰符。</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">UserStatus</span> &#123;<br>    DISABLED(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;禁用&quot;</span>),<br>    ENABLED(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;启用&quot;</span>);<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> value;<br>    <span class="hljs-keyword">private</span> String description;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-title function_">UserStatus</span><span class="hljs-params">(<span class="hljs-type">int</span> value, String description)</span> &#123;<br>        <span class="hljs-built_in">this</span>.value = value;<br>        <span class="hljs-built_in">this</span>.description = description;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDescription</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> description;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDescription</span><span class="hljs-params">(String description)</span> &#123;<br>        <span class="hljs-built_in">this</span>.description = description;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">UserStatus</span> &#123;<br>    DISABLED(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;禁用&quot;</span>),<br>    ENABLED(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;启用&quot;</span>);<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> value;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String description;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-title function_">UserStatus</span><span class="hljs-params">(<span class="hljs-type">int</span> value, String description)</span> &#123;<br>        <span class="hljs-built_in">this</span>.value = value;<br>        <span class="hljs-built_in">this</span>.description = description;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getValue</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> value;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDescription</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> description;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="小心String-split-String-regex"><a href="#小心String-split-String-regex" class="headerlink" title="小心String.split(String regex)"></a>小心String.split(String regex)</h1><p>字符串 String 的 split 方法，传入的分隔字符串是正则表达式！部分关键字（比如.| 等）需要转义</p>
+<p>反例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-string">&quot;a.ab.abc&quot;</span>.split(<span class="hljs-string">&quot;.&quot;</span>); <span class="hljs-comment">// 结果为[]</span><br><span class="hljs-string">&quot;a|ab|abc&quot;</span>.split(<span class="hljs-string">&quot;|&quot;</span>); <span class="hljs-comment">// 结果为[&quot;a&quot;, &quot;|&quot;, &quot;a&quot;, &quot;b&quot;, &quot;|&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span><br></code></pre></td></tr></table></figure>
+<p>正例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-string">&quot;a.ab.abc&quot;</span>.split(<span class="hljs-string">&quot;\\.&quot;</span>); <span class="hljs-comment">// 结果为[&quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;]</span><br><span class="hljs-string">&quot;a|ab|abc&quot;</span>.split(<span class="hljs-string">&quot;\\|&quot;</span>); <span class="hljs-comment">// 结果为[&quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;]</span><br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://baiyp.ren/%E7%BC%96%E5%86%99%E9%AB%98%E6%95%88%E4%BC%98%E9%9B%85%E7%9A%84Java%E4%BB%A3%E7%A0%81.html">文章来源</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/" class="print-no-link">#java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>编写高效优雅java代码</div>
+      <div>http://www.lifeab.com/2021/01/26/编写优雅高效的java代码/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Wick</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/25/Properties%E7%B1%BB/" title="Properties 类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Properties 类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/23/redis/" title="redis">
+                        <span class="hidden-mobile">redis</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'blydd/hexo');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo够优秀</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid主题够帅气</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
